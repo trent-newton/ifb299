@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Music School</title>
@@ -17,7 +16,7 @@
     
 </head>
 
-<body> </body>
+<body> 
     <div class="container"><!--Need to add images here for logo etc -->
         <div class="headerContainer">
             <div class="logo">
@@ -38,8 +37,16 @@
             </ul>
         </nav><!-- end Nav-->
         <div class="userCenter"><!--Do we want this to the left or above nav?-->
-            <ul>
+            <img src="images/userImage/default-user-icon.png" />
+            <p><a href="pages/login.php">Login</a> | <a href="pages/createAccount.php">Create Account</a></p>
+            
+            <ul class="loggedInMenu">
                 <li><a href="pages/enrol.php">Enrol</a></li>
+                <li><a href="pages/timetable.php">View Timetable</a></li>
+                <li><a href="pages/changeClass.php">Request Class Change</a></li>
+                <li><a href="pages/timetable.php">Instrument Hire</a></li>
+                <li><a href="pages/lessonReview.php">Lesson Review</a></li>
+                <li><a href="pages/leaveofAbsence.php">Leave of Absence</a></li>
             </ul>
         </div> <!--end userCenter-->
         <div class="content">
@@ -49,5 +56,5 @@
         
         </footer>
     </div> <!-- end container-->
-
+</body>
 </html>
