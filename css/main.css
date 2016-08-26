@@ -55,8 +55,36 @@ body {
 }
 .userCenter {
     display: none;
+    text-align: center;
 }
-.
+
+.loginForm {
+    text-align: center;
+    font-size: 1.6em;
+    margin: 0 auto;
+}
+
+.loginForm input {
+    margin: 5px auto;
+}
+
+
+.required {
+    color: red;
+}
+
+.success {
+    font-size: 1.2em;
+    color:green;
+    text-align: center;
+}
+
+.error {
+    font-size: 1.2em;
+    color: red;
+    text-align: center;
+}
+
 /************************** Nav for small Screens *****************************/
 #nav {
 	position: relative;

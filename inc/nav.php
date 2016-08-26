@@ -12,7 +12,7 @@
             <a href="#nav" title="Show Navigation">Show Navigation</a>
             <a href="#" title="Hide Navigation">Hide Navigation</a>
             <ul>
-               <li><a href="./pages/index.php">Home</a></li><!--
+               <li><a href="../pages/index.php">Home</a></li><!--
             --><li><a href="../pages/about.php">About</a></li><!--
             --><li><a href="../pages/Enroll.php">Enroll</a></li><!--
             --><li><a href="../pages/ContactUs.php">Contact Us</a></li>
@@ -21,7 +21,17 @@
         <div class="userCenter"><!--Do we want this to the left or above nav?-->
             <img src="../images/userImage/default-user-icon.png" />
             <p><a href="../pages/login.php">Login</a> | <a href="../pages/createAccount.php">Create Account</a></p>
-            
+            <?php
+                if(isset($_SESSION["success"])) //If there is a session success message
+                {
+                    echo "<span class='success'>" . $_SESSION['success'] . "</span>";
+                    unset($_SESSION['success']);
+                }
+                elseif(isset($_SESSION['error'])) {
+                    echo "<span class='error'>" . $_SESSION['error'] . "</span>";
+                    unset($_SESSION['error']);
+                }
+            ?>
             <ul class="loggedInMenu">
                 <li><a href="../pages/enrol.php">Enrol</a></li>
                 <li><a href="../pages/timetable.php">View Timetable</a></li>
