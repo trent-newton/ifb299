@@ -1,17 +1,32 @@
 <body>
-    <div class="userPanel">
+   
         <div class="container">
             <!--Need to add images here for logo etc -->
             <div class="headerContainer">
                 <div class="logo"> <img src="../images/TempLogo.png" /> </div>
                 <!--end logo-->
-                <div class="banner">
-                    <a href="../pages/index.php"><img src="../images/musicbanner.jpg" /></a>
-                </div>
-                <!--end banner-->
             </div>
-            <!--end HederContainer-->
+            <!--end HeaderContainer-->
             <div class="userPanel">
+                    <div class="socialMediaIcons">
+                    <a href="https://www.facebook.com/qking.snookerandpool/?fref=ts">
+                    <img  src="../images/socialMedia/facebook.png" alt="Facebook Link">
+                    </a>
+                    
+                    <a href="https://www.facebook.com/qking.snookerandpool/?fref=ts">
+                    <img  src="../images/socialMedia/instagram.png" alt="instagram Link">
+                    </a>
+                    
+                    <a href="https://www.facebook.com/qking.snookerandpool/?fref=ts">
+                    <img  src="../images/socialMedia/twitter.png" alt="twitter Link">
+                    </a>
+                    
+                    <a href="https://www.facebook.com/qking.snookerandpool/?fref=ts">
+                    <img  src="../images/socialMedia/snapchat.png" alt="snapchat Link">
+                    </a>
+                </div>
+                <!--end socialMediaIcons -->
+                
                 <div class="userPanelImage">
                 <img src="../images/userImage/default-user-icon.png" />
                 </div>
@@ -41,8 +56,6 @@
 
                     ?>
                     </div> <!--end userMessage-->
-
-
                 </div><!-- end userPanel-->
             <nav id="nav" role="navigation"> <a href="#nav" title="Show Navigation">Show Navigation</a> <a href="#" title="Hide Navigation">Hide Navigation</a>
 
@@ -79,3 +92,5 @@
                     </ul>
             </div>-->
             <!--end userCenter-->
+            
+            <div class="banner"> <img src="../images/musicbanner.jpg" /> </div>

@@ -49,7 +49,7 @@ body {
 }
 
 .logo img {
-    width: 99%;
+    width: 50%;
     height: auto;
 }
 
@@ -62,7 +62,12 @@ body {
     height: auto;
 }
 
+.socialMediaIcons img {
+    width: 5%;
+}
+
 .userPanel {
+    display: inline-block;
     font-size: 1.2em;
 }
 
@@ -129,7 +134,7 @@ Contact Page
 
 
 /************************** Nav for small Screens *****************************/
-
+*/
 #nav {
     position: relative;
     background: none;
@@ -190,18 +195,21 @@ Contact Page
     display: block;
 }
 
+/*edit this*/
 #nav > ul > li {
     width: 99%;
+    text-decoration-color: aqua;
     margin: 0 auto;
     border: 1px solid #4C4A4A;
     border-radius: 10px;
-    background: #CCCCCC;
+    background:  #4a0f34;
 }
 
 #nav ul li a {
     display: block;
     text-decoration: none;
-    color: #000;
+    color: white;
+    font-size: 20px;
     padding: 10px;
     text-align: center;
     font-weight: 500;
@@ -210,7 +218,7 @@ Contact Page
 #nav ul li:hover {
     background: #4C4A4A;
 }
-
+/*put different shade*/
 #nav ul li a:hover {
     color: #E5B13A;
 }
@@ -225,7 +233,8 @@ Contact Page
     }
     .banner {
         display: inline-block;
-        width: 74%;
+        width: 100%;
+        padding: 0px;
     }
     .userCenter {
         display: inline-block;
