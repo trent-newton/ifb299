@@ -31,8 +31,8 @@
                     </div><!--end userInfo-->
                     <div class="userMessage">
                 <?php //Displays Success or Error messages
-                    if(isset($_SESSION["success"])) {
-                        echo "<span class='success'>" . $_SESSION["success"] .  "</span>";
+                    if(isset($_SESSION['success'])) {
+                        echo "<span class='success'>" . $_SESSION['success'] .  "</span>";
                         unset($_SESSION['success']);
                     } elseif(isset($_SESSION["error"])) {
                         echo "<span class='error'>" . $_SESSION['error'] . "</span>";
