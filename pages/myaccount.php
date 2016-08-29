@@ -14,8 +14,9 @@ $row = mysqli_fetch_array($result);
 ?>
 
 <div class="content">
-<form method="post" action="../inc/updateaccount.php">
-<fieldset>
+
+<fieldset class="accountDetails">
+    <form method="post" action="../inc/updateaccount.php">
     <h2>Account details</h2>
     <label>First Name</label><br />
     <input type="text" name="firstName" value="<?php echo $row['firstName']?>" readonly /><br />
@@ -33,8 +34,24 @@ $row = mysqli_fetch_array($result);
     <label>Email</label><br />
     <input type="email" name="email" value="<?php echo $row['email']?>" /><br />
     <input type="submit" name="accountupdate" value="Update Details" />
+        </form>
     </fieldset>
-    </form>
+    
+    
+        <fieldset class="changePassword">
+            <form method="post" action="../inc/changepassword.php">
+            <h2>Change Password</h2>
+            <label>Current Password:</label><br />
+            <input type="password" /><br />
+            <label>New Password:</label><br />
+            <input type="password" /><br />
+            <label>New Password Again:</label><br />
+            <input type="password" /><br />
+            <input type="submit" name="changepassword" value="Change Password" />
+                 </form>
+        </fieldset>
+    
+   
 
 
 </div>
