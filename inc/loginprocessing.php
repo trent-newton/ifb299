@@ -36,7 +36,7 @@ if($count == 1) {
         exit();
     }
 } else {
-    $_SESSION['error'] = "Incorrect email or Password.<br /> Please try again.";
+    $_SESSION['error'] = "Incorrect email or Password. Please try again.";
     header("location:../pages/index.php");
     exit();
 }
