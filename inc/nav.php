@@ -50,7 +50,7 @@
                     <li><a href="../pages/index.php">Home</a></li><!--
                     --><li><a href="../pages/about.php">About</a></li><!--
                     --><li><a href="../pages/faq.php">FAQ</a></li><!--
-                    --><li><a href="../pages/ContactUs.php">Contact Us</a></li>
+                    --><li><a href="../pages/contact.php">Contact Us</a></li>
                 </ul>
 
             </nav>
