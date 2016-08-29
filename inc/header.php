@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Music School</title>
+    <title><?php echo $pagetitle?></title>
     <!-- Tells phones not to lie about thier width -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum scale=1" />
     
