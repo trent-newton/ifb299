@@ -3,7 +3,7 @@
         <div class="container">
             <!--Need to add images here for logo etc -->
             <div class="headerContainer">
-                <div class="logo"> <img src="../images/TempLogo.jpg" /> </div>
+                <div class="logo"> <img src="../images/TempLogo.png" /> </div>
                 <!--end logo-->
                 <div class="banner">
                     <a href="../pages/index.php"><img src="../images/musicbanner.jpg" /></a>
@@ -11,7 +11,7 @@
                 <!--end banner-->
             </div>
             <!--end HederContainer-->
-            <div class="userPanel"> 
+            <div class="userPanel">
                 <div class="userPanelImage">
                 <img src="../images/userImage/default-user-icon.png" />
                 </div>
@@ -38,21 +38,21 @@
                         echo "<span class='error'>" . $_SESSION['error'] . "</span>";
                         unset($_SESSION['error']);
                     }
-                    
+
                     ?>
                     </div> <!--end userMessage-->
-                    
-                    
+
+
                 </div><!-- end userPanel-->
             <nav id="nav" role="navigation"> <a href="#nav" title="Show Navigation">Show Navigation</a> <a href="#" title="Hide Navigation">Hide Navigation</a>
-                
+
                 <ul>
                     <li><a href="../pages/index.php">Home</a></li><!--
                     --><li><a href="../pages/about.php">About</a></li><!--
                     --><li><a href="../pages/faq.php">FAQ</a></li><!--
                     --><li><a href="../pages/ContactUs.php">Contact Us</a></li>
                 </ul>
-                
+
             </nav>
             <!-- end Nav-->
             <!--<div class="userCenter">
