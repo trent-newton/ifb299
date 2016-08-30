@@ -8,25 +8,6 @@
             </div>
             <!--end HeaderContainer-->
             <div class="userPanel">
-                    <div class="socialMediaIcons">
-                    <a href="https://www.facebook.com/qking.snookerandpool/?fref=ts">
-                    <img  src="../images/socialMedia/facebook.png" alt="Facebook Link">
-                    </a>
-                    
-                    <a href="https://www.facebook.com/qking.snookerandpool/?fref=ts">
-                    <img  src="../images/socialMedia/instagram.png" alt="instagram Link">
-                    </a>
-                    
-                    <a href="https://www.facebook.com/qking.snookerandpool/?fref=ts">
-                    <img  src="../images/socialMedia/twitter.png" alt="twitter Link">
-                    </a>
-                    
-                    <a href="https://www.facebook.com/qking.snookerandpool/?fref=ts">
-                    <img  src="../images/socialMedia/snapchat.png" alt="snapchat Link">
-                    </a>
-                </div>
-                <!--end socialMediaIcons -->
-                
                 <div class="userPanelImage">
                 <img src="../images/userImage/default-user-icon.png" />
                 </div>
