@@ -30,15 +30,17 @@
                     if(isset($_SESSION['success'])) {
                         echo "<span class='success'>" . $_SESSION['success'] .  "</span>";
                         unset($_SESSION['success']);
-                    } /*elseif(isset($_SESSION["error"])) {
+                    }
+                    ?>
+                    <!--elseif(isset($_SESSION["error"])) {
                         echo "<span class='error'>" . $_SESSION['error'] . "</span>";
                         unset($_SESSION['error']);
-                    }*/
-                    ?>
+                    }-->
+
 
                     </div> <!--end userMessage-->
                 </div><!-- end userPanel-->
-                
+
             <nav id="nav" role="navigation"> <a href="#nav" title="Show Navigation">Show Navigation</a> <a href="#" title="Hide Navigation">Hide Navigation</a>
 
                 <ul>
