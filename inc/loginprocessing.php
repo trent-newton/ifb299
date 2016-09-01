@@ -30,6 +30,7 @@ $count = mysqli_num_rows($result);
 if($count == 1) {
     if(is_null($row['comCode'])) {
         $_SESSION['userID'] = $row['userID'];
+        $_SESSION['usersName'] = ucfirst($row['firstName']) . " "  . ucfirst($row['lastName']);
         $_SESSION['accountType'] = $row['accountType'];
         $_SESSION['success'] = "Welcome back " .ucfirst($row['firstName']) . " "  . ucfirst($row['lastName']);
         header("location:../pages/index.php");
@@ -37,6 +38,6 @@ if($count == 1) {
     }
 } else {
     $_SESSION['error'] = "Incorrect email or Password. Please try again.";
-    header("location:../pages/index.php");
+    header("location:../pages/login.php");
     exit();
 }
