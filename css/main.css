@@ -130,12 +130,16 @@ body {
 /*-------------home page icons--------------*/
 .homepage-icons {
     display: inline-block;
-    width: 33%;
-
+    font-size: 200%;
+    text-align: center;
+    /*width: 33%;*/
 }
 
 .homepage-icons img{
-    height: auto;
+    margin: 0 auto;
+    height: auto; 
+    width: auto; 
+    padding: auto;
 }
 
 
