@@ -19,14 +19,13 @@ body {
     padding: 0;
 }
 
-.headerContainer {
-    text-align: center;
-}
+
 
 .container {
     width: 100%;
     padding: 1%;
     margin: 0 auto;
+
 }
 
 .content {
@@ -37,6 +36,8 @@ body {
 
 .headercontainer {
     width: 99%;
+    display: inline-block;
+
 }
 
 .banner {
@@ -44,11 +45,13 @@ body {
 }
 
 .logo {
-    display: none;
+    margin: auto;
+    display: inline-block;
+    text-align: center;
 }
 
 .logo img {
-    width: 50%;
+    width: 100%;
     height: auto;
 }
 
@@ -68,12 +71,12 @@ body {
 .userPanel {
     display: inline-block;
     font-size: 1.4em;
-    width:50%;
+    width:30%;
 }
 
 .userPanelImage {
     height: 5%;
-    width:12%;
+    width:18%;
     display: inline-block;
 }
 .userPanelImage img {
@@ -84,7 +87,7 @@ body {
 .userInfo {
     display: inline-block;
     vertical-align: top;
-    margin-top: 2%;
+    margin-top: 1%;
     padding: 10px;
 }
 .userInfo a:link {
@@ -190,7 +193,6 @@ body {
   padding-bottom: 10%;
 }
 .enrolButtonSquare {
-
   width: 100%;
 	height:0;
 	padding-bottom: 50%;
