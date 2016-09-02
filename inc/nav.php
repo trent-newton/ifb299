@@ -43,13 +43,13 @@
                     </div><!--end userInfo-->
                     <div class="userMessage">
                 <?php //Displays Success or Error messages
-                    if(isset($_SESSION['success'])) {
+                  /*if(isset($_SESSION['success'])) {
                         echo "<span class='success'>" . $_SESSION['success'] .  "</span>";
                         unset($_SESSION['success']);
                     } elseif(isset($_SESSION["error"])) {
                         echo "<span class='error'>" . $_SESSION['error'] . "</span>";
                         unset($_SESSION['error']);
-                    }
+                    }*/
 
                     ?>
                     </div> <!--end userMessage-->
@@ -74,7 +74,7 @@
                 <img src="../images/userImage/default-user-icon.png" />
                 <p><a href="../pages/login.php">Login</a> | <a href="../pages/createAccount.php">Create Account</a></p>
                 <?php
-                if(isset($_SESSION["success"])) //If there is a session success message
+              /*  if(isset($_SESSION["success"])) //If there is a session success message
                 {
                     echo "<span class='success'>" . $_SESSION['success'] . "</span>";
                     unset($_SESSION['success']);
@@ -82,7 +82,7 @@
                 elseif(isset($_SESSION['error'])) {
                     echo "<span class='error'>" . $_SESSION['error'] . "</span>";
                     unset($_SESSION['error']);
-                }
+                }*/
             ?>
                     <ul class="loggedInMenu">
                         <li><a href="../pages/enrol.php">Enrol</a></li>
