@@ -42,13 +42,13 @@
                     ?>
                     </div><!--end userInfo-->
                     <div class="userMessage">
-                <?php //Displays Success or Error messages
-                    if(isset($_SESSION['success'])) {
+                <!--<?php //Displays Success or Error messages
+                    /*if(isset($_SESSION['success'])) {
                         echo "<span class='success'>" . $_SESSION['success'] .  "</span>";
                         unset($_SESSION['success']);
-                    }
+                    }*/
                     ?>
-                    <!--elseif(isset($_SESSION["error"])) {
+                    elseif(isset($_SESSION["error"])) {
                         echo "<span class='error'>" . $_SESSION['error'] . "</span>";
                         unset($_SESSION['error']);
                     }-->
@@ -95,4 +95,12 @@
             </div>-->
             <!--end userCenter-->
 
-            <div class="banner"> <img src="../images/musicbanner.jpg" /> </div>
+            <?php if($pagetitle == "About Us | Pinelands Music School"): ?>
+              <div class="banner"> <img src="../images/banners/about.jpg" /> </div>
+            <?php elseif($pagetitle == "Enrol | Pinelands Music School"): ?>
+              <div class="banner"> <img src="../images/banners/enrol.jpg" /> </div>
+            <?php elseif($pagetitle == "Contact Us | Pinelands Music School"): ?>
+              <div class="banner"> <img src="../images/banners/enrol.jpg" /> </div>
+            <?php else: ?>
+              <div class="banner"> <img src="../images/banners/main.jpg" /> </div>
+            <?php endif ?>

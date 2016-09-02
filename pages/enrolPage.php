@@ -1,5 +1,5 @@
 <?php
-    $pagetitle = "Pinelands Music School";
+    $pagetitle = "Enrol | Pinelands Music School";
     include "../inc/connect.php";
     include "../inc/header.php";
     include "../inc/nav.php";
