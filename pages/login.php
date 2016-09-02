@@ -4,8 +4,15 @@ include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
 ?>
-    <div class="content">
-            
+
+<?php
+if(isset($_SESSION["error"])) {
+    echo "<span class='error'>" . $_SESSION['error'] . "</span>";
+    unset($_SESSION['error']);
+}
+?>
+    <br><div class="content">
+
         <form class="loginForm" action="../inc/loginprocessing.php" method="post">
             <h2>Login</h2>
             <fieldset>
