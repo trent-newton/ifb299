@@ -3,10 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2016 at 05:21 AM
+-- Generation Time: Sep 02, 2016 at 05:59 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -192,6 +193,7 @@ ALTER TABLE `useraddress`
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_users_phoneNumbers` FOREIGN KEY (`UserID`) REFERENCES `phonenumbers` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_users_userAddress` FOREIGN KEY (`UserID`) REFERENCES `useraddress` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
