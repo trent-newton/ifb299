@@ -1,11 +1,10 @@
 <body>
    
         <div class="container">
+          <span>
             <!--Need to add images here for logo etc -->
             <div class="headerContainer">
-                <div class="logo"> <img src="../images/TempLogo.png" /> </div>
-                <!--end logo-->
-            </div>
+
             <!--end HeaderContainer-->
             <div class="userPanel">
                 <div class="userPanelImage">
@@ -16,7 +15,11 @@
                     //If a user is logged in
                         if(isset($_SESSION['userID'])) {
                             ?>
+<<<<<<< HEAD
                         <span><a href="../pages/myaccount.php">My Account</a> | <a href="../pages/usercenter.php">User Center</a> | <a href="../pages/logout.php">Logout</a></span>
+=======
+                        <span><a href="../pages/myaccount.php"><?php echo $_SESSION['usersName']?></a> | <a href="../pages/usercenter.php">User Center</a><br><a href="../pages/enrolPage.php"><b>ENROL</b></a> | <a href="../pages/logout.php">Logout</a></span>
+>>>>>>> 7d464085a6c9a3b81cc10b7b579dd7893543ea89
                     <?php
                         } else { // if no user is logged in
                     ?>
@@ -38,6 +41,13 @@
                     ?>
                     </div> <!--end userMessage-->
                 </div><!-- end userPanel-->
+<<<<<<< HEAD
+=======
+                <div class="logo"> <img src="../images/TempLogo.png" /> </div>
+                <!--end logo-->
+            </div>
+          </span>
+>>>>>>> 7d464085a6c9a3b81cc10b7b579dd7893543ea89
             <nav id="nav" role="navigation"> <a href="#nav" title="Show Navigation">Show Navigation</a> <a href="#" title="Hide Navigation">Hide Navigation</a>
 
                 <ul>
