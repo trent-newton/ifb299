@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    
 }
 
 header,
@@ -164,6 +165,31 @@ body {
     width: auto;
     padding: auto;
 }
+
+/*--------------------ADMIN CENTER--------------------*/
+
+.adminCenter {
+    text-align: center;
+}
+
+.temp {
+    display: inline-block;
+    padding: 5px;
+
+}
+
+.AdminCenterButton {
+    width: 55%;
+}
+
+.AdminCenterImage {
+    width: 40%;
+}
+
+.button {
+    padding: 4px;
+}
+
 
 /*--------------------TABLES + Change auth page--------------------*/
 table {
@@ -453,5 +479,6 @@ table a{
 /*----------------- FOOTER ------------ */
 .footer {
     background-color:  #771d57;
-    padding: 2%;
+    margin-top: 5px;
+    padding: 1%
 }
