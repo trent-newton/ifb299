@@ -57,16 +57,19 @@ $row = mysqli_fetch_array($result);
                 <h2>Change Password</h2>
                 <label>Current Password:</label>
                 <br />
-                <input type="password" />
+                <input type="password" name="oldPassword" required />
                 <br />
                 <label>New Password:</label>
                 <br />
-                <input type="password" />
+                <input type="password" name="newPassword" required />
                 <br />
                 <label>New Password Again:</label>
                 <br />
-                <input type="password" />
+                <input type="password" name="newPassword2" required />
                 <br />
-                <input type="submit" name="changepassword" value="Change Password" /> </form>
+                <input type="hidden" name="userID" value="<?php echo $userID?>" />
+
+                <input type="submit" name="changepassword" value="Change Password" /> 
+            </form>
         </fieldset>
     </div>
