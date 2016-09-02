@@ -3,62 +3,106 @@
     include "../inc/connect.php";
     include "../inc/header.php";
     include "../inc/nav.php";
-    include "../inc/accountprocessing.php";
+
+    $errorSFirstName = "";
+    $errorSLastName = "";
+    $errorDoB = "";
+    $errorGender = "";
+    $errorAddress = "";
+    $errorSEmail = "";
+    $errorSMobile = "";
+    $errorSPhone = "";
+    $errorPassword = "";
+    $errorConfPassword = "";
+    $errorPFirstName = "";
+    $errorPLastName = "";
+    $errorPEmail = "";
+    $errorPMobile = "";
+    $errorPPhone = "";
+    $errorRelation = "";
+
+    if(isset($_POST['submit'])) {
+        if($_POST['sFirstName'] == "") $errorSFirstName = " * required";
+        if($_POST['sLastName'] == "") $errorSLastName = " * required";
+        if($_POST['dobDay'] == "" || $_POST['dobMonth'] == "" || $_POST['dobYear'] == "") {
+            $errorDoB = " * required";
+        } else {
+            $errorDoB = " Incorrect DoB";
+            if (is_numeric($_POST['dobMonth']) && is_numeric($_POST['dobDay']) && is_numeric($_POST['dobYear']))
+                if(checkdate((int)$_POST['dobMonth'], (int)$_POST['dobDay'], (int)$_POST['dobDay']))
+                    $errorDoB = "";
+        }
+        if(!isset($_POST['gender'])) $errorGender = " * required";
+        // Need to check unit num
+        if($_POST['addressNum'] == "" || $_POST['addressStreet'] == "" || $_POST['addressSuburb'] == "" || $_POST['addressState'] == "" || $_POST['addressPostcode'] == "") {
+            $errorAddress = " * required";
+        } else {
+            if (!is_numeric($_POST['addressNum']) || !is_numeric($_POST['addressPostcode']))
+                $errorAddress = " Incorrect address";
+        }
+        if($_POST['sEmail'] == "") $errorSEmail = " * required";
+        if($_POST['password'] == "") $errorPassword = " * required";
+        if($_POST['confirmPassword'] == "") $errorConfPassword = " * required";
+
+        // Need to check day and month
+        if((date("Y") - $_POST['dobYear']) < 18) {
+            if($_POST['pFirstName'] == "") $errorPFirstName = " * required";
+            if($_POST['pLastName'] == "") $errorPLastName = " * required";
+            if($_POST['pEmail'] == "") $errorPEmail = " * required";
+            if($_POST['relation'] == "") $errorRelation = " * required";
+        }
+    } else if(isset($_POST['cancel'])) {
+        header("Location: ../pages/index.php");
+    }
 ?>
 
 <div class="content">
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <h1>Student</h1>
-        <p class="required">* Required Fields</p>
-        <label id="lblSFirst" for="txtSFirst">First Name<span class="required">*</span>: </label><input type="text" name="sFirst" id="txtSFirst" placeholder="John" value="<?php if (isset($_POST['sFirst'])) echo $_POST['sFirst'] ?>" required><br>
-        <label id="lblSLast" for="txtSLast">Last Name<span class="required">*</span>: </label><input type="text" name="sLast" id="txtSLast" placeholder="Appleseed" value="<?php if (isset($_POST['sLast'])) echo $_POST['sLast'] ?>" required><br>
-        <label id="lblDob" for="txtDob">Date of Birth<span class="required">*</span>: </label>
-            <input type="date" name="dob" id="txtDob" size="10" maxlength="10" placeholder="yyyy-mm-dd" value="<?php if (isset($_POST['dob'])) echo $_POST['dob'] ?>" required><br>
-        <label id="lblGender">Gender<span class="required">*</span>: </label>
-            <input type="radio" name="gender" value="Female" <?php if (isset($_POST['gender']) && $_POST['gender'] == "Female") echo "checked";?> required>Female
-            <input type="radio" name="gender" value="Male" <?php if (isset($_POST['gender']) && $_POST['gender'] == "Male") echo "checked";?> required>Male
-        <br><br>
+        <table>
+            <tr><td>First Name: </td><td><input type="text" required name="sFirstName" value="<?php if(isset($_POST['sFirstName'])) echo($_POST['sFirstName']); ?>"></td><td><?php echo $errorSFirstName ?></td></tr>
+            <tr><td>Last Name: </td><td><input type="text" required name="sLastName" value="<?php if(isset($_POST['sLastName'])) echo($_POST['sLastName']); ?>"></td><td><?php echo $errorSLastName ?></td></tr>
+            <tr><td>Date of Birth: </td><td>
+                <input type="text" name="dobDay" required size="2" maxlength="2" value="<?php if(isset($_POST['dobDay'])) echo($_POST['dobDay']); ?>"> / 
+                <input type="text" name="dobMonth" required size="2" maxlength="2" value="<?php if(isset($_POST['dobMonth'])) echo($_POST['dobMonth']); ?>"> / 
+                <input type="text" name="dobYear" required size="4" maxlength="4" value="<?php if(isset($_POST['dobYear'])) echo($_POST['dobYear']); ?>"></td><td><?php echo $errorDoB ?></td></tr>
 
-        <label>Postal Address</label><?php echo "<span class='required'>  ".$errorAddress."</span>" ?><br>
-        <label id="lblUnitNum" for="txtUnitNum">Unit #: </label><input type="text" name="unitNum" id="txtUnitNum" size="2" maxlength="4" placeholder="4" value="<?php if (isset($_POST['unitNum'])) echo $_POST['unitNum'] ?>">
-        <label id="lblStreetNum" for="txtStreetNum">Street #<span class="required">*</span>: </label><input type="text" name="streetNum" id="txtStreetNum" size="3" maxlength="4" placeholder="42" value="<?php if (isset($_POST['streetNum'])) echo $_POST['streetNum'] ?>" required><br>
-        <label id="lblStreet" for="txtStreet">Street<span class="required">*</span>: </label><input type="text" name="street" id="txtStreet" placeholder="Main" value="<?php if (isset($_POST['street'])) echo $_POST['street'] ?>" required>
-            <select name="streetType" id="txtStreetType" required>
-                <option value="street">Street</option>
-                <option value="close">Close</option>
-                <option value="road">Road</option>
-                <option value="chase">Chase</option>
-            </select><br>
-        <label id="lblSuburb" for="txtSuburb">Suburb<span class="required">*</span>: </label><input type="text" name="suburb" id="txtSuburb" placeholder="Anytown" value="<?php if (isset($_POST['suburb'])) echo $_POST['suburb'] ?>" required><br>
-        <label id="lblState" for="txtState">State<span class="required">*</span>: </label>
-            <select name="state" id="txtState" required>
-                <option value="QLD">QLD</option>
-                <option value="NSW">NSW</option>
-                <option value="VIC">VIC</option>
-                <option value="TAS">TAS</option>
-                <option value="WA">WA</option>
-                <option value="SA">SA</option>
-                <option value="NT">NT</option>
-            </select>
-        <label id="lblPostcode" for="txtPostcode">Postcode<span class="required">*</span>: </label><input type="text" name="postcode" id="txtPostcode" size="4" maxlength="4" placeholder="1234" value="<?php if (isset($_POST['postcode'])) echo $_POST['postcode'] ?>" required><br>
-        <br>
+            <tr><td>Gender: </td><td>
+                <input type="radio" name="gender" value="female" <?php if(isset($_POST['gender'])) { if($_POST['gender'] == "female") echo("checked"); } ?>>Female
+                <input type="radio" name="gender" value="male" <?php if(isset($_POST['gender'])) { if($_POST['gender'] == "male") echo("checked"); } ?>>Male
+                </td><td><?php echo $errorGender ?></td></tr>
 
-        <label id="lblSEmail" for="txtSEmail">Email Address<span class="required">*</span>: </label><input type="email" name="sEmail" id="txtSEmail" placeholder="student@address.com" value="<?php if (isset($_POST['sEmail'])) echo $_POST['sEmail'] ?>" required><br>
-        <label id="lblMobile" for="txtMobile">Mobile Phone<span class="required">*</span>: </label><input type="text" name="mobile" id="txtMobile" size="10" maxlength="10" placeholder="0412345678" value="<?php if (isset($_POST['mobile'])) echo $_POST['mobile'] ?>" required><?php echo "<span class='required'>  ".$errorMobile."</span>" ?><br>
-        <label id="lblPhone" for="txtPhone">Home Phone: </label><input type="text" name="phone" id="txtPhone" size="10" maxlength="10" placeholder="0787654321" value="<?php if (isset($_POST['phone'])) echo $_POST['phone'] ?>"><?php echo "<span class='required'>  ".$errorPhone."</span>" ?><br>
-        <label id="lblFacebook" for="txtFacebook">Facebook ID: </label><input type="text" name="facebook" id="txtFacebook" value="<?php if (isset($_POST['facebook'])) echo $_POST['facebook'] ?>"><br>
-        <br>
+            <!-- Might need to add in street type textbox -->
+            <tr><td>Postal Address: </td><td>
+                Unit #: <input type="text" name="addressUnit" size="2" value="<?php if(isset($_POST['addressUnit'])) echo($_POST['addressUnit']); ?>">
+                Street #: <input type="text" name="addressNum" required size="3" value="<?php if(isset($_POST['addressNum'])) echo($_POST['addressNum']); ?>"></td></tr>
+            <tr><td></td><td>
+                Street: <input type="text" name="addressStreet" required value="<?php if(isset($_POST['addressStreet'])) echo($_POST['addressStreet']); ?>"></td><td><?php echo $errorAddress ?></td></tr>
+            <tr><td></td><td>
+                Suburb: <input type="text" name="addressSuburb" required value="<?php if(isset($_POST['addressSuburb'])) echo($_POST['addressSuburb']); ?>"></td></tr>
+            <tr><td></td><td>
+                State: <input type="text" name="addressState" required size="3" value="<?php if(isset($_POST['addressState'])) echo($_POST['addressState']); ?>">
+                Postcode: <input type="text" name="addressPostcode" required size="4" maxlength="4" value="<?php if(isset($_POST['addressPostcode'])) echo($_POST['addressPostcode']); ?>"></td></tr>
 
-        <label id="lblPassword" for="txtPassword">Password<span class="required">*</span>: </label><input type="password" name="password" id="txtPassword" required><br>
-        <label id="lblConfirmPassword" for="txtConfirmPassword">Confirm Password<span class="required">*</span>: </label><input type="password" name="confirmPassword" id="txtConfirmPassword" required>
-        <?php echo "<span class='required'>  ".$errorConfirmPassword."</span>" ?><br>
-
+            <tr><td>Email Address: </td><td><input type="text" name="sEmail" required value="<?php if(isset($_POST['sEmail'])) echo($_POST['sEmail']); ?>"></td><td><?php echo $errorSEmail ?></td></tr>
+            <!-- Might need to add in area code textbox -->
+            <tr><td>Mobile Phone: </td><td><input type="text" name="sMobile" size="10" maxlength="10" value="<?php if(isset($_POST['sMobile'])) echo($_POST['sMobile']); ?>"></td><td><?php echo $errorSMobile ?></td></tr>
+            <tr><td>Other Phone: </td><td><input type="text" name="sPhone" size="10" maxlength="10" value="<?php if(isset($_POST['sPhone'])) echo($_POST['sPhone']); ?>"></td><td><?php echo $errorSPhone ?></td></tr>
+            <tr><td>Facebook Link: </td><td><input type="text" name="facebook" value="<?php if(isset($_POST['facebook'])) echo($_POST['facebook']); ?>"></td></tr>
+            <tr><td>Password: </td><td><input type="password" name="password" required></td><td><?php echo $errorPassword ?></td></tr>
+            <tr><td>Confirm Password: </td><td><input type="password" name="confirmPassword" required></td><td><?php echo $errorConfPassword ?></td></tr>
+        </table>
         <h2>Parent/ Caregiver</h2>
-        <p class="required">Only required if student is under the age of 18</p>
-        <label id="lblPName" for="txtPName">Name<span class="required">*</span>: </label><input type="text" name="pName" id="txtPNme" placeholder="Mary Appleseed" value="<?php if (isset($_POST['pName'])) echo $_POST['pName'] ?>"><?php echo "<span class='required'>  ".$errorPName."</span>" ?><br>
-        <label id="lblPEmail" for="txtPEmail">Email Address<span class="required">*</span>: </label><input type="email" name="pEmail" id="txtPEmail" placeholder="parent@address.com" value="<?php if (isset($_POST['pEmail'])) echo $_POST['pEmail'] ?>"><?php echo "<span class='required'>  ".$errorPEmail."</span>" ?><br>
-
+        <table>
+            <tr><td>First Name: </td><td><input type="text" name="pFirstName" value="<?php if(isset($_POST['pFirstName'])) echo($_POST['pFirstName']); ?>"></td><td><?php echo $errorPFirstName ?></td></tr>
+            <tr><td>Last Name: </td><td><input type="text" name="pLastName" value="<?php if(isset($_POST['pLastName'])) echo($_POST['pLastName']); ?>"></td><td><?php echo $errorPLastName ?></td></tr>
+            <tr><td>Email Address: </td><td><input type="text" name="pEmail" value="<?php if(isset($_POST['pEmail'])) echo($_POST['pEmail']); ?>"></td><td><?php echo $errorPEmail ?></td></tr>
+            <tr><td>Mobile Phone: </td><td><input type="text" name="pMobile" size="10" maxlength="10" value="<?php if(isset($_POST['pMobile'])) echo($_POST['pMobile']); ?>"></td></tr>
+            <tr><td>Other Phone: </td><td><input type="text" name="pPhone" size="10" maxlength="10" value="<?php if(isset($_POST['pPhone'])) echo($_POST['pPhone']); ?>"></td></tr>
+            <tr><td>Relation to student: </td><td><input type="text" name="relation" value="<?php if(isset($_POST['relation'])) echo($_POST['relation']); ?>"></td><td><?php echo $errorRelation ?></td></tr>
+        </table>
         <button type="submit" name="submit">Submit</button>
+        <button type="submit" name="cancel">Cancel</button>
     </form>
 </div>
 <!--end content-->
