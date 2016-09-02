@@ -6,9 +6,9 @@
 ?>
 
 <div class="content">
-    <h1>You haven't enrolled yet you fucker</h1>
-    <h2>You're just a few steps away from joining us!</h2>
-    <h2>Read our checklist carefully to understand how to complete your enrolment</h2><br>
+
+    <h1>You're just a few steps away from joining us!</h1>
+    <h1>Read our checklist carefully to understand how to complete your enrolment</h1><br>
     <div class="enrolmentChecklist">
       <span><img src="../images/enrolment/one.png"/><div class="enrolmentChecklistText">Get your paperwork ready</div></span>
     </div><br>
@@ -19,7 +19,7 @@
       <span><img src="../images/enrolment/three.png"/><div class="enrolmentChecklistText">Choose your instrument and availability</div></span>
     </div><br>
 
-      <div class="enrolButton"><div class="enrolButtonSquare"><a href="http://example.com" class="enrolButton">ENROL</a></div></div>
+      <div class="enrolButtonContainer"><div class="enrolButton"><div class="enrolButtonSquare"><a href="http://example.com" class="enrolButton">ENROL</a></div></div></div>
 
 </div>
 
