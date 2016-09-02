@@ -27,7 +27,7 @@ echo'<br> Change authorisation to:
       <option value="" disabled selected> Select... </option>
       <option value="Guest">Guest</option>
       <option value="Student">Student</option>
-      <option value="Teacher/Teacher">Student & Teacher</option>
+      <option value="StudentAndTeacher">Student & Teacher</option>
       <option value="Admin">Admin</option>
       <option value="Owner">Owner</option>
     </select>

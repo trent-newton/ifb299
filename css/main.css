@@ -165,6 +165,40 @@ body {
     padding: auto;
 }
 
+/*--------------------TABLES + Change auth page--------------------*/
+table {
+    border-collapse: collapse;
+    width: 40%;
+    align-self: center;
+    text-align: left;
+    border-bottom-style: groove
+}
+
+table th {
+    background-color: black;
+    color: white;
+    padding: 4px 30px 4px 8px;
+}
+
+table td {
+    border: 1px solid #e3e3e3;
+    padding: 4px 8px;
+}
+
+table tr:nth-child(odd) td {
+    background-color: lightgray;
+}
+
+table a{
+    display:block;
+    text-decoration:none;
+    color: black;
+}
+
+.changeAccess{
+    color: red;
+}
+
 /*--------------------Checklist for Enrolment Page--------------------*/
 .enrolmentChecklist {
     margin-top: 2%;

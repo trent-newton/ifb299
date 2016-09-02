@@ -14,5 +14,7 @@ $query = "UPDATE users SET accountType='$changeAccess' WHERE UserID=$userID";
 // query to change
 $sql = mysqli_query($con,$query) or die(mysqli_error($con));   
 
+echo "change successfully made";
+
 include "../inc/footer.php";
 ?>

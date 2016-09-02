@@ -10,28 +10,40 @@ $column = array(
   'Last Name' => 'lastName'
 );
 
-// Run the query
-$result= mysqli_query($con,"SELECT userID, firstName, lastName FROM users");
+// array of account Types 
+$accountTypes = array(
+    0 => "Guest",
+    1 => "Student",
+    2 => "Teacher",
+    3 => "StudentAndTeacher",
+    4 => "Admin",
+);
 
-// Output table header -- change this 
-echo "<table><tr>";
-foreach ($column as $name => $col_name) {
-  echo "<th>$name</th>";
+foreach ($accountTypes as $type) {
+    //run query based on account type
+    $result= mysqli_query($con,"SELECT userID, firstName, lastName FROM users WHERE accountType='$type'");
+    
+    //account type headings
+    echo "$type accounts <br>";
+    echo "<table id='changeAuthTables'><tr>";
+    //table headings
+    foreach ($column as $name => $col_name) {
+      echo "<th>$name</th>";
+    }
+    echo "<th> Change Access </th> </tr>";
+
+    // Output rows 
+    while($row = mysqli_fetch_array($result)) {
+      echo "<tr>";
+      foreach ($column as $name => $col_name) {
+        echo "<td>". $row[$col_name] . "</td>";
+      }
+      echo '<td><a href="changeAuthProcess.php?userID='.$row['userID'].'"><span class="changeAccess"> change access </span></a></td></tr>';
+    }
+    
+    // Close table
+    echo "</table><br>";
 }
-
-// output change access heading 
-echo "<th> change access </th> </tr>";
-
-// Output rows 
-while($row = mysqli_fetch_array($result)) {
-  echo "<tr>";
-  foreach ($column as $name => $col_name) {
-    echo "<td>". $row[$col_name] . "</td>";
-  }
-  echo '<td><a href="changeAuthProcess.php?userID='.$row['userID'].'">change access</a></td></tr>';
-}
-// Close table
-echo "</table>";
 
 include "../inc/footer.php";
 ?>

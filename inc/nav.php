@@ -1,5 +1,4 @@
 <body>
-
         <div class="container">
           <span>
             <!--Need to add images here for logo etc -->
@@ -22,16 +21,17 @@
                         $result = mysqli_query($con, $sql);
                         $row = mysqli_fetch_array($result);
                         $userName = $row['firstName'] . " " . $row['lastName'];
+
                             ?>
-                        <span><a href="../pages/myaccount.php"><?php echo $userName?></a> |
-                          <?php
-                          if((($_SESSION['accountType']) === 'Admin') || (($_SESSION['accountType']) === 'Owner')){ // || $_SESSION['accountType']) == 'Owner') {
-                            echo '<a href="../pages/admincenter.php">Admin Center</a>';
-                          } else {
-                            echo '<a href="../pages/usercenter.php">User Center</a>';
-                          }
-                          ?>
-                          <br><a href="../pages/enrolPage.php"><b>ENROL</b></a> | <a href="../pages/logout.php">Logout</a></span>
+                            <span><a href="../pages/myaccount.php"><?php echo $userName?></a> |
+        <?php
+        if((($_SESSION['accountType']) === 'Admin') || (($_SESSION['accountType']) === 'Owner')){ // || $_SESSION['accountType']) == 'Owner') {
+          echo '<a href="../pages/admincenter.php">Admin Center</a>';
+        } else {
+          echo '<a href="../pages/usercenter.php">User Center</a>';
+        }
+        ?>
+        <br><a href="../pages/enrolPage.php"><b>ENROL</b></a> | <a href="../pages/logout.php">Logout</a></span>
 
                     <?php
                         } else { // if no user is logged in
@@ -42,16 +42,16 @@
                     ?>
                     </div><!--end userInfo-->
                     <div class="userMessage">
-                <!--<?php //Displays Success or Error messages
-                    /*if(isset($_SESSION['success'])) {
+                <?php //Displays Success or Error messages
+                    if(isset($_SESSION['success'])) {
                         echo "<span class='success'>" . $_SESSION['success'] .  "</span>";
                         unset($_SESSION['success']);
-                    }*/
-                    ?>
-                    elseif(isset($_SESSION["error"])) {
+                    } elseif(isset($_SESSION["error"])) {
                         echo "<span class='error'>" . $_SESSION['error'] . "</span>";
                         unset($_SESSION['error']);
-                    }-->
+                    }
+
+                    ?>
                     </div> <!--end userMessage-->
                 </div><!-- end userPanel-->
 
@@ -74,7 +74,7 @@
                 <img src="../images/userImage/default-user-icon.png" />
                 <p><a href="../pages/login.php">Login</a> | <a href="../pages/createAccount.php">Create Account</a></p>
                 <?php
-              /*  if(isset($_SESSION["success"])) //If there is a session success message
+                if(isset($_SESSION["success"])) //If there is a session success message
                 {
                     echo "<span class='success'>" . $_SESSION['success'] . "</span>";
                     unset($_SESSION['success']);
@@ -82,7 +82,7 @@
                 elseif(isset($_SESSION['error'])) {
                     echo "<span class='error'>" . $_SESSION['error'] . "</span>";
                     unset($_SESSION['error']);
-                }*/
+                }
             ?>
                     <ul class="loggedInMenu">
                         <li><a href="../pages/enrol.php">Enrol</a></li>

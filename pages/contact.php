@@ -1,6 +1,5 @@
 <?php
     $pagetitle = "Contact Us | Pinelands Music School";
-    include "../inc/connect.php";
     include "../inc/header.php";
     include "../inc/nav.php";
 ?>
