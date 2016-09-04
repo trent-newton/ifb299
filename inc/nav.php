@@ -24,7 +24,7 @@
                             ?>
                             <span><a href="../pages/myaccount.php"><?php echo $userName?></a> |
         <?php
-        if((($_SESSION['accountType']) == 'Admin') || (($_SESSION['accountType']) == 'Owner')){ 
+        if((($_SESSION['accountType']) == 'Admin') || (($_SESSION['accountType']) == 'Owner')){
           echo '<a href="../pages/admincenter.php">Admin Center</a>';
         } else {
           echo '<a href="../pages/usercenter.php">User Center</a>';
@@ -68,13 +68,13 @@
                 </ul>
 
             </nav><!-- end Nav-->
-            
+
             <?php if($pagetitle == "About Us | Pinelands Music School"): ?>
               <div class="banner"> <img src="../images/banners/about.jpg" />
             <?php elseif($pagetitle == "Enrol | Pinelands Music School"): ?>
               <div class="banner"> <img src="../images/banners/enrol.jpg" />
             <?php elseif($pagetitle == "Contact Us | Pinelands Music School"): ?>
-              <div class="banner"> <img src="../images/banners/enrol.jpg" />
+              <!-- <div class="banner"> <img src="../images/banners/enrol.jpg" /> -->
             <?php else: ?>
               <div class="banner"> <img src="../images/banners/main.jpg" />
             <?php endif ?>

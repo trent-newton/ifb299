@@ -3,9 +3,46 @@
     include "../inc/header.php";
     include "../inc/nav.php";
 ?>
-    <div class="content">
+<div class="banner">
+  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDX-FOv5xJ96b9kiz59Vgimpeod6xolriU&callback=initMap'>
+  </script>
+  <div class="banner" style='overflow:hidden;height:215px;display:block;'>
+    <div class="banner" id='gmap_canvas' style='height:215px;display:block;'>
+    </div>
+    <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+  </div>
+  <script type='text/javascript'>
+  function init_map()
+  {
+    var myOptions = {
+      zoom:15,
+      center:new google.maps.LatLng(-27.4756149,153.0280444999996),
+      scrollwheel: false,
+      navigationControl: false,
+      mapTypeControl: false,
+      scaleControl: false,
+      draggable: false,
+      mapTypeId: google.maps.MapTypeId.ROADMAP};
+      map = new google.maps.Map(document.getElementById('gmap_canvas'),myOptions);
+      marker = new google.maps.Marker(
+        {
+
+          map: map,position: new google.maps.LatLng(-27.4756149,153.02804449999996)});
+          infowindow = new google.maps.InfoWindow({content:'<strong>Pinelands Music School</strong><br>1 George St, Brisbane 4000<br>'});
+          google.maps.event.addListener(marker, 'click', function()
+          {
+            infowindow.open(map,marker);});
+            infowindow.open(map,marker);
+          }
+          google.maps.event.addDomListener(window, 'load', init_map);
+
+  </script>
+</div>
+
+    <div class="content" style="text-align:center;margin: 0 auto;">
         <h1>Contact Us</h1>
-        <form action="../inc/contact_form_processing.php">
+
+        <form action="../inc/contact_form_processing.php" style="display:inline-block;padding-right:40px;">
 
           <label class="control-label" for="first_name">First Name <span class="required">*</span></label>
           <div class="controls">
@@ -34,6 +71,18 @@
           <button type="submit" class="btn btn-large">Send</button>
 
         </form>
+
+        <div class="contactDetails" style="display:inline-block;padding-left:40px;border-left:solid;">
+          <h3>Call Us</h2>
+          <p>1300 321 456</p>
+          <br />
+          <h3>Opening Hours</h3>
+          <p>Monday - Friday: 8:00am - 8:00pm</p>
+          <p>Saturday - Sunday: 10:00am - 5:00pm</p>
+          <br />
+          <h3>Emergency Contact</h3>
+          <p>Mika: 0423 456 124</p>
+        </div>
     </div>
     <!--end content-->
 <?php
