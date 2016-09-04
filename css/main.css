@@ -20,7 +20,15 @@ body {
     padding: 0;
 }
 
-
+input[type=button], input[type=submit], input[type=reset] {
+	font-family: 'Franklin Gothic Book';
+	background-color: #CCCCCC;
+	background-image: -moz-linear-gradient(top, #CCCCCC 20%, #7F7F7F 70%);
+	background-image: -webkit-gradient(linear, 0% 20%, 0% 70%, from(#CCCCCC), to(#4C4A4A));
+	border-color: #FFFFFF;
+	-moz-box-shadow: 0 0 0 1px #7F7F7F;
+	-webkit-box-shadow: 0 1px 0 #7F7F7F, 0 -1px 0 #7F7F7F, 1px 0 0 #7F7F7F, -1px 0 0 #7F7F7F;
+}
 
 .container {
     width: 100%;
@@ -33,8 +41,12 @@ body {
     display: inline-block;
     vertical-align: top;
     padding: 5px;
+    width: 100%;
 }
-
+.centered {
+    text-align: center;
+    font-size: 2.0em;
+}
 .headercontainer {
     width: 99%;
     display: inline-block;
@@ -47,12 +59,13 @@ body {
 
 .logo {
     margin: auto;
-    display: inline-block;
-    text-align: center;
+    display:none;
+    text-align: right;
+    width: 40%;
 }
 
 .logo img {
-    width: 100%;
+    width: 60%;
     height: auto;
 }
 
@@ -72,17 +85,17 @@ body {
 .userPanel {
     display: inline-block;
     font-size: 1.4em;
-    width:30%;
+    width:90%;
 }
 
 .userPanelImage {
-    height: 5%;
-    width:18%;
+    
     display: inline-block;
 }
 .userPanelImage img {
-  width: 100%;
-  height: auto;
+    width: 100%;
+    max-width: 48px;
+    height: auto;
 }
 
 .userInfo {
@@ -116,13 +129,24 @@ body {
 }
 
 .loginForm {
+    display: inline-block;
     text-align: center;
     font-size: 1.6em;
     margin: 0 auto;
+    width: 30%;
 }
 
 .loginForm input {
     margin: 5px auto;
+    
+}
+.emailInput {
+    min-width: 165px;
+}
+.center-horizontal {
+     position: relative;
+     left: 50%;
+     transform: translateX(-50%);
 }
 
 .required {
@@ -139,17 +163,39 @@ body {
     color: red;
     text-align: center;
     padding-left: 20px;
-    font-size: 1.8em;
 }
-    .accountDetails {
-        width: 100%;
-        display:inline-block;
-    }
+.loginError {
+    font-size: 1.4em;
+}
+.accountDetails {
+    width: 100%;
+    display:inline-block;
+    font-size: 1.4em;
+    
+}
 
-    .changePassword {
-        width: 100%;
-        display:inline-block;
-    }
+.changePassword {
+    width: 100%;
+    display:inline-block;
+    font-size: 1.4em;
+}
+.changePassword input {
+    margin: 4px 0;
+}
+.accountDetails input, select {
+    margin: 4px 0;
+}
+.hiddenLarge {
+    position: absolute;
+    top:20px;
+}
+
+/*----------------- FOOTER ------------ */
+.footer {
+    background-color:  #771d57;
+    margin-top: 5px;
+    padding: 1%
+}
 
 /*-------------home page icons--------------*/
 .homepage-icons {
@@ -281,11 +327,11 @@ table a{
 }
 
 /************************** Nav for small Screens *****************************/
-*/
+
 #nav {
     position: relative;
     background: none;
-    font-size: 1.6em;
+    /*font-size: 1.6em;*/
 }
 /*771d57
 4a0f34*/
@@ -365,11 +411,11 @@ table a{
 }
 
 #nav ul li:hover {
-    background: #4C4A4A;
+    background: #872f60;
 }
 /*put different shade*/
 #nav ul li a:hover {
-    color: #E5B13A;
+    color: #57771d;
 }
 
 @media screen and (min-width:700px) {
@@ -385,18 +431,21 @@ table a{
         width: 100%;
         padding: 0px;
     }
-    .userCenter {
-        display: inline-block;
-        border: 1px solid;
-        width: 25%;
+    .logo {
+    margin: 0 auto;
+    display: inline-block;
+    width: 40%;
+    text-align: left;
     }
-    .userCenter img {
-        display: block;
-        margin: 5px auto;
+
+    .logo img {
+        width: 60%;
+        height: auto;
     }
-    .userCenter p {
-        text-align: center;
+    .userPanel {
+        width:35%;
     }
+
     .loggedInMenu {
         list-style-type: none;
         padding: 0;
@@ -450,12 +499,7 @@ table a{
     #nav ul li:first-child {
         border: none;
     }
-    #nav ul li:hover {
-        /*Add color for nav background when hovering*/
-    }
-    #nav ul li a:hover {
-        /*Add color for nav a when hovering*/
-    }
+
     #nav ul li a {
         border-radius: 0;
         display: block;
@@ -476,9 +520,4 @@ table a{
     }
 }
 
-/*----------------- FOOTER ------------ */
-.footer {
-    background-color:  #771d57;
-    margin-top: 5px;
-    padding: 1%
-}
+

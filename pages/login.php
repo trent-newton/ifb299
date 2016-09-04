@@ -4,27 +4,31 @@ include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
 ?>
-<?php
-if(isset($_SESSION["error"])) {
-    echo "<span class='error'>" . $_SESSION['error'] . "</span>";
-    unset($_SESSION['error']);
-}
-?><br>
-    <div class="content">
 
-        <form class="loginForm" action="../inc/loginprocessing.php" method="post">
-            <h2>Login</h2>
-            <fieldset>
+    <div class="content">
+<?php
+            if(isset($_SESSION["loginError"])) {
+                echo "<span class='error loginError'>" . $_SESSION['loginError'] . "</span>";
+                unset($_SESSION['loginError']);
+            }
+            ?>
+        
+            <h2 class="centered">Login</h2>
+            <fieldset class="loginForm center-horizontal">
+                <form action="../inc/loginprocessing.php" method="post">
                 <label>Email<span class="required">*</span>:</label><br />
-                <input type="email" name="email" placeholder="name@example.com" required />
+                <input class="emailInput" type="email" name="email" placeholder="name@example.com" required />
                 <br />
                 <label>Password<span class="required">*</span>:</label><br />
                 <input type="password" name="password" placeholder="password" required />
                 <p class="required">* Required Fields</p>
 
                 <p><a href="../pages/forgotpassword">Forgot Password?</a></p>
-                <input type="submit" name="login" value="Login" /> </fieldset>
-        </form>
+                <input type="submit" name="login" value="Login" /> 
+                </form>
+            </fieldset>
+            
+        
     </div>
     <!-- end content-->
     <?php
