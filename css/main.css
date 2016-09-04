@@ -171,13 +171,18 @@ input[type=button], input[type=submit], input[type=reset] {
     width: 100%;
     display:inline-block;
     font-size: 1.4em;
-    
 }
 
 .changePassword {
     width: 100%;
     display:inline-block;
     font-size: 1.4em;
+}
+.createAccount {
+    font-size: 1.4em;
+}
+.createAccount input {
+    margin: 4px 0;
 }
 .changePassword input {
     margin: 4px 0;
