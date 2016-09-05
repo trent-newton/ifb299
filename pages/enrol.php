@@ -4,6 +4,12 @@ $pagetitle = "Enrol";
 include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
+include "../inc/authCheck.php";
+
+if(!(isStudent($_SESSION['accountType'])) && !(isStudentTeacher($_SESSION['accountType']))){
+    $_SESSION['error'] = "Only Students can access the Enrol Page.";
+    rejectAccess();
+}
 
 $columnInstrument  = array(
   'instrument' => 'instrument'

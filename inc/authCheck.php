@@ -2,6 +2,7 @@
 //redirect to home page
 function rejectAccess(){
     header("location:../index.php");
+    exit();
 }
 
 /* Helper functions which help determine access leve of user. */
@@ -27,14 +28,14 @@ function isTeacher($accountType){
 }
 
 function isStudentTeacher($accountType){
-    if ($accountType == 'StudentTeacher'){
+    if ($accountType == 'StudentAndTeacher'){
         return true;
     }
     return false;
 }
 
 function isStudent($accountType){
-    if ($accountType == 'Teacher'){
+    if ($accountType == 'Student'){
         return true;
     }
     return false;
