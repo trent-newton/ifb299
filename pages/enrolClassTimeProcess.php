@@ -16,9 +16,17 @@ $endDate = $_POST['endDate'];
 
 $sql = "INSERT INTO contracts (teacherID, studentID, startDate, endDate, time, day, length, instrument) VALUES ('$teacherID', '$studentID', '$startDate', '$endDate', '$startTime', '$day', '60', '$instrument')";
 $result = mysqli_query($con, $sql) or die(mysqli_error($con));
-echo $sql;
-?>
 
+?>
+<div class="content enrolPage">
+    <h2>Class Added</h2>
+    <p>Start Date: <?php echo $startDate?></p>
+    <p>End Date: <?php echo $endDate?></p>
+    <p>Day: <?php echo $day?></p>
+    <p>Time: <?php echo $startTime?></p>
+    <p>Instrument: <?php echo $instrument?></p>
+
+</div>
 
 <?php
 

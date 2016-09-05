@@ -14,7 +14,7 @@ $studentID = $_SESSION['userID'];
 
 ?>
 
-<div class="content">
+<div class="content enrolPage">
     <form action="../pages/enrolClassTimeProcess.php" method="post">
     <h2>Please Select a Start Date and end date for the Lesson</h2>
         <label>Start Date</label>
@@ -32,11 +32,7 @@ $studentID = $_SESSION['userID'];
 
 </div><!--end content-->
 
-echo $studentID;
-echo $teacherID;
-echo $startTime;
-echo $instrument;
-echo $day;
+<?php
 
 include "../inc/footer.php";
 ?>
