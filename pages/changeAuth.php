@@ -3,6 +3,11 @@ $pagetitle = "About";
 include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
+require "../inc/authCheck.php";
+
+if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
+    rejectAccess();
+}
 
 $column = array(
   'UserID' => 'userID', 
@@ -30,6 +35,7 @@ foreach ($accountTypes as $type) {
     foreach ($column as $name => $col_name) {
       echo "<th>$name</th>";
     }
+    
     echo "<th> Change Access </th> </tr>";
 
     // Output rows 

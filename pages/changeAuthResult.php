@@ -4,6 +4,11 @@ $pagetitle = "change authorisation";
 include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
+require "../inc/authCheck.php";
+
+if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
+    rejectAccess();
+}
 
 $userID = $_GET['userID'];
 $changeAccess = $_POST['accessChosen'];

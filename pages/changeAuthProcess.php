@@ -4,15 +4,13 @@ $pagetitle = "change authorisation";
 include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
+require "../inc/authCheck.php";
 
+if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
+    rejectAccess();
+}
 // Get selected userID
 $userID = $_GET['userID'];
-
-$column = array(
-  'firstName' => 'firstName',
-  'lastName' => 'lastName',
-    'accountType' => 'accountType'
-);
 
 // Run the query & fetch results
 $result= mysqli_query($con,"SELECT firstName, lastName, accountType FROM users WHERE userID = $userID");
@@ -27,10 +25,13 @@ echo'<br> Change authorisation to:
       <option value="" disabled selected> Select... </option>
       <option value="Guest">Guest</option>
       <option value="Student">Student</option>
-      <option value="StudentAndTeacher">Student & Teacher</option>
-      <option value="Admin">Admin</option>
-      <option value="Owner">Owner</option>
-    </select>
+      <option value="StudentAndTeacher">Student & Teacher</option>';
+
+      if (isOwner($_SESSION['accountType'])){
+          echo '<option value="Admin">Admin</option>
+          <option value="Owner">Owner</option>';
+        }
+    echo '</select>
     <input type="submit" value="Amend Changes">
 </form>';
 
