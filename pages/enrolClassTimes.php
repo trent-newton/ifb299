@@ -41,7 +41,7 @@ while($row = mysqli_fetch_array($result)) {
         echo "<td> $row[$col_name] </td>";
         $teacherID = $row['teacherID'];
   }
-    echo "<td><a href='enrolClassTimeProcess.php?day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";
+    echo "<td><a href='enrolClassDates.php?day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";
 
     
     echo "><span class='changeAccess'> Select Class </span> </td>";

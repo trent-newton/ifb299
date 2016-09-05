@@ -19,7 +19,7 @@
       <span><img src="../images/enrolment/three.png"/><div class="enrolmentChecklistText">Choose your instrument and availability</div></span>
     </div><br>
 
-      <div class="enrolButtonContainer"><div class="enrolButton"><div class="enrolButtonSquare"><a href="http://example.com" class="enrolButton">ENROL</a></div></div></div>
+      <div class="enrolButtonContainer"><div class="enrolButton"><div class="enrolButtonSquare"><a href="../pages/enrol.php" class="enrolButton">ENROL</a></div></div></div>
 
 </div>
 
