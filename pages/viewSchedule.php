@@ -15,15 +15,16 @@ $Times = array(
     7 => "12:30pm-1:00pm",
     8 => "1:00pm-1:30pm",
     9 => "1:30pm-2:00pm",
-    10 => "2:30pm-3:00pm",
-    11 => "3:00pm-3:30pm",
-    12 => "3:30pm-4:00pm",
-    12 => "4:00pm-4:30pm",
-    13 => "4:30pm-5:00pm",
+    10 => "2:00pm-2:30pm",
+    11 => "2:30pm-3:00pm",
+    12 => "3:00pm-3:30pm",
+    13 => "3:30pm-4:00pm",
+    14 => "4:00pm-4:30pm",
+    15 => "4:30pm-5:00pm",
 );
 $sqlTimes = array(
     0 => "09:00:00",
-    1 => "9:30:00",
+    1 => "09:30:00",
     2 => "10:00:00",
     3 => "10:30:00",
     4 => "11:00:00",
@@ -35,9 +36,9 @@ $sqlTimes = array(
     10 => "14:00:00",
     11 => "14:30:00",
     12 => "15:00:00",
-    12 => "15:30:00",
-    13 => "16:00:00",
-
+    13 => "15:30:00",
+    14 => "16:00:00",
+    15 => "16:30:00",
 );
 
 $Days = array(
@@ -48,6 +49,8 @@ $Days = array(
   4 => "Friday",
 );
 
+$numDays = 5;
+
 ?>
 <h1>View Schedule</h1>
 <div class="content">
@@ -56,9 +59,30 @@ $Days = array(
 <?php
     for($i=0; $i<sizeof($Times); $i++)
   {
-      
+
     //Left Times Column
     echo "<tr><td>" . $Times[$i] . "</td>";
+
+
+
+    for($k=0; $k < $numDays; $k++)
+    {
+      //simpler but code still quite a few pulls to the db. Would removing AND Day and moving the sql segment to above this for loop help with this?
+      $sql = "SELECT * FROM contracts INNER JOIN users ON userID=teacherID WHERE userID='$userID' AND time='$sqlTimes[$i]' AND day='$Days[$k]' ORDER BY startDate";
+      $result = mysqli_query($con, $sql);
+      $row = mysqli_fetch_array($result);
+
+      echo "<td>";
+      if($row['day'] == $Days[$k] && $row['time'] == $sqlTimes[$i]){
+          echo $row['length'] . " Minutes";
+          echo "<br />";
+          echo $row['instrument'];
+      }
+      echo "</td>";
+    }
+    echo "</tr>";
+
+    /*
     //Monday
     echo "<td>";
     $sql = "SELECT * FROM contracts INNER JOIN users ON userID=teacherID WHERE userID='$userID' AND time='$sqlTimes[$i]' AND day='Monday' ORDER BY startDate";
@@ -114,7 +138,7 @@ $Days = array(
         echo $row['instrument'];
       }
     echo "</td></tr>";
-
+*/
 
   }
 
