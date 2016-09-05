@@ -35,7 +35,7 @@
                     <?php
                         } else { // if no user is logged in
                     ?>
-                <span><a href="../pages/login.php">Login</a> | <a href="../pages/createAccount.php">Register Account</a></span>
+                <span><a href="../pages/login.php">Login</a> | <a href="../pages/createAccount.php">Register Account</a><br /> | <a href="../pages/resetpassword.php">Reset Password</a></span>
                     <?php
                         }
                     ?>

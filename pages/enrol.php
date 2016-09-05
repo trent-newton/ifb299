@@ -57,6 +57,6 @@ echo '<br> Select the instrument you wish to play
     <br>select start time (please enter in 24 hour time like 13:00) <br>
     <input type="text" name="chosenStartTime" pattern="[0-9][0-9]:00|30" title="please enter in 24 hour time">
 
-    <input type="submit" value="Select Class Times">
+    <input type="submit" name="submit" value="Select Class Times">
 </form>
 <?php include "../inc/footer.php"; ?>

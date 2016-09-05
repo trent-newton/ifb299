@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2016 at 01:49 PM
+-- Generation Time: Sep 05, 2016 at 06:50 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -41,6 +41,13 @@ CREATE TABLE `address` (
   `state` enum('QLD','NSW','VIC','TAS','WA','SA','NT') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `address`
+--
+
+INSERT INTO `address` (`addressId`, `unitNumber`, `streetNumber`, `streetName`, `streetType`, `suburb`, `postCode`, `state`) VALUES
+(1, '', '34', 'Main', 'road', 'Caboolture', '4510', 'QLD');
+
 -- --------------------------------------------------------
 
 --
@@ -55,6 +62,14 @@ CREATE TABLE `availability` (
   `startTime` time NOT NULL,
   `endTime` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `availability`
+--
+
+INSERT INTO `availability` (`availabilityID`, `teacherID`, `day`, `startTime`, `endTime`) VALUES
+(1, 3, 'Monday', '09:00:00', '18:00:00'),
+(2, 3, 'Tuesday', '09:00:00', '17:00:00');
 
 -- --------------------------------------------------------
 
@@ -75,6 +90,47 @@ CREATE TABLE `contracts` (
   `instrument` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `contracts`
+--
+
+INSERT INTO `contracts` (`contractID`, `teacherID`, `studentID`, `startDate`, `endDate`, `time`, `day`, `length`, `instrument`) VALUES
+(1, 2, 3, '2016-09-08', '2016-10-26', '12:00:00', 'Thursday', '30', 'Violin'),
+(2, 2, 3, '2016-09-05', '2016-10-31', '14:00:00', 'Monday', '60', 'Piano'),
+(3, 2, 3, '2016-09-07', '2016-10-26', '11:00:00', 'Wednesday', '60', 'Chello'),
+(4, 2, 3, '2016-09-06', '2016-10-25', '12:00:00', 'Tuesday', '60', 'Stuff'),
+(7, 3, 2, '2016-09-07', '2016-09-14', '10:00:00', 'Wednesday', '60', 'Chello'),
+(8, 3, 3, '2016-09-07', '2016-09-14', '09:00:00', 'Monday', '60', 'Violin'),
+(9, 3, 3, '2016-09-07', '2016-09-14', '10:00:00', 'Thursday', '60', 'Chello'),
+(10, 3, 3, '2016-09-07', '2016-09-14', '10:00:00', 'Monday', '60', 'Chello'),
+(11, 3, 3, '2016-09-07', '2016-09-14', '10:00:00', 'Monday', '60', 'Chello'),
+(12, 3, 3, '2016-09-07', '2016-09-14', '10:00:00', 'Monday', '60', 'Chello'),
+(13, 3, 3, '2016-09-07', '2016-09-14', '10:00:00', 'Monday', '60', 'Chello'),
+(14, 3, 3, '2016-09-07', '2016-09-14', '13:00:00', 'Tuesday', '60', 'Violin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forgotpassword`
+--
+
+DROP TABLE IF EXISTS `forgotpassword`;
+CREATE TABLE `forgotpassword` (
+  `forgotID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `emailCode` varchar(32) NOT NULL,
+  `link` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `forgotpassword`
+--
+
+INSERT INTO `forgotpassword` (`forgotID`, `userID`, `emailCode`, `link`) VALUES
+(1, 2, '1e28ca5de9ca99d320fc34525ea9be09', '/pages/forgotpassword.php?email=pschwartz914@gmail.com&emailCode=1e28ca5de9ca99d320fc34525ea9be09'),
+(2, 2, '910a0c3b3784f4a2d2e06ea212ecea04', 'http://localhost/MusicSchool/pages/forgotpassword.php?email=pschwartz914@gmail.com&emailCode=910a0c3b3784f4a2d2e06ea212ecea04'),
+(3, 2, '9658da46cabbd5512a424d564de72d43', 'http://localhost/MusicSchool/pages/resetpassword.php?email=pschwartz914@gmail.com&emailCode=9658da46cabbd5512a424d564de72d43');
+
 -- --------------------------------------------------------
 
 --
@@ -87,6 +143,16 @@ CREATE TABLE `instruments` (
   `instrument` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `instruments`
+--
+
+INSERT INTO `instruments` (`userID`, `instrument`) VALUES
+(2, 'Chello'),
+(2, 'Violin'),
+(3, 'Chello'),
+(3, 'Violin');
+
 -- --------------------------------------------------------
 
 --
@@ -98,6 +164,14 @@ CREATE TABLE `languages` (
   `userID` int(11) NOT NULL,
   `language` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `languages`
+--
+
+INSERT INTO `languages` (`userID`, `language`) VALUES
+(2, 'English'),
+(3, 'English');
 
 -- --------------------------------------------------------
 
@@ -117,7 +191,24 @@ CREATE TABLE `phonenumbers` (
 
 INSERT INTO `phonenumbers` (`userID`, `phoneNumber`) VALUES
 (2, '0414573180'),
-(2, '0754000000');
+(2, '0754000000'),
+(3, '0414573180'),
+(3, '05000000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teacherreviews`
+--
+
+DROP TABLE IF EXISTS `teacherreviews`;
+CREATE TABLE `teacherreviews` (
+  `reviewID` int(11) NOT NULL,
+  `teacherID` int(11) NOT NULL,
+  `studentID` int(11) NOT NULL,
+  `reviewComment` varchar(300) NOT NULL,
+  `reviewRating` enum('1','2','3','4','5') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -130,6 +221,13 @@ CREATE TABLE `useraddress` (
   `userID` int(11) NOT NULL,
   `addressID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `useraddress`
+--
+
+INSERT INTO `useraddress` (`userID`, `addressID`) VALUES
+(3, 1);
 
 -- --------------------------------------------------------
 
@@ -159,7 +257,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserID`, `firstName`, `lastName`, `DOB`, `gender`, `facebookId`, `email`, `password`, `salt`, `accountType`, `comCode`, `parentName`, `parentEmail`) VALUES
-(2, 'Peter', 'Schwartz', '1980-09-06', 'Male', NULL, 'pschwartz914@gmail.com', '358452b4ec13a0371aa46c2c2817d7752cd1e6c41c84b57120bd45fbe68af04e', 'd41d8cd98f00b204e9800998ecf8427e', 'Guest', NULL, NULL, NULL);
+(2, 'Peter', 'Schwartz', '1980-09-06', 'Male', NULL, 'pschwartz914@gmail.com', '358452b4ec13a0371aa46c2c2817d7752cd1e6c41c84b57120bd45fbe68af04e', 'd41d8cd98f00b204e9800998ecf8427e', 'Student', NULL, NULL, NULL),
+(3, 'Peter', 'Schwartz', '1980-09-06', 'Male', '', 'peter@email.com', '40534c99afc016e41814f822387b39f5a1afb1b131de5863fd2658cc55b09099', '6e1a63c99810f63b81da8a9d66392559', 'Admin', NULL, 'test', '');
 
 --
 -- Indexes for dumped tables
@@ -190,6 +289,13 @@ ALTER TABLE `contracts`
   ADD KEY `fk_student_idx` (`studentID`);
 
 --
+-- Indexes for table `forgotpassword`
+--
+ALTER TABLE `forgotpassword`
+  ADD PRIMARY KEY (`forgotID`),
+  ADD KEY `fk_userID_idx` (`userID`);
+
+--
 -- Indexes for table `instruments`
 --
 ALTER TABLE `instruments`
@@ -206,6 +312,14 @@ ALTER TABLE `languages`
 --
 ALTER TABLE `phonenumbers`
   ADD PRIMARY KEY (`userID`,`phoneNumber`);
+
+--
+-- Indexes for table `teacherreviews`
+--
+ALTER TABLE `teacherreviews`
+  ADD PRIMARY KEY (`reviewID`),
+  ADD KEY `fk_teachers_idx` (`teacherID`),
+  ADD KEY `fk_students_idx` (`studentID`);
 
 --
 -- Indexes for table `useraddress`
@@ -230,22 +344,32 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `addressId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `addressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `availability`
 --
 ALTER TABLE `availability`
-  MODIFY `availabilityID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `availabilityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `contracts`
 --
 ALTER TABLE `contracts`
-  MODIFY `contractID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `contractID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `forgotpassword`
+--
+ALTER TABLE `forgotpassword`
+  MODIFY `forgotID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `teacherreviews`
+--
+ALTER TABLE `teacherreviews`
+  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --
@@ -264,6 +388,12 @@ ALTER TABLE `contracts`
   ADD CONSTRAINT `fk_teacher` FOREIGN KEY (`teacherID`) REFERENCES `users` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `forgotpassword`
+--
+ALTER TABLE `forgotpassword`
+  ADD CONSTRAINT `fk_userID` FOREIGN KEY (`userID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `instruments`
 --
 ALTER TABLE `instruments`
@@ -274,6 +404,13 @@ ALTER TABLE `instruments`
 --
 ALTER TABLE `languages`
   ADD CONSTRAINT `FK` FOREIGN KEY (`userID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `teacherreviews`
+--
+ALTER TABLE `teacherreviews`
+  ADD CONSTRAINT `fk_students` FOREIGN KEY (`studentID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_teachers` FOREIGN KEY (`teacherID`) REFERENCES `users` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `useraddress`

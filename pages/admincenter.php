@@ -9,7 +9,7 @@ include "../inc/nav.php";
     <h1>Welcome to the Admin Center</h1> <h3>What would you like to do?</h3>
     
     <div class="temp">
-        <div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/users.png">
+        <div class="temp"><a href="../pages/changeAuth.php"><img class="AdminCenterImage" src="../images/admin-icons/users.png"></a>
            <br><button class="AdminCenterButton"><a href="changeAuth.php" class="button">User Management</a></button>
         </div>
 

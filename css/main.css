@@ -194,6 +194,9 @@ input[type=button], input[type=submit], input[type=reset] {
     position: absolute;
     top:20px;
 }
+.enrolPage {
+    font-size: 1.6em;
+}
 
 /*----------------- FOOTER ------------ */
 .footer {
