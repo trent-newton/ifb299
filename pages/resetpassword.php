@@ -18,7 +18,7 @@ include "../inc/nav.php";
         
         if($numrow == 1) {
             ?>
-    <form action="../inc/changepassword.php" method="post">
+    <form action="../inc/forgotpassword.php" method="post">
         <p>Change the password for <?php echo $row['firstName'] . " " . $row['lastName'];?></p>
         <label>New Password<span class="required">*</span>:</label>
         <br />
