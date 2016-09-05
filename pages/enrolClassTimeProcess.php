@@ -29,6 +29,22 @@ $result = mysqli_query($con, $sql) or die(mysqli_error($con));
 </div>
 
 <?php
+    
+$sql = "select email from users where userid = $studentID";
+$result = mysqli_query($con, $sql) or die(mysqli_error($con));
+$row = mysqli_fetch_array($result);
+        
+$sql2 = "select email from users where userid = $teacherID";
+$result2 = mysqli_query($con, $sql2) or die(mysqli_error($con));
+$row2 = mysqli_fetch_array($result2);
+        
+// message
+$message = "confirmed contract info: day: $day, start time: $startTime, start date: $startDate, end date: $endDate";
+$message = wordwrap($message, 70, "\r\n");
 
+// Send
+mail($row['email'], 'Confirmed Contract', $message);
+mail($row2['email'], 'Confirmed Contract', $message);
+        
 include "../inc/footer.php";
 ?>
