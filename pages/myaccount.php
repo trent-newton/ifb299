@@ -84,12 +84,12 @@ $row = mysqli_fetch_array($result);
                 <input class="emailInput" type="email" name="email" value="<?php echo $row['email']?>" />
                 <br />
                 <?php
-                    $sql = "SELECT * FROM phonenumbers WHERE userID='$userID'";
-                    $result = mysqli_query($con, $sql);
+                    $sqlPhone = "SELECT * FROM phonenumbers WHERE userID='$userID'";
+                    $resultPhone = mysqli_query($con, $sql);
                        $n = 0;
-                    while ($row = mysqli_fetch_array($result)) {
+                    while ($rowPhone = mysqli_fetch_array($resultPhone)) {
                         echo "<label>Phone " . $n . "</label><br />";
-                        echo "<input type='text' name='phone" . $n . "' value='" . $row['phoneNumber'] . "' /><br />";
+                        echo "<input type='text' name='phone" . $n . "' value='" . $rowPhone['phoneNumber'] . "' /><br />";
                         $n++;
                     }
                        
