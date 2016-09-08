@@ -21,7 +21,6 @@ body {
 }
 
 input[type=button], input[type=submit], input[type=reset] {
-	font-family: 'Franklin Gothic Book';
 	background-color: #CCCCCC;
 	background-image: -moz-linear-gradient(top, #CCCCCC 20%, #7F7F7F 70%);
 	background-image: -webkit-gradient(linear, 0% 20%, 0% 70%, from(#CCCCCC), to(#4C4A4A));
@@ -42,6 +41,7 @@ input[type=button], input[type=submit], input[type=reset] {
     vertical-align: top;
     padding: 5px;
     width: 100%;
+    font-size: 1.4em;
 }
 .centered {
     text-align: center;
@@ -50,12 +50,14 @@ input[type=button], input[type=submit], input[type=reset] {
 .headercontainer {
     width: 99%;
     display: inline-block;
-
 }
 
 .banner {
     display: none;
+    width: 100%;
+    padding: 0px;
 }
+
 
 .logo {
     margin: auto;
@@ -131,9 +133,9 @@ input[type=button], input[type=submit], input[type=reset] {
 .loginForm {
     display: inline-block;
     text-align: center;
-    font-size: 1.6em;
     margin: 0 auto;
     width: 30%;
+    
 }
 
 .loginForm input {
@@ -170,16 +172,14 @@ input[type=button], input[type=submit], input[type=reset] {
 .accountDetails {
     width: 100%;
     display:inline-block;
-    font-size: 1.4em;
 }
 
 .changePassword {
     width: 100%;
     display:inline-block;
-    font-size: 1.4em;
 }
 .createAccount {
-    font-size: 1.4em;
+    
 }
 .createAccount input {
     margin: 4px 0;
@@ -196,6 +196,30 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 .enrolPage {
     font-size: 1.6em;
+}
+
+/*********Contact Page *****************/
+
+.contactDetails {
+    display: inline-block;
+    border-left:none;
+    vertical-align: top;
+}
+.contactUs {
+    text-align: center;
+    margin: 0 auto;
+    
+}
+.contactMap {
+    display: inline-block;
+    height: auto;
+    position: relative;
+    overflow:hidden;
+    display:block;
+}
+#gmap_canvas {
+    height: 215px;
+    display:block;        
 }
 
 /*----------------- FOOTER ------------ */
@@ -252,14 +276,12 @@ table {
     align-self: center;
     text-align: left;
     border-bottom-style: groove;
-    font-size: 1.4em;
 }
 
 table th {
     background-color: black;
     color: white;
     padding: 4px 30px 4px 8px;
-    font-size: 1.2em;
 }
 
 table td {
@@ -439,8 +461,6 @@ table a{
     }
     .banner {
         display: inline-block;
-        width: 100%;
-        padding: 0px;
     }
     .logo {
     margin: 0 auto;
@@ -485,6 +505,11 @@ table a{
     .changePassword {
         width: 48%;
         vertical-align: top;
+    }
+    
+    .contactDetails {
+        border-left: solid;
+        padding-left:40px;
     }
     /************Nav for tablets ************/
     #nav {

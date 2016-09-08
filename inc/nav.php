@@ -74,7 +74,7 @@
             <?php elseif($pagetitle == "Enrol | Pinelands Music School"): ?>
               <div class="banner"> <img src="../images/banners/enrol.jpg" />
             <?php elseif($pagetitle == "Contact Us | Pinelands Music School"): ?>
-              <!-- <div class="banner"> <img src="../images/banners/enrol.jpg" /> -->
+              <div class="banner">
             <?php else: ?>
               <div class="banner"> <img src="../images/banners/main.jpg" />
             <?php endif ?>

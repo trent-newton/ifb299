@@ -5,6 +5,7 @@ include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
 
+echo "<div class='content'>";
 $chosenInstrument = $_POST['chosenInstrument'];
 $chosenLanguage = $_POST['chosenLanguage'];
 $chosenStartTime = $_POST['chosenStartTime'];
@@ -65,5 +66,6 @@ if ($result2=mysqli_query($con,$sql))
         echo "</table><br>";
     } //close else statement
 }
+echo "</div>";
 include "../inc/footer.php";
 ?>

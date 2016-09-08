@@ -6,6 +6,7 @@ include "../inc/header.php";
 include "../inc/nav.php";
 include "../inc/authCheck.php";
 
+echo "<div class='content'>";
 if(!(isStudent($_SESSION['accountType'])) && !(isStudentTeacher($_SESSION['accountType']))){
     $_SESSION['error'] = "Only Students can access the Enrol Page.";
     rejectAccess();
@@ -60,9 +61,10 @@ echo '<br> Select the instrument you wish to play
     </select>
 
     <!-- select start time -->
-    <br>select start time (please enter in 24 hour time like 13:00) <br>
+    <br>Select start time (please enter in 24 hour time like 13:00) <br>
     <input type="text" name="chosenStartTime" pattern="[0-9][0-9]:00|30" title="please enter in 24 hour time">
 
     <input type="submit" name="submit" value="Select Class Times">
 </form>
+</div>
 <?php include "../inc/footer.php"; ?>

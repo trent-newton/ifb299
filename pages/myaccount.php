@@ -7,7 +7,7 @@ include "../inc/nav.php";
 include "../inc/logincheck.php";
 $userID = $_SESSION['userID'];
 
-$sql = "SELECT * FROM `users` INNER JOIN useraddress ON users.UserID=useraddress.userID Inner JOIN address ON useraddress.addressID=address.addressId WHERE users.userid='$userID' ";
+$sql = "SELECT * FROM users LEFT JOIN useraddress ON users.UserID=useraddress.userID LEFT JOIN address ON useraddress.addressID=address.addressId WHERE users.userID='$userID' ";
 $result = mysqli_query($con, $sql) or die(mysqli_error($con));
 $row = mysqli_fetch_array($result);
 
@@ -85,7 +85,7 @@ $row = mysqli_fetch_array($result);
                 <br />
                 <?php
                     $sqlPhone = "SELECT * FROM phonenumbers WHERE userID='$userID'";
-                    $resultPhone = mysqli_query($con, $sql);
+                    $resultPhone = mysqli_query($con, $sqlPhone);
                        $n = 0;
                     while ($rowPhone = mysqli_fetch_array($resultPhone)) {
                         echo "<label>Phone " . $n . "</label><br />";
@@ -131,3 +131,7 @@ $row = mysqli_fetch_array($result);
             </form>
         </fieldset>
     </div>
+<?php
+    
+    include "../inc/footer.php";
+                    ?>

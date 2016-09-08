@@ -4,14 +4,12 @@
     include "../inc/header.php";
     include "../inc/nav.php";
 ?>
-<div class="banner">
   <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDX-FOv5xJ96b9kiz59Vgimpeod6xolriU&callback=initMap'>
   </script>
-  <div class="banner" style='overflow:hidden;height:215px;display:block;'>
-    <div class="banner" id='gmap_canvas' style='height:215px;display:block;'>
+
+    <div class="contactMap" id='gmap_canvas'>
     </div>
-    <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
-  </div>
+
   <script type='text/javascript'>
   function init_map()
   {
@@ -38,9 +36,8 @@
           google.maps.event.addDomListener(window, 'load', init_map);
 
   </script>
-</div>
 
-    <div class="content" style="text-align:center;margin: 0 auto;">
+    <div class="content contactUs">
         <h1>Contact Us</h1>
 
         <form action="../inc/contact_form_processing.php" style="display:inline-block;padding-right:40px;">
@@ -73,14 +70,12 @@
 
         </form>
 
-        <div class="contactDetails" style="display:inline-block;padding-left:40px;border-left:solid;">
-          <h3>Call Us</h2>
+        <div class="contactDetails">
+          <h2>Call Us</h2>
           <p>1300 321 456</p>
-          <br />
           <h3>Opening Hours</h3>
           <p>Monday - Friday: 8:00am - 8:00pm</p>
           <p>Saturday - Sunday: 10:00am - 5:00pm</p>
-          <br />
           <h3>Emergency Contact</h3>
           <p>Mika: 0423 456 124</p>
         </div>
