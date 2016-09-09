@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    
+
 }
 
 header,
@@ -91,7 +91,7 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 
 .userPanelImage {
-    
+
     display: inline-block;
 }
 .userPanelImage img {
@@ -135,12 +135,12 @@ input[type=button], input[type=submit], input[type=reset] {
     text-align: center;
     margin: 0 auto;
     width: 30%;
-    
+
 }
 
 .loginForm input {
     margin: 5px auto;
-    
+
 }
 .emailInput {
     min-width: 165px;
@@ -179,7 +179,7 @@ input[type=button], input[type=submit], input[type=reset] {
     display:inline-block;
 }
 .createAccount {
-    
+
 }
 .createAccount input {
     margin: 4px 0;
@@ -208,7 +208,7 @@ input[type=button], input[type=submit], input[type=reset] {
 .contactUs {
     text-align: center;
     margin: 0 auto;
-    
+
 }
 .contactMap {
     display: inline-block;
@@ -219,7 +219,7 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 #gmap_canvas {
     height: 215px;
-    display:block;        
+    display:block;
 }
 
 /*----------------- FOOTER ------------ */
@@ -272,7 +272,7 @@ input[type=button], input[type=submit], input[type=reset] {
 /*--------------------TABLES + Change auth page--------------------*/
 table {
     border-collapse: collapse;
-    width: 60%;
+    width: 75%;
     align-self: center;
     text-align: left;
     border-bottom-style: groove;
@@ -506,7 +506,7 @@ table a{
         width: 48%;
         vertical-align: top;
     }
-    
+
     .contactDetails {
         border-left: solid;
         padding-left:40px;
@@ -555,5 +555,3 @@ table a{
         max-width: 1000px;
     }
 }
-
-
