@@ -36,7 +36,8 @@ foreach ($accountTypes as $type) {
       echo "<th>$name</th>";
     }
     
-    echo "<th> Change Access </th> </tr>";
+    echo "<th> Change Access </th>";
+    echo "<th> Change Details </th> </tr>";
 
     // Output rows 
     while($row = mysqli_fetch_array($result)) {
@@ -44,7 +45,8 @@ foreach ($accountTypes as $type) {
       foreach ($column as $name => $col_name) {
         echo "<td>". $row[$col_name] . "</td>";
       }
-      echo '<td><a href="changeAuthProcess.php?userID='.$row['userID'].'"><span class="changeAccess"> change access </span></a></td></tr>';
+      echo '<td><a href="changeAuthProcess.php?userID='.$row['userID'].'"><span class="changeAccess"> change access </span></a></td>';
+      echo '<td><a href="adminModifyAccount.php?userID='.$row['userID'].'"><span class="changeAccess"> change details </span></a></td></tr>';
     }
     
     // Close table
