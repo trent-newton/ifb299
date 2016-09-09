@@ -38,13 +38,13 @@ Nullam dolor turpis, facilisis eu mattis eget, fringilla sed tortor. Integer in 
 
     echo '<script type="text/javascript">
     $(function(){
-       var ratings=[2.5]; <!-- Change 2.5 to $averagedRating -->
-
+       var ratings=[';
+    echo $averagedRating;
+    echo'];
         $.each(ratings,function(){
             $("#star_rating")
                 .removeAttr("id")
                 .width(70*(this/5))
-                .appendTo("#rating")
         });
     });
     </script>';

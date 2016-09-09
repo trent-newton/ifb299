@@ -8,9 +8,11 @@
 
     <!-- Style Sheets -->
     <!-- default(Phone) -->
-    
+
     <link href="../css/main.css" rel="stylesheet" />
     <link href="../css/faq.css" rel="stylesheet" />
+
+    <script src="../js/jquery-3.1.0.min.js"></script>
 
     <!-- tablets -->
 <!--    <link href="css/tablet.css" rel="stylesheet" />-->
