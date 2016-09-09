@@ -38,7 +38,7 @@
 
     					<div class="faq_images right">
 
-    						<a href="../pages/faq2.php"><img src="../images/faq/faq2.jpg" width="100%" alt="faq2"/></a>
+    						<a href="../pages/contracts-for-students.php"><img src="../images/faq/contracts-for-students.jpg" width="100%" alt="contracts-for-students"/></a>
 
     					</div>
 
@@ -48,10 +48,10 @@
     					<div class="faq_copy">
 
     						<div class="padding">
-    						<a href="../pages/faq2.php"><h2>Template 2</h2></a>
+    						<a href="../pages/contracts-for-students.php"><h2>Where can I read more about the contract for students?</h2></a>
     						<p>
-    							You can hire instrument by following these simple steps<br /><br />
-    							<a href="../pages/faq2.php">Read more ...</a>
+    							blahblahblahblahblahblahblahblahblahblahblahblahblahblah<br /><br />
+    							<a href="../pages/contracts-for-students.php">Read more ...</a>
     						</p>
     						</div>
     					</div>
@@ -62,7 +62,7 @@
 
         					<div class="faq_images right">
 
-        						<a href="../pages/faq3.php"><img src="../images/faq/faq3.jpg" width="100%" alt="faq3"/></a>
+        						<a href="../pages/required-teacher-qualifications.php"><img src="../images/faq/required-teacher-qualifications.jpg" width="100%" alt="required-teacher-qualifications"/></a>
 
         					</div>
 
@@ -72,10 +72,10 @@
         					<div class="faq_copy">
 
         						<div class="padding">
-        						<a href="../pages/faq3.php"><h2>Template 3</h2></a>
+        						<a href="../pages/required-teacher-qualifications.php"><h2>What sort of qualifications do I need to be eligible as Pinelands Music School teacher?</h2></a>
         						<p>
         							Add snippet of text here<br /><br />
-        							<a href="../pages/faq3.php">Read more ...</a>
+        							<a href="../pages/required-teacher-qualifications.php">Read more ...</a>
         						</p>
         						</div>
         					</div>

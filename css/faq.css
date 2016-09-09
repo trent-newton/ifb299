@@ -22,6 +22,7 @@
 .faq_copy.left {
 	width: 59%;
 	display: inline-block;
+	vertical-align: top;
 }
 
 .faq_copy .padding {
