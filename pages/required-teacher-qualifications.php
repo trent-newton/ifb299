@@ -1,5 +1,5 @@
 <?php
-    $pagetitle = "FAQ Template 3 | Pinelands Music School";
+    $pagetitle = "What sort of qualifications do I need to be eligible as Pinelands Music School teacher? | Pinelands Music School";
     include "../inc/connect.php";
     include "../inc/header.php";
     include "../inc/nav.php";
@@ -10,7 +10,7 @@
 
 Nullam dolor turpis, facilisis eu mattis eget, fringilla sed tortor. Integer in tincidunt augue, ut posuere velit. Ut tempus cursus malesuada. Duis vitae ornare nulla, sed pulvinar ex. Donec bibendum, odio nec interdum pretium, nibh mauris auctor erat, ac pulvinar purus nulla at ex. Duis ac porta risus. Integer suscipit libero consequat mauris varius rutrum. Proin purus ipsum, sodales in risus eu, mollis dignissim odio. Donec mi lectus, accumsan non faucibus eu, porttitor ut felis. Vivamus nisi tortor, aliquam eget vehicula sed, interdum ut dolor. Quisque tincidunt lorem vitae malesuada sollicitudin. Integer imperdiet consectetur urna ut venenatis. Vivamus id finibus est. Donec sapien augue, convallis a tincidunt viverra, tincidunt at diam. Praesent quis risus ipsum. Sed feugiat leo ut neque sagittis mollis.</p>
 
-<img src="../images/faq/faq3.jpg" />
+<img src="../images/faq/required-teacher-qualifications.jpg" />
 
 <p>Proin pulvinar mattis nibh ac congue. Mauris fringilla non libero non egestas. Quisque luctus ipsum ac semper dignissim. Cras eget justo dolor. Donec dignissim pellentesque tellus id sodales. Donec faucibus, quam non pretium tristique, enim dolor maximus augue, non vulputate diam lectus fermentum velit. Curabitur felis ligula, aliquam at placerat id, commodo efficitur nunc. Duis eu orci non tortor hendrerit auctor eget eu tortor. Nulla facilisis, nisi et viverra malesuada, augue ligula semper ligula, ac luctus enim metus vitae leo. Aenean ac bibendum libero. Nunc convallis at mi eget dignissim. Nullam venenatis lectus ligula, nec feugiat felis lacinia vel. Suspendisse mattis nisi at sollicitudin cursus. Sed mauris nisi, interdum sed cursus non, posuere ac mauris.
 
