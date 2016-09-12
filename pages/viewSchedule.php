@@ -212,9 +212,9 @@ echo $timeTable["Friday"]["10:00:00"];
 
       if($timeTable[$Days[$col]][$sqlTimes[$row]] != null) {
           if($timeTable[$Days[$col]][$sqlTimes[$row]] == "Continuing Lesson."){
-              echo " style='border: 0px; background:" . $color[$n-1] . "'>";
+              echo " style='border-top: 0px; background:" . $color[$n-1] . "'>";
           } else {
-              echo " style='border: 0px; background:$color[$n]'>";
+              echo " style='border-bottom: 0px; background:$color[$n]'>";
               echo $timeTable[$Days[$col]][$sqlTimes[$row]];
           }
           
