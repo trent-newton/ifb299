@@ -260,6 +260,10 @@ input[type=button], input[type=submit], input[type=reset] {
     width: 55%;
 }
 
+.reviewButton {
+  width: 80%;
+}
+
 .AdminCenterImage {
     width: 40%;
 }
@@ -459,6 +463,17 @@ table a{
 .mail_icon {
   width:30px;
   height:auto;
+}
+
+.centerTable {
+  margin: 0 auto;
+  text-align:center;
+}
+
+.reviewTableIcon {
+  height:12px;
+  width:auto;
+  padding-right:5px;
 }
 
 @media screen and (min-width:700px) {
