@@ -16,10 +16,7 @@ $userID = $_GET['userID'];
 //INSERT INTO `pinelands_ms`.`contracts` (`contractID`, `teacherID`, `studentID`, `startDate`, `endDate`, `time`, `day`, `length`, `instrument`) VALUES ('15', '2', '4', '2016-09-07', '2016-09-14', '13:00:00', 'Friday', '30', 'Oboe');
 
 $command= mysqli_query($con,"DELETE FROM contracts WHERE contractID=$contractID");
-if(mysql_affected_rows() == 1)
-{
-  echo "The class was successfully removed";
-}
+
 
 $result= mysqli_query($con,"SELECT firstName, lastName, accountType FROM users WHERE userID = $userID");
 $name = mysqli_fetch_array($result);

@@ -163,7 +163,7 @@ while ($row = mysqli_fetch_array($result)) {
     $day = $row['day'];
     $length = $row['length'];
     $instrument = $row['instrument'];
-    
+
     $timeTable[$day][$time] .= "$length Minutes <br /> $instrument <br />";
     if($length == '60') {
         $time = strtotime("+30 minutes", strtotime($time));
@@ -171,7 +171,7 @@ while ($row = mysqli_fetch_array($result)) {
         $timeTable[$day][$time] .= "$length Minutes <br /> $instrument <br />";
         //echo $time . "<br />";
     }
-    
+
 }
 
 
@@ -184,7 +184,7 @@ echo $timeTable["Friday"]["10:00:00"];
 ?>
 <div class="content">
     <h1>View Schedule</h1>
-    
+
         <table class="scheduleTable">
             <tr>
                 <th></th>
@@ -206,11 +206,23 @@ echo $timeTable["Friday"]["10:00:00"];
     for($k=0; $k < sizeof($Days); $k++)
     {
 
-      echo "<td name='$Days[$k] $sqlTimes[$i]'>";
+
       if($timeTable[$Days[$k]][$sqlTimes[$i]] != null){
+        //if class then colour cell and change border val
+        echo "<td name='$Days[$k] $sqlTimes[$i]' style='background-color:#cd8cdd;border:0px'>";
+        //if class is hour long, and the cell before it is also the same hour long class
+        //this might cause problems if a person has 2 hour long classes of the same instrument back to back.
+        if((substr($timeTable[$Days[$k]][$sqlTimes[$i]], 0, 2) === '60') && ($timeTable[$Days[$k]][$sqlTimes[$i]]===$timeTable[$Days[$k]][$sqlTimes[$i-1]]))
+        {
+          //do nothing. no need to fill table again.
+        } else {
+          //files table like normal
           echo $timeTable[$Days[$k]][$sqlTimes[$i]];
+        }
+      } else {
+        echo "<td name='$Days[$k] $sqlTimes[$i]'>";
       }
-        
+
       echo "</td>";
     }
     echo "</tr>";
