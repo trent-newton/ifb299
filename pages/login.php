@@ -12,7 +12,7 @@ include "../inc/nav.php";
                 unset($_SESSION['loginError']);
             }
             ?>
-        
+
             <h2 class="centered">Login</h2>
             <fieldset class="loginForm center-horizontal">
                 <form action="../inc/loginprocessing.php" method="post">
@@ -23,12 +23,12 @@ include "../inc/nav.php";
                 <input type="password" name="password" placeholder="password" required />
                 <p class="required">* Required Fields</p>
 
-                <p><a href="../pages/forgotpassword">Forgot Password?</a></p>
-                <input type="submit" name="login" value="Login" /> 
+                <p><a href="../pages/createAccount.php">Forgot Password?</a></p>
+                <input type="submit" name="login" value="Login" />
                 </form>
             </fieldset>
-            
-        
+
+
     </div>
     <!-- end content-->
     <?php
