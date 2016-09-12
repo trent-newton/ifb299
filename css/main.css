@@ -277,8 +277,8 @@ input[type=button], input[type=submit], input[type=reset] {
 table {
     border-collapse: collapse;
     width: 75%;
-    align-self: center;
-    text-align: left;
+    margin: 0 auto;
+    text-align:center;
     border-bottom-style: groove;
 }
 
