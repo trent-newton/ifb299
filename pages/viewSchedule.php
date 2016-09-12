@@ -3,6 +3,13 @@ $pagetitle = "View Schedule";
 include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
+include "../inc/authCheck.php";
+
+if(!(isStudent($_SESSION['accountType'])) && !(isStudentTeacher($_SESSION['accountType'])) && !(isTeacher($_SESSION['accountType']))){
+    $_SESSION['error'] = "Only Students can access the Enrol Page.";
+    rejectAccess();
+}
+
 
 $Times = array(
     0 => "9:00am-9:30am",
@@ -49,14 +56,145 @@ $Days = array(
   4 => "Friday",
 );
 
-$numDays = 5;
+
+$timeTable = array(
+    "Monday" => array(
+        "09:00:00" => null,
+        "09:30:00" => null,
+        "10:00:00" => null,
+        "10:30:00" => null,
+        "11:00:00" => null,
+        "11:30:00" => null,
+        "12:00:00" => null,
+        "12:30:00" => null,
+        "13:00:00" => null,
+        "13:30:00" => null,
+        "14:00:00" => null,
+        "14:30:00" => null,
+        "15:00:00" => null,
+        "15:30:00" => null,
+        "16:00:00" => null,
+        "16:30:00" => null
+    ),
+    "Tuesday" => array(
+        "09:00:00" => null,
+        "09:30:00" => null,
+        "10:00:00" => null,
+        "10:30:00" => null,
+        "11:00:00" => null,
+        "11:30:00" => null,
+        "12:00:00" => null,
+        "12:30:00" => null,
+        "13:00:00" => null,
+        "13:30:00" => null,
+        "14:00:00" => null,
+        "14:30:00" => null,
+        "15:00:00" => null,
+        "15:30:00" => null,
+        "16:00:00" => null,
+        "16:30:00" => null
+    ),
+    "Wednesday" => array(
+        "09:00:00" => null,
+        "09:30:00" => null,
+        "10:00:00" => null,
+        "10:30:00" => null,
+        "11:00:00" => null,
+        "11:30:00" => null,
+        "12:00:00" => null,
+        "12:30:00" => null,
+        "13:00:00" => null,
+        "13:30:00" => null,
+        "14:00:00" => null,
+        "14:30:00" => null,
+        "15:00:00" => null,
+        "15:30:00" => null,
+        "16:00:00" => null,
+        "16:30:00" => null
+    ),
+    "Thursday" => array(
+        "09:00:00" => null,
+        "09:30:00" => null,
+        "10:00:00" => null,
+        "10:30:00" => null,
+        "11:00:00" => null,
+        "11:30:00" => null,
+        "12:00:00" => null,
+        "12:30:00" => null,
+        "13:00:00" => null,
+        "13:30:00" => null,
+        "14:00:00" => null,
+        "14:30:00" => null,
+        "15:00:00" => null,
+        "15:30:00" => null,
+        "16:00:00" => null,
+        "16:30:00" => null
+    ),
+    "Friday" => array(
+    "09:00:00" => null,
+        "09:30:00" => null,
+        "10:00:00" => null,
+        "10:30:00" => null,
+        "11:00:00" => null,
+        "11:30:00" => null,
+        "12:00:00" => null,
+        "12:30:00" => null,
+        "13:00:00" => null,
+        "13:30:00" => null,
+        "14:00:00" => null,
+        "14:30:00" => null,
+        "15:00:00" => null,
+        "15:30:00" => null,
+        "16:00:00" => null,
+        "16:30:00" => null
+    ));
+if($_SESSION['accountType'] == "Student") {
+   $sql = "SELECT * FROM contracts INNER JOIN users ON userID=studentID WHERE userID='$userID' ORDER BY time, startDate";
+} elseif($_SESSION['accountType'] == "Teacher") {
+    $sql = "SELECT * FROM contracts INNER JOIN users ON userID=teacherID WHERE userID='$userID' ORDER BY time, startDate";
+    }
+else {
+    $sql = "SELECT * FROM contracts INNER JOIN users ON userID=teacherID WHERE userID='$userID' UNION SELECT * FROM contracts INNER JOIN users ON userID=studentID WHERE userID='$userID' ORDER BY time, startDate";
+}
+$result = mysqli_query($con,$sql);
+
+while ($row = mysqli_fetch_array($result)) {
+    $time = $row['time'];
+    $day = $row['day'];
+    $length = $row['length'];
+    $instrument = $row['instrument'];
+    
+    $timeTable[$day][$time] .= "$length Minutes <br /> $instrument <br />";
+    if($length == '60') {
+        $time = strtotime("+30 minutes", strtotime($time));
+        $time = date('H:i:s', $time);
+        $timeTable[$day][$time] .= "$length Minutes <br /> $instrument <br />";
+        //echo $time . "<br />";
+    }
+    
+}
+
+
+//var_dump($timeTable);
+
+
+
+echo $timeTable["Friday"]["10:00:00"];
 
 ?>
-<h1>View Schedule</h1>
 <div class="content">
-<table class="scheduleTable">
-<tr> <th></th> <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th> <th>Thursday</th> <th>Friday</th> </tr>
-<?php
+    <h1>View Schedule</h1>
+    
+        <table class="scheduleTable">
+            <tr>
+                <th></th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+            <?php
     for($i=0; $i<sizeof($Times); $i++)
   {
 
@@ -65,91 +203,24 @@ $numDays = 5;
 
 
 
-    for($k=0; $k < $numDays; $k++)
+    for($k=0; $k < sizeof($Days); $k++)
     {
-      //simpler but code still quite a few pulls to the db. Would removing AND Day and moving the sql segment to above this for loop help with this?
-      $sql = "SELECT * FROM contracts INNER JOIN users ON userID=teacherID WHERE userID='$userID' AND time='$sqlTimes[$i]' AND day='$Days[$k]' ORDER BY startDate";
-      $result = mysqli_query($con, $sql);
-      $row = mysqli_fetch_array($result);
 
-      echo "<td>";
-      if($row['day'] == $Days[$k] && $row['time'] == $sqlTimes[$i]){
-          echo $row['length'] . " Minutes";
-          echo "<br />";
-          echo $row['instrument'];
+      echo "<td name='$Days[$k] $sqlTimes[$i]'>";
+      if($timeTable[$Days[$k]][$sqlTimes[$i]] != null){
+          echo $timeTable[$Days[$k]][$sqlTimes[$i]];
       }
+        
       echo "</td>";
     }
     echo "</tr>";
 
-    /*
-    //Monday
-    echo "<td>";
-    $sql = "SELECT * FROM contracts INNER JOIN users ON userID=teacherID WHERE userID='$userID' AND time='$sqlTimes[$i]' AND day='Monday' ORDER BY startDate";
-    $result = mysqli_query($con, $sql);
-    $row = mysqli_fetch_array($result);
-    if($row['day'] == "Monday" && $row['time'] == $sqlTimes[$i]){
-        echo $row['length'] . " Minutes";
-        echo "<br />";
-        echo $row['instrument'];
-    }
-    echo "</td> ";
-    //Tuesday
-        $sql = "SELECT * FROM contracts INNER JOIN users ON userID=teacherID WHERE userID='$userID' AND time='$sqlTimes[$i]' AND day='Tuesday' ORDER BY startDate";
-    $result = mysqli_query($con, $sql);
-    $row = mysqli_fetch_array($result);
-    echo "<td>";
-      if($row['day'] == "Tuesday" && $row['time'] == $sqlTimes[$i]){
-        echo $row['length'] . " Minutes";
-        echo "<br />";
-        echo $row['instrument'];
-      }
-    echo "</td>";
-    //Wednesday
-        $sql = "SELECT * FROM contracts INNER JOIN users ON userID=teacherID WHERE userID='$userID' AND time='$sqlTimes[$i]' AND day='Wednesday' ORDER BY startDate";
-    $result = mysqli_query($con, $sql);
-    $row = mysqli_fetch_array($result);
-    echo "<td>";
-    if($row['day'] == "Wednesday" && $row['time'] == $sqlTimes[$i]){
-        echo $row['length'] . " Minutes";
-        echo "<br />";
-        echo $row['instrument'];
-      }
-    echo "</td>";
-    //Thursday
-        $sql = "SELECT * FROM contracts INNER JOIN users ON userID=teacherID WHERE userID='$userID' AND time='$sqlTimes[$i]' AND day='Thursday' ORDER BY startDate";
-    $result = mysqli_query($con, $sql);
-    $row = mysqli_fetch_array($result);
-    echo "<td>";
-        if($row['day'] == "Thursday" && $row['time'] == $sqlTimes[$i]){
-        echo $row['length'] . " Minutes";
-        echo "<br />";
-        echo $row['instrument'];
-      }
-    echo "</td>";
-    //friday
-        $sql = "SELECT * FROM contracts INNER JOIN users ON userID=teacherID WHERE userID='$userID' AND time='$sqlTimes[$i]' AND day='Friday' ORDER BY startDate";
-    $result = mysqli_query($con, $sql);
-    $row = mysqli_fetch_array($result);
-    echo "<td>";
-    if($row['day'] == "Friday" && $row['time'] == $sqlTimes[$i]){
-        echo $row['length'] . " Minutes";
-        echo "<br />";
-        echo $row['instrument'];
-      }
-    echo "</td></tr>";
-*/
 
   }
-
-
 ?>
-<!--<tr> <th>9:00am-9:30am</th> <th></th> <th></th> <th></th> <th></th> <th></th> </tr>
-<tr> <th>9:00am-9:30am</th> <th></th> <th></th> <th></th> <th></th> <th></th> </tr>-->
-</table>
+        </table>
+    </div>
 
-</div>
-
-
-
-<?php include "../inc/footer.php"; ?>
+    <?php
+    include "../inc/footer.php";
+    ?>
