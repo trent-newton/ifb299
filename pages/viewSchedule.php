@@ -159,16 +159,17 @@ else {
 $result = mysqli_query($con,$sql);
 
 while ($row = mysqli_fetch_array($result)) {
+    $contractID = $row['contractID'];
     $time = $row['time'];
     $day = $row['day'];
     $length = $row['length'];
     $instrument = $row['instrument'];
 
-    $timeTable[$day][$time] .= "$length Minutes <br /> $instrument <br />";
+    $timeTable[$day][$time] .= "$length Minutes <br /> $instrument <br />$contractID|";
     if($length == '60') {
         $time = strtotime("+30 minutes", strtotime($time));
         $time = date('H:i:s', $time);
-        $timeTable[$day][$time] .= "$length Minutes <br /> $instrument <br />";
+        $timeTable[$day][$time] .= "$length Minutes <br /> $instrument <br />$contractID|";
         //echo $time . "<br />";
     }
 
@@ -212,12 +213,15 @@ echo $timeTable["Friday"]["10:00:00"];
         echo "<td name='$Days[$k] $sqlTimes[$i]' style='background-color:#cd8cdd;border:0px'>";
         //if class is hour long, and the cell before it is also the same hour long class
         //this might cause problems if a person has 2 hour long classes of the same instrument back to back.
-        if((substr($timeTable[$Days[$k]][$sqlTimes[$i]], 0, 2) === '60') && ($timeTable[$Days[$k]][$sqlTimes[$i]]===$timeTable[$Days[$k]][$sqlTimes[$i-1]]))
+        if(($i>0) && (substr($timeTable[$Days[$k]][$sqlTimes[$i]], 0, 2) == '60') && ($timeTable[$Days[$k]][$sqlTimes[$i]]==$timeTable[$Days[$k]][$sqlTimes[$i-1]]))
         {
           //do nothing. no need to fill table again.
         } else {
           //files table like normal
-          echo $timeTable[$Days[$k]][$sqlTimes[$i]];
+          //temp exists so that nothing in the array actually gets replaced
+          $temp = $timeTable[$Days[$k]][$sqlTimes[$i]];
+          echo preg_replace("/[0-9]+\|+/", "", $temp);
+          //echo $timeTable[$Days[$k]][$sqlTimes[$i]];
         }
       } else {
         echo "<td name='$Days[$k] $sqlTimes[$i]'>";
