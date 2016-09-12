@@ -51,7 +51,7 @@ Nullam dolor turpis, facilisis eu mattis eget, fringilla sed tortor. Integer in 
 
     echo '<div id="rating">
        <div id="star_rating" style="overflow:hidden;width:70px">
-           <img src="http://images.cjed.com/five_stars.png" style="width:70px;height:auto"/> <!-- width:260px;height:49px -->
+           <img src="../images/about/five_stars.png" style="width:70px;height:auto"/> <!-- width:260px;height:49px -->
        </div>
    </div>';
 
@@ -75,11 +75,11 @@ Nullam dolor turpis, facilisis eu mattis eget, fringilla sed tortor. Integer in 
 
 echo "<a href='https://www.facebook.com/";
 echo $row['facebookId'];
-echo "'>Contact via Facebook</a>";
+echo "'><img class='about_icon' src='../images/socialMedia/facebook.png' alt='Facebook Link'></a>";
 echo "<br />";
 echo "<a href='mailto:";
 echo $row['email'];
-echo "'>Contact via E-mail</a>";
+echo "'><img class='mail_icon' src='../images/socialMedia/mail.png' alt='e-Mail Link'></a>";
 
 }
 ?>

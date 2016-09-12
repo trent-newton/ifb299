@@ -448,7 +448,17 @@ table a{
 }
 /*put different shade*/
 #nav ul li a:hover {
-    color: #57771d;
+    color: #c0c2c0;
+}
+
+.about_icon {
+  width:28px;
+  height:auto;
+}
+
+.mail_icon {
+  width:30px;
+  height:auto;
 }
 
 @media screen and (min-width:700px) {

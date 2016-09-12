@@ -73,8 +73,14 @@ if($email == "" || $streetNumber == "" || $streetName == "" || $streetType == ""
     $i = 0;
     while ($row = mysqli_fetch_array($result)) {
         $phoneNo = $row['phoneNumber'];
-        $phUpdate = "UPDATE phonenumbers SET phoneNumber='" . ${"phoneNumber".$i} .  "' WHERE phoneNumber='" . $phoneNo .  "' AND userID='$userID'";
-        $runPhUpdate = mysqli_query($con, $phUpdate);
+        if(${"phoneNumber".$i} != "") {
+            $phUpdate = "UPDATE phonenumbers SET phoneNumber='" . ${"phoneNumber".$i} .  "' WHERE phoneNumber='" . $phoneNo .  "' AND userID='$userID'";
+            $runPhUpdate = mysqli_query($con, $phUpdate);
+        } else {
+            $phUpdate = "DELETE FROM phonenumbers WHERE userID='$userID' and phoneNumber =" . $row['phoneNumber'];
+            $runPhUpdate = mysqli_query($con, $phUpdate);
+        }
+        
         $i++;
     }
     if(${"phoneNumber".$i} != "") {
