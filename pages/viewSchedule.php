@@ -148,6 +148,15 @@ $timeTable = array(
         "16:00:00" => null,
         "16:30:00" => null
     ));
+$color = array(
+    '#9b59b6',
+    '#3498db',
+    '#f1c40f',
+    '#e67e22',
+    '#95a5a6',
+    '#bdc3c7',
+    '#c0392b'
+    );
 if($_SESSION['accountType'] == "Student") {
    $sql = "SELECT * FROM contracts INNER JOIN users ON userID=studentID WHERE userID='$userID' ORDER BY time, startDate";
 } elseif($_SESSION['accountType'] == "Teacher") {
@@ -159,18 +168,16 @@ else {
 $result = mysqli_query($con,$sql);
 
 while ($row = mysqli_fetch_array($result)) {
-    $contractID = $row['contractID'];
     $time = $row['time'];
     $day = $row['day'];
     $length = $row['length'];
     $instrument = $row['instrument'];
-
-    $timeTable[$day][$time] .= "$length Minutes <br /> $instrument <br />$contractID|";
+    //$tableColor = $color[$n];
+    $timeTable[$day][$time] = "$length Minutes <br /> $instrument <br /> ";
     if($length == '60') {
         $time = strtotime("+30 minutes", strtotime($time));
         $time = date('H:i:s', $time);
-        $timeTable[$day][$time] .= "$length Minutes <br /> $instrument <br />$contractID|";
-        //echo $time . "<br />";
+        $timeTable[$day][$time] = "Continuing Lesson.";
     }
 
 }
@@ -183,9 +190,8 @@ while ($row = mysqli_fetch_array($result)) {
 echo $timeTable["Friday"]["10:00:00"];
 
 ?>
-<div class="content">
-    <h1>View Schedule</h1>
-
+    <div class="content">
+        <h1>View Schedule</h1>
         <table class="scheduleTable">
             <tr>
                 <th></th>
@@ -196,47 +202,44 @@ echo $timeTable["Friday"]["10:00:00"];
                 <th>Friday</th>
             </tr>
             <?php
-    for($i=0; $i<sizeof($Times); $i++)
-  {
-
+            $n = 0;
+    for($row=0; $row < sizeof($Times); $row++) {
     //Left Times Column
-    echo "<tr><td>" . $Times[$i] . "</td>";
+    echo "<tr><td>" . $Times[$row] . "</td>";
 
+    for($col=0; $col < sizeof($Days); $col++) {
+        echo "<td name='$Days[$col] $sqlTimes[$row]'";
 
-
-    for($k=0; $k < sizeof($Days); $k++)
-    {
-
-
-      if($timeTable[$Days[$k]][$sqlTimes[$i]] != null){
-        //if class then colour cell and change border val
-        echo "<td name='$Days[$k] $sqlTimes[$i]' style='background-color:#cd8cdd;border:0px'>";
-        //if class is hour long, and the cell before it is also the same hour long class
-        //this might cause problems if a person has 2 hour long classes of the same instrument back to back.
-        if(($i>0) && (substr($timeTable[$Days[$k]][$sqlTimes[$i]], 0, 2) == '60') && ($timeTable[$Days[$k]][$sqlTimes[$i]]==$timeTable[$Days[$k]][$sqlTimes[$i-1]]))
-        {
-          //do nothing. no need to fill table again.
-        } else {
-          //files table like normal
-          //temp exists so that nothing in the array actually gets replaced
-          $temp = $timeTable[$Days[$k]][$sqlTimes[$i]];
-          echo preg_replace("/[0-9]+\|+/", "", $temp);
-          //echo $timeTable[$Days[$k]][$sqlTimes[$i]];
-        }
-      } else {
-        echo "<td name='$Days[$k] $sqlTimes[$i]'>";
-      }
+      if($timeTable[$Days[$col]][$sqlTimes[$row]] != null) {
+          if($timeTable[$Days[$col]][$sqlTimes[$row]] == "Continuing Lesson."){
+              echo " style='border: 0px; background:" . $color[$n-1] . "'>";
+          } else {
+              echo " style='border: 0px; background:$color[$n]'>";
+              echo $timeTable[$Days[$col]][$sqlTimes[$row]];
+          }
+          
+          
+        } //end if
+        
+            
+        
+        
 
       echo "</td>";
-    }
+    }//end col for
+        if ($n > 6) {
+            $n = 0;
+        } else {
+            $n++;
+        }
+         
     echo "</tr>";
-
-
-  }
+} //End row for
+    
+         
 ?>
         </table>
     </div>
-
     <?php
     include "../inc/footer.php";
     ?>
