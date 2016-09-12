@@ -11,9 +11,6 @@
         $DOB = mysqli_real_escape_string($con, $_POST['dob']);
         $gender = mysqli_real_escape_string($con, $_POST['gender']);
         $unitNumber = mysqli_real_escape_string($con, $_POST['unitNum']);
-        if ($unitNumber == "") {
-            $unitNumber = "NULL";
-        }
         $streetNumber = mysqli_real_escape_string($con, $_POST['streetNum']);
         $streetName = mysqli_real_escape_string($con, $_POST['street']);
         $streetType = mysqli_real_escape_string($con, $_POST['streetType']);
@@ -21,10 +18,10 @@
         $state = mysqli_real_escape_string($con, $_POST['state']);
         $postcode = mysqli_real_escape_string($con, $_POST['postcode']);
         $email = mysqli_real_escape_string($con, $_POST['sEmail']);
-        $facebookId = mysqli_real_escape_string($con, $_POST['facebook']);
-        if ($facebookId == "") {
-            $facebookId = "NULL";
+        for ($i = 0; $i <= $_POST['numPhones']; $i++) {
+            ${"phoneNumber".$i} = mysqli_real_escape_string($con, $_POST['phone'.$i]);
         }
+        $facebookId = mysqli_real_escape_string($con, $_POST['facebook']);
         $parentName = mysqli_real_escape_string($con, $_POST['pName']);
         $parentEmail = mysqli_real_escape_string($con, $_POST['pEmail']);
 
@@ -34,7 +31,7 @@
         $age = GetAge($DOB);
 
         // Check unit number
-        if ($unitNumber != "NULL") {
+        if ($unitNumber != "") {
             if (!is_numeric($unitNumber)) {
                 $errorAddress = "Invalid address";
             }
@@ -44,13 +41,6 @@
         if (!is_numeric($streetNumber) || !is_numeric($postcode)) {
             $errorAddress = "Invalid address";
         }
-
-        //Check phone
-        /*if ($phone != "") {
-            if (!is_numeric($phone) || strlen($phone) != 10) {
-                $errorPhone = "Invalid student phone";
-            }
-        }*/
 
         if ($errorAddress == "" &&  $errorSEmail == "" && $errorPhone == "" &&  $errorPEmail == "") {
             // Check if email is already in the database
@@ -65,24 +55,45 @@
                 $arrayGetAddressID = mysqli_fetch_array($resultGetAddressID);
                 $addressID = $arrayGetAddressID['addressID'];
 
-                // Add phone numbers
-                /*if ($phone != "") {
-                    $sqlAddPhone = sprintf("INSERT INTO phonenumbers (userID, phoneNumber) VALUES ('%d', '%s');", $userID, $phone);
-                    mysqli_query($con, $sqlAddPhone) or die(mysqli_error($con));
-                }*/
+                // Modify phone numbers
+                $sql = "SELECT * FROM phonenumbers WHERE userID='$userID'";
+                $result = mysqli_query($con, $sql);
+                $i = 0;
+                while ($row = mysqli_fetch_array($result)) {
+                    $phoneNo = $row['phoneNumber'];
+                    if (${"phoneNumber".$i} != "") {
+                        $phUpdate = "UPDATE phonenumbers SET phoneNumber='" . ${"phoneNumber".$i} .  "' WHERE phoneNumber='$phoneNo' AND userID='$userID'";
+                    } else {
+                        $phUpdate = "DELETE FROM phonenumbers WHERE phoneNumber='$phoneNo' AND userID='$userID'";
+                    }
+                    $runPhUpdate = mysqli_query($con, $phUpdate);
+                    $i++;
+                }
+                if(${"phoneNumber".$i} != "") {
+                    $phone = ${"phoneNumber".$i};
+                    echo $phone;
+                    $sql = "INSERT INTO phonenumbers VALUES ('$userID', '$phone')";
+                    $result = mysqli_query($con, $sql);
+                }
 
                 // Modify address
+                if ($unitNumber == "") {
+                    $unitNumber = "NULL";
+                }
                 $sqlModifyAddress = "UPDATE address SET unitNumber = $unitNumber, streetNumber = '$streetNumber', streetName = '$streetName', streetType = '$streetType',
-                    suburb = '$suburb', state = '$state', postCode = '$postcode' WHERE addressID = '$addressID';";
+                    suburb = '$suburb', state = '$state', postCode = '$postcode' WHERE addressID = '$addressID'";
                 mysqli_query($con, $sqlModifyAddress) or die(mysqli_error($con));
 
                 // Modify account
+                if ($facebookId == "") {
+                    $facebookId = "NULL";
+                }
                 $sqlModifyUser = "UPDATE users SET firstName = '$firstName', lastName = '$lastName', gender = '$gender', facebookId = $facebookId WHERE UserID = '$userID'";
                 mysqli_query($con, $sqlModifyUser) or die(mysqli_error($con));
 
                 // Modify parents
                 if ($age < 18) {
-                    $sqlModifyParent = "UPDATE users SET parentName = '$parentName', parentEmail = '$parentEmail' WHERE UserID = 'userID';";
+                    $sqlModifyParent = "UPDATE users SET parentName = '$parentName', parentEmail = '$parentEmail' WHERE UserID = '$userID'";
                     mysqli_query($con, $sqlModifyParent) or die(mysqli_error($con));
                 }
                 
@@ -98,7 +109,7 @@
         $userID = $_GET['userID'];
 
         // Get information from the database
-        $sqlGetDetails = "SELECT * FROM users INNER JOIN useraddress ON users.UserID=useraddress.userID Inner JOIN address ON useraddress.addressID=address.addressId WHERE users.userid='$userID' ";
+        $sqlGetDetails = "SELECT * FROM users INNER JOIN useraddress ON users.UserID=useraddress.userID Inner JOIN address ON useraddress.addressID=address.addressId WHERE users.userid='$userID'";
         $resultGetDetails = mysqli_query($con, $sqlGetDetails) or die(mysqli_error($con));
         $arrayGetDetails = mysqli_fetch_array($resultGetDetails);
 

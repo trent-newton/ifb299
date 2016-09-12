@@ -107,7 +107,7 @@
                     echo '<label for="txtPEmail">Email Address<span class="required">*</span>: </label>';
                     echo '<br />';
                     echo '<input type="email" name="pEmail" id="txtPEmail" placeholder="parent@address.com" value="'.$parentEmail.'" required>';
-                    echo '<span class="required">  '.$errorSEmail.'</span>';
+                    echo '<span class="required">  '.$errorPEmail.'</span>';
                     echo '<br />';
                 }
             ?>
