@@ -21,13 +21,13 @@
 					<div class="faq_copy">
 
 						<div class="padding">
-						<a href="../pages/hire-an-instrument.php"><h2>How to Rent an Instrument?</h2></a>
+						<a href="../pages/hire-an-instrument.php"><h2 class="faq_title">How to Rent an Instrument?</h2></a>
 						<p>
               Want to learn an instrument that you don't own?<br />
               You can hire instrument by following these simple steps<br />
               Also find out if our class includes access to an instrument, because <br />
               you don't have to bring in your Grand Piano to learn how to play it<br /><br />
-							<a href="../pages/hire-an-instrument.php">Read more ...</a>
+							<a class='faq_readmore' href="../pages/hire-an-instrument.php">Read more ...</a>
 						</p>
 						</div>
 					</div>
@@ -48,10 +48,10 @@
     					<div class="faq_copy">
 
     						<div class="padding">
-    						<a href="../pages/contracts-for-students.php"><h2>Where can I read more about the contract for students?</h2></a>
+    						<a href="../pages/contracts-for-students.php"><h2 class="faq_title">Where can I read more about the contract for students?</h2></a>
     						<p>
     							blahblahblahblahblahblahblahblahblahblahblahblahblahblah<br /><br />
-    							<a href="../pages/contracts-for-students.php">Read more ...</a>
+    							<a class='faq_readmore' href="../pages/contracts-for-students.php">Read more ...</a>
     						</p>
     						</div>
     					</div>
@@ -72,10 +72,10 @@
         					<div class="faq_copy">
 
         						<div class="padding">
-        						<a href="../pages/required-teacher-qualifications.php"><h2>What sort of qualifications do I need to be eligible as Pinelands Music School teacher?</h2></a>
+        						<a href="../pages/required-teacher-qualifications.php"><h2 class="faq_title">What sort of qualifications do I need to be eligible as Pinelands Music School teacher?</h2></a>
         						<p>
         							Add snippet of text here<br /><br />
-        							<a href="../pages/required-teacher-qualifications.php">Read more ...</a>
+        							<a class='faq_readmore' href="../pages/required-teacher-qualifications.php">Read more ...</a>
         						</p>
         						</div>
         					</div>
