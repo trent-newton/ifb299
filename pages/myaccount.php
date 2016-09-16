@@ -13,7 +13,7 @@ $row = mysqli_fetch_array($result);
 
 
 ?>
-    <div class="content">
+    <div class="content fieldSetCentered">
         
         <fieldset class="accountDetails">
             <form method="post" action="../inc/updateaccount.php">

@@ -140,7 +140,7 @@ input[type=button], input[type=submit], input[type=reset] {
     margin: 5px auto;
 
 }
-input {
+input , select {
     min-width: 165px;
 }
 .inputStreet {
@@ -174,11 +174,13 @@ input {
 .accountDetails {
     width: 100%;
     display:inline-block;
+    text-align: left;
 }
 
 .changePassword {
     width: 100%;
     display:inline-block;
+    text-align: left;
 }
 .createAccount {
 
@@ -198,6 +200,10 @@ input {
 }
 .enrolPage {
     font-size: 1.6em;
+}
+
+.fieldSetCentered {
+    text-align: center;
 }
 
 /*********Contact Page *****************/
@@ -530,11 +536,13 @@ table a{
     }
 
     .accountDetails {
-        width: 48%;
+        width: 30%;
+        margin: 0 auto;
     }
 
     .changePassword {
-        width: 48%;
+        width: 30%;
+        margin: 0 auto;
         vertical-align: top;
     }
 
