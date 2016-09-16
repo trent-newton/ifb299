@@ -24,8 +24,8 @@
             <input type="date" name="dob" id="txtDob" size="10" maxlength="10" placeholder="yyyy-mm-dd" value="<?php if (isset($_POST['dob'])) echo $_POST['dob'] ?>" required>
             <br />
             <label id="lblGender">Gender<span class="required">*</span>: </label>
-                <input type="radio" name="gender" value="Female" <?php if (isset($_POST['gender']) && $_POST['gender'] == "Female") echo "checked";?> required> Female
-                <input type="radio" name="gender" value="Male" <?php if (isset($_POST['gender']) && $_POST['gender'] == "Male") echo "checked";?> required> Male
+                <input type="radio" name="gender" value="Female" class="inputStreet" <?php if (isset($_POST['gender']) && $_POST['gender'] == "Female") echo "checked";?> required> Female
+                <input type="radio" name="gender" value="Male" class="inputStreet"<?php if (isset($_POST['gender']) && $_POST['gender'] == "Male") echo "checked";?> required> Male
             <br />
 
             <h2>Postal Address</h2><?php echo "<span class='required'>  ".$errorAddress."</span>" ?>
