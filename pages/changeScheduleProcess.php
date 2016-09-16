@@ -23,7 +23,7 @@ $result= mysqli_query($con,"SELECT firstName, lastName, accountType FROM users W
 $name = mysqli_fetch_array($result);
 echo "<h1> Change schedule for ".$name['firstName']." ".$name['lastName']." (userID $userID) </h1>";
 
-$checkRemoved = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM contracts WHERE contractID = $contractID"));
+$checkRemoved = mysqli_query($con,"SELECT * FROM contracts WHERE contractID = $contractID");
 $count = mysqli_num_rows($checkRemoved);
 if ($count == 0) {
   echo "<h3> The class for ".$name['firstName']." ".$name['lastName']." was successfully removed</h3>";

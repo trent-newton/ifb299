@@ -36,7 +36,6 @@ $chosenLanguage = $_POST['chosenLanguage'];
 $chosenStartTime = $_POST['chosenStartTime'];
 $chosenDay = $_POST['chosenDay'];
 
-
 $getEndTime = floatval($chosenStartTime) + 1;
 $endTime = "$getEndTime:00";
 
@@ -51,7 +50,8 @@ $columnTeacherDetails  = array(
 $sql="SELECT time FROM contracts
     WHERE day = '$chosenDay' AND time = '$chosenStartTime' AND studentID = $userID";
 
-if ($result2=mysqli_query($con,$sql)){
+if ($result2=mysqli_query($con,$sql))
+  {
   // Return the number of rows in result set
   $rowcount=mysqli_num_rows($result2);
       if($rowcount > 0){
@@ -63,6 +63,7 @@ if ($result2=mysqli_query($con,$sql)){
         }
 
           mysqli_free_result($result2);
+
       } else {
             $query ="SELECT DISTINCT availability.teacherID, availability.teacherID, availability.day, availability.startTime, availability.endTime
                     FROM availability INNER JOIN languages
@@ -110,7 +111,8 @@ if ($result2=mysqli_query($con,$sql)){
               }
 
             }
-    } //close else statement
+
+    } //close big else statement
 }
 echo "</div>";
 include "../inc/footer.php";

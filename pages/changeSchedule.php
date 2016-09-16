@@ -23,8 +23,16 @@ $sql = "SELECT contracts.*,users.firstName ,users.lastName  FROM contracts INNER
 
 $result = mysqli_query($con, $sql);
 $table = mysqli_fetch_all($result);
+$rowcount=mysqli_num_rows($result);
+//checks size of query
+if($rowcount == 0)
+{
+  echo "<h2>".$name['firstName']." ".$name['lastName']." is not enroled in any classes</h2>";
+}
+
 echo '<a href="enrol.php?userID='.$userID.'" ><span style="font-size:145%">Add a new class</span></a>';
 echo '<table style="width:25%; font-size:120%">';
+
 foreach($table as $rowNum => $row)
 {
   echo '<tr><td>';

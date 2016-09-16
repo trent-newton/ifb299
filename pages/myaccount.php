@@ -13,7 +13,7 @@ $row = mysqli_fetch_array($result);
 
 
 ?>
-    <div class="content">
+    <div class="content fieldSetCentered">
         
         <fieldset class="accountDetails">
             <form method="post" action="../inc/updateaccount.php">
@@ -33,9 +33,9 @@ $row = mysqli_fetch_array($result);
                 <label>Gender (Read Only):</label>
                 <br />
                 <label>Male</label>
-                <input type="radio" name="gender" <?php if($row['gender']=='Male' ) {echo "checked";}?> readonly/>
+                <input type="radio" name="gender" class="inputStreet"<?php if($row['gender']=='Male' ) {echo "checked";}?> readonly/>
                 <label>Female</label>
-                <input type="radio" name="gender" <?php if($row['gender']=='Female' ){ echo "checked";}?> readonly />
+                <input type="radio" name="gender" class="inputStreet" <?php if($row['gender']=='Female' ){ echo "checked";}?> readonly />
                 <br />
                 <label>Unit:</label>
                 <input type="text" name="unitNumber" class="inputStreet" value="<?php echo $row['unitNumber']?>" />

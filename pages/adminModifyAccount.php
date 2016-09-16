@@ -30,13 +30,13 @@
             <input type="date" name="dob" id="txtDob" size="10" maxlength="10" placeholder="yyyy-mm-dd" value="<?php echo $DOB ?>" readonly>
             <br />
             <label>Gender<span class="required">*</span>: </label>
-                <input type="radio" name="gender" value="Female" <?php if ($gender == "Female") echo "checked";?> required> Female
-                <input type="radio" name="gender" value="Male" <?php if ($gender == "Male") echo "checked";?> required> Male
+                <input type="radio" name="gender" value="Female" class="inputStreet" <?php if ($gender == "Female") echo "checked";?> required> Female
+                <input type="radio" name="gender" value="Male" class="inputStreet" <?php if ($gender == "Male") echo "checked";?> required> Male
             <br><br />
             <label for="txtUnitNum">Unit: </label>
-            <input type="text" name="unitNum" id="txtUnitNum" size="2" maxlength="4" placeholder="4" value="<?php echo $unitNumber ?>">
+            <input type="text" name="unitNum" id="txtUnitNum" class="inputStreet" size="2" maxlength="4" placeholder="4" value="<?php echo $unitNumber ?>">
             <label for="txtStreetNum">Street No<span class="required">*</span>: </label>
-            <input type="text" name="streetNum" id="txtStreetNum" size="3" maxlength="4" placeholder="42" value="<?php echo $streetNumber ?>" required>
+            <input type="text" name="streetNum" class="inputStreet" id="txtStreetNum" size="3" maxlength="4" placeholder="42" value="<?php echo $streetNumber ?>" required>
             <?php echo "<span class='required'>  ".$errorAddress."</span>" ?><br />
             <label or="txtStreet">Street<span class="required">*</span>: </label>
             <br />

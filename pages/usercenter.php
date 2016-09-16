@@ -3,7 +3,11 @@ $pagetitle = "Student Center";
 include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
-include "../inc/studentteacherlogincheck.php";
+require "../inc/AuthCheck.php";
+
+if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountType']) && !isTeacher($_SESSION['accountType'])){
+    rejectAccess();
+}
 ?>
 
 <div class="content adminCenter">
