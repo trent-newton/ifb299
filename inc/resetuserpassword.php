@@ -18,7 +18,6 @@ if($numrow == 1) {
     $link = "http://localhost/MusicSchool/pages/resetpassword.php?email=$email&emailCode=$emailCode";
     $sql = "INSERT INTO forgotPassword (userID, emailCode, link) VALUES ('$userID', '$emailCode', '$link')";
     $result = mysqli_query($con, $sql) or die(mysqli_error($con));
-    echo $sql;
     if($result) {
         $to = $email;
         $subject = "Reset your password at Pinelands Music School";
