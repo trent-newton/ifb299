@@ -12,6 +12,9 @@ $chosenStartTime = $_POST['chosenStartTime'];
 $chosenDay = $_POST['chosenDay'];
 $userID = $_SESSION['userID'];
 
+$getEndTime = floatval($chosenStartTime) + 1;
+$endTime = "$getEndTime:00";
+
 $columnTeacherDetails  = array(
     'teacherID' => 'teacherID',
     'Day' => 'day',
@@ -30,17 +33,17 @@ if ($result2=mysqli_query($con,$sql))
       if($rowcount > 0){
           echo "<h1> time slot taken click <a href='enrol.php'> here </a> to pick another time</h1><br>";
           mysqli_free_result($result2);
-      }else {
+      } else {
 
-    echo "<h1> Here are all the times for $chosenInstrument classes in $chosenLanguage on $chosenDay starting at $chosenStartTime</h1>";
+    echo "<h1> Here are all the times for $chosenInstrument classes in on $chosenDay from $chosenStartTime</h1>";
 
     $query ="SELECT DISTINCT availability.teacherID, availability.teacherID, availability.day, availability.startTime, availability.endTime  
             FROM availability INNER JOIN languages 
             WHERE availability.teacherID = languages.userID 
             AND languages.language = '$chosenLanguage' 
             AND availability.startTime <= '$chosenStartTime' 
-            AND availability.day = '$chosenDay'"; //possibly add another condition for end time??
-
+            AND availability.endTime >= '$endTime'
+            AND availability.day = '$chosenDay'";
     $result = mysqli_query($con, $query); 
 
     //start table

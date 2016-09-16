@@ -68,13 +68,13 @@
             <br />
             <input type="email" name="sEmail" id="txtSEmail" placeholder="student@address.com" value="<?php if (isset($_POST['sEmail'])) echo $_POST['sEmail'] ?>" required><?php echo "<span class='required'>  ".$errorSEmail."</span>" ?>
             <br />
-            <label id="lblMobile" for="txtMobile">Mobile Phone<span class="required">*</span>: </label>
+            <label id="lblPhone1" for="txtPhone1">Phone 1<span class="required">*</span>: </label>
             <br />
-            <input type="text" name="mobile" id="txtMobile" size="10" maxlength="10" placeholder="0412345678" value="<?php if (isset($_POST['mobile'])) echo $_POST['mobile'] ?>" required><?php echo "<span class='required'>  ".$errorMobile."</span>" ?>
+            <input type="text" name="phone1" id="txtPhone1" size="10" maxlength="10" placeholder="0412345678" value="<?php if (isset($_POST['phone1'])) echo $_POST['phone1'] ?>" required><?php echo "<span class='required'>  ".$errorPhone1."</span>" ?>
             <br />
-            <label id="lblPhone" for="txtPhone">Home Phone: </label>
+            <label id="lblPhone2" for="txtPhone2">Phone 2: </label>
             <br />
-            <input type="text" name="phone" id="txtPhone" size="10" maxlength="10" placeholder="0787654321" value="<?php if (isset($_POST['phone'])) echo $_POST['phone'] ?>"><?php echo "<span class='required'>  ".$errorPhone."</span>" ?>
+            <input type="text" name="phone2" id="txtPhone2" size="10" maxlength="10" placeholder="0787654321" value="<?php if (isset($_POST['phone2'])) echo $_POST['phone2'] ?>"><?php echo "<span class='required'>  ".$errorPhone2."</span>" ?>
             <br />
             <label id="lblFacebook" for="txtFacebook">Facebook ID: </label>
             <br />

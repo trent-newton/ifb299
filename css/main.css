@@ -80,9 +80,7 @@ input[type=button], input[type=submit], input[type=reset] {
     height: auto;
 }
 
-.socialMediaIcons img {
-    width: 3%;
-}
+
 
 .userPanel {
     display: inline-block;
@@ -227,6 +225,10 @@ input[type=button], input[type=submit], input[type=reset] {
     background-color:  #771d57;
     margin-top: 5px;
     padding: 1%
+}
+.socialMediaIcons img {
+    max-width: 36px;
+    margin: 0 1%;
 }
 
 /*-------------home page icons--------------*/

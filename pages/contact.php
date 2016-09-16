@@ -40,7 +40,7 @@
     <div class="content contactUs">
         <h1>Contact Us</h1>
 
-        <form action="../inc/contact_form_processing.php" style="display:inline-block;padding-right:40px;">
+        <form action="../inc/contact_form_processing.php" style="display:inline-block;padding-right:40px;" method="post">
 
           <label class="control-label" for="first_name">First Name <span class="required">*</span></label>
           <div class="controls">
