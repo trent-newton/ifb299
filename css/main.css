@@ -140,8 +140,12 @@ input[type=button], input[type=submit], input[type=reset] {
     margin: 5px auto;
 
 }
-.emailInput {
+input {
     min-width: 165px;
+}
+.inputStreet {
+    max-width: 30px;
+    min-width: 20px;
 }
 .center-horizontal {
      position: relative;

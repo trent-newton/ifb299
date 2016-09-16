@@ -1,8 +1,8 @@
 <?php
     $errorAddress = "";
     $errorSEmail = "";
-    $errorPhone1 = "";
-    $errorPhone2 = "";
+    $errorMobile = "";
+    $errorPhone = "";
     $errorConfirmPassword = "";
     $errorPName = "";
     $errorPEmail = "";
@@ -20,8 +20,8 @@
         $state = mysqli_real_escape_string($con, $_POST['state']);
         $postcode = mysqli_real_escape_string($con, $_POST['postcode']);
         $sEmail = mysqli_real_escape_string($con, $_POST['sEmail']);
-        $phone1 = mysqli_real_escape_string($con, $_POST['phone1']);
-        $phone2 = mysqli_real_escape_string($con, $_POST['phone2']);
+        $mobile = mysqli_real_escape_string($con, $_POST['mobile']);
+        $phone = mysqli_real_escape_string($con, $_POST['phone']);
         $facebook = mysqli_real_escape_string($con, $_POST['facebook']);
         $password = mysqli_real_escape_string($con, $_POST['password']);
         $confirmPassword = mysqli_real_escape_string($con, $_POST['confirmPassword']);
@@ -44,15 +44,15 @@
             $errorAddress = "Invalid address";
         }
 
-        //Check student phone1
-        if (!is_numeric($phone1) || strlen($phone1) != 10) {
-            $errorPhone1 = "Invalid student phone1";
+        //Check student mobile
+        if (!is_numeric($mobile) || strlen($mobile) != 10) {
+            $errorMobile = "Invalid student mobile";
         }
 
-        //Check student phone2
-        if ($phone2 != "") {
-            if (!is_numeric($phone2) || strlen($phone2) != 10) {
-                $errorPhone2 = "Invalid student phone2";
+        //Check student phone
+        if ($phone != "") {
+            if (!is_numeric($phone) || strlen($phone) != 10) {
+                $errorPhone = "Invalid student phone";
             }
         }
 
@@ -77,7 +77,7 @@
             }
         }
 
-        if ($errorAddress == "" && $errorPhone2 == "" && $errorPhone1 == "" && $errorConfirmPassword == "" && $errorPName == "" && $errorPEmail == "") {
+        if ($errorAddress == "" && $errorPhone == "" && $errorMobile == "" && $errorConfirmPassword == "" && $errorPName == "" && $errorPEmail == "") {
             // Check if email is already in the database
             $sqlCheckEmail = sprintf("SELECT email FROM users WHERE email='%s'", $sEmail);
             $resultCheckEmail = mysqli_query($con, $sqlCheckEmail) or die(mysqli_error($con));
@@ -96,14 +96,14 @@
                 $arrayGetAddressID = mysqli_fetch_array($resultGetAddressID);
                 $addressID = $arrayGetAddressID['addressId'] + 1;
 
-                // Add phone1 numbers
-                $sqlAddPhone1 = sprintf("INSERT INTO phonenumbers (userID, phoneNumber) VALUES ('%d', '%s');", $studentID, $phone1);
-                mysqli_query($con, $sqlAddPhone1) or die(mysqli_error($con));
+                // Add mobile numbers
+                $sqlAddMobile = sprintf("INSERT INTO phonenumbers (userID, phoneNumber) VALUES ('%d', '%s');", $studentID, $mobile);
+                mysqli_query($con, $sqlAddMobile) or die(mysqli_error($con));
 
-                // Add phone2 numbers
-                if ($phone2 != "") {
-                    $sqlAddPhone2 = sprintf("INSERT INTO phonenumbers (userID, phoneNumber) VALUES ('%d', '%s');", $studentID, $phone2);
-                    mysqli_query($con, $sqlAddPhone2) or die(mysqli_error($con));
+                // Add phone numbers
+                if ($phone != "") {
+                    $sqlAddPhone = sprintf("INSERT INTO phonenumbers (userID, phoneNumber) VALUES ('%d', '%s');", $studentID, $phone);
+                    mysqli_query($con, $sqlAddPhone) or die(mysqli_error($con));
                 }
 
                 // Add address

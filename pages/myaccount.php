@@ -38,9 +38,9 @@ $row = mysqli_fetch_array($result);
                 <input type="radio" name="gender" <?php if($row['gender']=='Female' ){ echo "checked";}?> readonly />
                 <br />
                 <label>Unit:</label>
-                <input type="text" name="unitNumber" size="2" value="<?php echo $row['unitNumber']?>" />
+                <input type="text" name="unitNumber" class="inputStreet" value="<?php echo $row['unitNumber']?>" />
                 <label>Street No<span class="required">*</span>:</label>
-                <input type="text" name="streetNumber" value="<?php echo $row['streetNumber']?>" size="2" required />
+                <input type="text" name="streetNumber" value="<?php echo $row['streetNumber']?>" class="inputStreet" required />
                 <br />
                 <label>Street<span class="required">*</span>:</label>
                 <br />
