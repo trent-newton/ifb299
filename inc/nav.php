@@ -25,17 +25,18 @@
                             <span><a href="../pages/myaccount.php"><?php echo $userName?></a> |
         <?php
         if((($_SESSION['accountType']) == 'Admin') || (($_SESSION['accountType']) == 'Owner')){
-          echo '<a href="../pages/admincenter.php">Admin Center</a>';
+          echo '<a href="../pages/admincenter.php">Admin Center</a><br />';
         } else {
           echo '<a href="../pages/usercenter.php">User Center</a>';
+          echo '<br /><a href="../pages/enrolPage.php"><b>ENROL</b></a> |';
         }
         ?>
-        <br><a href="../pages/enrolPage.php"><b>ENROL</b></a> | <a href="../pages/logout.php">Logout</a></span>
+         <a href="../pages/logout.php">Logout</a></span>
 
                     <?php
                         } else { // if no user is logged in
                     ?>
-                <span><a href="../pages/login.php">Login</a> | <a href="../pages/createAccount.php">Register Account</a><br /> | <a href="../pages/resetpassword.php">Reset Password</a></span>
+                <span><a href="../pages/login.php">Login</a> | <a href="../pages/createAccount.php">Register Account</a><br /> 
                     <?php
                         }
                     ?>

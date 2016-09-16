@@ -23,7 +23,7 @@ include "../inc/nav.php";
                 <input type="password" name="password" placeholder="password" required />
                 <p class="required">* Required Fields</p>
 
-                <p><a href="../pages/createAccount.php">Forgot Password?</a></p>
+                <p><a href="../pages/resetpassword.php">Forgot Password?</a></p>
                 <input type="submit" name="login" value="Login" />
                 </form>
             </fieldset>
