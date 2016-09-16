@@ -42,7 +42,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (1,'','34','Main','road','Caboolture','4510','QLD'),(2,NULL,'1','George St','street','Brisbane','4000','QLD'),(3,'1','42','Main','street','Bentley','2480','NSW'),(4,'23','1','Gray','street','New Farm','4006','QLD');
+INSERT INTO `address` VALUES (1,'','34','Main','road','Caboolture','4510','QLD'),(2,NULL,'1','George St','street','Brisbane','4000','QLD'),(3,'1','42','Main','street','Bentley','2480','NSW'),(4,'23','1','Gray','street','New Farm','4006','QLD'),(5, NULL, '69', 'Dong', 'street', 'Goomba', '1234', 'QLD');
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -71,7 +71,7 @@ CREATE TABLE `availability` (
 
 LOCK TABLES `availability` WRITE;
 /*!40000 ALTER TABLE `availability` DISABLE KEYS */;
-INSERT INTO `availability` VALUES (1,3,'Monday','09:00:00','18:00:00'),(2,3,'Tuesday','09:00:00','17:00:00');
+INSERT INTO `availability` VALUES (1,3,'Monday','09:00:00','18:00:00'),(2,3,'Tuesday','09:00:00','17:00:00'),(3,4,'Friday','09:00:00','17:00:00');
 /*!40000 ALTER TABLE `availability` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +108,7 @@ CREATE TABLE `contracts` (
 
 LOCK TABLES `contracts` WRITE;
 /*!40000 ALTER TABLE `contracts` DISABLE KEYS */;
-INSERT INTO `contracts` VALUES (1,2,3,'2016-09-08','2016-10-26','12:00:00','Thursday','30','Violin'),(2,2,3,'2016-09-05','2016-10-31','14:00:00','Monday','60','Piano'),(3,2,3,'2016-09-07','2016-10-26','11:00:00','Wednesday','60','Chello'),(4,2,3,'2016-09-06','2016-10-25','12:00:00','Tuesday','60','Stuff'),(7,3,2,'2016-09-07','2016-09-14','10:00:00','Wednesday','60','Chello'),(8,3,2,'2016-09-07','2016-09-14','09:00:00','Monday','60','Violin'),(9,6,3,'2016-09-07','2016-09-14','10:00:00','Thursday','60','Chello'),(10,3,3,'2016-09-07','2016-09-14','10:00:00','Monday','60','Chello'),(11,6,2,'2016-09-07','2016-09-14','12:00:00','Monday','60','Chello'),(12,3,2,'2016-09-07','2016-09-14','10:00:00','Monday','60','Chello'),(13,6,2,'2016-09-07','2016-09-14','10:00:00','Monday','60','Chello'),(14,3,3,'2016-09-07','2016-09-14','13:00:00','Tuesday','60','Violin');
+INSERT INTO `contracts` VALUES (1,2,3,'2016-09-08','2016-10-26','12:00:00','Thursday','30','Violin'),(2,2,3,'2016-09-05','2016-10-31','14:00:00','Monday','60','Piano'),(3,2,3,'2016-09-07','2016-10-26','11:00:00','Wednesday','60','Chello'),(4,2,3,'2016-09-06','2016-10-25','12:00:00','Tuesday','60','Stuff'),(7,3,2,'2016-09-07','2016-09-14','10:00:00','Wednesday','60','Chello'),(8,3,2,'2016-09-07','2016-09-14','09:00:00','Monday','60','Violin'),(9,6,3,'2016-09-07','2016-09-14','10:00:00','Thursday','60','Chello'),(10,3,3,'2016-09-07','2016-09-14','10:00:00','Monday','60','Chello'),(11,6,2,'2016-09-07','2016-09-14','12:00:00','Monday','60','Chello'),(12,3,2,'2016-09-07','2016-09-14','10:00:00','Monday','60','Chello'),(13,6,2,'2016-09-07','2016-09-14','10:00:00','Monday','60','Chello'),(14,3,3,'2016-09-07','2016-09-14','13:00:00','Tuesday','60','Violin'),(15, 3, 7, '2016-09-01', '2016-09-30', '12:00:00', 'Tuesday', '60', 'Guitar'),(16, 4, 7, '2016-09-01', '2016-09-23', '14:00:00', 'Friday', '60', 'Bass');
 /*!40000 ALTER TABLE `contracts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +161,7 @@ CREATE TABLE `instruments` (
 
 LOCK TABLES `instruments` WRITE;
 /*!40000 ALTER TABLE `instruments` DISABLE KEYS */;
-INSERT INTO `instruments` VALUES (2,'Chello'),(2,'Violin'),(3,'Chello'),(3,'Violin'),(4,'Bass'),(4,'Chello'),(4,'Guitar'),(4,'Violin'),(5,'Clarinet'),(5,'Flute'),(5,'Guitar'),(5,'Pan Flute'),(5,'Trumbone'),(5,'Trumpet'),(6,'Bass'),(6,'Drums'),(6,'Electric Guitar'),(6,'Keyboard'),(6,'Piano'),(6,'Saxiphone');
+INSERT INTO `instruments` VALUES (2,'Cello'),(2,'Violin'),(3,'Cello'),(3,'Violin'),(4,'Bass'),(4,'Cello'),(4,'Guitar'),(4,'Violin'),(5,'Clarinet'),(5,'Flute'),(5,'Guitar'),(5,'Pan Flute'),(5,'Trombone'),(5,'Trumpet'),(6,'Bass'),(6,'Drums'),(6,'Electric Guitar'),(6,'Keyboard'),(6,'Piano'),(6,'Saxophone');
 /*!40000 ALTER TABLE `instruments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,7 +210,7 @@ CREATE TABLE `phonenumbers` (
 
 LOCK TABLES `phonenumbers` WRITE;
 /*!40000 ALTER TABLE `phonenumbers` DISABLE KEYS */;
-INSERT INTO `phonenumbers` VALUES (2,'0414573180'),(2,'0754000000'),(3,'05000000'),(4,'0401444444'),(5,'0400000000'),(6,'0423232332');
+INSERT INTO `phonenumbers` VALUES (2,'0414573180'),(2,'0754000000'),(3,'05000000'),(4,'0401444444'),(5,'0400000000'),(6,'0423232332'),(7, '0622222222'),(7, '0411111111');
 /*!40000 ALTER TABLE `phonenumbers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,7 +269,7 @@ CREATE TABLE `useraddress` (
 
 LOCK TABLES `useraddress` WRITE;
 /*!40000 ALTER TABLE `useraddress` DISABLE KEYS */;
-INSERT INTO `useraddress` VALUES (3,1),(4,2),(5,3),(6,4);
+INSERT INTO `useraddress` VALUES (3,1),(4,2),(5,3),(6,4),(7,5);
 /*!40000 ALTER TABLE `useraddress` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -308,6 +308,8 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES (2,'Peter','Schwartz','1980-09-06','Male',NULL,'pschwartz914@gmail.com','358452b4ec13a0371aa46c2c2817d7752cd1e6c41c84b57120bd45fbe68af04e','d41d8cd98f00b204e9800998ecf8427e','StudentAndTeacher',NULL,NULL,NULL),(3,'Peter','Schwartz','1980-09-06','Male','','peter@email.com','40534c99afc016e41814f822387b39f5a1afb1b131de5863fd2658cc55b09099','6e1a63c99810f63b81da8a9d66392559','Admin',NULL,'test',''),(4,'John','Smith','1995-08-06','Male','100000294232924','john@pinelandmusic.com','303033212cb2d7e424e486c83fcd42aaff55c2f6be6db1c1b3e409922ff8eaf3','c0191b30afd9ddef7152c5dc8bcdb3fc','Teacher',NULL,NULL,NULL),(5,'Samantha','Henderson','1995-08-06','Female','100000294232924','samantha@pinelandmusic.com','9474487bd182d8baccd34f313b327898e12c57025e70fb0c18cbc99c8e6d4550','632d66e14b08cc43b6d37b17d8614b9e','StudentAndTeacher',NULL,NULL,NULL),(6,'Mary','Jane','1996-07-12','Female','100000294232924','mary@pinelandmusic.com','2e1d238e143e6eacd1c6539fed7f09eb7013a69bb46d41e2900a6e15a200cf55','b03a261899ec8c063b069ddb5bab0de4','Teacher',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (7, 'Sathya', 'Amarsee', '1997-06-03', 'Male', NULL, 'sathya@email.com', '889f5b4d441f2f8ade6f36984fafa37f8848633ce2d2ef108f34fc7713988913', '4b5a8a98e923ea20d2cb2cd24015863e', 'Student',NULL,NULL,NULL);
+
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

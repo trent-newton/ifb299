@@ -48,7 +48,7 @@ foreach ($accountTypes as $type) {
       }
       echo '<td><a href="changeAuthProcess.php?userID='.$row['userID'].'"><span class="changeAccess"> change access </span></a></td>';
       echo '<td><a href="adminModifyAccount.php?userID='.$row['userID'].'"><span class="changeAccess"> change details </span></a></td>';
-      if(($type !== "Admin") && ($type !== "Guest"))
+      if(($type !== "Admin") && ($type !== "Guest") && ($type !== "Teacher"))
       {
         echo '<td><a href="changeSchedule.php?userID='.$row['userID'].'"><span class="changeAccess"> change schedule </span></a></td></tr>';
       } else {
