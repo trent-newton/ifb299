@@ -3,11 +3,11 @@
   $result = mysqli_query($con, $sql);
   while ($row = mysqli_fetch_array($result)) {
 
-    echo "<h3>";
+    echo "<h2>";
     echo $row['firstName'];
     echo " ";
     echo $row['lastName'];
-    echo "</h3>";
+    echo "</h2>";
 
     $userID = $row["UserID"];
 
@@ -44,26 +44,25 @@
 
     $sql2 = "SELECT * FROM languages WHERE languages.userID = '$userID'";
     $result2 = mysqli_query($con, $sql2);
-    echo "<strong>Languages I speak: </strong><br />";
+    echo "<strong>Languages I speak: </strong>";
+      echo "<ul>";
     while ($row2 = mysqli_fetch_array($result2)) {
-      echo $row2['language'];
-      echo "<br />";
+      echo "<li>".$row2['language']."</li>";
     }
+      echo "</ul>";
 
-    echo "<br />";
 
     $sql3 = "SELECT * FROM instruments WHERE instruments.userID = '$userID'";
     $result3 = mysqli_query($con, $sql3);
-    echo "<strong>Instruments you can learn to play from me: </strong><br />";
+    echo "<strong>Instruments you can learn to play from me: </strong>";
+      echo "<ul>";
     while ($row3 = mysqli_fetch_array($result3)) {
-      echo $row3['instrument'];
-      echo "<br />";
+      echo "<li>".$row3['instrument']."</li>";
     }
-
+      echo "</ul>";
 echo "<a href='https://www.facebook.com/";
 echo $row['facebookId'];
 echo "'><img class='about_icon' src='../images/socialMedia/facebook.png' alt='Facebook Link'></a>";
-echo "<br />";
 echo "<a href='mailto:";
 echo $row['email'];
 echo "'><img class='mail_icon' src='../images/socialMedia/mail.png' alt='e-Mail Link'></a>";

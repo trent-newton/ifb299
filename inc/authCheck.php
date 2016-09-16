@@ -1,6 +1,7 @@
 <?php
 //redirect to home page
 function rejectAccess(){
+    $_SESSION['error'] = "You don't have authorisation to access this page.";
     header("location:../index.php");
     exit();
 }
