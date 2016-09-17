@@ -1,5 +1,5 @@
 <?php
-$pagetitle = "Student Center";
+$pagetitle = "User Centre";
 include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
@@ -11,24 +11,28 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
 ?>
 
 <div class="content adminCenter">
-    <h1>Welcome to the User Center</h1> <h3>What would you like to do?</h3>
+    <h1>Welcome to the User Centre</h1> <h3>What would you like to do?</h3>
 
     <div class="temp">
-        <div class="temp"><a href="../pages/viewSchedule.php"><img class="AdminCenterImage" src="../images/admin-icons/calendar.png"></a>
-           <br><button class="AdminCenterButton" href="../pages/viewschedule.php" class="button">View Schedule</button>
-        </div>
+        <a href="../pages/myaccount.php"><div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/users.png">
+           <br><h2>MY PROFILE</h2>
+        </div></a>
 
-        <div class="temp"><img class="AdminCenterImage" src="../images/home-page-images/acoustic-guitar.png">
-           <br><button class="AdminCenterButton"><a href="" class="button">Instrument Hire</a></button>
-        </div><br>
+        <a href="../pages/viewSchedule.php"><div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/calendar.png">
+           <br><h2>VIEW SCHEDULE</h2>
+        </div></a>
 
-        <div class="temp"><a href="../pages/myaccount.php"><img class="AdminCenterImage" src="../images/admin-icons/users.png"></a>
-           <br><button class="AdminCenterButton"><a href="../pages/myaccount.php" class="button">Update Details</a></button>
-        </div>
+        <?php
+          if(isStudent($_SESSION['accountType']) || isStudentTeacher($_SESSION['accountType'])) {
+            echo '<br />';
 
-        <div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/settings.png">
-           <br><button class="AdminCenterButton"><a href="" class="button">Setting</a></button>
-        </div>
+            echo '<a href="#"><div class="temp"><img class="AdminCenterImage" src="../images/home-page-images/acoustic-guitar.png">
+                  <br><h2>INSTRUMENT HIRE</h2></div></a>';
+
+            echo '<a href="../pages/enrolPage.php"><div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/settings.png">
+                  <br><h2>CLASS ENROLMENT</h2></div></a>';
+          }
+        ?>
     </div>
 </div>
 

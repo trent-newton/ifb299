@@ -15,21 +15,21 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
     <h1>Welcome to the Admin Center</h1> <h3>What would you like to do?</h3>
     
     <div class="temp">
-        <div class="temp"><a href="../pages/changeAuth.php"><img class="AdminCenterImage" src="../images/admin-icons/users.png"></a>
-           <br><button class="AdminCenterButton"><a href="changeAuth.php" class="button">User Management</a></button>
-        </div>
+        <a href="../pages/changeAuth.php"><div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/users.png">
+            <br><h2>USER MANAGEMENT</h2>
+        </div></a>
 
-        <div class="temp"><img class="AdminCenterImage" src="../images/home-page-images/acoustic-guitar.png">
-           <br><button class="AdminCenterButton"><a href="" class="button">Instrument Hire</a></button>
-        </div><br>
+        <a href="#"><div class="temp"><img class="AdminCenterImage" src="../images/home-page-images/acoustic-guitar.png">
+           <br><h2>INSTRUMENT MANAGEMENT</h2>
+        </div></a>
             
-        <div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/calendar.png">
-           <br><button class="AdminCenterButton"><a href="" class="button">Class Management</a></button>
-        </div>
+        <a href="../pages/myaccount.php"><div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/users.png">
+           <br><h2>MY PROFILE</h2>
+        </div></a>
 
-        <div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/settings.png">
+        <!--<a href="#"><div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/settings.png">
            <br><button class="AdminCenterButton"><a href="" class="button">Setting</a></button>
-        </div>
+        </div>-->
     </div>
 </div>
 

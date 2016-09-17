@@ -29,8 +29,7 @@
         $pEmail = mysqli_real_escape_string($con, $_POST['pEmail']);
 
         // Check student DoB
-        $dobDate = date_create($dob);
-        $dob = date_format($dobDate, "Y-m-d");
+        $dob = StringToDate($dob, "Y-m-d");
 
         // Check unit number
         if ($unitNum != "") {
@@ -65,8 +64,9 @@
         }
 
         // Need to check day and month
-        $today = new DateTime('now');
-        $age = date_format($today, "Y") - date_format($dobDate, "Y");
+        //$today = new DateTime('now');
+        //$age = date_format($today, "Y") - date_format($dobDate, "Y");
+        $age = GetAge($dob);
         if ($age < 18) {
             if ($pName == "") {
                 $errorPName = "Parent name required";
@@ -143,6 +143,8 @@
             } else {
                 $errorSEmail = "Email already in use";
             }
+        } else {
+            $_SESSION['error'] = "Please review field errors";
         }
     }
 ?>

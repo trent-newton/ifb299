@@ -5,13 +5,15 @@ include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
 include "../inc/logincheck.php";
+require "../inc/ageFunctions.php";
 $userID = $_SESSION['userID'];
 
 $sql = "SELECT * FROM users LEFT JOIN useraddress ON users.UserID=useraddress.userID LEFT JOIN address ON useraddress.addressID=address.addressId WHERE users.userID='$userID' ";
 $result = mysqli_query($con, $sql) or die(mysqli_error($con));
 $row = mysqli_fetch_array($result);
 
-
+$DOB = StringToDate($row['DOB'], "Y-m-d");
+$age = GetAge($DOB);
 ?>
     <div class="content fieldSetCentered">
         
@@ -99,14 +101,18 @@ $row = mysqli_fetch_array($result);
                 <input type="text" value="" name="phone<?php echo $n?>" />
                 <br />
                 <input type="hidden" name="numPhones" value="<?php echo $n?>" />
-                <label>Parent's Name</label>
-                <br />
-                <input type="text" name="parentName" value="<?php echo $row['parentName']?>" />
-                <br />
-                <label>Parent's Email</label>
-                <br />
-                <input type="text" name="parentEmail" value="<?php echo $row['parentEmail']?>" />
-                <br />
+                <?php
+                    if ($age < 18) {
+                        echo "<label>Parent's Name<span class='required'>*</span>: </label>";
+                        echo "<br />";
+                        echo "<input type='text' name='parentName' value='".$row['parentName']."' required>";
+                        echo "<br />";
+                        echo "<label>Parent's Email<span class='required'>*</span>: </label>";
+                        echo "<br />";
+                        echo "<input type='email' name='parentEmail' value='".$row['parentEmail']."' required>";
+                        echo "<br />";
+                    }
+                ?>
                 <input type="hidden" name="userID" value="<?php echo $userID?>" />
                 <input type="submit" name="accountupdate" value="Update Details" />            
             </form>
@@ -132,6 +138,5 @@ $row = mysqli_fetch_array($result);
         </fieldset>
     </div>
 <?php
-    
-    include "../inc/footer.php";
-                    ?>
+include "../inc/footer.php";
+?>

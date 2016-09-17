@@ -26,8 +26,7 @@
         $parentEmail = mysqli_real_escape_string($con, $_POST['pEmail']);
 
         // Check student DoB
-        $dobDate = date_create($DOB);
-        $DOB = date_format($dobDate, "Y-m-d");
+        $DOB = StringToDate($DOB, "Y-m-d");
         $age = GetAge($DOB);
 
         // Check unit number
@@ -130,11 +129,5 @@
         $parentEmail = $arrayGetDetails['parentEmail'];
 
         $age = GetAge($DOB);
-    }
-
-    function GetAge($DOB) {
-        $today = new DateTime('now');
-        $dob = new DateTime($DOB);
-        return date_format($today, "Y") - date_format($dob, "Y");
     }
 ?>

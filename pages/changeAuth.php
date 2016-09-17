@@ -1,4 +1,4 @@
-  <?php
+<?php
 $pagetitle = "About";
 include "../inc/connect.php";
 include "../inc/header.php";
@@ -10,7 +10,6 @@ if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
 }
 
 $column = array(
-  'UserID' => 'userID',
   'First Name' => 'firstName',
   'Last Name' => 'lastName'
 );
@@ -36,8 +35,8 @@ foreach ($accountTypes as $type) {
       echo "<th>$name</th>";
     }
 
-    echo "<th> Change Access </th>";
     echo "<th> Change Details </th>";
+    echo "<th> Change Access </th>";
     echo "<th> Change Schedule </th> </tr>";
 
     // Output rows
@@ -46,8 +45,8 @@ foreach ($accountTypes as $type) {
       foreach ($column as $name => $col_name) {
         echo "<td>". $row[$col_name] . "</td>";
       }
-      echo '<td><a href="changeAuthProcess.php?userID='.$row['userID'].'"><span class="changeAccess"> change access </span></a></td>';
       echo '<td><a href="adminModifyAccount.php?userID='.$row['userID'].'"><span class="changeAccess"> change details </span></a></td>';
+      echo '<td><a href="changeAuthProcess.php?userID='.$row['userID'].'"><span class="changeAccess"> change access </span></a></td>';
       if(($type !== "Admin") && ($type !== "Guest") && ($type !== "Teacher"))
       {
         echo '<td><a href="changeSchedule.php?userID='.$row['userID'].'"><span class="changeAccess"> change schedule </span></a></td></tr>';

@@ -3,6 +3,7 @@
     include "../inc/connect.php";
     include "../inc/header.php";
     include "../inc/nav.php";
+    require "../inc/ageFunctions.php";
     include "../inc/accountprocessing.php";
 ?>
 
