@@ -1,5 +1,5 @@
 <?php
-$pagetitle = "enrol";
+$pagetitle = "Enrol";
 
 include "../inc/connect.php";
 include "../inc/header.php";
