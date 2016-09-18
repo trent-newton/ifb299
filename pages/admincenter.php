@@ -27,7 +27,7 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
            <br><h2>REVIEWS</h2>
         </div></a>
 
-        <a href="../pages/myaccount.php"><div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/users.png">
+        <a href="../pages/myaccount.php"><div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/user.png">
            <br><h2>MY PROFILE</h2>
         </div></a>
 
