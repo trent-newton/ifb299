@@ -12,17 +12,21 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
 ?>
 
 <div class="adminCenter">
-    <h1>Welcome to the Admin Center</h1> <h3>What would you like to do?</h3>
-    
+    <h1>Welcome to the Admin Center</h1> <h3>What would you like to manage?</h3>
+
     <div class="temp">
         <a href="../pages/changeAuth.php"><div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/users.png">
-            <br><h2>USER MANAGEMENT</h2>
+            <br><h2>USERS</h2>
         </div></a>
 
         <a href="#"><div class="temp"><img class="AdminCenterImage" src="../images/home-page-images/acoustic-guitar.png">
-           <br><h2>INSTRUMENT MANAGEMENT</h2>
+           <br><h2>INSTRUMENTS</h2>
         </div></a>
-            
+
+        <a href="../pages/adminReviewCenter.php"><div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/reviews.png">
+           <br><h2>REVIEWS</h2>
+        </div></a>
+
         <a href="../pages/myaccount.php"><div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/users.png">
            <br><h2>MY PROFILE</h2>
         </div></a>
