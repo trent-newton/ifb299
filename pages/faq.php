@@ -4,10 +4,10 @@
     include "../inc/header.php";
     include "../inc/nav.php";
 ?>
- <div class="adminCenter">
-    <h1>FAQ</h1>
+ <div class="content ">
+    <h1 class="centered">FAQ</h1>
 
-    <div class="faq_post group clearfix">
+    <div class="faq_post">
 
 					<div class="faq_images right">
 
@@ -22,11 +22,7 @@
 
 						<div class="padding">
 						<a href="../pages/hire-an-instrument.php"><h2 class="faq_title">How to Rent an Instrument?</h2></a>
-						<p>
-              Want to learn an instrument that you don't own?<br />
-              You can hire instrument by following these simple steps<br />
-              Also find out if our class includes access to an instrument, because <br />
-              you don't have to bring in your Grand Piano to learn how to play it<br /><br />
+						<p>Want to learn an instrument that you don't own? You can hire instrument by      following these simple steps.<br />
 							<a class='faq_readmore' href="../pages/hire-an-instrument.php">Read more ...</a>
 						</p>
 						</div>
@@ -50,7 +46,7 @@
     						<div class="padding">
     						<a href="../pages/contracts-for-students.php"><h2 class="faq_title">Where can I read more about the contract for students?</h2></a>
     						<p>
-    							blahblahblahblahblahblahblahblahblahblahblahblahblahblah<br /><br />
+    							Everything you need to know about contract term, scheduling, payment, pricing, student responsibilities can be read here.<br />
     							<a class='faq_readmore' href="../pages/contracts-for-students.php">Read more ...</a>
     						</p>
     						</div>
@@ -74,7 +70,7 @@
         						<div class="padding">
         						<a href="../pages/required-teacher-qualifications.php"><h2 class="faq_title">What sort of qualifications do I need to be eligible as Pinelands Music School teacher?</h2></a>
         						<p>
-        							Add snippet of text here<br /><br />
+        							Unlike music teachers in schools, Pinelands Music School Teachers should be able work in stand-alone musical or artistic facilities. <br />
         							<a class='faq_readmore' href="../pages/required-teacher-qualifications.php">Read more ...</a>
         						</p>
         						</div>

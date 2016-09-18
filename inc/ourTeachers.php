@@ -2,12 +2,8 @@
   $sql = 'SELECT * FROM users WHERE accountType="Teacher" OR accountType="StudentAndTeacher" ';
   $result = mysqli_query($con, $sql);
   while ($row = mysqli_fetch_array($result)) {
-
-    echo "<h2>";
-    echo $row['firstName'];
-    echo " ";
-    echo $row['lastName'];
-    echo "</h2>";
+      echo "<div class='temp teacherPage'>";
+    echo "<h2>" . $row['firstName'] . " " . $row['lastName'] . "</h2>";
 
     $userID = $row["UserID"];
 
@@ -66,6 +62,6 @@ echo "'><img class='about_icon' src='../images/socialMedia/facebook.png' alt='Fa
 echo "<a href='mailto:";
 echo $row['email'];
 echo "'><img class='mail_icon' src='../images/socialMedia/mail.png' alt='e-Mail Link'></a>";
-
+echo "</div>";
 }
 ?>

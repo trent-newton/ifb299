@@ -4,15 +4,22 @@
     include "../inc/header.php";
     include "../inc/nav.php";
 ?>
- <div class="adminCenter">
+ <div class="content">
     <h1>Hiring an Instrument</h1>
     <p>
+        Pinelands Music School owns a wide range of musical instruments, from acoustic guitars to xylophones! <br />
+        Instruments are available for hire on a school term basis at very low rates, in a mix of student sizes.
+     </p>
+     <h2>Term Hire</h2>
+     <ul>
+        <li>Pre-loved Term Hires offer a variety of instrument brands from the world's leading manufacturers - based on 4 terms per year, pro rata charges apply if ordered after week two of any term.</li>
+    </ul>
+     <h2>ANNUAL RENTAL</h2>
+        <ul><li>Pre-loved Annual hires (discounted rate for schools who can commit to the full year - pro rata charges also apply).</li>
+            <li>Fast turn-around on urgent repairs or replacements</li></ul>
 
-Pineland School owns a wide range of musical instruments, from acoustic guitars to xylophones!<br />
-Instruments are available for hire on a school term basis at very low rates, in a mix of student sizes.<br />
-You can keep your instrument to practice during the term holidays, but most instruments need to be returned in December each year for servicing. The instruments are then hired to students attending Summer School. Instruments may be rehired after Summer School.<br />
-To hire from the Pineland Music School you must be a financial member. This costs $30 for a calendar year. Sign up online or join when you collect your instrument. <br />
-Nullam dolor turpis, facilisis eu mattis eget, fringilla sed tortor. Integer in tincidunt augue, ut posuere velit. Ut tempus cursus malesuada. Duis vitae ornare nulla, sed pulvinar ex. Donec bibendum, odio nec interdum pretium, nibh mauris auctor erat, ac pulvinar purus nulla at ex. Duis ac porta risus. Integer suscipit libero consequat mauris varius rutrum. Proin purus ipsum, sodales in risus eu, mollis dignissim odio. Donec mi lectus, accumsan non faucibus eu, porttitor ut felis. Vivamus nisi tortor, aliquam eget vehicula sed, interdum ut dolor. Quisque tincidunt lorem vitae malesuada sollicitudin. Integer imperdiet consectetur urna ut venenatis. Vivamus id finibus est. Donec sapien augue, convallis a tincidunt viverra, tincidunt at diam. Praesent quis risus ipsum. Sed feugiat leo ut neque sagittis mollis.</p>
+            
+
 
 <img src="../images/faq/hire.png" />
 

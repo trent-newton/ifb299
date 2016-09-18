@@ -6,16 +6,21 @@
 ?>
 
     <div class="content">
-        <h1>Our History</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lacinia elit justo, id scelerisque purus tincidunt ut. Duis semper metus non est eleifend ultrices sit amet eget sem. Duis nec pretium ex. Pellentesque ante justo, porttitor eget ornare vitae, sagittis vitae lectus. Phasellus nisl urna, bibendum ut sapien at, rhoncus tincidunt purus. Aenean sed enim consectetur, mattis eros et, rhoncus odio. Sed sollicitudin ornare ligula, et mollis nisi porttitor eu.
+        <h1>About Pinelands Music School</h1>
+        <p>Anyone can learn music in Pinelands Music School. The school was founded by Mika Williams in 2009, who became popular due to her passion for music and love for teaching. 
+        Pineland Music School strives to deliver an amazing range of instrument and vocal skills through our qualified teachers to our students. Apart from guiding you through your music lessons, we also do offer instrument hiring service for our students.
 
-Nullam dolor turpis, facilisis eu mattis eget, fringilla sed tortor. Integer in tincidunt augue, ut posuere velit. Ut tempus cursus malesuada. Duis vitae ornare nulla, sed pulvinar ex. Donec bibendum, odio nec interdum pretium, nibh mauris auctor erat, ac pulvinar purus nulla at ex. Duis ac porta risus. Integer suscipit libero consequat mauris varius rutrum. Proin purus ipsum, sodales in risus eu, mollis dignissim odio. Donec mi lectus, accumsan non faucibus eu, porttitor ut felis. Vivamus nisi tortor, aliquam eget vehicula sed, interdum ut dolor. Quisque tincidunt lorem vitae malesuada sollicitudin. Integer imperdiet consectetur urna ut venenatis. Vivamus id finibus est. Donec sapien augue, convallis a tincidunt viverra, tincidunt at diam. Praesent quis risus ipsum. Sed feugiat leo ut neque sagittis mollis.
-</p>
+        Our Philosophy
+        We strive to make sure that our clients get the most out of every lesson:</p>
+            <ul>
+                <li>We take the time to find out what it is you want from your music lessons. </li>
+                <li>What it is you really want to learn. </li>
+                <li>What it is you need from your music lesson.</li>
+            </ul>
 
-<h2>Meet our Teachers</h2>
-<?php
-  include "../inc/ourTeachers.php";
-?>
+
+<a href="../pages/meettheteachers.php">Meet our Teachers</a>
+
 
     </div>
     <!--end content-->
