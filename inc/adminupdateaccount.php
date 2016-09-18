@@ -108,7 +108,7 @@
         $userID = $_GET['userID'];
 
         // Get information from the database
-        $sqlGetDetails = "SELECT * FROM users INNER JOIN useraddress ON users.UserID=useraddress.userID Inner JOIN address ON useraddress.addressID=address.addressId WHERE users.userid='$userID'";
+        $sqlGetDetails = "SELECT * FROM users LEFT JOIN useraddress ON users.UserID=useraddress.userID LEFT JOIN address ON useraddress.addressID=address.addressId WHERE users.userID='$userID'";
         $resultGetDetails = mysqli_query($con, $sqlGetDetails) or die(mysqli_error($con));
         $arrayGetDetails = mysqli_fetch_array($resultGetDetails);
 

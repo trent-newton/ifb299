@@ -8,6 +8,7 @@ require "../inc/authCheck.php";
 if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
     rejectAccess();
 }
+echo "<div class='content'>";
 
 $column = array(
   'First Name' => 'firstName',
@@ -59,5 +60,6 @@ foreach ($accountTypes as $type) {
     echo "</table><br>";
 }
 
+echo "</div>";
 include "../inc/footer.php";
 ?>
