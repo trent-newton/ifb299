@@ -22,7 +22,7 @@ if ($newpassword == $newpassword2)
 	if (strlen($newpassword) < 8) //check if $password is 8 chars long
 	{
 		$_SESSION['error'] = "Password must be 8 or more characters.";
-		header("location:" . HTTP('REFERER'));
+		header("location:" . $_SERVER['HTTP_REFERER']);
 		exit();
 	}
 	else
@@ -42,8 +42,8 @@ if ($newpassword == $newpassword2)
 else
 {
 	$_SESSION['error'] = "Your new passwords do not match";
-	header("location:" . HTTP('REFERER'));
-	ob_flush();
+	header("location:" . $_SERVER['HTTP_REFERER']);
+	
 	exit();
 }
 ?>
