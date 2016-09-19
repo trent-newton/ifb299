@@ -18,10 +18,10 @@ $query = "UPDATE teacherreviews SET reviewStatus='$reviewStatus' WHERE reviewID=
 
 // query to change
 $sql = mysqli_query($con,$query) or die(mysqli_error($con));
-
+echo "<div class='content'>";
 echo "Change Successfully Made";
 echo '<br /><a href="adminReviewCenter.php" class="button"><< Return to Reviews Center</a>';
 
-
+echo "</div>";
 include "../inc/footer.php";
 ?>

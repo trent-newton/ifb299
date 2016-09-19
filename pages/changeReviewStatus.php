@@ -13,14 +13,15 @@ if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
 $reviewID = $_GET['reviewID'];
 
 // Run the query & fetch results
-$result = "SELECT teacherreviews.*,users.firstName AS studFN, users.lastName AS studLN, stuff.firstName AS teachFN, stuff.lastName AS teachLN FROM users INNER JOIN teacherreviews ON userID=studentID INNER JOIN users AS stuff ON stuff.userID= teacherreviews.teacherID WHERE reviewID = $reviewID";
-$name = mysqli_fetch_array($result);
-
+$sql = "SELECT teacherreviews.*,users.firstName AS studFN, users.lastName AS studLN, stuff.firstName AS teachFN, stuff.lastName AS teachLN FROM users INNER JOIN teacherreviews ON userID=studentID INNER JOIN users AS stuff ON stuff.userID= teacherreviews.teacherID WHERE reviewID = $reviewID";
+$result = mysqli_query($con, $sql) or die(mysqli_error($con));
+$row = mysqli_fetch_array($result);
+echo "<div class='content'>";
 // Print header
-echo "<h1> Change review for ".$name['firstName']." ".$name['lastName']." (Review ID $reviewID) </h1>";
+echo "<h2> Change review for ".$row['teachFN']." ".$row['teachLN']." (Review ID $reviewID) </h2>";
 // Simple form with account types
 echo'<br> Change review status to:
-<form method="post" action="changeReviewResult.php?reviewID='.$reviewID.'">
+<form method="post" action="changeReviewResult.php?reviewID='. $reviewID . '">
     <select required name="accessChosen">
       <option value="" disabled selected> Select... </option>
       <option value="Public">Public</option>
@@ -29,6 +30,8 @@ echo'<br> Change review status to:
       </select>
     <input type="submit" value="Changes">
 </form>';
+
+echo "</div>";
 
 include "../inc/footer.php";
 ?>
