@@ -15,6 +15,7 @@ $newpassword2 = mysqli_real_escape_string($con, $_POST['newPassword2']); //stops
 $sql = "SELECT userID, salt FROM users WHERE email='$email'";
 $result = mysqli_query($con, $sql) or die(mysqli_error($con)); //Run Query
 $row = mysqli_fetch_array($result); //Place results into a variable $row
+$count = mysqli_num_rows($row);
 
 
 if ($newpassword == $newpassword2)

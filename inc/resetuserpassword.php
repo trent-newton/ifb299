@@ -31,5 +31,10 @@ if($numrow == 1) {
         header("location:" . $_SERVER['HTTP_REFERER']);
         exit();
     }
+} else {
+    $_SESSION['error'] = "That email is not in our database";
+    header("location:" . $_SERVER['HTTP_REFERER']);
+    exit();
+
 }
                
