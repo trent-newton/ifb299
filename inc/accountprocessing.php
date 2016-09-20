@@ -1,8 +1,10 @@
 <?php
-    $errorAddress = "";
+    $errorDOB = "";
+    $errorStreet = "";
+    $errorPostcode = "";
     $errorSEmail = "";
-    $errorMobile = "";
-    $errorPhone = "";
+    $errorPhone0 = "";
+    $errorPhone1 = "";
     $errorConfirmPassword = "";
     $errorPName = "";
     $errorPEmail = "";
@@ -20,39 +22,54 @@
         $state = mysqli_real_escape_string($con, $_POST['state']);
         $postcode = mysqli_real_escape_string($con, $_POST['postcode']);
         $sEmail = mysqli_real_escape_string($con, $_POST['sEmail']);
-        $mobile = mysqli_real_escape_string($con, $_POST['mobile']);
-        $phone = mysqli_real_escape_string($con, $_POST['phone']);
+        $phone0 = mysqli_real_escape_string($con, $_POST['phone0']);
+        $phone1 = mysqli_real_escape_string($con, $_POST['phone1']);
         $facebook = mysqli_real_escape_string($con, $_POST['facebook']);
         $password = mysqli_real_escape_string($con, $_POST['password']);
         $confirmPassword = mysqli_real_escape_string($con, $_POST['confirmPassword']);
         $pName = mysqli_real_escape_string($con, $_POST['pName']);
         $pEmail = mysqli_real_escape_string($con, $_POST['pEmail']);
 
-        // Check student DoB
-        $dob = StringToDate($dob, "Y-m-d");
+        // Check student DoB and parent's details
+        $errorDOB = CheckDateString($dob);
+        if ($errorDOB == "") {
+            $dob = StringToDate($dob, "Y-m-d");
+
+            // Need to check day and month
+            $age = GetAge($dob);
+            if ($age < 18) {
+                if ($pName == "") {
+                    $errorPName = "Parent name required";
+                }
+
+                if ($pEmail == "") {
+                    $errorPEmail = "Parent email required";
+                } else {
+                    $errorPEmail = CheckEmail($pEmail);
+                }
+            }
+        }
+
+        // Check student email
+        $errorSEmail = CheckEmail($sEmail);
 
         // Check unit number
         if ($unitNum != "") {
-            if (!is_numeric($unitNum)) {
-                $errorAddress = "Invalid address";
-            }
+            $errorStreet = CheckNumeric($unitNum, "Invalid unit number");
         }
 
-        // Check address
-        if (!is_numeric($streetNum) || !is_numeric($postcode)) {
-            $errorAddress = "Invalid address";
-        }
+        // Check street number
+        $errorStreet = CheckNumeric($streetNum, "Invalid street number");
 
-        //Check student mobile
-        if (!is_numeric($mobile) || strlen($mobile) != 10) {
-            $errorMobile = "Invalid student mobile";
-        }
+        // Check postcode
+        $errorPostcode = CheckNumAndLength($postcode, 4, "Invalid postcode");
 
-        //Check student phone
-        if ($phone != "") {
-            if (!is_numeric($phone) || strlen($phone) != 10) {
-                $errorPhone = "Invalid student phone";
-            }
+        //Check student phone0
+        $errorPhone0 = CheckNumAndLength($phone0, 10, "Invalid phone number");
+
+        //Check student phone1
+        if ($phone1 != "") {
+            $errorPhone1 = CheckNumAndLength($phone1, 10, "Invalid phone number");
         }
 
         // Check confirm password
@@ -63,21 +80,7 @@
             $password = hash('sha256', $password.$salt); //Puts the $password and $salt together and hashes it
         }
 
-        // Need to check day and month
-        //$today = new DateTime('now');
-        //$age = date_format($today, "Y") - date_format($dobDate, "Y");
-        $age = GetAge($dob);
-        if ($age < 18) {
-            if ($pName == "") {
-                $errorPName = "Parent name required";
-            }
-
-            if ($pEmail == "") {
-                $errorPEmail = "Parent email required";
-            }
-        }
-
-        if ($errorAddress == "" && $errorPhone == "" && $errorMobile == "" && $errorConfirmPassword == "" && $errorPName == "" && $errorPEmail == "") {
+        if ($errorDOB == "" && $errorStreet == "" && $errorPostcode == "" && $errorPhone0 == "" && $errorPhone1 == "" && $errorConfirmPassword == "" && $errorPName == "" && $errorPEmail == "") {
             // Check if email is already in the database
             $sqlCheckEmail = sprintf("SELECT email FROM users WHERE email='%s'", $sEmail);
             $resultCheckEmail = mysqli_query($con, $sqlCheckEmail) or die(mysqli_error($con));
@@ -96,14 +99,14 @@
                 $arrayGetAddressID = mysqli_fetch_array($resultGetAddressID);
                 $addressID = $arrayGetAddressID['addressId'] + 1;
 
-                // Add mobile numbers
-                $sqlAddMobile = sprintf("INSERT INTO phonenumbers (userID, phoneNumber) VALUES ('%d', '%s');", $studentID, $mobile);
-                mysqli_query($con, $sqlAddMobile) or die(mysqli_error($con));
+                // Add phone0 numbers
+                $sqlAddPhone0 = sprintf("INSERT INTO phonenumbers (userID, phoneNumber) VALUES ('%d', '%s');", $studentID, $phone0);
+                mysqli_query($con, $sqlAddPhone0) or die(mysqli_error($con));
 
-                // Add phone numbers
-                if ($phone != "") {
-                    $sqlAddPhone = sprintf("INSERT INTO phonenumbers (userID, phoneNumber) VALUES ('%d', '%s');", $studentID, $phone);
-                    mysqli_query($con, $sqlAddPhone) or die(mysqli_error($con));
+                // Add phone1 numbers
+                if ($phone1 != "") {
+                    $sqlAddPhone1 = sprintf("INSERT INTO phonenumbers (userID, phoneNumber) VALUES ('%d', '%s');", $studentID, $phone1);
+                    mysqli_query($con, $sqlAddPhone1) or die(mysqli_error($con));
                 }
 
                 // Add address

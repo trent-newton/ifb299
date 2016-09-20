@@ -26,7 +26,7 @@
         <?php
         if((($_SESSION['accountType']) == 'Admin') || (($_SESSION['accountType']) == 'Owner')){
           echo '<a href="../pages/admincenter.php">Admin Center</a><br />';
-        } else if (!$_SESSION['accountType'] == 'Guest') {
+        } else if ($_SESSION['accountType'] == 'Student' || $_SESSION['accountType'] == 'Teacher' || $_SESSION['accountType'] == 'StudentAndTeacher') {
           echo '<a href="../pages/usercenter.php">User Center</a><br />';
         }
         ?>

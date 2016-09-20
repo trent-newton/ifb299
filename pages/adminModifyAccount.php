@@ -3,7 +3,7 @@
 	include "../inc/connect.php";
 	include "../inc/header.php";
 	include "../inc/nav.php";
-    require "../inc/ageFunctions.php";
+    require "../inc/checkFunctions.php";
     include "../inc/adminupdateaccount.php";
 	require "../inc/authCheck.php";
 
@@ -38,7 +38,8 @@
             <input type="text" name="unitNum" id="txtUnitNum" class="inputStreet" size="2" maxlength="4" placeholder="4" value="<?php echo $unitNumber ?>">
             <label for="txtStreetNum">Street No<span class="required">*</span>: </label>
             <input type="text" name="streetNum" class="inputStreet" id="txtStreetNum" size="3" maxlength="4" placeholder="42" value="<?php echo $streetNumber ?>" required>
-            <?php echo "<span class='required'>  ".$errorAddress."</span>" ?><br />
+                <?php echo "<span class='required'>  ".$errorStreet."</span>" ?>
+            <br />
             <label or="txtStreet">Street<span class="required">*</span>: </label>
             <br />
             <input type="text" name="street" id="txtStreet" placeholder="Main" value="<?php echo $streetName ?>" required>
@@ -68,21 +69,22 @@
             <label for="txtPostcode">Postcode<span class="required">*</span>: </label>
             <br />
             <input type="text" name="postcode" id="txtPostcode" size="4" maxlength="4" placeholder="1234" value="<?php echo $postcode ?>" required>
+                <?php echo "<span class='required'>  ".$errorPostcode."</span>" ?>
             <br><br />
             <label for="txtSEmail">Email<span class="required">*</span>: </label>
             <br />
-            <input type="email" name="sEmail" id="txtSEmail" placeholder="student@address.com" value="<?php echo $email ?>" required><?php echo "<span class='required'>  ".$errorSEmail."</span>" ?>
+            <input type="email" name="sEmail" id="txtSEmail" placeholder="student@address.com" value="<?php echo $email ?>" required>
+                <?php echo "<span class='required'>  ".$errorSEmail."</span>" ?>
             <br />
             <?php
-                echo "<span class='required'>  ".$errorPhone."</span>";
-
                 $sql = "SELECT * FROM phonenumbers WHERE userID='$userID'";
                 $result = mysqli_query($con, $sql);
                 $n = 0;
                 while ($row = mysqli_fetch_array($result)) {
                     if ($n == 0) {
                         echo "<label for='txtPhone".$n."'>Phone " . $n . "<span class='required'>*</span>:</label><br />";
-                        echo "<input type='text' name='phone" . $n . "' id='txtPhone".$n."' size='10' maxlength='10' placeholder='0412345678' value='" . $row['phoneNumber'] . "' required><br />";
+                        echo "<input type='text' name='phone" . $n . "' id='txtPhone".$n."' size='10' maxlength='10' placeholder='0412345678' value='" . $row['phoneNumber'] . "' required>";
+                        echo "<span class='required'>  ".$errorPhone."</span><br />";
                     } else {
                         echo "<label for='txtPhone".$n."'>Phone " . $n . ":</label><br />";
                         echo "<input type='text' name='phone" . $n . "' id='txtPhone".$n."' size='10' maxlength='10' placeholder='0412345678' value='" . $row['phoneNumber'] . "'><br />";

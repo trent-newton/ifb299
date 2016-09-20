@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "../inc/connect.php";
+require "../inc/checkFunctions.php";
 ?>
 
 <?php
@@ -15,12 +16,7 @@ $row = mysqli_fetch_array($result);
 $addressID = $row['addressID'];
 $dob = $row['DOB'];
 
-$dobDate = date_create($dob);
-$dob = date_format($dobDate, "Y-m-d");
 
-
-    
-    
 $facebookID = mysqli_real_escape_string($con,$_POST['facebookID']);
 $email = mysqli_real_escape_string($con,$_POST['email']);
 $parentName = mysqli_real_escape_string($con,$_POST['parentName']);
@@ -37,17 +33,17 @@ for($i = 0; $i <= $numPhones; $i++) {
     ${"phoneNumber".$i} = mysqli_real_escape_string($con, $_POST['phone'.$i]);
 }
 
-$today = new DateTime('now');
-$age = date_format($today, "Y") - date_format($dobDate, "Y");
+$dob = StringToDate($dob, "Y-m-d");
+$age = GetAge($dob);
 if ($age < 18) {
     if ($parentName == "") {
         $_SESSION['error'] = "Please enter a Parent name.";
-    header("location:" . $_SERVER["HTTP_REFERER"]);
-    exit();
-    } elseif ($parentEmail == "" || !filter_var($parentEmail, FILTER_VALIDATE_EMAIL)) {
+        header("location:" . $_SERVER["HTTP_REFERER"]);
+        exit();
+    } else if ($parentEmail == "" || !filter_var($parentEmail, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['error'] = "Please enter a valid parent Email.";
-    header("location:" . $_SERVER["HTTP_REFERER"]);
-    exit();
+        header("location:" . $_SERVER["HTTP_REFERER"]);
+        exit();
     }
     
 }

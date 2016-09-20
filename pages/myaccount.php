@@ -5,7 +5,7 @@ include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
 include "../inc/logincheck.php";
-require "../inc/ageFunctions.php";
+require "../inc/checkFunctions.php";
 $userID = $_SESSION['userID'];
 
 $sql = "SELECT * FROM users LEFT JOIN useraddress ON users.UserID=useraddress.userID LEFT JOIN address ON useraddress.addressID=address.addressId WHERE users.userID='$userID' ";

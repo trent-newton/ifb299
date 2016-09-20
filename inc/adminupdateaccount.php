@@ -1,5 +1,6 @@
 <?php
-    $errorAddress = "";
+    $errorStreet = "";
+    $errorPostcode = "";
     $errorSEmail = "";
     $errorPhone = "";
     $errorPEmail = "";
@@ -28,20 +29,32 @@
         // Check student DoB
         $DOB = StringToDate($DOB, "Y-m-d");
         $age = GetAge($DOB);
-
-        // Check unit number
-        if ($unitNumber != "") {
-            if (!is_numeric($unitNumber)) {
-                $errorAddress = "Invalid address";
+        if ($age < 18) {
+            if ($parentEmail == "") {
+                $errorPEmail = "Parent email required";
+            } else {
+                $errorPEmail = CheckEmail($parentEmail);
             }
         }
 
-        // Check address
-        if (!is_numeric($streetNumber) || !is_numeric($postcode)) {
-            $errorAddress = "Invalid address";
+        // Check unit number
+        if ($unitNumber != "") {
+            $errorStreet = CheckNumeric($unitNumber, "Invalid unit number");
         }
 
-        if ($errorAddress == "" &&  $errorSEmail == "" && $errorPhone == "" &&  $errorPEmail == "") {
+        // Check street number
+        $errorStreet = CheckNumeric($streetNumber, "Invalid street number");
+
+        // Check postcode
+        $errorPostcode = CheckNumAndLength($postcode, 4, "Invalid postcode");
+
+        // Check student email
+        $errorSEmail = CheckEmail($email);
+
+        //Check student phone0
+        $errorPhone = CheckNumAndLength($phoneNumber0, 10, "Invalid phone number");
+
+        if ($errorStreet == "" && $errorPostcode == "" && $errorPhone == "" && $errorPEmail == "") {
             // Check if email is already in the database
             $sqlCheckEmail = "SELECT email FROM users WHERE userID != '$userID' AND email = '$email'";
             $resultCheckEmail = mysqli_query($con, $sqlCheckEmail) or die(mysqli_error($con));
