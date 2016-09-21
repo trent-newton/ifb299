@@ -4,6 +4,7 @@ $pagetitle = "Review Status Change Result";
 include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
+include "../inc/bootstrap.php";
 require "../inc/authCheck.php";
 
 if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){

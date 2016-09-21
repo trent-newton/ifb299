@@ -4,7 +4,8 @@
     include "../inc/header.php";
     include "../inc/nav.php";
     require "../inc/checkFunctions.php";
-    include "../inc/accountprocessing.php";
+    include "../inc/accountprocessing.php"; 
+    include "../inc/bootstrap.php";
 ?>
 
 <div class="content">

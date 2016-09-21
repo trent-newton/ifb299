@@ -4,6 +4,7 @@ include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
 include "../inc/authCheck.php";
+include "../inc/bootstrap.php";
 
 if(!(isStudent($_SESSION['accountType'])) && !(isStudentTeacher($_SESSION['accountType'])) && !(isTeacher($_SESSION['accountType']))){
     $_SESSION['error'] = "Only Students can access the Enrol Page.";

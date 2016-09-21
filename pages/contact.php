@@ -3,6 +3,7 @@
     include "../inc/connect.php";
     include "../inc/header.php";
     include "../inc/nav.php";
+    include "../inc/bootstrap.php";
 ?>
   <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDX-FOv5xJ96b9kiz59Vgimpeod6xolriU&callback=initMap'>
   </script>

@@ -6,6 +6,7 @@
     require "../inc/checkFunctions.php";
     include "../inc/adminupdateaccount.php";
 	require "../inc/authCheck.php";
+    include "../inc/bootstrap.php";
 
     // Check if user is owner or admin
 	if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){

@@ -5,7 +5,7 @@ include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
 include "../inc/authCheck.php";
-
+include "../inc/bootstrap.php";
 
 $accessLevel='';
 $userID='';
