@@ -5,8 +5,9 @@ include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
 include "../inc/authCheck.php";
+include "../inc/bootstrap.php";
 
-echo "<div class='content'>";
+echo "<div class='content'><div class='form-content'>";
 
 $accessLevel='';
 $userID='';
@@ -42,15 +43,15 @@ $resultInstrument = mysqli_query($con,"SELECT distinct instrument FROM instrumen
 //query to find list of langauges
 $resultLanguage = mysqli_query($con,"SELECT distinct language FROM languages");
 
-//select instrument
-echo '<br> Select an instrument';
 if($accessLevel == 'admin')
 {
-  echo '<form method="post" action="enrolClassTimes.php?userID='.$userID.'">';
+  echo '<form method="post" class="basic-form" action="enrolClassTimes.php?userID='.$userID.'">';
 } else {
-  echo '<form method="post" action="enrolClassTimes.php">';
+  echo '<form method="post" class="basic-form" action="enrolClassTimes.php">';
 }
-    echo '<select required name="chosenInstrument">
+    //select instrument
+    echo '<br> Instrument';
+    echo '<select class="form-control" required name="chosenInstrument">
       <option value="" disabled selected> Select... </option>';
 
       while($row = mysqli_fetch_array($resultInstrument)) {
@@ -58,20 +59,20 @@ if($accessLevel == 'admin')
             echo "<option value='$row[$col_name]'>$row[$col_name]</option>";
           }
       }
-    echo '</select><br> Select language <br> ';
+    echo '</select><br> Language <br> ';
 
     //select language
-    echo '<select required name="chosenLanguage">
-      <option value="English" selected="selected"> English </option>';
+    echo '<select class="form-control" required name="chosenLanguage">
+      <option value="" disabled selected> Select... </option>';
         while($row = mysqli_fetch_array($resultLanguage)) {
           foreach ($columnLanguage as $name => $col_name) {
             echo "<option value='$row[$col_name]'>$row[$col_name]</option>";
           }
       }
-    echo '</select><br> Select a day<br>';
+    echo '</select><br> Day<br>';
 
     // select day ?>
-    <select required name="chosenDay">
+    <select class="form-control" required name="chosenDay">
         <option value="" >Select day </option>
         <option value="Monday" > Monday</option>
         <option value="Tuesday" > Tuesday</option>
@@ -81,10 +82,11 @@ if($accessLevel == 'admin')
     </select>
 
     <!-- select start time -->
-    <br>Select start time (please enter in 24 hour time like 13:00) <br>
-    <input type="text" name="chosenStartTime" pattern="[0-9][0-9]:00|30" title="please enter in 24 hour time">
+    <br>Start Time (24 hour format) <br>
+    <input class="form-control" type="text" name="chosenStartTime" pattern="[0-9][0-9]:00|30" title="please enter in 24 hour time">
 
-    <input type="submit" name="submit" value="Select Class Times">
+    <br><input class="form-control" type="submit" name="submit" value="Select Class Times">
 </form>
+</div>
 </div>
 <?php include "../inc/footer.php"; ?>

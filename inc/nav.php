@@ -6,30 +6,31 @@
 
             <!--end HeaderContainer-->
             <div class="userPanel">
-                <div class="userPanelImage">
-                <img src="../images/userImage/default-user-icon.png" />
-                </div>
                 <div class="userInfo">
                     <?php
                     //If a user is logged in
-                        if(isset($_SESSION['userID'])) {
-                            ?>
-                        <?php
-                            $userID = $_SESSION['userID'];
+                    if(isset($_SESSION['userID'])) {
+                        $userID = $_SESSION['userID'];
                         $sql = "SELECT firstName, lastName FROM users WHERE userID='$userID'";
                         $result = mysqli_query($con, $sql);
                         $row = mysqli_fetch_array($result);
                         $userName = $row['firstName'] . " " . $row['lastName'];
-
-                            ?>
-                            <span><a href="../pages/myaccount.php"><?php echo $userName?></a> |
+                    ?>
         <?php
         if((($_SESSION['accountType']) == 'Admin') || (($_SESSION['accountType']) == 'Owner')){
           echo '<a href="../pages/admincenter.php">Admin Center</a><br />';
         } else if ($_SESSION['accountType'] == 'Student' || $_SESSION['accountType'] == 'Teacher' || $_SESSION['accountType'] == 'StudentAndTeacher') {
-          echo '<a href="../pages/usercenter.php">User Center</a><br />';
+          echo '
+                <div class="userPanelImage">
+                <img src="../images/userImage/default-user-icon.png" />
+                </div>
+                <a href="../pages/usercenter.php">
+                User Center</a><br />';
         }
         ?>
+        <div class="userPanelImage">
+        <img src="../images/userImage/logout.png" />
+        </div>
          <a href="../pages/logout.php">Logout</a></span>
 
                     <?php
