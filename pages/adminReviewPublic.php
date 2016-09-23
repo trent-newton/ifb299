@@ -3,7 +3,6 @@ $pagetitle = "Public Reviews";
 include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
-include "../inc/bootstrap.php";
 include "../inc/authCheck.php";
 
 if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType']))){

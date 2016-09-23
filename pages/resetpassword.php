@@ -3,7 +3,6 @@ $pagetitle = "Reset Password";
 include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
-include "../inc/bootstrap.php";
 ?>
 <div class="content">
 <?php
@@ -15,7 +14,7 @@ include "../inc/bootstrap.php";
         $numrow = mysqli_num_rows($result);
         $row = mysqli_fetch_array($result);
         $userID = $row['userID'];
-        
+
         if($numrow == 1) {
             ?>
     <form action="../inc/forgotpassword.php" method="post">
@@ -33,8 +32,8 @@ include "../inc/bootstrap.php";
         <input type="hidden" name="email" value="<?php echo $email ?>" />
         <input type="hidden" name="emailCode" value="<?php echo $emailCode ?>" />
         <input type="submit" name="passwordUpdate" value="Update Password" />
-        
-    
+
+
     </form>
     <?php
         }

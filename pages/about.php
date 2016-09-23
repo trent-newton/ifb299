@@ -3,12 +3,11 @@
     include "../inc/connect.php";
     include "../inc/header.php";
     include "../inc/nav.php";
-    include "../inc/bootstrap.php";
 ?>
 
     <div class="content">
         <h1>About Pinelands Music School</h1>
-        <p>Anyone can learn music in Pinelands Music School. The school was founded by Mika Williams in 2009, who became popular due to her passion for music and love for teaching. 
+        <p>Anyone can learn music in Pinelands Music School. The school was founded by Mika Williams in 2009, who became popular due to her passion for music and love for teaching.
         Pineland Music School strives to deliver an amazing range of instrument and vocal skills through our qualified teachers to our students. Apart from guiding you through your music lessons, we also do offer instrument hiring service for our students.
 
         Our Philosophy

@@ -3,7 +3,6 @@ $pagetitle = "User Centre";
 include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
-include "../inc/bootstrap.php";
 require "../inc/AuthCheck.php";
 
 if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountType']) && !isTeacher($_SESSION['accountType'])){
@@ -37,6 +36,6 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
     </div>
 </div>
 
-<?php 
-include "../inc/footer.php"; 
+<?php
+include "../inc/footer.php";
 ?>

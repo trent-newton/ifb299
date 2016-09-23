@@ -4,7 +4,7 @@ include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
 include "../inc/authCheck.php";
-include "../inc/bootstrap.php";
+
 
 if(!(isStudent($_SESSION['accountType'])) && !(isStudentTeacher($_SESSION['accountType'])) && !(isTeacher($_SESSION['accountType']))){
     $_SESSION['error'] = "Only Students can access the Enrol Page.";
@@ -218,13 +218,13 @@ echo $timeTable["Friday"]["10:00:00"];
               echo " style='border-bottom: 0px; background:$color[$n]'>";
               echo $timeTable[$Days[$col]][$sqlTimes[$row]];
           }
-          
-          
+
+
         } //end if
-        
-            
-        
-        
+
+
+
+
 
       echo "</td>";
     }//end col for
@@ -233,11 +233,11 @@ echo $timeTable["Friday"]["10:00:00"];
         } else {
             $n++;
         }
-         
+
     echo "</tr>";
 } //End row for
-    
-         
+
+
 ?>
         </table>
     </div>

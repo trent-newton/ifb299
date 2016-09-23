@@ -4,14 +4,14 @@ include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
 require "../inc/authCheck.php";
-include "../inc/bootstrap.php";
+
 
 if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
     rejectAccess();
 }
 
 $column = array(
-  'UserID' => 'userID', 
+  'UserID' => 'userID',
   'First Name' => 'firstName',
   'Last Name' => 'lastName'
 );
@@ -23,7 +23,7 @@ $row = mysqli_fetch_array($result);
 
 <table id="changeAuthTables">
     <tr>
-        <?php //list table headings 
+        <?php //list table headings
         foreach ($column as $name => $col_name) {
             echo "<th>$name</th>";
         }

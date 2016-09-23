@@ -4,7 +4,6 @@ $pagetitle = "change authorisation";
 include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
-include "../inc/bootstrap.php";
 require "../inc/authCheck.php";
 
 if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
@@ -20,7 +19,7 @@ echo "<div class='content'>";
 // Print header
 echo "<h1> Change authorisation for ".$name['firstName']." ".$name['lastName']." (userID $userID) </h1>";
 // Simple form with account types
-echo'<br> Change authorisation to: 
+echo'<br> Change authorisation to:
 <form method="post" action="changeAuthResult.php?userID='.$userID.'">
     <select required name="accessChosen">
       <option value="" disabled selected> Select... </option>

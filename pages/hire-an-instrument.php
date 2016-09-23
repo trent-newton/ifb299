@@ -3,7 +3,6 @@
     include "../inc/connect.php";
     include "../inc/header.php";
     include "../inc/nav.php";
-    include "../inc/bootstrap.php";
 ?>
  <div class="content">
     <h1>Hiring an Instrument</h1>
@@ -19,7 +18,7 @@
         <ul><li>Pre-loved Annual hires (discounted rate for schools who can commit to the full year - pro rata charges also apply).</li>
             <li>Fast turn-around on urgent repairs or replacements</li></ul>
 
-            
+
 
 
 <img src="../images/faq/hire.png" />

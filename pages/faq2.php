@@ -3,7 +3,6 @@
     include "../inc/connect.php";
     include "../inc/header.php";
     include "../inc/nav.php";
-    include "../inc/bootstrap.php";
 ?>
 <div class="adminCenter">
    <h1>Content goes here</h1>

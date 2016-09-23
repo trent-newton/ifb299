@@ -4,7 +4,6 @@ include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
 include "../inc/authCheck.php";
-include "../inc/bootstrap.php";
 
 if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType']))){
     $_SESSION['error'] = "Only Administrators can access the Admin Center.";

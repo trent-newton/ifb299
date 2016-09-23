@@ -6,7 +6,7 @@
     require "../inc/checkFunctions.php";
     include "../inc/adminupdateaccount.php";
 	require "../inc/authCheck.php";
-    include "../inc/bootstrap.php";
+
 
     // Check if user is owner or admin
 	if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
@@ -91,7 +91,7 @@
                         echo "<input type='text' name='phone" . $n . "' id='txtPhone".$n."' size='10' maxlength='10' placeholder='0412345678' value='" . $row['phoneNumber'] . "'><br />";
                     }
                     $n++;
-                }       
+                }
             ?>
             <label for="txtPhone<?php echo $n ?>">Phone <?php echo $n ?>:</label>
             <br />

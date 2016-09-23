@@ -5,7 +5,6 @@ include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
 include "../inc/authCheck.php";
-include "../inc/bootstrap.php";
 
 echo "<div class='content'><div class='form-content'>";
 

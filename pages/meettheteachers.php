@@ -3,7 +3,6 @@ $pagetitle = "Meet our Teachers";
 include "../inc/connect.php";
 include "../inc/header.php";
 include "../inc/nav.php";
-include "../inc/bootstrap.php";
 ?>
 <div class="content centered">
 <h1>Pinelands Teachers</h1>
