@@ -36,8 +36,19 @@
                     <?php
                         } else { // if no user is logged in
                     ?>
-                <span><a href="../pages/login.php">Login</a> | <a href="../pages/createAccount.php">Register Account</a><br /> 
-                    <?php
+                    <!--LOGIN-->
+                    <div class="userPanelImage">
+                    <img src="../images/userImage/login.png" />
+                    </div>
+                     <a href="../pages/login.php">Login</a></span> <br>
+                
+                   <!--Register-->
+                    <div class="userPanelImage">
+                    <img src="../images/userImage/register.png" />
+                    </div>
+                     <a href="../pages/createAccount.php">Register</a></span>
+                
+                    <?php 
                         }
                     ?>
                     </div><!--end userInfo-->

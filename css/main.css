@@ -21,19 +21,13 @@ body {
 }
 
 input[type=button], input[type=submit], input[type=reset] {
-	background-color: #CCCCCC;
-	background-image: -moz-linear-gradient(top, #CCCCCC 20%, #7F7F7F 70%);
-	background-image: -webkit-gradient(linear, 0% 20%, 0% 70%, from(#CCCCCC), to(#4C4A4A));
-	border-color: #FFFFFF;
-	-moz-box-shadow: 0 0 0 1px #7F7F7F;
-	-webkit-box-shadow: 0 1px 0 #7F7F7F, 0 -1px 0 #7F7F7F, 1px 0 0 #7F7F7F, -1px 0 0 #7F7F7F;
+	background-color: aliceblue;
 }
 
 .container {
     width: 100%;
     padding: 1%;
     margin: 0 auto;
-
 }
 
 .content {
