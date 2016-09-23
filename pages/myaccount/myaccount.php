@@ -5,7 +5,7 @@ include "../../inc/connect.php";
 include "../../inc/header.php";
 include "../../inc/nav.php";
 include "../../inc/logincheck.php";
-require "inc/checkFunctions.php";
+require "../../inc/checkFunctions.php";
 
 $userID = $_SESSION['userID'];
 
@@ -19,7 +19,7 @@ $age = GetAge($DOB);
     <div class="content fieldSetCentered">
 
         <fieldset class="accountDetails">
-            <form method="post" action="inc/updateaccount.php">
+            <form method="post" action="../../inc/updateaccount.php">
                 <h1>Account details</h1>
                 <h3>Personal</h3><h4>
 

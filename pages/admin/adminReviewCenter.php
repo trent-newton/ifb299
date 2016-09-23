@@ -15,19 +15,19 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
     <h1>Welcome to the Admin Review Center</h1> <h3>Which reviews would you like to review?</h3>
 
     <div>
-        <div class="temp"><a href="../admin/adminReviewPending.php"><img class="AdminCenterImage" src="../images/admin-icons/reviews/pending.png"></a>
+        <div class="temp"><a href="../admin/adminReviewPending.php"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/pending.png"></a>
            <br><button class="AdminCenterButton reviewButton"><a href="adminReviewPending.php" class="button">Pending</a></button>
         </div>
 
-        <div class="temp"><a href="../admin/adminReviewPublic.php"><img class="AdminCenterImage" src="../images/admin-icons/reviews/public.png"></a>
+        <div class="temp"><a href="../admin/adminReviewPublic.php"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/public.png"></a>
            <br><button class="AdminCenterButton reviewButton"><a href="adminReviewPublic.php" class="button">Public</a></button>
         </div>
 
-        <div class="temp"><a href="../admin/adminReviewPrivate.php"><img class="AdminCenterImage" src="../images/admin-icons/reviews/private.png"></a>
+        <div class="temp"><a href="../admin/adminReviewPrivate.php"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/private.png"></a>
            <br><button class="AdminCenterButton reviewButton"><a href="adminReviewPrivate.php" class="button">Private</a></button>
         </div>
 
-        <div class="temp"><a href="../admin/adminReviewInvalid.php"><img class="AdminCenterImage" src="../images/admin-icons/reviews/invalid.png"></a>
+        <div class="temp"><a href="../admin/adminReviewInvalid.php"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/invalid.png"></a>
            <br><button class="AdminCenterButton reviewButton"><a href="adminReviewInvalid.php" class="button">Invalid</a></button>
         </div>
     </div>
@@ -83,7 +83,7 @@ echo '<tr>
     echo $row["reviewDate"];
     echo'</td>
     <td>';
-    echo '<a style="display:inline-block;" href="changeReviewStatus.php?reviewID='.$row['reviewID'].'">';
+    echo '<a style="display:inline-block;" href="../change/changeReviewStatus.php?reviewID='.$row['reviewID'].'">';
 
     if ($row["reviewStatus"] == 'Public') {
       echo '<img class="reviewTableIcon" src="../../images/admin-icons/reviews/public.png" />';

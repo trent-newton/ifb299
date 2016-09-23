@@ -1,7 +1,7 @@
 <?php
 	function SendError($errorMessage) {
 		$_SESSION['error'] = $errorMessage;
-        header("location:" . $_SERVER["HTTP_REFERER"]);
+        header("location:../" . $_SERVER["HTTP_REFERER"]);
         exit();
 	}
 
