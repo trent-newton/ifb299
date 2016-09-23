@@ -18,10 +18,13 @@
                     ?>
         <?php
         if((($_SESSION['accountType']) == 'Admin') || (($_SESSION['accountType']) == 'Owner')){
-          echo '<a href="../pages/admincenter.php">Admin Center</a><br />';
+          echo '<div class="userPanelImage">
+                <img src="../images/userImage/default-user-icon.png" />
+                </div>
+                <a href="../pages/admincenter.php">
+                Admin Center</a><br />';
         } else if ($_SESSION['accountType'] == 'Student' || $_SESSION['accountType'] == 'Teacher' || $_SESSION['accountType'] == 'StudentAndTeacher') {
-          echo '
-                <div class="userPanelImage">
+          echo '<div class="userPanelImage">
                 <img src="../images/userImage/default-user-icon.png" />
                 </div>
                 <a href="../pages/usercenter.php">

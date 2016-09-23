@@ -20,8 +20,8 @@ echo "<div class='content'>";
 echo "<h1> Change authorisation for ".$name['firstName']." ".$name['lastName']." (userID $userID) </h1>";
 // Simple form with account types
 echo'<br> Change authorisation to:
-<form method="post" action="changeAuthResult.php?userID='.$userID.'">
-    <select required name="accessChosen">
+<form class="basic-form" method="post" action="changeAuthResult.php?userID='.$userID.'">
+    <select class="form-control" required name="accessChosen">
       <option value="" disabled selected> Select... </option>
       <option value="Guest">Guest</option>
       <option value="Student">Student</option>
@@ -32,7 +32,7 @@ echo'<br> Change authorisation to:
           <option value="Owner">Owner</option>';
         }
     echo '</select>
-    <input type="submit" value="Amend Changes">
+    <input class="form-control" type="submit" value="Amend Changes">
 </form>';
 
 echo "</div>";
