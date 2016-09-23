@@ -1,7 +1,7 @@
 <?php
 session_start();
-include "../inc/connect.php";
-require "../inc/checkFunctions.php";
+include "../../inc/connect.php";
+require "../../inc/checkFunctions.php";
 ?>
 
 <?php
@@ -45,7 +45,7 @@ if ($age < 18) {
         header("location:" . $_SERVER["HTTP_REFERER"]);
         exit();
     }
-    
+
 }
 
 
@@ -60,10 +60,10 @@ if($email == "" || $streetNumber == "" || $streetName == "" || $streetType == ""
 } else {
     $sql = "Update users SET email='$email', facebookId='$facebookID', parentName='$parentName', parentEmail='$parentEmail' WHERE userID='$userID'";
     $result = mysqli_query($con, $sql) or die(mysqli_error($con));
-    
+
     $sql = "UPDATE address SET unitNumber='$unitNo', streetNumber='$streetNumber', streetName='$streetName', streetType='$streetType', suburb='$suburb', postCode='$postcode' WHERE addressId='$addressID'";
     $result = mysqli_query($con, $sql);
-    
+
     $sql = "SELECT * FROM phonenumbers WHERE userID='$userID'";
     $result = mysqli_query($con, $sql);
     $i = 0;
@@ -76,7 +76,7 @@ if($email == "" || $streetNumber == "" || $streetName == "" || $streetType == ""
             $phUpdate = "DELETE FROM phonenumbers WHERE userID='$userID' and phoneNumber =" . $row['phoneNumber'];
             $runPhUpdate = mysqli_query($con, $phUpdate);
         }
-        
+
         $i++;
     }
     if(${"phoneNumber".$i} != "") {
@@ -84,9 +84,8 @@ if($email == "" || $streetNumber == "" || $streetName == "" || $streetType == ""
         $sql = "INSERT INTO phonenumbers VALUES ('$userID', '$phone')";
         $result = mysqli_query($con, $sql);
     }
-        
+
     $_SESSION['success'] = "Account Updated";
     header("location:" . $_SERVER["HTTP_REFERER"]);
     exit();
 }
-

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../inc/connect.php";
+include "connect.php";
 
 //Prevents SQL Injection
 $password = mysqli_real_escape_string($con, $_POST['password']);
@@ -32,11 +32,11 @@ if($count == 1) {
         $_SESSION['userID'] = $row['userID'];
         $_SESSION['accountType'] = $row['accountType'];
         $_SESSION['success'] = "Welcome back " .ucfirst($row['firstName']) . " "  . ucfirst($row['lastName']);
-        header("location:../pages/index.php");
+        header("location:../pages/home/index.php");
         exit();
     }
 } else {
     $_SESSION['loginError'] = "Incorrect email or Password. Please try again.";
-    header("location:../pages/login.php");
+    header("location:../pages/home/index.php");
     exit();
 }

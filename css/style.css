@@ -72,11 +72,11 @@ ol li
 #main, #header, #banner, #menubar, #site_content, #footer, #contact, #footer_content, #banner_image
 { margin-left: auto; 
   margin-right: auto;
-  background: #eee url(../images/background.jpg) repeat-x;}
+  background: #eee url(images/background.jpg) repeat-x;}
   
 #header
 { height: 70px;
-  background: transparent url(../images/bar.jpg) no-repeat;
+  background: transparent url(images/bar.jpg) no-repeat;
   text-align: center;}
   
 #site_heading
@@ -103,7 +103,7 @@ ol li
   padding-top: 25px;
   text-align: center; 
   margin: 0 auto;
-  background: transparent url(../images/bar.jpg) no-repeat;} 
+  background: transparent url(images/bar.jpg) no-repeat;} 
 
 ul#menu
 { 
@@ -184,7 +184,7 @@ ul#menu li a:hover
 	width: 940px;
 }
 #slider {
-    background: url("../images/loading.gif") no-repeat scroll 50% 50% transparent;
+    background: url("images/loading.gif") no-repeat scroll 50% 50% transparent;
     height: 350px;
     position: relative;
     width: 940px;
@@ -260,7 +260,7 @@ ul#menu li a:hover
     display: none;
 }
 .nivo-directionNav a {
-    background: url("../images/arrows.png") no-repeat scroll 0 0 transparent;
+    background: url("images/arrows.png") no-repeat scroll 0 0 transparent;
     cursor: pointer;
     display: block;
     height: 30px;
@@ -348,7 +348,7 @@ a.nivo-nextNav {
   height: 45px;
   text-align: center; 
   color: #FFF;
-  background: transparent url(../images/bar.jpg) no-repeat;
+  background: transparent url(images/bar.jpg) no-repeat;
   border: 1px solid #004790;}
 
 #footer a, #footer a:hover

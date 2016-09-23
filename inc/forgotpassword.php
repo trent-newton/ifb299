@@ -35,7 +35,7 @@ if ($newpassword == $newpassword2)
 		$sql = "DELETE FROM forgotPassword WHERE userID='$userID' AND emailCode='$emailCode'";
 		$result = mysqli_query($con, $sql) or die(mysqli_error($con)); // runs the statement
 		$_SESSION['success'] = "Password changed successfully!"; //Succeed message
-		header("location:../pages/login.php");
+		header("location:../pages/login/login.php");
 		exit();
 	}
 }
@@ -44,7 +44,7 @@ else
 {
 	$_SESSION['error'] = "Your new passwords do not match";
 	header("location:" . $_SERVER['HTTP_REFERER']);
-	
+
 	exit();
 }
 ?>

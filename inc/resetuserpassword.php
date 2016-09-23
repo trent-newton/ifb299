@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include "../inc/connect.php";
+include "../../inc/connect.php";
 
 
 $email = mysqli_real_escape_string($con, $_POST['email']);

@@ -33,7 +33,7 @@
 
     echo '<div id="rating">
        <div id="star_rating" style="overflow:hidden;width:70px">
-           <img src="../images/about/five_stars.png" style="width:70px;height:auto"/> <!-- width:260px;height:49px -->
+           <img src="../../images/about/five_stars.png" style="width:70px;height:auto"/> <!-- width:260px;height:49px -->
        </div>
    </div>';
    }
@@ -58,10 +58,10 @@
       echo "</ul>";
 echo "<a href='https://www.facebook.com/";
 echo $row['facebookId'];
-echo "'><img class='about_icon' src='../images/socialMedia/facebook.png' alt='Facebook Link'></a>";
+echo "'><img class='about_icon' src='../../images/socialMedia/facebook.png' alt='Facebook Link'></a>";
 echo "<a href='mailto:";
 echo $row['email'];
-echo "'><img class='mail_icon' src='../images/socialMedia/mail.png' alt='e-Mail Link'></a>";
+echo "'><img class='mail_icon' src='../../images/socialMedia/mail.png' alt='e-Mail Link'></a>";
 echo "</div>";
 }
 ?>

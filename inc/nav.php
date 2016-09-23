@@ -19,39 +19,39 @@
         <?php
         if((($_SESSION['accountType']) == 'Admin') || (($_SESSION['accountType']) == 'Owner')){
           echo '<div class="userPanelImage">
-                <img src="../images/userImage/default-user-icon.png" />
+                <img src="../../images/userImage/default-user-icon.png" />
                 </div>
-                <a href="../pages/admincenter.php">
+                <a href="../admin/admincenter.php">
                 Admin Center</a><br />';
         } else if ($_SESSION['accountType'] == 'Student' || $_SESSION['accountType'] == 'Teacher' || $_SESSION['accountType'] == 'StudentAndTeacher') {
           echo '<div class="userPanelImage">
                 <img src="../images/userImage/default-user-icon.png" />
                 </div>
-                <a href="../pages/usercenter.php">
+                <a href="../usercenter/usercenter.php">
                 User Center</a><br />';
         }
         ?>
         <div class="userPanelImage">
-        <img src="../images/userImage/logout.png" />
+        <img src="../../images/userImage/logout.png" />
         </div>
-         <a href="../pages/logout.php">Logout</a></span>
+         <a href="../logout/logout.php">Logout</a></span>
 
                     <?php
                         } else { // if no user is logged in
                     ?>
                     <!--LOGIN-->
                     <div class="userPanelImage">
-                    <img src="../images/userImage/login.png" />
+                    <img src="../../images/userImage/login.png" />
                     </div>
-                     <a href="../pages/login.php">Login</a></span> <br>
-                
+                     <a href="../login/login.php">Login</a></span> <br>
+
                    <!--Register-->
                     <div class="userPanelImage">
-                    <img src="../images/userImage/register.png" />
+                    <img src="../../images/userImage/register.png" />
                     </div>
-                     <a href="../pages/createAccount.php">Register</a></span>
-                
-                    <?php 
+                     <a href="../createAccount/createAccount.php">Register</a></span>
+
+                    <?php
                         }
                     ?>
                     </div><!--end userInfo-->
@@ -69,28 +69,28 @@
                     </div> <!--end userMessage-->
                 </div><!-- end userPanel-->
 
-                <div class="logo"> <img src="../images/TempLogo.png" /> </div>
+                <div class="logo"> <img src="../../images/TempLogo.png" /> </div>
                 <!--end logo-->
             </div>
           </span>
             <nav id="nav" role="navigation"> <a href="#nav" title="Show Navigation">Show Navigation</a> <a href="#" title="Hide Navigation">Hide Navigation</a>
 
                 <ul>
-                    <li><a href="../pages/index.php">Home</a></li><!--
-                    --><li><a href="../pages/about.php">About</a></li><!--
-                    --><li><a href="../pages/faq.php">FAQ</a></li><!--
-                    --><li><a href="../pages/contact.php">Contact Us</a></li>
+                    <li><a href="../home/index.php">Home</a></li><!--
+                    --><li><a href="../../pages/about/about.php">About</a></li><!--
+                    --><li><a href="../../pages/faq/faq.php">FAQ</a></li><!--
+                    --><li><a href="../../pages/contact/contact.php">Contact Us</a></li>
                 </ul>
 
             </nav><!-- end Nav-->
 
             <?php if($pagetitle == "About Us | Pinelands Music School"): ?>
-              <div class="banner"> <img src="../images/banners/about.jpg" />
+              <div class="banner"> <img src="../../images/banners/about.jpg" />
             <?php elseif($pagetitle == "Enrol | Pinelands Music School"): ?>
-              <div class="banner"> <img src="../images/banners/enrol.jpg" />
+              <div class="banner"> <img src="../../images/banners/enrol.jpg" />
             <?php elseif($pagetitle == "Contact Us | Pinelands Music School"): ?>
               <div class="banner">
             <?php else: ?>
-              <div class="banner"> <img src="../images/banners/main.jpg" />
+              <div class="banner"> <img src="../../images/banners/main.jpg" />
             <?php endif ?>
                   </div>

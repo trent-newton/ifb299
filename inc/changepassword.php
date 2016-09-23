@@ -24,7 +24,7 @@ $count = mysqli_num_rows($result);
 if (($oldPassword == $row['password']) && ($newPassword == $newPassword2) && ($newPassword != $password)) {
     if(strlen($newPassword) < 8) {
         $_SESSION['error'] = "Password must be 8 or more characters";
-        header("location:../pages/myaccount.php");
+        header("location:../pages/myaccount/myaccount.php");
         exit();
     } else {
         $salt = md5(uniqid(rand(),true)); //creates a random salt
@@ -34,28 +34,28 @@ if (($oldPassword == $row['password']) && ($newPassword == $newPassword2) && ($n
     }
     if($result) {
         $_SESSION['success'] = "Password changed successfully!"; //Succeed message
-        header("location:../pages/myaccount.php");
+        header("location:../pages/myaccount/myaccount.php");
 		exit();
     }
     else
     {
         $_SESSION['error'] = "Password was not updated."; //error message
-        header("location:../pages/myaccount.php");
+        header("location:../pages/myaccount/myaccount.php");
 		exit();
     }
-} elseif ($oldPassword != $row['password']) 
+} elseif ($oldPassword != $row['password'])
 {
     $_SESSION['error'] = "Please enter your correct password";
-    header("location:../pages/myaccount.php");
+    header("location:../pages/myaccount/myaccount.php");
     exit();
 }
 elseif ($newPassword != $newPassword2) {
     $_SESSION['error'] = "Your new passwords do not match";
-    header("location:../pages/myaccount.php");
+    header("location:../pages/myaccount/myaccount.php");
     exit();
 }
 elseif ($newPassword == $password) {
     $_SESSION['error'] = "Please enter a different password!";
-    header("location:../pages/myaccount.php");
+    header("location:../pages/myaccount/myaccount.php");
     exit();
 }

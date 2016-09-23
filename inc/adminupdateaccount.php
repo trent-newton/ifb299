@@ -111,7 +111,7 @@
                 
                 // Login student
                 $_SESSION['success'] = "Account Updated";
-                header('Location: ../pages/changeAuth.php');
+                header('Location: pages/changeAuth.php');
                 exit();
             } else {
                 $errorSEmail = "Email already in use";

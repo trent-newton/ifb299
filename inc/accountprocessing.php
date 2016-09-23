@@ -85,7 +85,7 @@
             $sqlCheckEmail = sprintf("SELECT email FROM users WHERE email='%s'", $sEmail);
             $resultCheckEmail = mysqli_query($con, $sqlCheckEmail) or die(mysqli_error($con));
             $arrayCheckEmail = mysqli_fetch_array($resultCheckEmail);
-            
+
             if (!isset($arrayCheckEmail)) {
                 // Get studentID
                 $sqlGetStudentID = "SELECT UserID FROM users ORDER BY UserID DESC LIMIT 1;";
@@ -136,12 +136,12 @@
                     $sqlAddParent = sprintf("UPDATE users SET parentName = '%s', parentEmail = '%s' WHERE UserID = '%d';", $pName, $pEmail, $studentID);
                     mysqli_query($con, $sqlAddParent) or die(mysqli_error($con));
                 }
-                
+
                 // Login student
                 $_SESSION['userID'] = $studentID;
                 $_SESSION['accountType'] = 3;
                 $_SESSION['success'] = "Welcome back " .ucfirst($sFirst) . " "  . ucfirst($sLast);
-                header("location:../pages/index.php");
+                header("location:../pages/home/index.php");
                 exit();
             } else {
                 $errorSEmail = "Email already in use";
