@@ -316,6 +316,10 @@ table a{
     color: red;
 }
 
+.changeAuth {
+    text-align: center;
+}
+
 /**************************** Teacher Page ******************************/
 .teacherPage {
     display: inline-table;
