@@ -126,7 +126,7 @@ input[type=button], input[type=submit], input[type=reset] {
     display: inline-block;
     text-align: center;
     margin: 0 auto;
-    width: 30%;
+    width: 40%;
 
 }
 
@@ -293,6 +293,7 @@ table {
 table th {
     background-color: black;
     color: white;
+    text-align: center;
     padding: 4px 30px 4px 8px;
 }
 

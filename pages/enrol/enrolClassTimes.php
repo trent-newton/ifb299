@@ -29,7 +29,7 @@ if($accessLevel == 'admin')
 
 
 
-echo "<div class='content'>";
+echo "<div class='content centered'>";
 $chosenInstrument = $_POST['chosenInstrument'];
 $chosenLanguage = $_POST['chosenLanguage'];
 $chosenStartTime = $_POST['chosenStartTime'];
@@ -39,10 +39,7 @@ $getEndTime = floatval($chosenStartTime) + 1;
 $endTime = "$getEndTime:00";
 
 $columnTeacherDetails  = array(
-    'teacherID' => 'teacherID',
     'Day' => 'day',
-    'Start Time' => 'startTime',
-    'End Time' => 'endTime'
 );
 
 
@@ -76,14 +73,15 @@ if ($result2=mysqli_query($con,$sql))
             $rowcount=mysqli_num_rows($result);
             //classes available
             if ($rowcount > 0){
-                echo "<h1> Here are all the times for $chosenInstrument classes in on $chosenDay from $chosenStartTime</h1>";
+                echo "<h1>$chosenInstrument classes on $chosenDay from $chosenStartTime to $endTime  </h1>";
                 //start table
                 echo "<table><tr>";
                 //table headings
                 foreach ($columnTeacherDetails as $name => $col_name) {
                   echo "<th>$name</th>";
                 }
-                echo "<th>Select Class</th>";
+                echo "<th> Teacher </th>
+                      <th>Select Class</th>";
                 while($row = mysqli_fetch_array($result)) {
                     echo "<tr>";
                     foreach ($columnTeacherDetails as $name => $col_name) {
@@ -91,6 +89,17 @@ if ($result2=mysqli_query($con,$sql))
                         $teacherID = $row['teacherID'];
                     }
 
+                    //teacher name TD                
+                    $sqlTeacherName = "select distinct users.firstName FROM availability INNER JOIN users
+                                        where availability.teacherID = users.UserID
+                                        AND users.UserID = '$teacherID'";
+
+                    $resultTeacherName = mysqli_query($con, $sqlTeacherName) or die(mysqli_error($con));
+                    $rowTeacherName = mysqli_fetch_array($resultTeacherName);
+                    
+                    echo "<td>". $rowTeacherName['firstName']."</td>";
+                    
+                    //select class TD
                     if($accessLevel == 'admin')
                     {
                       echo "<td><a href='enrolClassDates.php?userID=".$userID."&day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";

@@ -37,7 +37,7 @@ $studentID = $userID;
 
 ?>
 
-<div class="form-content">
+<div class="loginForm center-horizontal">
     <?php
     if($accessLevel == 'admin')
     {
@@ -47,7 +47,7 @@ $studentID = $userID;
     }
 
      ?>
-    <h2>Start and End Date of Contract</h2><h4>
+    <h2>Contract Duration</h2><h4>
         Start Date
         <input class="form-control" type="date" name="startDate" required /><br>
         End Date

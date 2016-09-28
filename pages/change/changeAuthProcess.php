@@ -15,9 +15,9 @@ $userID = $_GET['userID'];
 // Run the query & fetch results
 $result= mysqli_query($con,"SELECT firstName, lastName, accountType FROM users WHERE userID = $userID");
 $name = mysqli_fetch_array($result);
-echo "<div class='content'>";
+echo "<div class='loginForm center-horizontal'>";
 // Print header
-echo "<h1> Change authorisation for ".$name['firstName']." ".$name['lastName']." (userID $userID) </h1>";
+echo "<h1> Managing ".$name['firstName']." ".$name['lastName']." (userID $userID) </h1>";
 // Simple form with account types
 echo'<br> Change authorisation to:
 <form class="basic-form" method="post" action="changeAuthResult.php?userID='.$userID.'">

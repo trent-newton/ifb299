@@ -3,9 +3,9 @@ $pagetitle = "User Centre";
 include "../../inc/connect.php";
 include "../../inc/header.php";
 include "../../inc/nav.php";
-require "inc/AuthCheck.php";
+require "../../inc/authCheck.php";
 
-if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountType']) && !isTeacher($_SESSION['accountType'])){
+if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountType']) &&                 !isTeacher($_SESSION['accountType'])){
     rejectAccess();
 }
 ?>
@@ -14,11 +14,11 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
     <h1>Welcome to the User Centre</h1> <h3>What would you like to do?</h3>
 
     <div class="temp">
-        <a href="../myaccount/myaccount.php"><div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/users.png">
+        <a href="../myaccount/myaccount.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/users.png">
            <br><h2>MY PROFILE</h2>
         </div></a>
 
-        <a href="../viewSchedule/viewSchedule.php"><div class="temp"><img class="AdminCenterImage" src="../images/admin-icons/calendar.png">
+        <a href="../viewSchedule/viewSchedule.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/calendar.png">
            <br><h2>VIEW SCHEDULE</h2>
         </div></a>
 
@@ -29,7 +29,7 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
             echo '<a href="#"><div class="temp"><img class="AdminCenterImage" src="../../images/home-page-images/acoustic-guitar.png">
                   <br><h2>INSTRUMENT HIRE</h2></div></a>';
 
-            echo '<a href="pages/enrolPage.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/settings.png">
+            echo '<a href="../../pages/enrol/enrolPage.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/settings.png">
                   <br><h2>CLASS ENROLMENT</h2></div></a>';
           }
         ?>

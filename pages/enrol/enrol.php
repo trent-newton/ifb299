@@ -6,7 +6,7 @@ include "../../inc/header.php";
 include "../../inc/nav.php";
 include "../../inc/authCheck.php";
 
-echo "<div class='content'><div class='form-content'>";
+echo "<div class='loginForm center-horizontal'><div class='form-content'>";
 
 $accessLevel='';
 $userID='';

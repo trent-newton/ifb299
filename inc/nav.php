@@ -25,7 +25,7 @@
                 Admin Center</a><br />';
         } else if ($_SESSION['accountType'] == 'Student' || $_SESSION['accountType'] == 'Teacher' || $_SESSION['accountType'] == 'StudentAndTeacher') {
           echo '<div class="userPanelImage">
-                <img src="../images/userImage/default-user-icon.png" />
+                <img src="../../images/userImage/default-user-icon.png" />
                 </div>
                 <a href="../usercenter/usercenter.php">
                 User Center</a><br />';

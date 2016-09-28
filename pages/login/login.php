@@ -13,18 +13,19 @@ include "../../inc/nav.php";
             }
             ?>
 
-            <h2 class="centered">Login</h2>
+            <h2 class="centered">Login</h2> 
             <fieldset class="loginForm center-horizontal">
+                <p class="required">* Required Fields</p>
                 <form action="../../inc/loginprocessing.php" method="post">
                 <label>Email<span class="required">*</span>:</label><br />
-                <input class="emailInput" type="email" name="email" placeholder="name@example.com" required />
-                <br />
+                <input class="form-control" class="emailInput" type="email" name="email" placeholder="name@example.com" required />
+                    
                 <label>Password<span class="required">*</span>:</label><br />
-                <input type="password" name="password" placeholder="password" required />
-                <p class="required">* Required Fields</p>
+                <input class="form-control" type="password" name="password" placeholder="password" required />
 
+                <input class="form-control" type="submit" name="login" value="Login" />
+                <br>
                 <p><a href="../resetpassword/resetpassword.php">Forgot Password?</a></p>
-                <input type="submit" name="login" value="Login" />
                 </form>
             </fieldset>
 
