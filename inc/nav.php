@@ -73,16 +73,17 @@
                 <!--end logo-->
             </div>
           </span>
-            <nav id="nav" role="navigation"> <a href="#nav" title="Show Navigation">Show Navigation</a> <a href="#" title="Hide Navigation">Hide Navigation</a>
 
-                <ul>
-                    <li><a href="../home/index.php">Home</a></li><!--
-                    --><li><a href="../../pages/about/about.php">About</a></li><!--
-                    --><li><a href="../../pages/faq/faq.php">FAQ</a></li><!--
-                    --><li><a href="../../pages/contact/contact.php">Contact Us</a></li>
-                </ul>
-
-            </nav><!-- end Nav-->
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav">
+              <li ><a href="../home/index.php">Home</a></li>
+              <li><a href="../../pages/about/about.php">About</a></li>
+              <li><a href="../../pages/faq/faq.php">FAQ</a></li>
+              <li><a href="../../pages/contact/contact.php">Contact Us</a></li>
+            </ul>
+          </div>
+        </nav>
 
             <?php if($pagetitle == "About Us | Pinelands Music School"): ?>
               <div class="banner"> <img src="../../images/banners/about.jpg" />

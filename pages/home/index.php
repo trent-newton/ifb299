@@ -10,15 +10,15 @@
 
         <div class="temp">
             <a href="#"><div class="temp"><img class="AdminCenterImage" src="../../images/home-page-images/acoustic-guitar.png">
-               <br><h2>INSTRUMENT HIRE</h2>
+               <br><h3>INSTRUMENT HIRE</h3>
             </div></a>
 
             <a href="../qualifiedTeachers/qualifiedTeachers.php"><div class="temp"><img class="AdminCenterImage" src="../../images/home-page-images/icon.png">
-               <br><h2>QUALIFIED TEACHERS</h2>
+               <br><h3>QUALIFIED TEACHERS</h3>
             </div></a>
 
             <a href="../testimonials/testimonials.php"><div class="temp"><img class="AdminCenterImage" src="../../images/home-page-images/consulting-message.png">
-               <br><h2>TESTIMONIALS</h2>
+               <br><h3>TESTIMONIALS</h3>
             </div></a>
         </div>
     </div>
