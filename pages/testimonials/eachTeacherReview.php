@@ -1,5 +1,5 @@
 <?php
-// Get selected reviewID
+// Get selected userID
 $userID = $_GET['userID'];
     $pagetitle = "Our Teachers Testimonials | Pinelands Music School";
     include "../../inc/connect.php";
