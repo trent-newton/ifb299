@@ -52,12 +52,6 @@ while ($row = mysqli_fetch_array($result)) {
                </div>
            </div>';
             echo '</h2>
-						<p>Review of ';
-            echo $row["firstName"];
-            echo " ";
-            echo $row["lastName"];
-            echo '<br />
-						</p>
 						</div>
 					</div>
 				</div>';
