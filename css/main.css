@@ -39,7 +39,7 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 .centered {
     text-align: center;
-    
+
 }
 .headercontainer {
     width: 99%;
@@ -401,7 +401,7 @@ table a{
     padding-bottom: 1%;
     border-left: none;
     border-bottom: 1px dotted grey;
-    
+
 }
 
 .about_icon {
@@ -423,6 +423,32 @@ table a{
   height:12px;
   width:auto;
   padding-right:5px;
+}
+/*-------------------- Testimonial Pages --------------------*/
+.starRatingOverflow {
+  overflow:hidden;
+  width:120px;
+}
+.starImage {
+  width:120px;
+  height:auto;
+}
+
+/*-------------------- Review Lesson Pages --------------------*/
+.reviewLessonForm {
+  width:65%;
+  display:inline-block;
+  vertical-align:top;
+}
+
+.lessonReviewInfoBox {
+  margin-left:5%;
+  width:25%;
+  display:inline-block;
+  border:1px solid;
+  border-radius:5px;
+  text-align:center;
+  padding-bottom:20px;
 }
 
 @media screen and (min-width:700px) {
@@ -495,7 +521,7 @@ table a{
     padding-right: 1%;
     border-left: 1px solid grey;
     border-bottom: none;
-    
+
 }
 
 @media screen and (min-width:1000px) {

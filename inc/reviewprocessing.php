@@ -10,7 +10,7 @@
         $studentID = mysqli_real_escape_string($con, $_POST['studentID']);
         $dateNow = date('Y-m-d');
 
-                $sql = sprintf("INSERT INTO teacherreviews (teacherID, studentID, contractID, reviewComment, reviewRating, reviewDate, reviewStatus) VALUES ('%d', '%d', '%d','%s', '%d', '%d', '%s');",
+                $sql = sprintf("INSERT INTO teacherreviews (teacherID, studentID, contractID, reviewComment, reviewRating, reviewDate, reviewStatus) VALUES ('%d', '%d', '%d','%s', '%d', '%s', '%s');",
                 $teacherID, $studentID, $contractID, $comment, $stars, $dateNow, "Pending");
                 mysqli_query($con, $sql) or die(mysqli_error($con));
 

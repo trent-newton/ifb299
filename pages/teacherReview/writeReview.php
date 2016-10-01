@@ -16,7 +16,8 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
  <div class="content">
     <h1 class="centered">Review of
       <?php
-      $sql2 = "SELECT contracts.*, users.firstName, users.lastName FROM users INNER JOIN contracts ON users.userID=contracts.teacherID WHERE contracts.contractID = $contractID";
+      //Finds contract and finds the related teacher name and instrument used in contract
+      $sql2 = "SELECT contracts.*, users.firstName, users.lastName, instrumentnames.instrumentName FROM users INNER JOIN contracts ON users.userID=contracts.teacherID LEFT JOIN instrumentnames ON contracts.instrumentTypeID = instrumentnames.instrumentTypeID WHERE contracts.contractID = $contractID";
       $result2 = mysqli_query($con, $sql2);
       while ($row = mysqli_fetch_array($result2)) {
         echo $row["firstName"];
@@ -24,7 +25,7 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
         echo $row["lastName"];
         echo "</h1>";
 ?>
-        <div style="width:65%;display:inline-block;vertical-align:top;">
+        <div class="reviewLessonForm">
           <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <label id="lblPComment" for="txtPComment">Comment<span class="required">*</span>: </label>
 
@@ -45,7 +46,10 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
                   $teacherID = $row['teacherID'];
                   $studentID = $row['studentID'];
 
+                  echo "Teacher".$row['teacherID'];
+                  echo "<br>Student".$row['studentID'];
 
+                //Pass other key information to reviewprocessing.php
                 echo '<input type="hidden" value="' .$contractID. '" name="contractID" />
                 <input type="hidden" value="' .$teacherID. '" name="teacherID" />
                 <input type="hidden" value="' .$studentID. '" name="studentID" />';
@@ -58,7 +62,7 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
         </div>
 
 <?php
-        echo "<div style='margin-left:5%;width:25%;display:inline-block;border:1px solid;border-radius:5px;text-align:center;padding-bottom:20px;'><h3>Instrument Played: </h3>" .$row["instrument"];
+        echo "<div class='lessonReviewInfoBox'><h3>Instrument Played: </h3>" .$row["instrumentName"];
         echo "<h3>Start of Contract: </h3>" .$row["startDate"];
         echo "<h3>End of Contract: </h3>" .$row["endDate"];
         echo "</div>";

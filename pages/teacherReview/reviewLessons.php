@@ -10,7 +10,7 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
 }
 ?>
 
-<h3>Lessons to Review</h3>
+<h3>Lessons Due For Review</h3>
 
 <table id="myTable" class="tablesorter centerTable">
 <thead>
@@ -25,7 +25,7 @@ $(document).ready(function()
 
 <?php
   //Find this user's contracts and link them with the teacher's name
-  $sql = "SELECT contracts.*, users.firstName, users.lastName FROM users INNER JOIN contracts ON users.userID=contracts.teacherID WHERE $userID = contracts.studentID";
+  $sql = "SELECT contracts.*, users.firstName, users.lastName, instrumentnames.instrumentName FROM users INNER JOIN contracts ON users.userID=contracts.teacherID LEFT JOIN instrumentnames ON contracts.instrumentTypeID = instrumentnames.instrumentTypeID WHERE $userID = contracts.studentID";
   $result = mysqli_query($con, $sql);
 
   echo '<tr>
@@ -64,7 +64,7 @@ $(document).ready(function()
         echo $row["endDate"];
         echo'</td>
         <td>';
-        echo $row["instrument"];
+        echo $row["instrumentName"];
         echo'</td>
         <td><a href="writeReview.php?contractID='.$row['contractID'].'">Review Now</a>
         </td>

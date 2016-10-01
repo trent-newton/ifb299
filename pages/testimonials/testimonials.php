@@ -34,8 +34,8 @@ while ($row = mysqli_fetch_array($result)) {
             </script>';
 
             echo '<div id="rating">
-               <div id="star_rating" style="overflow:hidden;width:120px">
-                   <img src="../../images/about/five_stars.png" style="width:120px;height:auto"/> <!-- width:260px;height:49px -->
+               <div id="star_rating" class="starRatingOverflow">
+                   <img src="../../images/about/five_stars.png" class="starImage"/>
                </div>
            </div>';
             echo '</h2>

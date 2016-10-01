@@ -10,6 +10,7 @@ $teacherID = $_GET['userID'];
  <div class="content ">
     <h1 class="centered">Testimonials About
       <?php
+      //Return teacher's first and last name
       $sql2 = "SELECT users.firstName, users.lastName FROM users WHERE users.userID = $teacherID";
       $result2 = mysqli_query($con, $sql2);
       while ($row2 = mysqli_fetch_array($result2)) {
@@ -25,6 +26,7 @@ $sql = "SELECT teacherreviews.*,users.firstName, users.lastName FROM users INNER
 $result = mysqli_query($con, $sql);
 
 while ($row = mysqli_fetch_array($result)) {
+  //Shows only reviews with a Public status
   if ($row["reviewStatus"] == 'Public') {
     echo '<div class="faq_post">
 					<div class="faq_copy">
@@ -47,8 +49,8 @@ while ($row = mysqli_fetch_array($result)) {
             </script>';
 
             echo '<div id="rating">
-               <div id="star_rating" style="overflow:hidden;width:120px">
-                   <img src="../../images/about/five_stars.png" style="width:120px;height:auto"/> <!-- width:260px;height:49px -->
+               <div id="star_rating" class="starRatingOverflow">
+                   <img src="../../images/about/five_stars.png" class="starImage"/>
                </div>
            </div>';
             echo '</h2>
