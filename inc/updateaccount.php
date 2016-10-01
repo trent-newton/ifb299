@@ -1,7 +1,7 @@
 <?php
 session_start();
-include "../../inc/connect.php";
-require "../../inc/checkFunctions.php";
+include "../inc/connect.php";
+require "../inc/checkFunctions.php";
 ?>
 
 <?php
@@ -86,6 +86,6 @@ if($email == "" || $streetNumber == "" || $streetName == "" || $streetType == ""
     }
 
     $_SESSION['success'] = "Account Updated";
-    header("location:" . $_SERVER["HTTP_REFERER"]);
+    header("location:../" . $_SERVER["HTTP_REFERER"]);
     exit();
 }
