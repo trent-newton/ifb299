@@ -1,6 +1,6 @@
 <?php
-// Get selected userID
-$userID = $_GET['userID'];
+// Get selected teacherID
+$teacherID = $_GET['userID'];
     $pagetitle = "Our Teachers Testimonials | Pinelands Music School";
     include "../../inc/connect.php";
     include "../../inc/header.php";
@@ -10,18 +10,18 @@ $userID = $_GET['userID'];
  <div class="content ">
     <h1 class="centered">Testimonials About
       <?php
-      $sql2 = "SELECT users.firstName, users.lastName FROM users WHERE users.userID = $userID";
+      $sql2 = "SELECT users.firstName, users.lastName FROM users WHERE users.userID = $teacherID";
       $result2 = mysqli_query($con, $sql2);
-      while ($row = mysqli_fetch_array($result2)) {
-        echo $row["firstName"];
+      while ($row2 = mysqli_fetch_array($result2)) {
+        echo $row2["firstName"];
         echo " ";
-        echo $row["lastName"];
+        echo $row2["lastName"];
       }
       ?>
     </h1>
 
 <?php
-$sql = "SELECT teacherreviews.*,users.firstName, users.lastName FROM users INNER JOIN teacherreviews ON users.userID = teacherreviews.teacherID WHERE teacherreviews.teacherID = $userID";
+$sql = "SELECT teacherreviews.*,users.firstName, users.lastName FROM users INNER JOIN teacherreviews ON users.userID = teacherreviews.teacherID WHERE teacherreviews.teacherID = $teacherID";
 $result = mysqli_query($con, $sql);
 
 while ($row = mysqli_fetch_array($result)) {
