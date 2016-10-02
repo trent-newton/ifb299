@@ -1,5 +1,6 @@
 <?php
     $errorDOB = "";
+    $errorUnit = "";
     $errorStreet = "";
     $errorPostcode = "";
     $errorSEmail = "";
@@ -55,7 +56,7 @@
 
         // Check unit number
         if ($unitNum != "") {
-            $errorStreet = CheckNumeric($unitNum, "Invalid unit number");
+            $errorUnit = CheckNumeric($unitNum, "Invalid unit number");
         }
 
         // Check street number
@@ -80,7 +81,7 @@
             $password = hash('sha256', $password.$salt); //Puts the $password and $salt together and hashes it
         }
 
-        if ($errorDOB == "" && $errorStreet == "" && $errorPostcode == "" && $errorPhone0 == "" && $errorPhone1 == "" && $errorConfirmPassword == "" && $errorPName == "" && $errorPEmail == "") {
+        if ($errorDOB == "" && $errorUnit == "" && $errorStreet == "" && $errorPostcode == "" && $errorPhone0 == "" && $errorPhone1 == "" && $errorConfirmPassword == "" && $errorPName == "" && $errorPEmail == "") {
             // Check if email is already in the database
             $sqlCheckEmail = sprintf("SELECT email FROM users WHERE email='%s'", $sEmail);
             $resultCheckEmail = mysqli_query($con, $sqlCheckEmail) or die(mysqli_error($con));
@@ -141,13 +142,11 @@
                 $_SESSION['userID'] = $studentID;
                 $_SESSION['accountType'] = 3;
                 $_SESSION['success'] = "Welcome back " .ucfirst($sFirst) . " "  . ucfirst($sLast);
-                header("location:../pages/home/index.php");
+                header("location:../../pages/home/index.php");
                 exit();
             } else {
-                $errorSEmail = "Email already in use";
+                $errorSEmail = "Student email is already in use";
             }
-        } else {
-            $_SESSION['error'] = "Please review field errors";
         }
     }
 ?>

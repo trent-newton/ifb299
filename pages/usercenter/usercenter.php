@@ -26,10 +26,10 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
           if(isStudent($_SESSION['accountType']) || isStudentTeacher($_SESSION['accountType'])) {
             echo '<br />';
 
-            echo '<a href="#"><div class="temp"><img class="AdminCenterImage" src="../../images/home-page-images/acoustic-guitar.png">
+            echo '<a href="../../pages/instrumentHire/instrumentHire.php"><div class="temp"><img class="AdminCenterImage" src="../../images/home-page-images/acoustic-guitar.png">
                   <br><h2>INSTRUMENT HIRE</h2></div></a>';
 
-            echo '<a href="../../pages/enrol/enrolPage.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/settings.png">
+            echo '<a href="../../pages/enrol/enrolPage.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/enrol.png">
                   <br><h2>CLASS ENROLMENT</h2></div></a>';
 
             echo '<br />';
