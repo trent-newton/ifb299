@@ -12,6 +12,13 @@
 
     $sqlGetContracts = "SELECT * FROM contracts WHERE studentID='$userID'";
     $resultGetContracts = mysqli_query($con, $sqlGetContracts) or die(mysqli_error($con));
+
+    if(isset($_SESSION['hireSuccess'])) {
+        echo "<div class='alert alert-success fade in'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                ".$_SESSION['hireSuccess']."</div>";
+        unset($_SESSION['hireSuccess']);
+    }
 ?>
 
 <div class="content">

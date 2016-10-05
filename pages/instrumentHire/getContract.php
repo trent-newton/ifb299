@@ -8,8 +8,10 @@
   	while($row = mysqli_fetch_array($resultGetContracts)) {
   		$instrumentID = $row['instrumentTypeID'];
 	    echo "Instrument: ".$row['instrumentName']."<br />";
-	    echo "Day of class: ".$row['day']."<br />";
-	    echo "Class time: ".$row['time']."<br />";
+      $day = $row['day'];
+	    echo "Day of class: ".$day."<br />";
+      $time = $row['time'];
+	    echo "Class time: ".$time."<br />";
 	    echo "Contract start date: ".$row['startDate']."<br />";
 	    echo "Contract end date: ".$row['endDate']."<br />";
 	}
@@ -18,6 +20,8 @@
 <form method="post" action="<?php echo htmlspecialchars("../../pages/instrumentHire/chooseInstrument.php") ?>">
     <input type="hidden" name="contractID" value="<?php echo $contractID ?>" />
     <input type="hidden" name="instrumentID" value="<?php echo $instrumentID ?>" />
+    <input type="hidden" name="day" value="<?php echo $day ?>" />
+    <input type="hidden" name="time" value="<?php echo $time ?>" />
     <label for="selectStartDate">Hire start date<span class="required">*</span>: </label>
     <select class="form-control" name="startDate" id="selectStartDate" required></select>
     <label for="selectEndDate">Hire end date<span class="required">*</span>: </label>
