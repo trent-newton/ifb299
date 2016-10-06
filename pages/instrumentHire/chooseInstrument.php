@@ -11,7 +11,7 @@
     }
 
     $contractID = $_POST['contractID'];
-    $instrumentTypeID = $_POST['instrumentID'];
+    $instrumentTypeID = $_POST['instrumentTypeID'];
     $day = $_POST['day'];
     $time = $_POST['time'];
     $startDate = $_POST['startDate'];
@@ -44,7 +44,7 @@
 
     <form method="post" action="<?php echo htmlspecialchars("../../pages/instrumenthire/hireInstrProcessing.php") ?>">
         <input type="hidden" name="contractID" value="<?php echo $contractID ?>" />
-        <input type="hidden" name="instrumentID" value="<?php echo $instrumentID ?>" />
+        <input type="hidden" name="instrumentTypeID" value="<?php echo $instrumentTypeID ?>" />
         <input type="hidden" name="startDate" value="<?php echo $startDate ?>" />
         <input type="hidden" name="endDate" value="<?php echo $endDate ?>" />
 
@@ -61,13 +61,13 @@
                     <?php
                         $entries = 0;
                         while ($row = mysqli_fetch_array($resultGetInstruments)) {
-                            if (!in_array($row['instrumentID'], $incorrectInstr)) {
+                            if (!in_array($row['schoolInstrumentID'], $incorrectInstr)) {
                                 $entries++;
-                                echo "<tr><td>".$row['instrumentID']."</td>";
+                                echo "<tr><td>".$row['schoolInstrumentID']."</td>";
                                 echo "<td>".$row['instrumentName']."</td>";
                                 echo "<td>".$row['instrumentCondition']."</td>";
                                 echo "<td>$".$row['hireCost']."</td>";
-                                echo "<td><input class='form-control' type='submit' name='submit' value=".$row['instrumentID']." /></td></tr>";
+                                echo "<td><input class='form-control' type='submit' name='submit' value=".$row['schoolInstrumentID']." /></td></tr>";
                             }
                         }
                     ?>
