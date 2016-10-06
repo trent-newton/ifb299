@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2016 at 06:00 AM
+-- Generation Time: Oct 06, 2016 at 08:59 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -145,7 +145,7 @@ CREATE TABLE `instrumenthire` (
   `schoolInstrumentID` int(11) NOT NULL,
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
-  `adminApproved` bit(1) NOT NULL DEFAULT b'0',
+  `adminApproved` enum('Yes','No') DEFAULT NULL,
   `archived` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -154,8 +154,8 @@ CREATE TABLE `instrumenthire` (
 --
 
 INSERT INTO `instrumenthire` (`instrumentHireID`, `contractID`, `schoolInstrumentID`, `startDate`, `endDate`, `adminApproved`, `archived`) VALUES
-(10, 24, 1, '2016-09-07', '2016-09-07', b'0', b'0'),
-(11, 24, 2, '2016-09-07', '2016-09-07', b'0', b'0');
+(10, 24, 1, '2016-09-07', '2016-09-07', 'No', b'0'),
+(11, 24, 2, '2016-09-07', '2016-09-07', 'Yes', b'0');
 
 -- --------------------------------------------------------
 

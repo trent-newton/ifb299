@@ -19,7 +19,7 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
             <br><h2>USERS</h2>
         </div></a>
 
-        <a href="#"><div class="temp"><img class="AdminCenterImage" src="../../images/home-page-images/acoustic-guitar.png">
+        <a href="../../pages/admin/instrumentsAdmin.php"><div class="temp"><img class="AdminCenterImage" src="../../images/home-page-images/acoustic-guitar.png">
            <br><h2>INSTRUMENTS</h2>
         </div></a>
 
