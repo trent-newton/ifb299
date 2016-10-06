@@ -3,11 +3,10 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2016 at 06:54 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Generation Time: Oct 06, 2016 at 06:00 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -20,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `pinelands_ms`
 --
-CREATE DATABASE IF NOT EXISTS `pinelands_ms` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `pinelands_ms` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `pinelands_ms`;
 
 -- --------------------------------------------------------
@@ -92,31 +91,32 @@ CREATE TABLE `contracts` (
   `time` time NOT NULL,
   `day` enum('Monday','Tuesday','Wednesday','Thursday','Friday') NOT NULL,
   `length` enum('30','60') NOT NULL,
-  `instrument` varchar(100) NOT NULL
+  `instrumentTypeID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `contracts`
 --
 
-INSERT INTO `contracts` (`contractID`, `teacherID`, `studentID`, `startDate`, `endDate`, `time`, `day`, `length`, `instrument`) VALUES
-(1, 2, 3, '2016-09-08', '2016-10-26', '12:00:00', 'Thursday', '30', 'Violin'),
-(2, 2, 3, '2016-09-05', '2016-10-31', '14:00:00', 'Monday', '60', 'Piano'),
-(3, 2, 3, '2016-09-07', '2016-10-26', '11:00:00', 'Wednesday', '60', 'Chello'),
-(4, 2, 3, '2016-09-06', '2016-10-25', '12:00:00', 'Tuesday', '60', 'Stuff'),
-(7, 3, 2, '2016-09-07', '2016-09-14', '10:00:00', 'Wednesday', '60', 'Chello'),
-(8, 3, 2, '2016-09-07', '2016-09-14', '09:00:00', 'Monday', '60', 'Violin'),
-(9, 6, 3, '2016-09-07', '2016-09-14', '10:00:00', 'Thursday', '60', 'Chello'),
-(10, 3, 3, '2016-09-07', '2016-09-14', '10:00:00', 'Monday', '60', 'Chello'),
-(11, 6, 2, '2016-09-07', '2016-09-14', '12:00:00', 'Monday', '60', 'Chello'),
-(12, 3, 2, '2016-09-07', '2016-09-14', '10:00:00', 'Monday', '60', 'Chello'),
-(13, 6, 2, '2016-09-07', '2016-09-14', '10:00:00', 'Monday', '60', 'Chello'),
-(14, 3, 3, '2016-09-07', '2016-09-14', '13:00:00', 'Tuesday', '60', 'Violin'),
-(15, 3, 2, '2016-09-07', '2016-09-14', '11:00:00', 'Monday', '60', 'Chello'),
-(17, 3, 2, '2016-09-07', '2016-09-14', '14:00:00', 'Tuesday', '60', 'Bass'),
-(18, 3, 2, '2016-09-07', '2016-12-30', '16:00:00', 'Tuesday', '60', 'Pan Flute'),
-(19, 3, 2, '2016-09-07', '2016-12-30', '13:00:00', 'Tuesday', '60', 'Keyboard'),
-(21, 3, 7, '2016-09-07', '2016-12-30', '10:00:00', 'Monday', '60', 'Bass');
+INSERT INTO `contracts` (`contractID`, `teacherID`, `studentID`, `startDate`, `endDate`, `time`, `day`, `length`, `instrumentTypeID`) VALUES
+(1, 2, 3, '2016-09-08', '2016-10-26', '12:00:00', 'Thursday', '30', 1),
+(2, 2, 3, '2016-09-05', '2016-10-31', '14:00:00', 'Monday', '60', 2),
+(3, 2, 3, '2016-09-07', '2016-10-26', '11:00:00', 'Wednesday', '60', 3),
+(4, 2, 3, '2016-09-06', '2016-10-25', '12:00:00', 'Tuesday', '60', 4),
+(7, 3, 2, '2016-09-07', '2016-09-14', '10:00:00', 'Wednesday', '60', 5),
+(8, 3, 2, '2016-09-07', '2016-09-14', '09:00:00', 'Monday', '60', 6),
+(9, 6, 3, '2016-09-07', '2016-09-14', '10:00:00', 'Thursday', '60', 7),
+(10, 3, 3, '2016-09-07', '2016-09-14', '10:00:00', 'Monday', '60', 8),
+(11, 6, 2, '2016-09-07', '2016-09-14', '12:00:00', 'Monday', '60', 9),
+(12, 3, 2, '2016-09-07', '2016-09-14', '10:00:00', 'Monday', '60', 1),
+(13, 6, 2, '2016-09-07', '2016-09-14', '10:00:00', 'Monday', '60', 2),
+(14, 3, 3, '2016-09-07', '2016-09-14', '13:00:00', 'Tuesday', '60', 2),
+(15, 3, 2, '2016-09-07', '2016-09-14', '11:00:00', 'Monday', '60', 3),
+(17, 3, 2, '2016-09-07', '2016-09-14', '14:00:00', 'Tuesday', '60', 4),
+(18, 3, 2, '2016-09-07', '2016-12-30', '16:00:00', 'Tuesday', '60', 2),
+(19, 3, 2, '2016-09-07', '2016-12-30', '13:00:00', 'Tuesday', '60', 7),
+(21, 3, 7, '2016-09-07', '2016-12-30', '10:00:00', 'Monday', '60', 4),
+(24, 3, 5, '2016-09-07', '2016-12-30', '10:00:00', 'Monday', '60', 1);
 
 -- --------------------------------------------------------
 
@@ -142,9 +142,20 @@ DROP TABLE IF EXISTS `instrumenthire`;
 CREATE TABLE `instrumenthire` (
   `instrumentHireID` int(11) NOT NULL,
   `contractID` int(11) NOT NULL,
+  `schoolInstrumentID` int(11) NOT NULL,
   `startDate` date NOT NULL,
-  `endDate` date NOT NULL
+  `endDate` date NOT NULL,
+  `adminApproved` bit(1) NOT NULL DEFAULT b'0',
+  `archived` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `instrumenthire`
+--
+
+INSERT INTO `instrumenthire` (`instrumentHireID`, `contractID`, `schoolInstrumentID`, `startDate`, `endDate`, `adminApproved`, `archived`) VALUES
+(10, 24, 1, '2016-09-07', '2016-09-07', b'0', b'0'),
+(11, 24, 2, '2016-09-07', '2016-09-07', b'0', b'0');
 
 -- --------------------------------------------------------
 
@@ -237,11 +248,19 @@ INSERT INTO `phonenumbers` (`userID`, `phoneNumber`) VALUES
 
 DROP TABLE IF EXISTS `schoolinstruments`;
 CREATE TABLE `schoolinstruments` (
-  `instrumentID` int(11) NOT NULL,
+  `schoolInstrumentID` int(11) NOT NULL,
   `instrumentTypeID` int(11) NOT NULL,
   `instrumentCondition` enum('New','Excellent','Good','Repair','Discard') NOT NULL,
   `hireCost` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `schoolinstruments`
+--
+
+INSERT INTO `schoolinstruments` (`schoolInstrumentID`, `instrumentTypeID`, `instrumentCondition`, `hireCost`) VALUES
+(1, 1, 'Excellent', 40),
+(2, 1, 'Good', 20);
 
 -- --------------------------------------------------------
 
@@ -319,6 +338,20 @@ CREATE TABLE `userinstrument` (
   `InstrumentTypeID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `userinstrument`
+--
+
+INSERT INTO `userinstrument` (`userID`, `InstrumentTypeID`) VALUES
+(2, 5),
+(3, 4),
+(4, 2),
+(4, 6),
+(5, 1),
+(5, 10),
+(6, 8),
+(6, 11);
+
 -- --------------------------------------------------------
 
 --
@@ -380,7 +413,8 @@ ALTER TABLE `contracts`
   ADD KEY `FK_contracts_idx` (`teacherID`,`studentID`),
   ADD KEY `fk_users_idx` (`teacherID`,`studentID`),
   ADD KEY `fk_teacher_idx` (`teacherID`),
-  ADD KEY `fk_student_idx` (`studentID`);
+  ADD KEY `fk_student_idx` (`studentID`),
+  ADD KEY `FK_instrument_idx` (`instrumentTypeID`);
 
 --
 -- Indexes for table `forgotpassword`
@@ -393,7 +427,9 @@ ALTER TABLE `forgotpassword`
 -- Indexes for table `instrumenthire`
 --
 ALTER TABLE `instrumenthire`
-  ADD PRIMARY KEY (`instrumentHireID`);
+  ADD PRIMARY KEY (`instrumentHireID`),
+  ADD KEY `fk_contractID-Hire_idx` (`contractID`),
+  ADD KEY `fk_schoolinstrumentID-hire_idx` (`schoolInstrumentID`);
 
 --
 -- Indexes for table `instrumentnames`
@@ -418,7 +454,8 @@ ALTER TABLE `phonenumbers`
 -- Indexes for table `schoolinstruments`
 --
 ALTER TABLE `schoolinstruments`
-  ADD PRIMARY KEY (`instrumentID`);
+  ADD PRIMARY KEY (`schoolInstrumentID`),
+  ADD KEY `fk_instrumenttype-instru_idx` (`instrumentTypeID`);
 
 --
 -- Indexes for table `teacherreviews`
@@ -439,7 +476,8 @@ ALTER TABLE `useraddress`
 -- Indexes for table `userinstrument`
 --
 ALTER TABLE `userinstrument`
-  ADD PRIMARY KEY (`userID`,`InstrumentTypeID`);
+  ADD PRIMARY KEY (`userID`,`InstrumentTypeID`),
+  ADD KEY `fk_instrumentID-instru_idx` (`InstrumentTypeID`);
 
 --
 -- Indexes for table `users`
@@ -467,17 +505,17 @@ ALTER TABLE `availability`
 -- AUTO_INCREMENT for table `contracts`
 --
 ALTER TABLE `contracts`
-  MODIFY `contractID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `contractID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `forgotpassword`
 --
 ALTER TABLE `forgotpassword`
-  MODIFY `forgotID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `forgotID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `instrumenthire`
 --
 ALTER TABLE `instrumenthire`
-  MODIFY `instrumentHireID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `instrumentHireID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `instrumentnames`
 --
@@ -487,7 +525,7 @@ ALTER TABLE `instrumentnames`
 -- AUTO_INCREMENT for table `schoolinstruments`
 --
 ALTER TABLE `schoolinstruments`
-  MODIFY `instrumentID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `schoolInstrumentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `teacherreviews`
 --
@@ -512,6 +550,7 @@ ALTER TABLE `availability`
 -- Constraints for table `contracts`
 --
 ALTER TABLE `contracts`
+  ADD CONSTRAINT `fk_instrumentTypeID` FOREIGN KEY (`instrumentTypeID`) REFERENCES `instrumentnames` (`instrumentTypeID`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_student` FOREIGN KEY (`studentID`) REFERENCES `users` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_teacher` FOREIGN KEY (`teacherID`) REFERENCES `users` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
@@ -522,10 +561,23 @@ ALTER TABLE `forgotpassword`
   ADD CONSTRAINT `fk_userID` FOREIGN KEY (`userID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `instrumenthire`
+--
+ALTER TABLE `instrumenthire`
+  ADD CONSTRAINT `fk_contractID-Hire` FOREIGN KEY (`contractID`) REFERENCES `contracts` (`contractID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_schoolinstrumentID-hire` FOREIGN KEY (`schoolInstrumentID`) REFERENCES `schoolinstruments` (`schoolInstrumentID`) ON UPDATE CASCADE;
+
+--
 -- Constraints for table `languages`
 --
 ALTER TABLE `languages`
   ADD CONSTRAINT `FK` FOREIGN KEY (`userID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `schoolinstruments`
+--
+ALTER TABLE `schoolinstruments`
+  ADD CONSTRAINT `fk_instrumenttype-instru` FOREIGN KEY (`instrumentTypeID`) REFERENCES `instrumentnames` (`instrumentTypeID`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `teacherreviews`
@@ -541,11 +593,17 @@ ALTER TABLE `useraddress`
   ADD CONSTRAINT `FK_useraddress_address` FOREIGN KEY (`addressID`) REFERENCES `address` (`addressId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `userinstrument`
+--
+ALTER TABLE `userinstrument`
+  ADD CONSTRAINT `fk_instrumentID-instru` FOREIGN KEY (`InstrumentTypeID`) REFERENCES `instrumentnames` (`instrumentTypeID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_userID-instru` FOREIGN KEY (`userID`) REFERENCES `users` (`UserID`) ON UPDATE CASCADE;
+
+--
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_users_userAddress` FOREIGN KEY (`UserID`) REFERENCES `useraddress` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
