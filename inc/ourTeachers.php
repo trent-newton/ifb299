@@ -3,7 +3,7 @@
   $result = mysqli_query($con, $sql);
   while ($row = mysqli_fetch_array($result)) {
       echo "<div class='temp teacherPage'>";
-    echo "<h2>" . $row['firstName'] . " " . $row['lastName'] . "</h2>";
+    echo "<h2>" . $row['firstName'] . "<br />" . $row['lastName'] . "</h2>";
 
     $userID = $row["UserID"];
 
@@ -48,12 +48,12 @@
       echo "</ul>";
 
 
-    $sql3 = "SELECT * FROM instruments WHERE instruments.userID = '$userID'";
+    $sql3 = "SELECT instrumentName FROM users LEFT JOIN userinstrument ON users.UserID=userinstrument.userID LEFT JOIN instrumentnames ON userinstrument.InstrumentTypeID=instrumentnames.instrumentTypeID  WHERE users.UserID = '$userID'";
     $result3 = mysqli_query($con, $sql3);
     echo "<strong>Instruments you can learn to play from me: </strong>";
       echo "<ul>";
     while ($row3 = mysqli_fetch_array($result3)) {
-      echo "<li>".$row3['instrument']."</li>";
+      echo "<li>".$row3['instrumentName']."</li>";
     }
       echo "</ul>";
 echo "<a href='https://www.facebook.com/";
