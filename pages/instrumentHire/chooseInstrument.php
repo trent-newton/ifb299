@@ -11,12 +11,28 @@
     }
 
     $contractID = $_POST['contractID'];
-    $instrumentTypeID = $_POST['instrumentID'];
+    $instrumentTypeID = $_POST['instrumentTypeID'];
+    $day = $_POST['day'];
+    $time = $_POST['time'];
     $startDate = $_POST['startDate'];
     $endDate = $_POST['endDate'];
 
+    $sqlGetCurrentHires = "SELECT schoolInstrumentID, instrumenthire.startDate, instrumenthire.endDate, contracts.time, contracts.day FROM instrumenthire
+                            INNER JOIN contracts ON instrumenthire.contractID=contracts.contractID
+                            WHERE contracts.instrumentTypeID=$instrumentTypeID";
+    $resultGetCurrentHires = mysqli_query($con, $sqlGetCurrentHires) or die(mysqli_error($con));
+
+    $incorrectInstr = [];
+
+    while ($row = mysqli_fetch_array($resultGetCurrentHires)) {
+        if (!in_array($row['schoolInstrumentID'], $incorrectInstr)) {
+            if ($startDate<=$row['endDate'] && $endDate>=$row['startDate'] && $time == $row['time'] && $day == $row['day']) {
+                array_push($incorrectInstr, $row['schoolInstrumentID']);
+            }
+        } 
+    }
+
     $sqlGetInstruments = "SELECT * FROM schoolinstruments
-                            LEFT JOIN instrumenthire ON schoolinstruments.instrumentID=instrumenthire.schoolInstrumentID
                             INNER JOIN instrumentnames ON schoolinstruments.instrumentTypeID=instrumentnames.instrumentTypeID
                             WHERE schoolinstruments.instrumentTypeID=$instrumentTypeID";
     $resultGetInstruments = mysqli_query($con, $sqlGetInstruments) or die(mysqli_error($con));
@@ -28,7 +44,7 @@
 
     <form method="post" action="<?php echo htmlspecialchars("../../pages/instrumenthire/hireInstrProcessing.php") ?>">
         <input type="hidden" name="contractID" value="<?php echo $contractID ?>" />
-        <input type="hidden" name="instrumentID" value="<?php echo $instrumentID ?>" />
+        <input type="hidden" name="instrumentTypeID" value="<?php echo $instrumentTypeID ?>" />
         <input type="hidden" name="startDate" value="<?php echo $startDate ?>" />
         <input type="hidden" name="endDate" value="<?php echo $endDate ?>" />
 
@@ -45,13 +61,13 @@
                     <?php
                         $entries = 0;
                         while ($row = mysqli_fetch_array($resultGetInstruments)) {
-                            if ($startDate>=$row['endDate'] || $endDate<=$row['startDate']) {
+                            if (!in_array($row['schoolInstrumentID'], $incorrectInstr)) {
                                 $entries++;
-                                echo "<tr><td>".$row['instrumentID']."</td>";
+                                echo "<tr><td>".$row['schoolInstrumentID']."</td>";
                                 echo "<td>".$row['instrumentName']."</td>";
                                 echo "<td>".$row['instrumentCondition']."</td>";
                                 echo "<td>$".$row['hireCost']."</td>";
-                                echo "<td><input class='form-control' type='submit' name='submit' value=".$row['instrumentID']." /></td></tr>";
+                                echo "<td><input class='form-control' type='submit' name='submit' value=".$row['schoolInstrumentID']." /></td></tr>";
                             }
                         }
                     ?>

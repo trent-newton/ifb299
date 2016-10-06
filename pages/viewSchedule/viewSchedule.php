@@ -159,12 +159,12 @@ $color = array(
     '#c0392b'
     );
 if($_SESSION['accountType'] == "Student") {
-   $sql = "SELECT * FROM contracts INNER JOIN users ON userID=studentID WHERE userID='$userID' ORDER BY time, startDate";
+   $sql = "SELECT * FROM users INNER JOIN contracts ON userID=studentID INNER JOIN instrumentNames ON instrumentNames.instrumentTypeID=contracts.instrumentTypeID WHERE userID='$userID' ORDER BY time, startDate";
 } elseif($_SESSION['accountType'] == "Teacher") {
-    $sql = "SELECT * FROM contracts INNER JOIN users ON userID=teacherID WHERE userID='$userID' ORDER BY time, startDate";
+    $sql = "SELECT * FROM users INNER JOIN contracts ON userID=teacherID INNER JOIN instrumentNames ON instrumentNames.instrumentTypeID=contracts.instrumentTypeID WHERE userID='$userID' ORDER BY time, startDate";
     }
 else {
-    $sql = "SELECT * FROM contracts INNER JOIN users ON userID=teacherID WHERE userID='$userID' UNION SELECT * FROM contracts INNER JOIN users ON userID=studentID WHERE userID='$userID' ORDER BY time, startDate";
+    $sql = "SELECT * FROM users INNER JOIN contracts ON userID=teacherID INNER JOIN instrumentNames ON instrumentNames.instrumentTypeID=contracts.instrumentTypeID WHERE userID='$userID' UNION SELECT * FROM users INNER JOIN contracts ON userID=studentID INNER JOIN instrumentNames ON instrumentNames.instrumentTypeID=contracts.instrumentTypeID WHERE userID='$userID' ORDER BY time, startDate";
 }
 $result = mysqli_query($con,$sql);
 
@@ -172,7 +172,7 @@ while ($row = mysqli_fetch_array($result)) {
     $time = $row['time'];
     $day = $row['day'];
     $length = $row['length'];
-    $instrument = $row['instrument'];
+    $instrument = $row['instrumentName'];
     //$tableColor = $color[$n];
     $timeTable[$day][$time] = "$length Minutes <br /> $instrument <br /> ";
     if($length == '60') {

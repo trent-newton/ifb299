@@ -37,7 +37,14 @@ $studentID = $userID;
 $startDate = $_POST['startDate'];
 $endDate = $_POST['endDate'];
 
-$sql = "INSERT INTO contracts (teacherID, studentID, startDate, endDate, time, day, length, instrument) VALUES ('$teacherID', '$studentID', '$startDate', '$endDate', '$startTime', '$day', '60', '$instrument')";
+$sql = "SELECT * FROM instrumentNames WHERE instrumentName='$instrument'";
+$result = mysqli_query($con, $sql) or die(mysqli_error($con));
+$row = mysqli_fetch_array($result);
+
+$instrumentTypeID = $row['instrumentTypeID'];
+
+
+$sql = "INSERT INTO contracts (teacherID, studentID, startDate, endDate, time, day, length, instrumentTypeID) VALUES ('$teacherID', '$studentID', '$startDate', '$endDate', '$startTime', '$day', '60', '$instrumentTypeID')";
 $result = mysqli_query($con, $sql) or die(mysqli_error($con));
 
 ?>
