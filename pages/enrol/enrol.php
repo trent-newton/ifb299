@@ -28,7 +28,7 @@ if($accessLevel == 'admin')
 }
 
 $columnInstrument  = array(
-  'instrument' => 'instrument'
+  'instrumentName' => 'instrumentName'
 );
 
 $columnLanguage  = array(
@@ -37,7 +37,7 @@ $columnLanguage  = array(
 
 
 //query to find list of instruments
-$resultInstrument = mysqli_query($con,"SELECT distinct instrument FROM instruments");
+$resultInstrument = mysqli_query($con,"SELECT distinct instrumentName FROM instrumentNames");
 
 //query to find list of langauges
 $resultLanguage = mysqli_query($con,"SELECT distinct language FROM languages");

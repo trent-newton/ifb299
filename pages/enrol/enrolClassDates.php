@@ -41,9 +41,9 @@ $studentID = $userID;
     <?php
     if($accessLevel == 'admin')
     {
-      echo '<form class="basic-form" action="pages/enrolClassTimeProcess.php?userID='.$userID.'" method="post">';
+      echo '<form class="basic-form" action="enrolClassTimeProcess.php?userID='.$userID.'" method="post">';
     } else {
-      echo '<form class="basic-form" action="pages/enrolClassTimeProcess.php" method="post">';
+      echo '<form class="basic-form" action="enrolClassTimeProcess.php" method="post">';
     }
 
      ?>
@@ -57,7 +57,7 @@ $studentID = $userID;
         <input type="hidden" name="instrument" value="<?php echo $instrument?>" />
         <input type="hidden" name="teacherID" value="<?php echo $teacherID?>" />
         <input type="hidden" name="studentID" value="<?php echo $studentID?>" />
-        <input class="form-control" type="submit" name="submit" value="submit" />
+        <input class="form-control" type="submit" name="Submit" value="submit" />
     </form>
 </div><!--end content-->
 
