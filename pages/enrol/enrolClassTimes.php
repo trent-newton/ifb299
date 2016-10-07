@@ -43,11 +43,19 @@ function recommendClasses($teacherID, $chosenDay, $chosenStartTime, $teacherStar
 
   $teacherStartTime = floatval($TeacherStart);
   $teacherEndTime = floatval($TeacherEnd);
+  $str = '';
   for($i=$teacherStartTime; $i<($teacherEndTime-$teacherStartTime); $i++)
   {
     if($i != $rowRecommended[$i-$teacherStartTime])
     {
-
+      $str = '<tr><td>'.$chosenDay.'</td><td>'.$chosenStartTime.'</td><td>'.$teacherID.'</td>';
+      if($accessLevel == 'admin')
+      {
+        $str += "<td><a href='enrolClassDates.php?userID=".$userID."&day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";
+      } else {
+        $str += "<td><a href='enrolClassDates.php?day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";
+      }
+      $str += "><span class='changeAccess'> Select Class </span> </td>";
     }
   }
 
@@ -113,7 +121,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     foreach ($columnTeacherDetails as $name => $col_name) {
                       echo "<th>$name</th>";
                     }
-                    echo "<th> Teacher </th>
+                    echo "<th> Time </th>
+                          <th> Teacher </th>
                           <th>Select Class</th>";
                     while($row = mysqli_fetch_array($result)){
                         //check if teacher is already booked in time slot
@@ -131,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                                 echo "<td> $row[$col_name] </td>";
                                 $teacherID = $row['teacherID'];
                             }
-
+                            echo "<td>". $chosenStartTime.'-'. $endTime ."</td>";
                             //get teacher's name
                             $sqlTeacherName = "SELECT distinct users.firstName FROM availability INNER JOIN users
                                                 where availability.teacherID = users.UserID
