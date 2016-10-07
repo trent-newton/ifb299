@@ -3,10 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2016 at 08:59 AM
+-- Generation Time: Oct 07, 2016 at 02:36 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -116,7 +117,8 @@ INSERT INTO `contracts` (`contractID`, `teacherID`, `studentID`, `startDate`, `e
 (18, 3, 2, '2016-09-07', '2016-12-30', '16:00:00', 'Tuesday', '60', 2),
 (19, 3, 2, '2016-09-07', '2016-12-30', '13:00:00', 'Tuesday', '60', 7),
 (21, 3, 7, '2016-09-07', '2016-12-30', '10:00:00', 'Monday', '60', 4),
-(24, 3, 5, '2016-09-07', '2016-12-30', '10:00:00', 'Monday', '60', 1);
+(24, 3, 5, '2016-09-07', '2016-12-30', '10:00:00', 'Monday', '60', 1),
+(25, 3, 5, '2016-09-07', '2016-12-30', '10:00:00', 'Tuesday', '60', 1);
 
 -- --------------------------------------------------------
 
@@ -505,7 +507,7 @@ ALTER TABLE `availability`
 -- AUTO_INCREMENT for table `contracts`
 --
 ALTER TABLE `contracts`
-  MODIFY `contractID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `contractID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `forgotpassword`
 --
@@ -604,6 +606,7 @@ ALTER TABLE `userinstrument`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_users_userAddress` FOREIGN KEY (`UserID`) REFERENCES `useraddress` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
