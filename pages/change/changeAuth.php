@@ -43,8 +43,11 @@ if ($accountType != null){
         1 => "Student",
         2 => "Teacher",
         3 => "StudentAndTeacher",
-        4 => "Admin",
     );
+      
+    if (isOwner($_SESSION['userID'])){
+        $accountTypes[4] = "Admin";
+    }
 }
 
 foreach ($accountTypes as $type) {
