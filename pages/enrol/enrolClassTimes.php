@@ -27,7 +27,27 @@ if($accessLevel == 'admin')
   $userID = $_SESSION['userID'];
 }
 
+function recommendClasses($teacherID, $chosenDay, $chosenStartTime, $teacherStart, $teacherEnd){
+  $sqlRecommended = "SELECT contracts.time FROM contracts
+                      WHERE contracts.teacherID = $teacherID
+                      AND contracts.day = $chosenDay
+                      AND contracts.time != $chosenStartTime
+                      ORDER BY contracts.time ASC";
 
+  $resultRecommended = mysqli_query($con, $sqlRecommended) or die(mysqli_error($con));
+  $rowRecommended = mysqli_fetch_array($resultRecommended);
+
+  $teacherStartTime = floatval($TeacherStart);
+  $teacherEndTime = floatval($TeacherEnd);
+  for($i=$teacherStartTime; $i<($teacherEndTime-$teacherStartTime); $i++)
+  {
+    if($i != $rowRecommended[$i-$teacherStartTime])
+    {
+      
+    }
+  }
+
+}
 
 echo "<div class='content centered'>";
 $chosenInstrument = $_POST['chosenInstrument'];
@@ -53,9 +73,9 @@ if ($result2=mysqli_query($con,$sql))
       if($rowcount > 0){
         if($accessLevel == 'admin')
         {
-          echo "<h1> time slot taken click <a href='enrol.php?userID=".$userID."'> here </a> to pick another time</h1><br>";
+          echo "<h1> This student already had a class during this time. Click <a href='enrol.php?userID=".$userID."'> here </a> to pick another time</h1><br>";
         } else {
-          echo "<h1> time slot taken click <a href='enrol.php'> here </a> to pick another time</h1><br>";
+          echo "<h1> You already have a class during this time. Click <a href='enrol.php'> here </a> to pick another time</h1><br>";
         }
 
           mysqli_free_result($result2);
@@ -71,8 +91,11 @@ if ($result2=mysqli_query($con,$sql))
             $result = mysqli_query($con, $query);
 
             $rowcount=mysqli_num_rows($result);
+
+
             //classes available
             if ($rowcount > 0){
+
                 echo "<h1>$chosenInstrument classes on $chosenDay from $chosenStartTime to $endTime  </h1>";
                 //start table
                 echo "<table><tr>";
@@ -82,23 +105,23 @@ if ($result2=mysqli_query($con,$sql))
                 }
                 echo "<th> Teacher </th>
                       <th>Select Class</th>";
-                while($row = mysqli_fetch_array($result)) {
+                while($row = mysqli_fetch_array($result)){
                     echo "<tr>";
                     foreach ($columnTeacherDetails as $name => $col_name) {
                         echo "<td> $row[$col_name] </td>";
                         $teacherID = $row['teacherID'];
                     }
 
-                    //teacher name TD                
-                    $sqlTeacherName = "select distinct users.firstName FROM availability INNER JOIN users
+                    //teacher name TD
+                    $sqlTeacherName = "SELECT distinct users.firstName FROM availability INNER JOIN users
                                         where availability.teacherID = users.UserID
                                         AND users.UserID = '$teacherID'";
 
                     $resultTeacherName = mysqli_query($con, $sqlTeacherName) or die(mysqli_error($con));
                     $rowTeacherName = mysqli_fetch_array($resultTeacherName);
-                    
+
                     echo "<td>". $rowTeacherName['firstName']."</td>";
-                    
+
                     //select class TD
                     if($accessLevel == 'admin')
                     {
