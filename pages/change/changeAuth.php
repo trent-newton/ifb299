@@ -10,7 +10,7 @@ if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
 }
 echo "<div class='content changeAuth'>";
 
-include "../listUsers/searchUsers.php";
+include "../searchUsers/searchUsers.php";
 
 //get variables from searchUsers on if they are set
 if (isset($_POST["userID"])){
