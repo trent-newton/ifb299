@@ -10,7 +10,7 @@ if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
 }
 echo "<div class='content changeAuth'>";
 
-include "../listUsers/searchUsers.php";
+include "../searchUsers/searchUsers.php";
 
 //get variables from searchUsers on if they are set
 if (isset($_POST["userID"])){
@@ -43,8 +43,11 @@ if ($accountType != null){
         1 => "Student",
         2 => "Teacher",
         3 => "StudentAndTeacher",
-        4 => "Admin",
     );
+      
+    if (isOwner($_SESSION['userID'])){
+        $accountTypes[4] = "Admin";
+    }
 }
 
 foreach ($accountTypes as $type) {

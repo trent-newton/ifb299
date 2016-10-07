@@ -1,31 +1,7 @@
 <?php
-
-$pagetitle = "Enrol";
 include "../../inc/connect.php";
-include "../../inc/header.php";
-include "../../inc/nav.php";
-include "../../inc/authCheck.php";
 
 echo "<div class='form-content'>";
-
-$accessLevel='';
-$userID='';
-if((isAdmin($_SESSION['accountType'])) || (isOwner($_SESSION['accountType'])))
-{
-    $accessLevel = 'admin';
-    $sql = "SELECT firstName ,lastName FROM users WHERE userID=$userID";
-}else if(!(isStudent($_SESSION['accountType'])) && !(isStudentTeacher($_SESSION['accountType']))){
-    $_SESSION['error'] = "Only Students can access the Enrol Page.";
-    rejectAccess();
-}
-//for admins to add schedules for other users
-if($accessLevel == 'admin')
-{
-  $userID = $_GET['userID'];
-  $result= mysqli_query($con,"SELECT firstName, lastName, accountType FROM users WHERE userID = $userID");
-  $name = mysqli_fetch_array($result);
-  echo "<h1> Add class for ".$name['firstName']." ".$name['lastName']." (userID $userID) </h1>";
-}
 
 $columnInstrument  = array(
   'instrumentName' => 'instrumentName'
@@ -35,14 +11,13 @@ $columnLanguage  = array(
   'language' => 'language'
 );
 
-
 //query to find list of instruments
 $resultInstrument = mysqli_query($con,"SELECT distinct instrumentName FROM instrumentNames");
 
 //query to find list of langauges
 $resultLanguage = mysqli_query($con,"SELECT distinct language FROM languages");
 
-if($accessLevel == 'admin')
+if($_SESSION['accountType'] == 'Admin')
 {
   echo '<br><form method="post" class="form-inline" action="enrolClassTimes.php?userID='.$userID.'">';
 } else {
@@ -90,7 +65,3 @@ echo '<div class="col-md-2">';
   </div></div>
 </form>
 </div>
-
-
-
-<?php include "../../inc/footer.php"; ?>
