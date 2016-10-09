@@ -104,11 +104,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         AND availability.startTime <= '$chosenStartTime'
                         AND availability.endTime >= '$endTime'
                         AND availability.day = '$chosenDay'
-                        AND instrumentnames.instrumentName = '$chosenInstrument'
-                        ";
+                        AND instrumentnames.instrumentName = '$chosenInstrument'";
 
                 $result = mysqli_query($con, $query);
-
                 $rowcount=mysqli_num_rows($result);
 
                 //classes available
@@ -125,16 +123,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                           <th> Teacher </th>
                           <th>Select Class</th>";
                     while($row = mysqli_fetch_array($result)){
+                        $teacherID = $row['teacherID'];
                         //check if teacher is already booked in time slot
                         $sqlCheckIfTeacherBooked = "SELECT * FROM Contracts
-                                            WHERE startTime = '$chosenStartTime'
-                                            AND endTime = '$endTime'
-                                            AND day = '$chosenDay'";
+                                            WHERE time = '$chosenStartTime'
+                                            AND day = '$chosenDay'
+                                            and teacherID = '$teacherID'";
 
-                        $resultCheckIfTeacherBooked = mysqli_query($con, $sqlCheckIfTeacherBooked);
-                        //$rowcountTeacherBooked = mysqli_num_rows($resultCheckIfTeacherBooked);
+                        $resultCheckIfTeacherBooked = mysqli_query($con, $sqlCheckIfTeacherBooked) or die(mysqli_error($con));
 
-                        if (!$resultCheckIfTeacherBooked || mysqli_num_rows($resultCheckIfTeacherBooked) == 0){
+                        if (mysqli_num_rows($resultCheckIfTeacherBooked) == 0){
                             echo "<tr>";
                             foreach ($columnTeacherDetails as $name => $col_name) {
                                 echo "<td> $row[$col_name] </td>";
