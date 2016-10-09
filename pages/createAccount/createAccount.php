@@ -7,7 +7,7 @@
     include "../../inc/accountprocessing.php";
 ?>
 
-<div class="centered">
+<div class="content centered">
     <?php if(isset($_POST['submit'])) {
         echo '<div class="alert alert-danger">';
         if ($errorDOB != "") echo $errorDOB."<br>";

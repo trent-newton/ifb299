@@ -10,7 +10,7 @@
         rejectAccess();
     }
 
-    $sqlGetContracts = "SELECT * FROM contracts WHERE studentID='$userID'";
+    $sqlGetContracts = "SELECT contracts.contractID, contracts.startDate, contracts.endDate, contracts.time, contracts.day, instrumenthire.instrumentHireID FROM contracts LEFT JOIN instrumenthire ON contracts.contractID=instrumenthire.contractID WHERE studentID='$userID'";
     $resultGetContracts = mysqli_query($con, $sqlGetContracts) or die(mysqli_error($con));
 
     if(isset($_SESSION['hireSuccess'])) {
@@ -26,7 +26,9 @@
     <option value="">Select a contract...</option>
     <?php
         while ($row = mysqli_fetch_array($resultGetContracts)) {
-            echo "<option value=".$row['contractID']."> ".$row['day']." ".$row['time']."</option>";
+            if (!(isset($row['instrumentHireID']))) {
+                echo "<option value=".$row['contractID']."> ".$row['day']." ".$row['time']."</option>";
+            }
         }
     ?>
     </select>
