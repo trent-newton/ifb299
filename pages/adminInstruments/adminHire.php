@@ -66,7 +66,7 @@ foreach ($instrumentTypes as $type) {
     //only create table if account type has 1 or more users
     if ($count > 0) {
         echo "$type<br>";
-        echo "<table class='table'><tr>";
+        echo "<table class='table centered'><tr>";
         
         foreach ($column as $name => $col_name) {
           echo "<th>$name</th>";
@@ -93,7 +93,7 @@ foreach ($instrumentTypes as $type) {
             }
               echo "</td>";
           }
-          echo '<td><a href="modifyHire.php?instrumentHireID='.$row['instrumentHireID'] . '&approved=Yes"><img src="../../images/tick.png" /></a></td>';
+          echo '<td><a  href="modifyHire.php?instrumentHireID='.$row['instrumentHireID'] . '&approved=Yes"><img src="../../images/tick.png" /></a></td>';
           echo '<td><a href="modifyHire.php?instrumentHireID='.$row['instrumentHireID'] . '&approved=No"><img src="../../images/cross.png" /></a></td>';
           
             echo '</tr>';
