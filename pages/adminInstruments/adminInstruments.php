@@ -69,7 +69,7 @@ foreach ($instrumentTypes as $type) {
     //only create table if account type has 1 or more users
     if ($count > 0) {
         echo "$type<br>";
-        echo "<table id='changeAuthTables'><tr>";
+        echo "<table class='table'><tr>";
         
         foreach ($column as $name => $col_name) {
           echo "<th>$name</th>";

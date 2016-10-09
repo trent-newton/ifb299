@@ -107,6 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         AND instrumentnames.instrumentName = '$chosenInstrument'";
 
                 $result = mysqli_query($con, $query);
+
                 $rowcount=mysqli_num_rows($result);
 
                 //classes available
@@ -114,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                     echo "<h1>$chosenInstrument classes on $chosenDay from $chosenStartTime to $endTime </h1>";
                     //start table
-                    echo "<table><tr>";
+                    echo "<table class='table'><tr>";
                     //table headings
                     foreach ($columnTeacherDetails as $name => $col_name) {
                       echo "<th>$name</th>";

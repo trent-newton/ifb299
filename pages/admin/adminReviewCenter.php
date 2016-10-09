@@ -34,7 +34,7 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
 
     <h3>All Reviews</h3>
 
-    <table id="myTable" class="tablesorter centerTable">
+    <table class="table" id="myTable" class="tablesorter centerTable">
 <thead>
 
   <script>

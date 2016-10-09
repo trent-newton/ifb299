@@ -12,7 +12,7 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
 
 <h3>Lessons Due For Review</h3>
 
-<table id="myTable" class="tablesorter centerTable">
+<table class='table' id="myTable" class="tablesorter centerTable">
 <thead>
 
 <script>

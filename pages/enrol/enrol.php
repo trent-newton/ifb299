@@ -31,7 +31,11 @@ echo '<div class="row">';
 
       while($row = mysqli_fetch_array($resultInstrument)) {
           foreach ($columnInstrument as $name => $col_name) {
-            echo "<option value='$row[$col_name]'>$row[$col_name]</option>";
+            echo "<option value='$row[$col_name]'";
+            if(isset($_POST['chosenInstrument']) && $_POST['chosenInstrument'] == "$row[$col_name]"){
+                echo "selected"; 
+            }
+            echo ">$row[$col_name]</option>";
           }
       }
     echo '</select></div>';
@@ -41,7 +45,11 @@ echo '<div class="col-md-2">';
       <option value="" disabled selected> Select Language </option>';
         while($row = mysqli_fetch_array($resultLanguage)) {
           foreach ($columnLanguage as $name => $col_name) {
-            echo "<option value='$row[$col_name]'>$row[$col_name]</option>";
+            echo "<option value='$row[$col_name]'";
+            if(isset($_POST['chosenLanguage']) && $_POST['chosenLanguage'] == "$row[$col_name]"){
+                echo "selected"; 
+            }
+            echo ">$row[$col_name]</option>";
           }
       }
     echo '</select></div>';
@@ -50,16 +58,17 @@ echo '<div class="col-md-2">';
     <div class="col-md-2">
     <select class="form-control" required name="chosenDay">
         <option value="" >Select Day </option>
-        <option value="Monday" > Monday</option>
-        <option value="Tuesday" > Tuesday</option>
-        <option value="Wednesday" > Wednesday</option>
-        <option value="Thursday" > Thursday</option>
-        <option value="Friday" > Friday</option>
+        <option value="Monday" <?php if(isset($_POST['chosenDay']) && $_POST['chosenDay'] == 'Monday'){ echo "selected"; } ?> > Monday</option>
+        <option value="Tuesday" <?php if(isset($_POST['chosenDay']) && $_POST['chosenDay'] == 'Tuesday'){ echo "selected"; } ?>> Tuesday</option>
+        <option value="Wednesday" <?php if(isset($_POST['chosenDay']) && $_POST['chosenDay'] == 'Wednesday'){ echo "selected"; } ?>> Wednesday</option>
+        <option value="Thursday" <?php if(isset($_POST['chosenDay']) && $_POST['chosenDay'] == 'Thursday'){ echo "selected"; } ?>> Thursday</option>
+        <option value="Friday" <?php if(isset($_POST['chosenDay']) && $_POST['chosenDay'] == 'Friday'){ echo "selected"; } ?>> Friday</option>
     </select></div>
 
     <div class="col-md-3">
     <!-- select start time -->
-    <input class="form-control" type="text" name="chosenStartTime" pattern="[0-9][0-9]:00|30" title="please enter in 24 hour time" placeholder="Start time (24 hour format)">
+    <input class="form-control" type="text" name="chosenStartTime" pattern="[0-9][0-9]:00|30" title="please enter in 24 hour time" placeholder="Start time (24 hour format)" value="<?php if (isset($_POST['chosenStartTime'])) echo $_POST['chosenStartTime'] ?>">
+        
   </div><div class="col-md-2">
     <input class="form-control" type="submit" name="submit" value="Select Class Times">
   </div></div>

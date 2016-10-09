@@ -30,12 +30,15 @@ if($rowcount == 0)
   echo "<h2>".$name['firstName']." ".$name['lastName']." is not enroled in any classes</h2>";
 }
 
-echo '<a href="../enrol/enrol.php?userID='.$userID.'" ><span style="font-size:145%">Add a new class</span></a>';
-echo '<table style="width:25%; font-size:120%">';
+echo '<a href="../enrol/enrolClassTimes.php?userID='.$userID.'" ><span style="font-size:145%">Add a new class</span></a>';
+echo '<table class="table" style="width:100%; font-size:120%">';
+echo "<tr>";
 
+$count = 0;
 foreach($table as $rowNum => $row)
 {
-  echo '<tr><td>';
+  $count++;
+  echo '<td>';
   echo "Student: ".$name['firstName']." ".$name['lastName']."<br>";
   echo "Teacher: ".$row[9]." ".$row[10]."<br>";
   echo "Class time: ".$row[5]."<br>";
@@ -45,9 +48,15 @@ foreach($table as $rowNum => $row)
   echo "Start date: ".$row[3]."<br>";
   echo "End date: ".$row[4]."<br>";
   echo '<a href="changeScheduleProcess.php?contractID='.$row[0].'&userID='.$userID.'"><span class="changeAccess" style="font-size:125%"> Remove class </span></a>';
+    
+  //start new row after 3 columns
+  if ($count == 3){
+      echo '</tr><tr>';
+      $count = 0;
+  }
 
-  echo '</td></tr>';
+  echo '</td>';
 }
-echo '</table>';
+echo '</tr></table>';
 
 ?>

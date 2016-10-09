@@ -1,7 +1,7 @@
 <?php
 session_start();
-include "../inc/connect.php";
-require "../inc/checkFunctions.php";
+include "connect.php";
+require "checkFunctions.php";
 ?>
 
 <?php

@@ -14,11 +14,11 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
 <div class="adminCenter">
     <h1>Pending Reviews</h1>
 
-    <table id="myTable" class="tablesorter centerTable">
+    <table class="table" id="myTable" class="tablesorter centerTable">
 <thead>
 
   <script>
-  $(document).ready(function()
+  $(document).ready(function()class="table"
       {
           $("#myTable").tablesorter();
       }

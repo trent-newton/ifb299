@@ -3,8 +3,8 @@
 	include "../../inc/connect.php";
 	include "../../inc/header.php";
 	include "../../inc/nav.php";
-  require "../check/checkFunctions.php";
-  include "../../inc/updateaccount.php";
+    require "../../inc/checkFunctions.php";
+    include "../../inc/updateaccount.php";
 	require "../../inc/authCheck.php";
 
 

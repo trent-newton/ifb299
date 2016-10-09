@@ -23,7 +23,7 @@
 
 <img src="../../images/faq/hire.png" />
 
-<p><table style="width: 519px; height: 643px;" border="1" cellspacing="0" cellpadding="0">
+<p><table class='table' style="width: 519px; height: 643px;" border="1" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
 <td><strong>Instrument</strong></td>
