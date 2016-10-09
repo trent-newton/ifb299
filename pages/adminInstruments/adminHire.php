@@ -93,8 +93,8 @@ foreach ($instrumentTypes as $type) {
             }
               echo "</td>";
           }
-          echo '<td><a href="modifyHire.php?instrumentHireID='.$row['instrumentHireID'] . '&approved=Yes"><span class="changeAccess"> Approve Hire </span></a></td>';
-          echo '<td><a href="modifyHire.php?instrumentHireID='.$row['instrumentHireID'] . '&approved=No"><span class="changeAccess"> Deny Hire </span></a></td>';
+          echo '<td><a href="modifyHire.php?instrumentHireID='.$row['instrumentHireID'] . '&approved=Yes"><img src="../../images/tick.png" /></a></td>';
+          echo '<td><a href="modifyHire.php?instrumentHireID='.$row['instrumentHireID'] . '&approved=No"><img src="../../images/cross.png" /></a></td>';
           
             echo '</tr>';
           

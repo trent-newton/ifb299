@@ -86,7 +86,7 @@ foreach ($instrumentTypes as $type) {
         // Close table
         echo "</table><br>";
     } else if (sizeof($instrumentTypes) == 1){
-        echo "<h3> No Instrument Hires found. Search Again.";
+        echo "<h3> No Instruments found. Search Again.";
         break;
     }
 }
