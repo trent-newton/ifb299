@@ -37,6 +37,6 @@ if($count == 1) {
     }
 } else {
     $_SESSION['loginError'] = "Incorrect email or Password. Please try again.";
-    header("location:../pages/home/index.php");
+    header("location:" . $_SERVER["HTTP_REFERER"]);
     exit();
 }
