@@ -1,4 +1,5 @@
 <?php
+    $errorUnit = "";
     $errorStreet = "";
     $errorPostcode = "";
     $errorSEmail = "";
@@ -39,7 +40,7 @@
 
         // Check unit number
         if ($unitNumber != "") {
-            $errorStreet = CheckNumeric($unitNumber, "Invalid unit number");
+            $errorUnit = CheckNumeric($unitNumber, "Invalid unit number");
         }
 
         // Check street number
@@ -54,7 +55,7 @@
         //Check student phone0
         $errorPhone = CheckNumAndLength($phoneNumber0, 10, "Invalid phone number");
 
-        if ($errorStreet == "" && $errorPostcode == "" && $errorPhone == "" && $errorPEmail == "") {
+        if ($errorUnit == "" && $errorStreet == "" && $errorPostcode == "" && $errorPhone == "" && $errorPEmail == "") {
             // Check if email is already in the database
             $sqlCheckEmail = "SELECT email FROM users WHERE userID != '$userID' AND email = '$email'";
             $resultCheckEmail = mysqli_query($con, $sqlCheckEmail) or die(mysqli_error($con));
@@ -90,17 +91,17 @@
 
                 // Modify address
                 if ($unitNumber == "") {
-                    $unitNumber = "NULL";
+                    $unitNumber = NULL;
                 }
-                $sqlModifyAddress = "UPDATE address SET unitNumber = $unitNumber, streetNumber = '$streetNumber', streetName = '$streetName', streetType = '$streetType',
+                $sqlModifyAddress = "UPDATE address SET unitNumber = '$unitNumber', streetNumber = '$streetNumber', streetName = '$streetName', streetType = '$streetType',
                     suburb = '$suburb', state = '$state', postCode = '$postcode' WHERE addressID = '$addressID'";
                 mysqli_query($con, $sqlModifyAddress) or die(mysqli_error($con));
 
                 // Modify account
                 if ($facebookId == "") {
-                    $facebookId = "NULL";
+                    $facebookId = NULL;
                 }
-                $sqlModifyUser = "UPDATE users SET firstName = '$firstName', lastName = '$lastName', gender = '$gender', facebookId = $facebookId WHERE UserID = '$userID'";
+                $sqlModifyUser = "UPDATE users SET firstName = '$firstName', lastName = '$lastName', gender = '$gender', facebookId = '$facebookId' WHERE UserID = '$userID'";
                 mysqli_query($con, $sqlModifyUser) or die(mysqli_error($con));
 
                 // Modify parents
@@ -111,7 +112,7 @@
                 
                 // Login student
                 $_SESSION['success'] = "Account Updated";
-                header('Location: pages/changeAuth.php');
+                header('Location: ../../pages/change/changeAuth.php');
                 exit();
             } else {
                 $errorSEmail = "Email already in use";

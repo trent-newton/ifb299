@@ -4,7 +4,7 @@
 	include "../../inc/header.php";
 	include "../../inc/nav.php";
     require "../../inc/checkFunctions.php";
-    include "../../inc/updateaccount.php";
+    include "../../inc/adminupdateaccount.php";
 	require "../../inc/authCheck.php";
 
 
@@ -14,110 +14,106 @@
 	}
 ?>
 
-<div class="content">
+<div class="content centered">
 	<fieldset class="accountDetails">
 		<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <h1>Account details</h1>
+            <h1>Account Details</h1>
             <p class="required">* Required Fields</p>
-            <label for="txtSFirst">First Name<span class="required">*</span>: </label>
-            <br />
-            <input type="text" name="sFirst" id="txtSFirst" placeholder="John" value="<?php echo $firstName ?>" required>
-            <br />
-            <label for="txtSLast">Last Name<span class="required">*</span>: </label>
-            <br />
-            <input type="text" name="sLast" id="txtSLast" placeholder="Appleseed" value="<?php echo $lastName ?>" required>
-            <br />
-            <label for="txtDob">DOB (Read Only): </label>
-            <br />
-            <input type="date" name="dob" id="txtDob" size="10" maxlength="10" placeholder="yyyy-mm-dd" value="<?php echo $DOB ?>" readonly>
-            <br />
-            <label>Gender<span class="required">*</span>: </label>
+
+            <label class="control-label" for="txtSFirst">First Name<span class="required">*</span>: </label>
+            <input class="form-control" type="text" name="sFirst" id="txtSFirst" placeholder="John" value="<?php echo $firstName ?>" required>
+            
+            <label class="control-label" for="txtSLast">Last Name<span class="required">*</span>: </label>
+            <input class="form-control" type="text" name="sLast" id="txtSLast" placeholder="Appleseed" value="<?php echo $lastName ?>" required>
+
+            <label class="control-label" for="txtDob">DOB (Read Only): </label>
+            <input class="form-control" type="date" name="dob" id="txtDob" size="10" maxlength="10" placeholder="yyyy-mm-dd" value="<?php echo $DOB ?>" readonly>
+
+            <label class="control-label">Gender<span class="required">*</span>: </label>
                 <input type="radio" name="gender" value="Female" class="inputStreet" <?php if ($gender == "Female") echo "checked";?> required> Female
                 <input type="radio" name="gender" value="Male" class="inputStreet" <?php if ($gender == "Male") echo "checked";?> required> Male
-            <br><br />
-            <label for="txtUnitNum">Unit: </label>
-            <input type="text" name="unitNum" id="txtUnitNum" class="inputStreet" size="2" maxlength="4" placeholder="4" value="<?php echo $unitNumber ?>">
-            <label for="txtStreetNum">Street No<span class="required">*</span>: </label>
-            <input type="text" name="streetNum" class="inputStreet" id="txtStreetNum" size="3" maxlength="4" placeholder="42" value="<?php echo $streetNumber ?>" required>
+            <br />
+
+            <label class="control-label" for="txtUnitNum">Unit: </label>
+            <input class="form-control" type="text" name="unitNum" id="txtUnitNum" class="inputStreet" size="2" maxlength="4" placeholder="4" value="<?php echo $unitNumber ?>">
+                <?php echo "<span class='required'>  ".$errorUnit."</span>" ?>
+
+            <label class="control-label" for="txtStreetNum">Street No<span class="required">*</span>: </label>
+            <input class="form-control" type="text" name="streetNum" class="inputStreet" id="txtStreetNum" size="3" maxlength="4" placeholder="42" value="<?php echo $streetNumber ?>" required>
                 <?php echo "<span class='required'>  ".$errorStreet."</span>" ?>
-            <br />
-            <label or="txtStreet">Street<span class="required">*</span>: </label>
-            <br />
-            <input type="text" name="street" id="txtStreet" placeholder="Main" value="<?php echo $streetName ?>" required>
-                <select name="streetType" id="txtStreetType" required>
+
+            <label class="control-label" for="txtStreet">Street<span class="required">*</span>: </label>
+            <input class="form-control" type="text" name="street" id="txtStreet" placeholder="Main" value="<?php echo $streetName ?>" required>
+                <select class="form-control" name="streetType" id="txtStreetType" required>
                     <option value="street" <?php if($streetType == 'street'){ echo 'selected';} ?>>Street</option>
                     <option value="close" <?php if($streetType == 'close'){echo "selected"; } ?>>Close</option>
                     <option value="road" <?php if($streetType == 'road'){echo "selected"; } ?>>Road</option>
                     <option value="chase" <?php if($streetType == 'chase'){echo "selected"; } ?>>Chase</option>
                 </select>
-            <br />
-            <label for="txtSuburb">Suburb<span class="required">*</span>: </label>
-            <br />
-            <input type="text" name="suburb" id="txtSuburb" placeholder="Anytown" value="<?php echo $suburb ?>" required>
-            <br />
-            <label for="txtState">State<span class="required">*</span>:</label>
-            <br />
-                <select name="state" id="txtState" required>
-                    <option value="QLD" <?php if($state == 'QLD'){echo "selected"; } ?>>QLD</option>
-                    <option value="NSW" <?php if($state == 'NSW'){echo "selected"; } ?>>NSW</option>
-                    <option value="VIC" <?php if($state == 'VIC'){echo "selected"; } ?>>VIC</option>
-                    <option value="TAS" <?php if($state == 'TAS'){echo "selected"; } ?>>TAS</option>
-                    <option value="WA" <?php if($state == 'WA'){echo "selected"; } ?>>WA</option>
-                    <option value="SA" <?php if($state == 'SA'){echo "selected"; } ?>>SA</option>
-                    <option value="NT" <?php if($state == 'NT'){echo "selected"; } ?>>NT</option>
-                </select>
-            <br />
-            <label for="txtPostcode">Postcode<span class="required">*</span>: </label>
-            <br />
-            <input type="text" name="postcode" id="txtPostcode" size="4" maxlength="4" placeholder="1234" value="<?php echo $postcode ?>" required>
+
+            <label class="control-label" for="txtSuburb">Suburb<span class="required">*</span>: </label>
+            <input class="form-control" type="text" name="suburb" id="txtSuburb" placeholder="Anytown" value="<?php echo $suburb ?>" required>
+
+            <label class="control-label" for="txtState">State<span class="required">*</span>:</label>
+            <select class="form-control" name="state" id="txtState" required>
+                <option value="QLD" <?php if($state == 'QLD'){echo "selected"; } ?>>QLD</option>
+                <option value="NSW" <?php if($state == 'NSW'){echo "selected"; } ?>>NSW</option>
+                <option value="VIC" <?php if($state == 'VIC'){echo "selected"; } ?>>VIC</option>
+                <option value="TAS" <?php if($state == 'TAS'){echo "selected"; } ?>>TAS</option>
+                <option value="WA" <?php if($state == 'WA'){echo "selected"; } ?>>WA</option>
+                <option value="SA" <?php if($state == 'SA'){echo "selected"; } ?>>SA</option>
+                <option value="NT" <?php if($state == 'NT'){echo "selected"; } ?>>NT</option>
+            </select>
+
+            <label class="control-label" for="txtPostcode">Postcode<span class="required">*</span>: </label>
+            <input class="form-control" type="text" name="postcode" id="txtPostcode" size="4" maxlength="4" placeholder="1234" value="<?php echo $postcode ?>" required>
                 <?php echo "<span class='required'>  ".$errorPostcode."</span>" ?>
-            <br><br />
-            <label for="txtSEmail">Email<span class="required">*</span>: </label>
             <br />
-            <input type="email" name="sEmail" id="txtSEmail" placeholder="student@address.com" value="<?php echo $email ?>" required>
+
+            <label class="control-label" for="txtSEmail">Email<span class="required">*</span>: </label>
+            <input class="form-control" type="email" name="sEmail" id="txtSEmail" placeholder="student@address.com" value="<?php echo $email ?>" required>
                 <?php echo "<span class='required'>  ".$errorSEmail."</span>" ?>
-            <br />
+
             <?php
                 $sql = "SELECT * FROM phonenumbers WHERE userID='$userID'";
                 $result = mysqli_query($con, $sql);
                 $n = 0;
                 while ($row = mysqli_fetch_array($result)) {
                     if ($n == 0) {
-                        echo "<label for='txtPhone".$n."'>Phone " . $n . "<span class='required'>*</span>:</label><br />";
-                        echo "<input type='text' name='phone" . $n . "' id='txtPhone".$n."' size='10' maxlength='10' placeholder='0412345678' value='" . $row['phoneNumber'] . "' required>";
+                        echo "<label class='control-label' for='txtPhone".$n."'>Phone " . $n . "<span class='required'>*</span>:</label><br />";
+                        echo "<input class='form-control' type='text' name='phone" . $n . "' id='txtPhone".$n."' size='10' maxlength='10' placeholder='0412345678' value='" . $row['phoneNumber'] . "' required>";
                         echo "<span class='required'>  ".$errorPhone."</span><br />";
                     } else {
-                        echo "<label for='txtPhone".$n."'>Phone " . $n . ":</label><br />";
-                        echo "<input type='text' name='phone" . $n . "' id='txtPhone".$n."' size='10' maxlength='10' placeholder='0412345678' value='" . $row['phoneNumber'] . "'><br />";
+                        echo "<label class='control-label' for='txtPhone".$n."'>Phone " . $n . ":</label><br />";
+                        echo "<input class='form-control' type='text' name='phone" . $n . "' id='txtPhone".$n."' size='10' maxlength='10' placeholder='0412345678' value='" . $row['phoneNumber'] . "'><br />";
                     }
                     $n++;
                 }
             ?>
-            <label for="txtPhone<?php echo $n ?>">Phone <?php echo $n ?>:</label>
-            <br />
-            <input type="text" name="phone<?php echo $n?>" id="txtPhone<?php echo $n ?>"size='10' maxlength='10' placeholder='0412345678'>
-            <br />
+
+            <label class="control-label" for="txtPhone<?php echo $n ?>">Phone <?php echo $n ?>:</label>
+            <input class="form-control" type="text" name="phone<?php echo $n?>" id="txtPhone<?php echo $n ?>"size='10' maxlength='10' placeholder='0412345678'>
+
             <input type="hidden" name="numPhones" value="<?php echo $n?>" />
-            <label for="txtFacebook">Facebook ID: </label>
+
+            <label class="control-label" for="txtFacebook">Facebook ID: </label>
+            <input class="form-control" type="text" name="facebook" id="txtFacebook" value="<?php echo $facebookId ?>">
             <br />
-            <input type="text" name="facebook" id="txtFacebook" value="<?php echo $facebookId ?>"><br>
+
             <?php
                 if ($age < 18) {
                     echo '<h2>Parent/ Caregiver</h2>';
-                    echo '<label for="txtPName">Name<span class="required">*</span>: </label>';
-                    echo '<br />';
-                    echo '<input type="text" name="pName" id="txtPName" placeholder="Mary Appleseed" value="'.$parentName.'" required>';
-                    echo '<br />';
-                    echo '<label for="txtPEmail">Email Address<span class="required">*</span>: </label>';
-                    echo '<br />';
-                    echo '<input type="email" name="pEmail" id="txtPEmail" placeholder="parent@address.com" value="'.$parentEmail.'" required>';
+                    echo '<label class="control-label" for="txtPName">Name<span class="required">*</span>: </label>';
+                    echo '<input class="form-control" type="text" name="pName" id="txtPName" placeholder="Mary Appleseed" value="'.$parentName.'" required>';
+
+                    echo '<label class="control-label" for="txtPEmail">Email Address<span class="required">*</span>: </label>';
+                    echo '<input class="form-control" type="email" name="pEmail" id="txtPEmail" placeholder="parent@address.com" value="'.$parentEmail.'" required>';
                     echo '<span class="required">  '.$errorPEmail.'</span>';
-                    echo '<br />';
                 }
             ?>
 
             <input type="hidden" name="userID" value="<?php echo $userID?>" />
-            <input type="submit" name="submit" value="Submit" />
+            <input class="form-control" type="submit" name="submit" value="Submit" />
 		</form>
 	</fieldset>
 </div>
