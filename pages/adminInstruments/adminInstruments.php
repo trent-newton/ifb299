@@ -11,6 +11,11 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
 }
 ?>
 <div class="content">
+
+    <h2>Add New Instrument</h2>
+    <form action="addNewInstrument.php" method="post">
+        <input class="form-control" type="submit" name="NewInstrument" value="New Instrument" />
+    </form>
 <?php
     include "searchInstrument.php";
     
@@ -75,7 +80,11 @@ foreach ($instrumentTypes as $type) {
         while($row = mysqli_fetch_array($result)) {
           echo "<tr>";
           foreach ($column as $name => $col_name) {
-            echo "<td>" . $row[$col_name] . "</td>";
+            echo "<td>";
+              if($col_name == "hireCost") {
+                  echo "$";
+              }
+              echo $row[$col_name] . "</td>";
           }
           echo '<td><a href="modifyInstrument.php?schoolInstrumentID='.$row['schoolInstrumentID'] . '"><span class="changeAccess"> Modify </span></a></td>';
           
