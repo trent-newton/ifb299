@@ -18,7 +18,7 @@
                     </a>
             </div>
             <div class="copyright">
-              <span>@ Copyright 2016 Pineland Music School</span>
+              <span>&copy; Copyright 2016 Pineland Music School</span>
             </div>
 
         </footer>
