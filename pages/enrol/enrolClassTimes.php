@@ -31,8 +31,9 @@ if($accessLevel == 'admin'){
 
 
 
-function recommendClasses($teacherID, $chosenDay, $chosenStartTime, $teacherStart, $teacherEnd){
-  $sqlRecommended = "SELECT contracts.time FROM contracts
+
+function recommendClasses($teacherID, $chosenDay, $chosenStartTime, $teacherStart, $teacherEnd, $chosenInstrument){
+  $sqlRecommended = "SELECT contracts.time, users.firstname FROM contracts INNER JOIN availability INNER JOIN users
                       WHERE contracts.teacherID = $teacherID
                       AND contracts.day = $chosenDay
                       AND contracts.time != $chosenStartTime
@@ -44,18 +45,15 @@ function recommendClasses($teacherID, $chosenDay, $chosenStartTime, $teacherStar
   $teacherStartTime = floatval($TeacherStart);
   $teacherEndTime = floatval($TeacherEnd);
   $str = '';
-  for($i=$teacherStartTime; $i<($teacherEndTime-$teacherStartTime); $i++)
-  {
-    if($i != $rowRecommended[$i-$teacherStartTime])
-    {
+  for($i=$teacherStartTime; $i<($teacherEndTime-$teacherStartTime); $i++) {
+    if($i != $rowRecommended[$i-$teacherStartTime]) {
       $str = '<tr><td>'.$chosenDay.'</td><td>'.$chosenStartTime.'</td><td>'.$teacherID.'</td>';
-      if($accessLevel == 'admin')
-      {
+      if($accessLevel == 'admin')      {
         $str += "<td><a href='enrolClassDates.php?userID=".$userID."&day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";
       } else {
         $str += "<td><a href='enrolClassDates.php?day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";
       }
-      $str += "><span class='changeAccess'> Select Class </span> </td>";
+      $str += "><span class='changeAccess'> Select Class </span></a></td></tr>";
     }
   }
 
@@ -163,6 +161,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     }
                     // Close table
                     echo "</table><br>";
+                } else {
+                  echo "<h1>There are not any available classes during selected time.</h1>";
                 }
         } //close big else statement
     }
