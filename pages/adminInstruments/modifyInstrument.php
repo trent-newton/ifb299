@@ -23,8 +23,12 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
         $result = mysqli_query($con,$sql);
         if($result) {
             $_SESSION['success'] = "Instrument Details Updated.";
+            header("location:" . $_SERVER['HTTP_REFERER']);
+            exit();
         } else {
             $_SESSION['error'] = "An error occured.";
+            header("location:" . $_SERVER['HTTP_REFERER']);
+            exit();
         }
     }
     $sql = "SELECT * FROM schoolinstruments INNER JOIN instrumentnames ON schoolinstruments.instrumentTypeID=instrumentnames.instrumentTypeID WHERE schoolInstrumentID='$schoolInstrumentID'";
