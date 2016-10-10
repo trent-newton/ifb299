@@ -1,5 +1,6 @@
 <h2>Refine list of Hire Requests</h2>
 
+<div class="loginForm centered">
 <form method="POST" action="../adminInstruments/adminHire.php">
     <div class="col-md-6 form-group">
         Search by UserID
@@ -22,7 +23,8 @@
         ?>
     </select>
     </div>
-        
+ 
     <!-- Submit buttons -->
     <input type="submit" class="form-control" value="Show Instrument Requests"><br>
 </form>
+</div>  

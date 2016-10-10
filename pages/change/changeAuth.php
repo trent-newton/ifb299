@@ -60,7 +60,7 @@ foreach ($accountTypes as $type) {
     
     //only create table if account type has 1 or more users
     if (mysqli_num_rows($result) > 0) {
-        echo "$type accounts <br>";
+        echo "<h3>$type accounts</h3>";
         echo "<table class='table'><tr>";
         
         foreach ($column as $name => $col_name) {

@@ -17,34 +17,36 @@ include "../../inc/nav.php";
 
         if($numrow == 1) {
             ?>
-    <form action="../../inc/forgotpassword.php" method="post">
-        <p>Change the password for <?php echo $row['firstName'] . " " . $row['lastName'];?></p>
-        <label>New Password<span class="required">*</span>:</label>
-        <br />
-        <input type="password" name="newPassword" pattern=".{8,}" title="Password must be 8 characters oir more" required />
-        <br />
-        <label>Re-Enter Password<span class="required">*</span>:</label>
-        <br />
-        <input type="password" name="newPassword2" pattern=".{8,}" required />
-        <br />
-        <input type="hidden" name="userID" value="<?php echo $userID ?>" />
-        <br />
-        <input type="hidden" name="email" value="<?php echo $email ?>" />
-        <input type="hidden" name="emailCode" value="<?php echo $emailCode ?>" />
-        <input type="submit" name="passwordUpdate" value="Update Password" />
-
-
-    </form>
+    <div class='loginForm center-horizontal'>
+        <form action="../../inc/forgotpassword.php" method="post">
+            <p>Change the password for <?php echo $row['firstName'] . " " . $row['lastName'];?></p>
+            <label>New Password<span class="required">*</span>:</label>
+            <br />
+            <input class="form-control" type="password" name="newPassword" pattern=".{8,}" title="Password must be 8 characters oir more" required />
+            <br />
+            <label>Re-Enter Password<span class="required">*</span>:</label>
+            <br />
+            <input class="form-control" type="password" name="newPassword2" pattern=".{8,}" required />
+            <br />
+            <input class="form-control" type="hidden" name="userID" value="<?php echo $userID ?>" />
+            <br />
+            <input class="form-control" type="hidden" name="email" value="<?php echo $email ?>" />
+            <input class="form-control" type="hidden" name="emailCode" value="<?php echo $emailCode ?>" />
+            <input class="form-control" type="submit" name="passwordUpdate" value="Update Password" />
+        </form>
+    </div>
     <?php
         }
     } else {
         ?>
-    <form method="post" action="../../inc/resetuserpassword.php">
-		<p>Click to send a reset link to your email.</p>
-		<label>Email<span class="required">*</span>:</label><br />
-		<input type="email" name="email" required />
-		<p><input type="submit" name="passwordreset" value="Reset Password" /></p>
-	</form>
+    <div class='loginForm center-horizontal'>
+        <form method="post" action="../../inc/resetuserpassword.php">
+            <p>Click to send a reset link to your email.</p>
+            <label>Email<span class="required">*</span>:</label><br />
+            <input class="form-control" type="email" name="email" required />
+            <p><input class="form-control" type="submit" name="passwordreset" value="Reset Password" /></p>
+        </form>
+    </div>
     <?php
     }
 

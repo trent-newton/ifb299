@@ -16,15 +16,16 @@
         echo "Contract end date: ".$row['endDate']."<br />";
     }
 ?>
-
-<form method="post" action="<?php echo htmlspecialchars("../../pages/instrumentHire/chooseInstrument.php") ?>">
-    <input type="hidden" name="contractID" value="<?php echo $contractID ?>" />
-    <input type="hidden" name="instrumentTypeID" value="<?php echo $instrumentTypeID ?>" />
-    <input type="hidden" name="day" value="<?php echo $day ?>" />
-    <input type="hidden" name="time" value="<?php echo $time ?>" />
-    <label for="selectStartDate">Hire start date<span class="required">*</span>: </label>
-    <select class="form-control" name="startDate" id="selectStartDate" required></select>
-    <label for="selectEndDate">Hire end date<span class="required">*</span>: </label>
-    <select class="form-control" name="endDate" id="selectEndDate" required></select>
-    <input class="form-control" type="submit" name="submit" value="Submit" />
-</form>
+<div class='loginForm center-horizontal'>
+    <form method="post" action="<?php echo htmlspecialchars("../../pages/instrumentHire/chooseInstrument.php") ?>">
+        <input type="hidden" name="contractID" value="<?php echo $contractID ?>" />
+        <input type="hidden" name="instrumentTypeID" value="<?php echo $instrumentTypeID ?>" />
+        <input type="hidden" name="day" value="<?php echo $day ?>" />
+        <input type="hidden" name="time" value="<?php echo $time ?>" />
+        <label for="selectStartDate">Hire start date<span class="required">*</span>: </label>
+        <select class="form-control" name="startDate" id="selectStartDate" required></select>
+        <label for="selectEndDate">Hire end date<span class="required">*</span>: </label>
+        <select class="form-control" name="endDate" id="selectEndDate" required></select>
+        <input class="form-control" type="submit" name="submit" value="Submit" />
+    </form>
+</div>

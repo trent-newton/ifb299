@@ -2,9 +2,8 @@
     $pagetitle = "User Management";
     include "../../inc/connect.php";
 ?>
-
+<div class="loginForm centered">
 <h2>Refine list of Users</h2>
-
 <form method="POST" action="../change/changeAuth.php">
     <div class="col-md-6 form-group">
         UserID
@@ -31,3 +30,4 @@
     <!-- Submit buttons -->
     <input type="submit" class="form-control" value="Show Users"><br>
 </form>
+</div>

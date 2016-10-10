@@ -34,20 +34,18 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
 
                 <label id="lblStars" for="txtStars">Star Rating<span class="required">*</span>:</label>
 
-                <select name="stars" id="txtStar" required>
+                <select class='form-control' name="stars" id="txtStar" required>
                         <option value="5" <?php if(isset($_POST['stars']) && $_POST['stars']== '5'){echo "selected"; } ?>>5</option>
                         <option value="4" <?php if(isset($_POST['stars']) && $_POST['stars']== '4'){echo "selected"; } ?>>4</option>
                         <option value="3" <?php if(isset($_POST['stars']) && $_POST['stars']== '3'){echo "selected"; } ?>>3</option>
                         <option value="2" <?php if(isset($_POST['stars']) && $_POST['stars']== '2'){echo "selected"; } ?>>2</option>
                         <option value="1" <?php if(isset($_POST['stars']) && $_POST['stars']== '1'){echo "selected"; } ?>>1</option>
                 </select>
+                <br>
                 <?php
                   $contractID = $row['contractID'];
                   $teacherID = $row['teacherID'];
                   $studentID = $row['studentID'];
-
-                  echo "Teacher".$row['teacherID'];
-                  echo "<br>Student".$row['studentID'];
 
                 //Pass other key information to reviewprocessing.php
                 echo '<input type="hidden" value="' .$contractID. '" name="contractID" />

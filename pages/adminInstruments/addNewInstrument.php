@@ -29,8 +29,8 @@ if(isset($_POST['submit'])) {
     }
 }
 ?>
-<div class="content">
-    <h2>Add a  New School Instrument</h2>
+<div class="loginForm center-horizontal">
+    <h2>Add New Instrument</h2>
     
     <form method="POST" action="addNewInstrument.php">
         <label>Instrument Type</label><br />
@@ -53,7 +53,7 @@ if(isset($_POST['submit'])) {
             <option value="Discard">Discard</option>
         </select>
         <label>Hire Cost</label><br />
-        <input type="text" name="hireCost" /><br /><br />
+        <input class="form-control" type="text" name="hireCost" /><br /><br />
         <input class="form-control" type="submit" name="submit" value="Add Instrument" />
         
     </form>

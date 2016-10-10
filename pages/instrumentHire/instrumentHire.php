@@ -21,7 +21,8 @@
     }
 ?>
 
-<div class="content">
+<div class="loginForm center-horizontal">
+    <h3>Hire an Instrument</h3>
     <select class="form-control" onchange="showContract(this.value)">
     <option value="">Select a contract...</option>
     <?php

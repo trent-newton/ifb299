@@ -38,12 +38,12 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
 ?>
     <a href="adminInstruments.php">Back to Instrument List</a>
     <form method="POST" action="modifyInstrument.php?schoolInstrumentID=<?php echo $schoolInstrumentID ?>">
-        <div class="col-md-6 form-group">
-            <h2>Modify Details</h2>
+        <div class="loginForm center-horizontal">
+            <h2>Modify Instrument Details</h2>
             <label>Instrument ID:</label><br />
-            <input type="text" name="schoolInstrumentID" value="<?php echo $schoolInstrumentID; ?>" readonly /><br />
+            <input class="form-control" type="text" name="schoolInstrumentID" value="<?php echo $schoolInstrumentID; ?>" readonly /><br />
             <label>Type:</label><br />
-            <input type="text" name="instrumentType:" value="<?php echo $row['instrumentName']; ?>" readonly /><br />
+            <input class="form-control" type="text" name="instrumentType:" value="<?php echo $row['instrumentName']; ?>" readonly /><br />
             <label>Condition</label><br />
             <select class="form-control" name="instrumentCondition">
                 <option value="New" <?php if($row['instrumentCondition'] == 'New'){ echo "selected"; } ?>>New</option>
@@ -53,9 +53,9 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
                 <option value="Discard" <?php if($row['instrumentCondition'] == 'Discard'){ echo "selected"; } ?>>Discard</option>
             </select>
             <label>Hire Cost:</label><br />
-            <input type="text" value="<?php echo $row['hireCost'] ?>" name="hireCost" /><br />
+            <input class="form-control" type="text" value="<?php echo $row['hireCost'] ?>" name="hireCost" /><br />
             
-            <input type="submit" value="submit" name="submit" />
+            <input class="form-control" type="submit" value="submit" name="submit" />
         </div>
     
     </form>

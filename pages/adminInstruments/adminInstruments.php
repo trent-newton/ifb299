@@ -10,7 +10,7 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
     rejectAccess();
 }
 ?>
-<div class="content centered">
+<div class="loginForm center-horizontal">
 
     <h2>Add New Instrument</h2>
     <form action="addNewInstrument.php" method="post">
@@ -18,7 +18,8 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
     </form>
 <?php
     include "searchInstrument.php";
-    
+    echo "</div>"; 
+    echo "<div class='content centered'>";
     //get variables from searchUsers on if they are set
 if (isset($_POST["schooolInstrumentID"])){
     $schooolInstrumentID = $_POST["schooolInstrumentID"];

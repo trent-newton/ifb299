@@ -38,7 +38,7 @@
     $resultGetInstruments = mysqli_query($con, $sqlGetInstruments) or die(mysqli_error($con));
 ?>
 
-<div class="content centered">
+<div class="loginForm center-horizontal">
     <a href='../../pages/instrumentHire/instrumentHire.php'>Return to instrument hire page</a>
     <br><br>
 
