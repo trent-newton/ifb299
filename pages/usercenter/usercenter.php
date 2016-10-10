@@ -15,11 +15,11 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
 
     <div class="temp">
         <a href="../myaccount/myaccount.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/users.png">
-           <br><h2>MY PROFILE</h2>
+           <br><h2>PROFILE</h2>
         </div></a>
 
         <a href="../viewSchedule/viewSchedule.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/calendar.png">
-           <br><h2>VIEW SCHEDULE</h2>
+           <br><h2>SCHEDULE</h2>
         </div></a>
 
         <?php
@@ -27,10 +27,10 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
             echo '<br />';
 
             echo '<a href="../../pages/instrumentHire/instrumentHire.php"><div class="temp"><img class="AdminCenterImage" src="../../images/home-page-images/acoustic-guitar.png">
-                  <br><h2>INSTRUMENT HIRE</h2></div></a>';
+                  <br><h2>HIRE</h2></div></a>';
 
             echo '<a href="../../pages/enrol/enrolPage.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/enrol.png">
-                  <br><h2>CLASS ENROLMENT</h2></div></a>';
+                  <br><h2>ENROL</h2></div></a>';
 
             echo '<br />';
 
