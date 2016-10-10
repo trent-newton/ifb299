@@ -15,44 +15,7 @@
                         $result = mysqli_query($con, $sql);
                         $row = mysqli_fetch_array($result);
                         $userName = $row['firstName'] . " " . $row['lastName'];
-                    ?>
-        <?php
-        if((($_SESSION['accountType']) == 'Admin') || (($_SESSION['accountType']) == 'Owner')){
-          echo '<div class="userPanelImage">
-                <img src="../../images/userImage/default-user-icon.png" />
-                </div>
-                <a href="../admin/admincenter.php">
-                Admin Center</a><br />';
-        } else if ($_SESSION['accountType'] == 'Student' || $_SESSION['accountType'] == 'Teacher' || $_SESSION['accountType'] == 'StudentAndTeacher') {
-          echo '<div class="userPanelImage">
-                <img src="../../images/userImage/default-user-icon.png" />
-                </div>
-                <a href="../usercenter/usercenter.php">
-                User Center</a><br />';
-        }
-        ?>
-        <div class="userPanelImage">
-        <img src="../../images/userImage/logout.png" />
-        </div>
-         <a href="../logout/logout.php">Logout</a></span>
-
-                    <?php
-                        } else { // if no user is logged in
-                    ?>
-                    <!--LOGIN-->
-                    <div class="userPanelImage">
-                    <img src="../../images/userImage/login.png" />
-                    </div>
-                     <a href="../login/login.php">Login</a></span> <br>
-
-                   <!--Register-->
-                    <div class="userPanelImage">
-                    <img src="../../images/userImage/register.png" />
-                    </div>
-                     <a href="../createAccount/createAccount.php">Register</a></span>
-
-                    <?php
-                        }
+                    }
                     ?>
                     </div><!--end userInfo-->
                     <div class="userMessage">
@@ -81,6 +44,30 @@
               <li><a href="../../pages/about/about.php">About</a></li>
               <li><a href="../../pages/faq/faq.php">FAQ</a></li>
               <li><a href="../../pages/contact/contact.php">Contact Us</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <?php
+                //if someone is logged in
+                if(isset($_SESSION['userID'])) {
+                    //Admin center
+                    if((($_SESSION['accountType']) == 'Admin') || (($_SESSION['accountType']) == 'Owner')){
+                        echo '<li><a href="../admin/admincenter.php"><span class="glyphicon glyphicon-user"></span> Admin Center</a></li>';
+                    } 
+
+                    //User center 
+                    if ($_SESSION['accountType'] == 'Student' || $_SESSION['accountType'] == 'Teacher' || $_SESSION['accountType'] == 'StudentAndTeacher') {
+                         echo '<li><a href="../usercenter/usercenter.php"><span class="glyphicon glyphicon-user"></span> User Center</a></li>';
+                    }
+
+                    //Logout
+                    echo '<li><a href="../logout/logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>';
+                } else {
+                    echo '<li><a href="../createAccount/createAccount.php"><span class="glyphicon glyphicon-book"></span> Register</a></li>';
+                    echo '<li><a href="../login/login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
+                }
+                    
+                    
+                ?>
             </ul>
           </div>
         </nav>
