@@ -121,6 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     echo "<th> Time </th>
                           <th> Teacher </th>
                           <th>Select Class</th>";
+                    $teachersAvailableCount = 0;
                     while($row = mysqli_fetch_array($result)){
                         $teacherID = $row['teacherID'];
                         //check if teacher is already booked in time slot
@@ -155,9 +156,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                               echo "<td><a href='enrolClassDates.php?day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";
                             }
                             echo "><span class='changeAccess'> Select Class </span> </td>";
-                        } else {
-                            echo "<h1>There are not any available classes during selected time.</h1>";
+                            $teachersAvailableCount++;
                         }
+                    }
+                    if($teachersAvailableCount == 0)
+                    {
+                        echo "<h1>There are not any available classes during selected time.</h1>";
                     }
                     // Close table
                     echo "</table><br>";
