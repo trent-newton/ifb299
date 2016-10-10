@@ -16,19 +16,19 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
 
     <div>
         <div class="temp"><a href="../admin/adminReviewPending.php"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/pending.png"></a>
-           <br><button class="AdminCenterButton reviewButton"><a href="adminReviewPending.php" class="button">Pending</a></button>
+           <br><a href="adminReviewPending.php" class="button">Pending</a>
         </div>
 
         <div class="temp"><a href="../admin/adminReviewPublic.php"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/public.png"></a>
-           <br><button class="AdminCenterButton reviewButton"><a href="adminReviewPublic.php" class="button">Public</a></button>
+           <br><a href="adminReviewPublic.php" class="button">Public</a>
         </div>
 
         <div class="temp"><a href="../admin/adminReviewPrivate.php"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/private.png"></a>
-           <br><button class="AdminCenterButton reviewButton"><a href="adminReviewPrivate.php" class="button">Private</a></button>
+           <br><a href="adminReviewPrivate.php" class="button">Private</a>
         </div>
 
         <div class="temp"><a href="../admin/adminReviewInvalid.php"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/invalid.png"></a>
-           <br><button class="AdminCenterButton reviewButton"><a href="adminReviewInvalid.php" class="button">Invalid</a></button>
+           <br><a href="adminReviewInvalid.php" class="button">Invalid</a>
         </div>
     </div>
 

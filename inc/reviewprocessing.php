@@ -14,7 +14,7 @@
                 $teacherID, $studentID, $contractID, $comment, $stars, $dateNow, "Pending");
                 mysqli_query($con, $sql) or die(mysqli_error($con));
 
-                header("location:../pages/home/index.php");
+                header("location:../home/index.php");
                 exit();
         } else {
             $_SESSION['error'] = "Please review field errors";
