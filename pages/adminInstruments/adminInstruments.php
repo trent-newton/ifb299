@@ -10,7 +10,7 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
     rejectAccess();
 }
 ?>
-<div class="content">
+<div class="content centered">
 
     <h2>Add New Instrument</h2>
     <form action="addNewInstrument.php" method="post">
@@ -68,7 +68,7 @@ foreach ($instrumentTypes as $type) {
     
     //only create table if account type has 1 or more users
     if ($count > 0) {
-        echo "$type<br>";
+        echo "<h3>$type</h3>";
         echo "<table class='table'><tr>";
         
         foreach ($column as $name => $col_name) {

@@ -10,7 +10,7 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
     rejectAccess();
 }
 ?>
-<div class="content">
+<div class="content centered">
     <?php
     include "searchHires.php";
     
@@ -65,7 +65,7 @@ foreach ($instrumentTypes as $type) {
     
     //only create table if account type has 1 or more users
     if ($count > 0) {
-        echo "$type<br>";
+        echo "<h3>$type</h3>";
         echo "<table class='table centered'><tr>";
         
         foreach ($column as $name => $col_name) {
