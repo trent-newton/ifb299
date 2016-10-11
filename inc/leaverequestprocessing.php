@@ -9,10 +9,13 @@
         $userID = mysqli_real_escape_string($con, $_POST['userID']);
         $dateNow = date('Y-m-d');
 
-                $sql = sprintf("INSERT INTO leaveRequests (userID, reason, startDate, endDate, requestDate, status) VALUES ('%d', '%s', '%s','%s', '%s', '%s');",
+        echo $reason. "<br>" .$startDate. "<br>" .$endDate. "<br>" .$userID. "<br>" .$dateNow;
+
+                $sql = sprintf("INSERT INTO leaverequests (userID, reason, startDate, endDate, requestDate, status) VALUES ('%d', '%s', '%s','%s', '%s', '%s');",
                 $userID, $reason, $startDate, $endDate, $dateNow, "Pending");
                 mysqli_query($con, $sql) or die(mysqli_error($con));
 
+                $_SESSION['success'] = "Leave Request Submitted";
                 header("location:../home/index.php");
                 exit();
         } else {

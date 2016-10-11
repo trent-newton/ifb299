@@ -1,6 +1,4 @@
 <?php
-// Get selected contractID
-$contractID = $_GET['contractID'];
 $pagetitle = "Request for Leave";
 include "../../inc/connect.php";
 include "../../inc/header.php";
@@ -20,21 +18,21 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
     <label id="lblStartDate" for="txtStartDate">Start Date<span class="required">*</span>:</label>
 
     <select name="startDate" id="txtStartDate" required>
-            <option value="5" <?php if(isset($_POST['startDate']) && $_POST['startDate']== '2016-08-01'){echo "selected"; } ?>>2016-08-01</option>
-            <option value="4" <?php if(isset($_POST['startDate']) && $_POST['startDate']== '2016-08-02'){echo "selected"; } ?>>2016-08-02</option>
-            <option value="3" <?php if(isset($_POST['startDate']) && $_POST['startDate']== '2016-08-03'){echo "selected"; } ?>>2016-08-03</option>
-            <option value="2" <?php if(isset($_POST['startDate']) && $_POST['startDate']== '2016-08-04'){echo "selected"; } ?>>2016-08-04</option>
-            <option value="1" <?php if(isset($_POST['startDate']) && $_POST['startDate']== '2016-08-05'){echo "selected"; } ?>>2016-08-05</option>
+            <option value="2016-08-01" <?php if(isset($_POST['startDate']) && $_POST['startDate']== '2016-08-01'){echo "selected"; } ?>>2016-08-01</option>
+            <option value="2016-08-02" <?php if(isset($_POST['startDate']) && $_POST['startDate']== '2016-08-02'){echo "selected"; } ?>>2016-08-02</option>
+            <option value="2016-08-03" <?php if(isset($_POST['startDate']) && $_POST['startDate']== '2016-08-03'){echo "selected"; } ?>>2016-08-03</option>
+            <option value="2016-08-04" <?php if(isset($_POST['startDate']) && $_POST['startDate']== '2016-08-04'){echo "selected"; } ?>>2016-08-04</option>
+            <option value="2016-08-05" <?php if(isset($_POST['startDate']) && $_POST['startDate']== '2016-08-05'){echo "selected"; } ?>>2016-08-05</option>
     </select>
 
     <label id="lblEndDate" for="txtEndDate">End Date<span class="required">*</span>:</label>
 
     <select name="endDate" id="txtEndDate" required>
-            <option value="5" <?php if(isset($_POST['endDate']) && $_POST['endDate']== '2016-08-01'){echo "selected"; } ?>>2016-08-01</option>
-            <option value="4" <?php if(isset($_POST['endDate']) && $_POST['endDate']== '2016-08-02'){echo "selected"; } ?>>2016-08-02</option>
-            <option value="3" <?php if(isset($_POST['endDate']) && $_POST['endDate']== '2016-08-03'){echo "selected"; } ?>>2016-08-03</option>
-            <option value="2" <?php if(isset($_POST['endDate']) && $_POST['endDate']== '2016-08-04'){echo "selected"; } ?>>2016-08-04</option>
-            <option value="1" <?php if(isset($_POST['endDate']) && $_POST['endDate']== '2016-08-05'){echo "selected"; } ?>>2016-08-05</option>
+            <option value="2016-08-01" <?php if(isset($_POST['endDate']) && $_POST['endDate']== '2016-08-01'){echo "selected"; } ?>>2016-08-01</option>
+            <option value="2016-08-02" <?php if(isset($_POST['endDate']) && $_POST['endDate']== '2016-08-02'){echo "selected"; } ?>>2016-08-02</option>
+            <option value="2016-08-03" <?php if(isset($_POST['endDate']) && $_POST['endDate']== '2016-08-03'){echo "selected"; } ?>>2016-08-03</option>
+            <option value="2016-08-04" <?php if(isset($_POST['endDate']) && $_POST['endDate']== '2016-08-04'){echo "selected"; } ?>>2016-08-04</option>
+            <option value="2016-08-05" <?php if(isset($_POST['endDate']) && $_POST['endDate']== '2016-08-05'){echo "selected"; } ?>>2016-08-05</option>
     </select>
     <br/>
     <label id="lblReason" for="txtReason">Reason<span class="required">*</span>: </label>
@@ -44,7 +42,7 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
 
         <?php
 
-          $userID = $row['userID'];
+          $userID = $_SESSION['userID'];
 
         //Pass other key information to reviewprocessing.php
         echo '<input type="hidden" value="' .$userID. '" name="userID" />';

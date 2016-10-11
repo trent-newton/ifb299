@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+  
+  <?php
+    // Turn off all error reporting
+    error_reporting(0);
+  ?>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?php echo $pagetitle?></title>
     <!-- Tells phones not to lie about thier width -->
