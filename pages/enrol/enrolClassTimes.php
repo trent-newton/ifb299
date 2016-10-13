@@ -32,31 +32,63 @@ if($accessLevel == 'admin'){
 
 
 
-function recommendClasses($teacherID, $chosenDay, $chosenStartTime, $teacherStart, $teacherEnd, $chosenInstrument){
-  $sqlRecommended = "SELECT contracts.time, users.firstname FROM contracts INNER JOIN availability INNER JOIN users
-                      WHERE contracts.teacherID = $teacherID
-                      AND contracts.day = $chosenDay
-                      AND contracts.time != $chosenStartTime
-                      ORDER BY contracts.time ASC";
+function recommendClasses($teachersList, $chosenDay, $chosenStartTime, $chosenInstrument, $con, $accessLevel){
+  $str='';
 
-  $resultRecommended = mysqli_query($con, $sqlRecommended) or die(mysqli_error($con));
-  $rowRecommended = mysqli_fetch_array($resultRecommended);
+  if($teachersList[0] == null)
+  {
 
-  $teacherStartTime = floatval($TeacherStart);
-  $teacherEndTime = floatval($TeacherEnd);
-  $str = '';
-  for($i=$teacherStartTime; $i<($teacherEndTime-$teacherStartTime); $i++) {
-    if($i != $rowRecommended[$i-$teacherStartTime]) {
-      $str = '<tr><td>'.$chosenDay.'</td><td>'.$chosenStartTime.'</td><td>'.$teacherID.'</td>';
-      if($accessLevel == 'admin')      {
-        $str += "<td><a href='enrolClassDates.php?userID=".$userID."&day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";
-      } else {
-        $str += "<td><a href='enrolClassDates.php?day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";
+
+
+  } else {
+    //classes at different times on the same day
+    for($i=0; $i<count($teachersList); $i++)
+    {
+      $teacher =  $teachersList[$i];
+      $sqlTeacherInfo = "SELECT  distinct availability.startTime, availability.endTime, users.firstname, users.lastname FROM availability
+                        INNER JOIN users ON availability.teacherID = users.userID
+                        INNER JOIN contracts ON contracts.teacherID=availability.teacherID
+                        WHERE contracts.teacherID = '$teacher'
+                        AND availability.day = '$chosenDay'";
+
+      $resultTeacherInfo = mysqli_query($con, $sqlTeacherInfo);
+      $rowTeacherInfo = mysqli_fetch_array($resultTeacherInfo);
+
+      $sqlRecommended = "SELECT distinct contracts.time FROM contracts
+                          WHERE (contracts.teacherID = '$teacher' or contracts.studentID = '$teacher')
+                          AND contracts.day = '$chosenDay'
+                          ORDER BY contracts.time ASC";
+
+      $resultRecommended = mysqli_query($con, $sqlRecommended);
+      $row = mysqli_fetch_array($resultRecommended);
+
+      $teacherStartTime = floatval($rowTeacherInfo['startTime']);
+      $teacherEndTime = floatval($rowTeacherInfo['endTime']);
+
+      for($j=$teacherStartTime; $j<($teacherEndTime); $j++) {
+        if($j != floatval($row['time']))
+        {
+          //add to string that will be returned
+          $str .= ListClass($chosenDay, $j.":00:00", $chosenInstrument, $teacher, $rowTeacherInfo['firstname'], $rowTeacherInfo['lastname'], $teacherStartTime.":00", $teacherEndTime.":00", $accessLevel);
+        } else {
+          //progress in result row
+          $row = mysqli_fetch_array($resultRecommended);
+        }
       }
-      $str += "><span class='changeAccess'> Select Class </span></a></td></tr>";
-    }
+      }
   }
+  return $str;
+}
 
+function ListClass($Day, $StartTime, $Instrument, $teacherID, $teacherFirstName, $teacherLastName, $TeacherStart, $TeacherEnd, $accessLevel){
+      $str = '<tr><td>'.$Day.'</td><td>'.$StartTime.'</td><td>'.$teacherFirstName.' '.$teacherLastName.'</td>';
+      if($accessLevel == 'admin')      {
+        $str .= "<td><a href='enrolClassDates.php?userID=$userID&day=$Day&startTime=$StartTime&instrument=$Instrument&teacherID=$teacherID'";
+      } else {
+        $str .= "<td><a href='enrolClassDates.php?day=$Day&startTime=$StartTime&instrument=$Instrument&teacherID=$teacherID'";
+      }
+      $str .= "><span class='changeAccess'> Select Class </span></a></td></tr>";
+  return $str;
 }
 
 
@@ -74,6 +106,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $columnTeacherDetails  = array(
         'Day' => 'day',
+        'Time' => 'time',
+        'Teacher' => 'teacher',
+        'Select Class' => 'select_class',
     );
 
     //check if student already has a class at selected time
@@ -106,8 +141,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                 $result = mysqli_query($con, $query);
 
-                $rowcount=mysqli_num_rows($result);
+                $rowcount = mysqli_num_rows($result);
 
+                //list to be used for recommendations
+                $teachersList = [];
                 //classes available
                 if ($rowcount > 0){
 
@@ -118,9 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     foreach ($columnTeacherDetails as $name => $col_name) {
                       echo "<th>$name</th>";
                     }
-                    echo "<th> Time </th>
-                          <th> Teacher </th>
-                          <th>Select Class</th>";
+
                     $teachersAvailableCount = 0;
                     while($row = mysqli_fetch_array($result)){
                         $teacherID = $row['teacherID'];
@@ -134,34 +169,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                         if (mysqli_num_rows($resultCheckIfTeacherBooked) == 0){
                             echo "<tr>";
-                            foreach ($columnTeacherDetails as $name => $col_name) {
-                                echo "<td> $row[$col_name] </td>";
-                                $teacherID = $row['teacherID'];
-                            }
+
+                            echo "<td> $chosenDay </td>";
+                            $teacherID = $row['teacherID'];
                             echo "<td>". $chosenStartTime.'-'. $endTime ."</td>";
                             //get teacher's name
-                            $sqlTeacherName = "SELECT distinct users.firstName FROM availability INNER JOIN users
+                            $sqlTeacherName = "SELECT distinct users.firstName, users.lastName FROM availability INNER JOIN users
                                                 where availability.teacherID = users.UserID
                                                 AND users.UserID = '$teacherID'";
                             $resultTeacherName = mysqli_query($con, $sqlTeacherName) or die(mysqli_error($con));
                             $rowTeacherName = mysqli_fetch_array($resultTeacherName);
 
-                            echo "<td>". $rowTeacherName['firstName']."</td>";
+                            echo "<td>". $rowTeacherName['firstName'].' '.$rowTeacherName['lastName']."</td>";
 
                             //select class TD
                             if($accessLevel == 'admin')
                             {
-                              echo "<td><a href='enrolClassDates.php?userID=".$userID."&day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";
+                              echo "<td><a href='enrolClassDates.php?userID=$userID&day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";
                             } else {
                               echo "<td><a href='enrolClassDates.php?day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";
                             }
                             echo "><span class='changeAccess'> Select Class </span> </td>";
                             $teachersAvailableCount++;
+                        } else {
+                          $teachersList[] = $teacherID;
                         }
                     }
                     if($teachersAvailableCount == 0)
                     {
-                        echo "<h1>There are not any available classes during selected time.</h1>";
+                        $strClasses = recommendClasses($teachersList, $chosenDay, $chosenStartTime, $chosenInstrument, $con, $accessLevel);
+                        if ($strClasses == '')
+                        {
+                          echo "<h1>There are no available classes during selected time or day for your instrument.</h1>";
+                        } else {
+                          echo "<h1>There are no available classes during selected time. Here some classes for the $chosenInstrument on $chosenDay.</h1>";
+                          echo $strClasses;
+                        }
                     }
                     // Close table
                     echo "</table><br>";
@@ -170,6 +213,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                 }
         } //close big else statement
     }
+} else
+{
+  echo "<br><br><br><br>";
 }
 echo "</div>";
 include "../../inc/footer.php";
