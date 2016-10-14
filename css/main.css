@@ -41,9 +41,16 @@ input[type=button], input[type=submit], input[type=reset] {
     text-align: center;
 
 }
-.headercontainer {
-    width: 99%;
+.headerContainer {
+    width: 100%;
     display: inline-block;
+    text-align: center;
+}
+
+.alert-banner {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
 }
 
 .banner {
