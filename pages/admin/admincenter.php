@@ -23,7 +23,7 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
            <br><h2>INSTRUMENTS</h2>
         </div></a>
 
-        <br />
+        <br>
 
         <a href="../admin/adminReviewCenter.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/reviews.png">
            <br><h2>REVIEWS</h2>
@@ -33,10 +33,16 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
            <br><h2>MY PROFILE</h2>
         </div></a>
 
-        <br />
+        <br>
 
         <a href="../leave/requestLeave.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/leave.png">
            <br><h2>LEAVE</h2>
+        </div></a>
+
+
+
+        <a href="../admin/adminReviewApplications.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/enrol.png">
+           <br><h2>JOB APPLICATIONS</h2>
         </div></a>
 
         <!--<a href="#"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/settings.png">
