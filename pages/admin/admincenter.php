@@ -33,6 +33,12 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
            <br><h2>MY PROFILE</h2>
         </div></a>
 
+        <br />
+
+        <a href="../leave/requestLeave.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/leave.png">
+           <br><h2>LEAVE</h2>
+        </div></a>
+
         <!--<a href="#"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/settings.png">
            <br><button class="AdminCenterButton"><a href="" class="button">Setting</a></button>
         </div>-->
