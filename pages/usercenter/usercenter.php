@@ -37,6 +37,10 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
             echo '<a href="../teacherReview/reviewLessons.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/reviews.png">
                <br><h2>REVIEWS</h2>
             </div></a>';
+
+            echo '<a href="../leave/requestLeave.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/leave.png">
+               <br><h2>LEAVE</h2>
+            </div></a>';
           }
         ?>
     </div>
