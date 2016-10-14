@@ -1,5 +1,5 @@
 <?php
-$pagetitle = "Review Center";
+$pagetitle = "Leave Request Center";
 include "../../inc/connect.php";
 include "../../inc/header.php";
 include "../../inc/nav.php";
@@ -77,7 +77,7 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
     echo $row["endDate"];
     echo '</td>
     <td>';
-    // echo '<a style="display:inline-block;" href="../change/changeReviewStatus.php?reviewID='.$row['reviewID'].'">';
+    echo '<a style="display:inline-block;" href="../change/changeLeaveStatus.php?leaveID='.$row['leaveID'].'">';
 
     if ($row["status"] == 'Approved') {
       echo '<img class="reviewTableIcon" src="../../images/admin-icons/reviews/public.png" />';
