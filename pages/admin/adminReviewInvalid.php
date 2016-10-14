@@ -12,7 +12,7 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
 ?>
 <div class="content">
 <div class="adminCenter">
-    <h1>Pending Reviews</h1>
+    <h1>Invalid Reviews</h1>
 
     <table class="table" id="myTable" class="tablesorter centerTable">
 <thead>
