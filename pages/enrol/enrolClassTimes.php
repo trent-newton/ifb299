@@ -69,7 +69,8 @@ function recommendClasses($teachersList, $chosenDay, $chosenStartTime, $chosenIn
         if($j != floatval($row['time']))
         {
           //add to string that will be returned
-          $str .= ListClass($chosenDay, $j.":00:00", $chosenInstrument, $teacher, $rowTeacherInfo['firstname'], $rowTeacherInfo['lastname'], $teacherStartTime.":00", $teacherEndTime.":00", $accessLevel);
+          $endTime = ($j+1) . ":00:00";
+          $str .= ListClass($chosenDay, $j.":00:00", $endTime, $chosenInstrument, $teacher, $rowTeacherInfo['firstname'], $rowTeacherInfo['lastname'], $accessLevel);
         } else {
           //progress in result row
           $row = mysqli_fetch_array($resultRecommended);
@@ -80,8 +81,8 @@ function recommendClasses($teachersList, $chosenDay, $chosenStartTime, $chosenIn
   return $str;
 }
 
-function ListClass($Day, $StartTime, $Instrument, $teacherID, $teacherFirstName, $teacherLastName, $TeacherStart, $TeacherEnd, $accessLevel){
-      $str = '<tr><td>'.$Day.'</td><td>'.$StartTime.'</td><td>'.$teacherFirstName.' '.$teacherLastName.'</td>';
+function ListClass($Day, $StartTime, $endTime, $Instrument, $teacherID, $teacherFirstName, $teacherLastName,  $accessLevel){
+      $str = '<tr><td>'.$Day.'</td><td>'.$StartTime.'-'.$endTime.'</td><td>'.$teacherFirstName.' '.$teacherLastName.'</td>';
       if($accessLevel == 'admin')      {
         $str .= "<td><a href='enrolClassDates.php?userID=$userID&day=$Day&startTime=$StartTime&instrument=$Instrument&teacherID=$teacherID'";
       } else {
@@ -168,11 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         $resultCheckIfTeacherBooked = mysqli_query($con, $sqlCheckIfTeacherBooked) or die(mysqli_error($con));
 
                         if (mysqli_num_rows($resultCheckIfTeacherBooked) == 0){
-                            echo "<tr>";
-
-                            echo "<td> $chosenDay </td>";
                             $teacherID = $row['teacherID'];
-                            echo "<td>". $chosenStartTime.'-'. $endTime ."</td>";
                             //get teacher's name
                             $sqlTeacherName = "SELECT distinct users.firstName, users.lastName FROM availability INNER JOIN users
                                                 where availability.teacherID = users.UserID
@@ -180,16 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                             $resultTeacherName = mysqli_query($con, $sqlTeacherName) or die(mysqli_error($con));
                             $rowTeacherName = mysqli_fetch_array($resultTeacherName);
 
-                            echo "<td>". $rowTeacherName['firstName'].' '.$rowTeacherName['lastName']."</td>";
-
-                            //select class TD
-                            if($accessLevel == 'admin')
-                            {
-                              echo "<td><a href='enrolClassDates.php?userID=$userID&day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";
-                            } else {
-                              echo "<td><a href='enrolClassDates.php?day=$chosenDay&startTime=$chosenStartTime&instrument=$chosenInstrument&teacherID=$teacherID'";
-                            }
-                            echo "><span class='changeAccess'> Select Class </span> </td>";
+                             echo ListClass($chosenDay, $chosenStartTime, $endTime, $chosenInstrument, $teacherID, $rowTeacherName['firstName'], $rowTeacherName['lastName'], $accessLevel);
                             $teachersAvailableCount++;
                         } else {
                           $teachersList[] = $teacherID;

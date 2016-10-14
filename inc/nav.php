@@ -32,7 +32,7 @@
                     </div> <!--end userMessage-->
                 </div><!-- end userPanel-->
 
-                <div class="logo"> <img src="../../images/TempLogo.png" /> </div>
+                <div class="logo"> <img src="../../images/Logo.png" /> </div>
                 <!--end logo-->
             </div>
           </span>
@@ -52,9 +52,9 @@
                     //Admin center
                     if((($_SESSION['accountType']) == 'Admin') || (($_SESSION['accountType']) == 'Owner')){
                         echo '<li><a href="../admin/admincenter.php"><span class="glyphicon glyphicon-user"></span> Admin Center</a></li>';
-                    } 
+                    }
 
-                    //User center 
+                    //User center
                     if ($_SESSION['accountType'] == 'Student' || $_SESSION['accountType'] == 'Teacher' || $_SESSION['accountType'] == 'StudentAndTeacher') {
                          echo '<li><a href="../usercenter/usercenter.php"><span class="glyphicon glyphicon-user"></span> User Center</a></li>';
                     }
@@ -65,8 +65,8 @@
                     echo '<li><a href="../createAccount/createAccount.php"><span class="glyphicon glyphicon-book"></span> Register</a></li>';
                     echo '<li><a href="../login/login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
                 }
-                    
-                    
+
+
                 ?>
             </ul>
           </div>
