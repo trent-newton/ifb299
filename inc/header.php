@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
+
   <?php
     // Turn off all error reporting
-    error_reporting(0);
+    error_reporting(E_ALL);
   ?>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

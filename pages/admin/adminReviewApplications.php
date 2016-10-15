@@ -6,7 +6,7 @@
     require "../../inc/authCheck.php";
 
     if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType']))){
-        $_SESSION['error'] = "Only Administrators can review Teacher Applications .";
+        $_SESSION['error'] = "Only Administrators can review Teacher Applications.";
         rejectAccess();
     }
 ?>
