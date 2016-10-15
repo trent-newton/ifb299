@@ -1,5 +1,5 @@
 <?php
-$pagetitle = "Leave Request Center";
+$pagetitle = "Admin Leave Requests";
 include "../../inc/connect.php";
 include "../../inc/header.php";
 include "../../inc/nav.php";
@@ -10,93 +10,126 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
     rejectAccess();
 }
 ?>
-<div class="content">
-<div class="adminCenter">
-    <h1>Welcome to the Leave Request Center</h1> <h3>Which leave requests would you like to review?</h3>
+<div class="content centered">
+    <?php
+    include "searchLeave.php";
 
-    <div>
-        <div class="temp"><a href="../leave/reviewPendingRequests.php"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/pending.png"></a>
-           <br><a href="adminReviewPending.php" class="button">Pending</a>
-        </div>
+    //get variables from searchUsers on if they are set
+if (isset($_POST["userID"])){
+    $userID = $_POST["userID"];
+} else {
+    $userID = null;
+}
 
-        <div class="temp"><a href="../leave/reviewApprovedRequests.php"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/public.png"></a>
-           <br><a href="adminReviewPublic.php" class="button">Approved</a>
-        </div>
+if (isset($_POST["status"])){
+    $status = $_POST["status"];
+} else {
+    $status = null;
+}
 
-        <div class="temp"><a href="../leave/reviewDeniedRequests.php"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/private.png"></a>
-           <br><a href="adminReviewPrivate.php" class="button">Denied</a>
-        </div>
-    </div>
+    $column = array(
+        'First Name' => 'firstName',
+        'Last Name' => 'lastName',
+        'Start Date' => 'startDate',
+        'End Date' => 'endDate',
+        'Reason' => 'reason',
+        'Current Status' => 'status',
+    );
 
-    <h3>All Leave Requests</h3>
+    //show specified account type if set, otherwise show all account types
+if ($status != null){
+    $statuses = array(
+         0 => $status
+    );
+} else {
+    $statuses = array(
+      1 => 'Pending',
+      2 => 'Approved',
+      3 => 'Denied'
+    );
+}
 
-    <table class="table" id="myTable" class="tablesorter centerTable">
-  <thead>
-
-  <script>
-  $(document).ready(function()
-      {
-          $("#myTable").tablesorter();
+  if ($userID != null) {
+      $sql = "SELECT leaverequests.*, users.firstName, users.lastName
+      FROM leaverequests, users WHERE leaverequests.userID = users.UserID AND $userID = users.UserID";
+      if ($status != null) {
+        $sql = "SELECT leaverequests.*, users.firstName, users.lastName
+        FROM leaverequests, users WHERE leaverequests.userID = users.UserID AND $userID = users.UserID
+        AND '$status' = leaverequests.status";
       }
-  );
-  </script>
 
-  <?php
-  $sql = "SELECT leaverequests.*, users.firstName, users.lastName FROM leaverequests, users WHERE leaverequests.userID = users.userID";
-  $result = mysqli_query($con, $sql);
-
-
-  echo '<tr>
-    <th>Name</th>
-    <th>Date Requested</th>
-    <th>Reason Provided</th>
-    <th>Start Date</th>
-    <th>End Date</th>
-    <th>Status</th>
-  </tr>
-  </thead>
-  <tbody>';
-
-  while ($row = mysqli_fetch_array($result)) {
-  echo '<tr>
-    <td>';
-    echo $row["firstName"];
-    echo ' ';
-    echo $row["lastName"];
-    echo'</td>
-    <td>';
-    echo $row["requestDate"];
-    echo '</td>
-    <td>';
-    echo $row["reason"];
-    echo '</td>
-    <td>';
-    echo $row["startDate"];
-    echo'</td>
-    <td>';
-    echo $row["endDate"];
-    echo '</td>
-    <td>';
-    echo '<a style="display:inline-block;" href="../change/changeLeaveStatus.php?leaveID='.$row['leaveID'].'">';
-
-    if ($row["status"] == 'Approved') {
-      echo '<img class="reviewTableIcon" src="../../images/admin-icons/reviews/public.png" />';
+    } elseif ($status != null) {
+      $sql = "SELECT leaverequests.*, users.firstName, users.lastName
+      FROM leaverequests, users WHERE leaverequests.userID = users.UserID AND '$status' = leaverequests.status";
+      if ($userID != null) {
+        $sql = "SELECT leaverequests.*, users.firstName, users.lastName
+        FROM leaverequests, users WHERE leaverequests.userID = users.UserID AND '$status' = leaverequests.status
+        AND $userID = users.UserID";
+      }
+    } else {
+        $sql = "SELECT leaverequests.*, users.firstName, users.lastName
+        FROM leaverequests, users WHERE leaverequests.userID = users.userID";
     }
-    elseif ($row["status"] == 'Pending') {
-      echo '<img class="reviewTableIcon" src="../../images/admin-icons/reviews/pending.png" />';
-    }
-    elseif ($row["status"] == 'Denied') {
-      echo '<img class="reviewTableIcon" src="../../images/admin-icons/reviews/private.png" />';
-    }
+    $result = mysqli_query($con,$sql);
+    $count = mysqli_num_rows($result);
 
-    echo $row["status"];
-    echo'</a>
-    </td>
-  </tr>';
-  }
-  echo '</tbody>
-  </table>';
-  ?>
-</div> <!--end content-->
+    if ($count > 0) {
+        echo "<h3>$type</h3>";
+        echo "<table class='table centered'><tr>";
 
-<?php include "../../inc/footer.php"; ?>
+        echo"<script>
+        $(document).ready(function()
+            {
+                $('#myTable').tablesorter();
+            }
+        );
+        </script>";
+
+        foreach ($column as $name => $col_name) {
+          echo "<th>$name</th>";
+        }
+
+        echo "<th> Approve Leave </th>";
+        echo "<th> Deny Leave </th>";
+
+
+        while($row = mysqli_fetch_array($result)) {
+          echo "<tr>";
+          foreach ($column as $name => $col_name) {
+            echo "<td>";
+            if($name == 'Approved') {
+                if($row[$col_name] == null){
+                  echo "<span>Please Select</span>";
+              } elseif($row[$col_name] == 'Denied') {
+                  echo "<span class='error'>'Denied'</span>";
+              } elseif($row[$col_name] == 'Approved') {
+                  echo "<span class='success'>'Approved'</span>";
+              }
+            } else {
+                echo $row[$col_name];
+            }
+              echo "</td>";
+          }
+          echo '<td><a href="modifyLeave.php?leaveID='.$row['leaveID'] . '&approved=Approved"><img src="../../images/tick.png" /></a></td>';
+          echo '<td><a href="modifyLeave.php?leaveID='.$row['leaveID'] . '&approved=Denied"><img src="../../images/cross.png" /></a></td>';
+
+            echo '</tr>';
+
+        }
+
+        // Close table
+        echo "</table><br>";
+    } else if (sizeof($statuses) == 1){
+        echo "<h3> No Leave Requests found. Search Again.";
+        break;
+    }
+//}
+
+    ?>
+
+</div>
+
+
+<?php
+include "../../inc/footer.php";
+?>

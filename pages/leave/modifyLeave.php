@@ -2,14 +2,14 @@
 session_start();
 include "../../inc/connect.php";
 
-$instrumentHireID = $_GET['instrumentHireID'];
+$leaveID = $_GET['leaveID'];
 $approved = $_GET['approved'];
 
-$sql = "UPDATE instrumentHire SET adminApproved='$approved' WHERE instrumentHireID='$instrumentHireID'";
+$sql = "UPDATE leaverequests SET status='$approved' WHERE leaveID='$leaveID'";
 $result = mysqli_query($con,$sql);
 
 if($result) {
-        $_SESSION['success'] = "Student Hire Updated.";
+        $_SESSION['success'] = "Leave Request Updated.";
         header("location:" . $_SERVER['HTTP_REFERER']);
     }
 else {
