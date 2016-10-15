@@ -61,6 +61,13 @@ for ($day = 0; $day < 31; $day++) {
 
   <h2>Previous Leave Requests</h2>
 
+  <?php
+  $sql = "SELECT * FROM leaverequests WHERE $userID = leaverequests.userID";
+  $result = mysqli_query($con, $sql);
+
+  if ($result > 0) {
+   ?>
+
   <table class="table" id="myTable" class="tablesorter centerTable">
 <thead>
 
@@ -73,9 +80,6 @@ $(document).ready(function()
 </script>
 
 <?php
-$sql = "SELECT * FROM leaverequests WHERE $userID = leaverequests.userID";
-$result = mysqli_query($con, $sql);
-
 
 echo '<tr>
   <th>Date Requested</th>
@@ -124,6 +128,9 @@ echo '<tr>
 }
 echo '</tbody>
 </table>';
+} else {
+  echo "<h3> No Previous Leave Requests found.";
+}
 ?>
 
 <?php

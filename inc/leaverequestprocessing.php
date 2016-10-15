@@ -14,7 +14,7 @@
                 mysqli_query($con, $sql) or die(mysqli_error($con));
 
                 $_SESSION['success'] = "Leave Request Submitted";
-                header("location:../home/index.php");
+                header("location:../leave/requestLeave.php");
                 exit();
         } else {
             $_SESSION['error'] = "Please review field errors";
