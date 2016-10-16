@@ -20,21 +20,21 @@
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $fileName = $_FILES["fileToUpload"]["name"];
     $fileType = pathinfo($target_file,PATHINFO_EXTENSION);
-
+    $alteredName = "$userID.$fileType";
     
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         //save file as userID name with file extension 
-        rename ("../../applicationUploads/$fileName", "../../applicationUploads/$userID.$fileType");
+        rename ("../../applicationUploads/$fileName", "../../applicationUploads/$alteredName");
         echo "<h1>Application submitted! Good luck!</h1>";
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
-
-    $sql = "INSERT INTO applications (userID, language, availability, instrument) 
-    VALUES ('$userID', '$langauges', '$availability', '$instrument')";
+    
+    //insert data into db
+    $sql = "INSERT INTO applications (userID, language, availability, instrument, fileName) 
+    VALUES ('$userID', '$langauges', '$availability', '$instrument', '$alteredName')";
 
     $result = mysqli_query($con, $sql) or die(mysqli_error($con));
-    $_SESSION['success'] = "Application submitted!";
 
     include "../../inc/footer.php"; 
 ?>

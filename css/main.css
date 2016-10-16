@@ -249,16 +249,19 @@ input , select {
     border-radius: 1em;
 }
 .socialMediaIcons {
-  //display: inline-block;
+    display: inline-block;
+    width: 70%;
+    padding: 0% 1% 5% 1% ;
 }
 
-.copyright {
-  text-align: right;
-  margin-top: -30px;
+.footerContent {
+    text-align: right;
+    display: inline-block;
+    padding-right: 5px;
 }
 
 .socialMediaIcons img {
-    max-width: 36px;
+    width: 5%;
     margin: 0 1%;
 }
 

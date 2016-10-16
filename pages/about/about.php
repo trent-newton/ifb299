@@ -20,9 +20,25 @@
 
 
 <a href="../meettheteachers/meettheteachers.php">Meet our Teachers</a>
-
-
     </div>
+    <br><br> <h2>Find us on Social Media</h2>
+    <div class="socialMediaIcons">
+                <a href="https://www.facebook.com">
+                <img  src="../../images/socialMedia/facebook.png" alt="Facebook Link">
+                </a>
+
+                <a href="https://www.instagram.com">
+                <img  src="../../images/socialMedia/instagram.png" alt="instagram Link">
+                </a>
+
+                <a href="https://www.twitter.com">
+                <img  src="../../images/socialMedia/twitter.png" alt="twitter Link">
+                </a>
+
+                <a href="https://www.snapchat.com">
+                <img  src="../../images/socialMedia/snapchat.png" alt="snapchat Link">
+                </a>
+        </div>
     <!--end content-->
 <?php
     include "../../inc/footer.php";
