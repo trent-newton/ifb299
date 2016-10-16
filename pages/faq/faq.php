@@ -5,6 +5,9 @@
     include "../../inc/nav.php";
 ?>
  <div class="content ">
+     <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > FAQ</span>
+        </div>
     <h1 class="centered">FAQ</h1>
 
     <div class="faq_post">

@@ -5,6 +5,9 @@
     include "../../inc/nav.php";
 ?>
  <div class="content">
+     <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../faq/faq.php">FAQ</a> > Hire an Instrument</span>
+        </div>
     <h1>Hiring an Instrument</h1>
     <p>
         Pinelands Music School owns a wide range of musical instruments, from acoustic guitars to xylophones! <br />

@@ -307,6 +307,10 @@ input , select {
     padding: 4px;
 }
 
+/************Breadcrumb**************/
+.breadcrumb {
+    text-align: left;
+}
 
 /*-------------------- TABLES --------------------*/
 table th {

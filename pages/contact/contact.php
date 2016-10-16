@@ -38,6 +38,9 @@
   </script>
 
     <div class="content contactUs">
+        <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > Contact Us</span>
+        </div>
         <h1>Contact Us</h1>
 
         <form action="../../inc/contact_form_processing.php" style="display:inline-block;padding-right:40px;" method="post">

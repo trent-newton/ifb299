@@ -5,6 +5,9 @@
     include "../../inc/nav.php";
 ?>
 <div class="content">
+    <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../faq/faq.php">FAQ</a> > Student Contracts</span>
+        </div>
    <h2>Contract Term</h2>
     <p>The term of commitment is on a “per semester” bases, and the contract is to begin upon the commencement of the second lesson, until the last week of classes for the current semester in which the student is enrolled. E.g. Fall or Spring. Every student is afforded the possibility of opting out of lessons after the first lesson, but once the student attends the second lesson, the semester commitment is engaged and financial responsibility for the semester is assumed.</p>
 

@@ -23,7 +23,9 @@
         $result = mysqli_query($con, $sql) or die(mysqli_error($con));
         $row = mysqli_fetch_array($result);
     ?>
-
+    <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > Apply to become a Teacher</span>
+        </div>
     <h1>Apply to become a teacher</h1>
     <h4>Already stored information</h4>
     <div class="apply">

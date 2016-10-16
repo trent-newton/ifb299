@@ -5,6 +5,9 @@
     include "../../inc/nav.php";
 ?>
 <div class="content">
+    <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../faq/faq.php">FAQ</a> > Become a Teacher</span>
+        </div>
     <h2>Becoming a Teacher at Pinelands</h2>
     <p>Unlike music teachers in schools, Pinelands Music School Teachers should be able work in stand-alone musical or artistic facilities. They are hired to teach instrumental or vocal music to students outside of a traditional academic setting. They may work one-on-one with students or teach a larger group or classroom.</p>
     <ul>

@@ -9,6 +9,11 @@
         rejectAccess();
         $_SESSION['success'] = "Only guest users can apply";
     }
+?>
+<div class="breadcrumb">
+    <span><a href="../home/index.php">Home</a> > Teacher Application Submitted</span>
+</div>
+     <?php
     
     $langauges = $_POST['langauge'];
     $userID = $_SESSION['userID'];
