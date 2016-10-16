@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include "../../inc/connect.php";
+include "../inc/connect.php";
 
 
 $email = mysqli_real_escape_string($con, $_POST['email']);
@@ -15,7 +15,7 @@ $userID = $row['userID'];
 
 if($numrow == 1) {
     $emailCode = md5(uniqid(rand(), true));
-    $link = "http://localhost/MusicSchool/pages/resetpassword.php?email=$email&emailCode=$emailCode";
+    $link = "http://localhost/MusicSchool/pages/resetpassword/resetpassword.php?email=$email&emailCode=$emailCode";
     $sql = "INSERT INTO forgotPassword (userID, emailCode, link) VALUES ('$userID', '$emailCode', '$link')";
     $result = mysqli_query($con, $sql) or die(mysqli_error($con));
     if($result) {
@@ -23,7 +23,7 @@ if($numrow == 1) {
         $subject = "Reset your password at Pinelands Music School";
         $message = "Please click the link below to reset the password. \r\n\n ";
         $message .= "If you did not request a password reset, please ignore this email. Otherwise click below... \r\n";
-        $message .= "http://www.pinelands-MS.com/pages/resetpassword.php?email=$email&emailCode=$emailCode";
+        $message .= "http://www.pinelands-MS.com/pages/resetpassword/resetpassword.php?email=$email&emailCode=$emailCode";
         
         
         mail("$email", "Subject: $subject", $message);
