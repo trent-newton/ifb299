@@ -8,6 +8,9 @@
 ?>
 
 <div class="content centered">
+     <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > Create Account</span>
+        </div>
     <?php if(isset($_POST['submit'])) {
         echo '<div class="alert alert-danger">';
         if ($errorDOB != "") echo $errorDOB."<br>";

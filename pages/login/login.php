@@ -6,6 +6,9 @@ include "../../inc/nav.php";
 ?>
 
     <div class="content">
+        <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > Login</span>
+        </div>
 <?php
             if(isset($_SESSION["loginError"])) {
                 echo "<span class='error loginError'>" . $_SESSION['loginError'] . "</span>";

@@ -5,21 +5,22 @@ $teacherID = $_GET['userID'];
     include "../../inc/connect.php";
     include "../../inc/header.php";
     include "../../inc/nav.php";
-?>
-
- <div class="content ">
-    <h1 class="centered">Testimonials About
-      <?php
-      //Return teacher's first and last name
       $sql2 = "SELECT users.firstName, users.lastName FROM users WHERE users.userID = $teacherID";
       $result2 = mysqli_query($con, $sql2);
       while ($row2 = mysqli_fetch_array($result2)) {
-        echo $row2["firstName"];
-        echo " ";
-        echo $row2["lastName"];
+        $teacherName = $row2["firstName"];
+        
+        $teacherName .= " " . $row2["lastName"];
       }
-      ?>
-    </h1>
+    
+
+?>
+
+ <div class="content ">
+     <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../testimonials/testimonials.php">Testimonials</a> >  <?php echo $teacherName?></span>
+        </div>
+    <h1 class="centered">Testimonials About <?php echo $teacherName?></h1>
 
 <?php
 $sql = "SELECT teacherreviews.*,users.firstName, users.lastName FROM users INNER JOIN teacherreviews ON users.userID = teacherreviews.teacherID WHERE teacherreviews.teacherID = $teacherID";

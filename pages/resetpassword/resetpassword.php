@@ -5,6 +5,9 @@ include "../../inc/header.php";
 include "../../inc/nav.php";
 ?>
 <div class="content">
+    <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../login/login.php">Login</a> >  Reset Password</span>
+        </div>
 <?php
     if(isset($_GET['emailCode']) && isset($_GET['email'])) {
         $emailCode = $_GET['emailCode'];
