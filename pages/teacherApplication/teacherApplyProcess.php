@@ -1,5 +1,5 @@
 <?php
-    $pagetitle = "User Management";
+    $pagetitle = "Teacher Application";
     include "../../inc/connect.php";
     include "../../inc/header.php";
     include "../../inc/nav.php";
@@ -24,7 +24,7 @@
     
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         //save file as userID name with file extension 
-        rename ("../../applicationUploads/$fileName", "../../applicationUploads/$alteredName");
+        rename ("../../applicationUploads/" . $fileName, "../../applicationUploads/$alteredName");
         echo "<h1>Application submitted! Good luck!</h1>";
     } else {
         echo "Sorry, there was an error uploading your file.";

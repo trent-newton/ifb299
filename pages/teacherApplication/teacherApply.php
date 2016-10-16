@@ -1,5 +1,5 @@
 <?php
-    $pagetitle = "User Management";
+    $pagetitle = "Teacher Application";
     include "../../inc/connect.php";
     include "../../inc/header.php";
     include "../../inc/nav.php";
@@ -9,16 +9,16 @@
         rejectAccess();
         $_SESSION['success'] = "Only guest users can apply";
     }
+    $userID = $_SESSION['userID'];
 
     //check if user had already made application
-    $query = "SELECT * FROM applications";
+    $query = "SELECT * FROM applications WHERE userID = '$userID' ";
     $resultCheckSubmission = mysqli_query($con, $query);
     $rowcount=mysqli_num_rows($resultCheckSubmission);
 
     if ($rowcount > 0){
         echo "<h1>You have already submitted an application with us. Good Luck!</h1>";
     } else {        
-        $userID = $_SESSION['userID'];
         $sql = "SELECT * FROM users WHERE userID='$userID'";
         $result = mysqli_query($con, $sql) or die(mysqli_error($con));
         $row = mysqli_fetch_array($result);
