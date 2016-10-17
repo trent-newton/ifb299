@@ -26,9 +26,9 @@
     <div class="breadcrumb">
             <span><a href="../home/index.php">Home</a> > Apply to become a Teacher</span>
         </div>
-    <h1>Apply to become a teacher</h1>
-    <h4>Already stored information</h4>
     <div class="apply">
+        <h1>Apply to become a teacher</h1>
+        <h4>Already stored information</h4>
         <form method="post" action="teacherApplyProcess.php" enctype="multipart/form-data">
             <div class="col-md-3 form-group">
                 
@@ -59,7 +59,7 @@
             $resultInstrument = mysqli_query($con,"SELECT distinct * FROM instrumentNames");
 
             while($row = mysqli_fetch_array($resultInstrument)) {    
-                echo "<input type='checkbox' name='instrument' value='$row[0]'>$row[1]<br>";
+                echo "<input type='checkbox' name='check_list[]' value='$row[1]'>$row[1]<br>";
                 /*
                   if(isset($_POST['chosenInstrument']) && $_POST['chosenInstrument'] == "$row[$col_name]"){
                     echo "selected"; 
@@ -71,7 +71,11 @@
             //Langauges
             $resultLanguage = mysqli_query($con,"SELECT distinct language FROM languages");
             while($row = mysqli_fetch_array($resultLanguage)) {
-                echo "<input type='checkbox' name='langauge' value='$row[0]'>$row[0]<br>";
+                echo "<input type='checkbox' name='check_list[]'";
+                if ($row[0] == "English"){
+                    echo" checked required ";
+                }
+                echo "value='$row[0]'>$row[0]<br>";
                 /*
                   if(isset($_POST['chosenInstrument']) && $_POST['chosenInstrument'] == "$row[$col_name]"){
                     echo "selected"; 
@@ -79,13 +83,14 @@
             }
             ?> 
             <div class="col-md-3 form-group">
-            <br><label>Availability (per week)</label>
+            <br><label>Availability (hours per week)</label>
             <input type="number" class="form-control" name="availability" min="5" max="50" required/>
             </div>
             
-            
+            <div class="col-md-9 form-group">
+            <p><label>Upload your Resumee (pdf only)</label></p>
             <input class="form-control" type="file" name="fileToUpload" id="fileToUpload">
-            
+            </div>
             <br>
             <input type="submit" class="form-control" value="Submit Application"/> 
         </form>    
