@@ -10,6 +10,8 @@
         rejectAccess();
     }
 
+    $userID = $_SESSION['userID'];
+
     $sqlGetContracts = "SELECT contracts.contractID, contracts.startDate, contracts.endDate, contracts.time, contracts.day, instrumenthire.instrumentHireID FROM contracts LEFT JOIN instrumenthire ON contracts.contractID=instrumenthire.contractID WHERE studentID='$userID'";
     $resultGetContracts = mysqli_query($con, $sqlGetContracts) or die(mysqli_error($con));
 
@@ -20,8 +22,12 @@
         unset($_SESSION['hireSuccess']);
     }
 ?>
-
+<div class="content">
+<div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../usercenter/usercenter.php">User Center</a> > Hire an Instrument</span>
+        </div>
 <div class="loginForm center-horizontal">
+    
     <h3>Hire an Instrument</h3>
     <select class="form-control" onchange="showContract(this.value)">
     <option value="">Select a contract...</option>
@@ -36,6 +42,8 @@
 
     <div id="txtData"></div>
 
+</div>
+        
 </div>
 
 <?php include "../../inc/footer.php"; ?>

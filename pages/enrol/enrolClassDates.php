@@ -36,6 +36,10 @@ $teacherID = $_GET['teacherID'];
 $studentID = $userID;
 
 ?>
+<div class="content">
+<div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../usercenter/usercenter.php">User Center</a> > Enrol</span>
+        </div>
 
 <div class="loginForm center-horizontal">
     <?php
@@ -60,7 +64,7 @@ $studentID = $userID;
         <input class="form-control" type="submit" name="Submit" value="submit" />
     </form>
 </div><!--end content-->
-
+</div>
 <?php
 
 include "../../inc/footer.php";

@@ -14,6 +14,9 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
 ?>
 
  <div class="content">
+     <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../usercenter/usercenter.php">User Center</a> > Hire an Instrument</span>
+        </div>
     <h1 class="centered">Review of
       <?php
       //Finds contract and finds the related teacher name and instrument used in contract

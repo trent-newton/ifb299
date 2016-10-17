@@ -48,7 +48,13 @@ $sql = "INSERT INTO contracts (teacherID, studentID, startDate, endDate, time, d
 $result = mysqli_query($con, $sql) or die(mysqli_error($con));
 
 ?>
+
+<div class="content">
+<div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../usercenter/usercenter.php">User Center</a> > Enrol</span>
+        </div>
 <div class="content enrolPage">
+    
     <h2>Class Added</h2>
     <p>Start Date: <?php echo $startDate?></p>
     <p>End Date: <?php echo $endDate?></p>
@@ -57,6 +63,7 @@ $result = mysqli_query($con, $sql) or die(mysqli_error($con));
     <p>Instrument: <?php echo $instrument?></p>
 
 </div>
+    </div>
 
 <?php
 

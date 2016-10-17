@@ -5,6 +5,14 @@ include "../../inc/connect.php";
 include "../../inc/header.php";
 include "../../inc/nav.php";
 include "../../inc/authCheck.php";
+?>
+<div class="content">
+<div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../usercenter/usercenter.php">User Center</a> > Enrol</span>
+        </div>
+<?php
+
+
 include "enrol.php";
 
 $accessLevel='';
@@ -27,10 +35,10 @@ if($accessLevel == 'admin'){
 } else {
   $userID = $_SESSION['userID'];
 }
+?>
 
 
-
-
+<?php
 
 function recommendClasses($teachersList, $chosenDay, $chosenStartTime, $chosenInstrument, $con, $accessLevel){
   $str='';
@@ -91,10 +99,9 @@ function ListClass($Day, $StartTime, $endTime, $Instrument, $teacherID, $teacher
       $str .= "><span class='changeAccess'> Select Class </span></a></td></tr>";
   return $str;
 }
+?>
 
-
-
-
+<?php
 echo "<div class='content centered'>";
 //check if form submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -206,5 +213,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
   echo "<br><br><br><br>";
 }
 echo "</div>";
+    echo "</div>";
 include "../../inc/footer.php";
 ?>

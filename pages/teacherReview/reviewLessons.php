@@ -8,8 +8,12 @@ require "../../inc/authCheck.php";
 if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountType']) && !isTeacher($_SESSION['accountType'])){
     rejectAccess();
 }
+$userID = $_SESSION['userID'];
 ?>
-
+<div class="content">
+    <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../usercenter/usercenter.php">User Center</a> > Lesson Review</span>
+        </div>
 <h3>Lessons Due For Review</h3>
 
 <table class='table' id="myTable" class="tablesorter centerTable">

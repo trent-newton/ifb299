@@ -11,6 +11,8 @@ if(!(isStudent($_SESSION['accountType'])) && !(isStudentTeacher($_SESSION['accou
     rejectAccess();
 }
 
+$userID = $_SESSION['userID'];
+
 
 $Times = array(
     0 => "9:00am-9:30am",
@@ -192,6 +194,9 @@ echo $timeTable["Friday"]["10:00:00"];
 
 ?>
     <div class="content">
+        <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../usercenter/usercenter.php">User Center</a> > View Schedule</span>
+        </div>
         <h1>View Schedule</h1>
         <table class="scheduleTable">
             <tr>

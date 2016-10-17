@@ -37,7 +37,10 @@
                             WHERE schoolinstruments.instrumentTypeID=$instrumentTypeID";
     $resultGetInstruments = mysqli_query($con, $sqlGetInstruments) or die(mysqli_error($con));
 ?>
-
+<div class="content">
+    <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../usercenter/usercenter.php">User Center</a> > Hire an Instrument</span>
+        </div>
 <div class="loginForm center-horizontal">
     <a href='../../pages/instrumentHire/instrumentHire.php'>Return to instrument hire page</a>
     <br><br>
@@ -80,5 +83,6 @@
         echo "<div class='alert alert-danger'>No instruments available for hire</div>";
     } ?>
 </div>
+    </div>
 
 <?php include "../../inc/footer.php"; ?>
