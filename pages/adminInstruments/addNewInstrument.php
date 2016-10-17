@@ -29,6 +29,11 @@ if(isset($_POST['submit'])) {
     }
 }
 ?>
+<div class="content">
+<div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > <a href="../admin/instrumentsAdmin.php">Instrument Admin</a>  > <a href="../adminInstruments/adminInstruments.php">Manage Instrument</a> > Add Instrument</span>
+        </div>
+
 <div class="loginForm center-horizontal">
     <h2>Add New Instrument</h2>
     
@@ -58,7 +63,7 @@ if(isset($_POST['submit'])) {
         
     </form>
 </div>
-
+</div>
 
 <?php
 include "../../inc/footer.php";

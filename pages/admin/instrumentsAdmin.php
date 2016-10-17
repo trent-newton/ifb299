@@ -11,8 +11,11 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
 }
 ?>
 
-<div class="adminCenter">
-    <h1>Welcome to the Hire Request</h1> <h3>What would you like to manage?</h3>
+<div class="adminCenter content">
+    <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > Instrument Admin</span>
+        </div>
+    <h1>Welcome to the Instrument Admin</h1> <h3>What would you like to manage?</h3>
 
     <div class="temp">
         <a href="../adminInstruments/adminHire.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/users.png">
