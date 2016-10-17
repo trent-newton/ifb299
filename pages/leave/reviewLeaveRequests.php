@@ -109,8 +109,8 @@ if ($status != null){
             }
               echo "</td>";
           }
-          echo '<td><a href="modifyLeave.php?leaveID='.$row['leaveID'] . '&approved=Approved"><img src="../../images/tick.png" /></a></td>';
-          echo '<td><a href="modifyLeave.php?leaveID='.$row['leaveID'] . '&approved=Denied"><img src="../../images/cross.png" /></a></td>';
+          echo '<td><a href="modifyLeave.php?leaveID='.$row['leaveID'] . '&approved=Approved"><img class="leaveTick" src="../../images/tick.png" /></a></td>';
+          echo '<td><a href="modifyLeave.php?leaveID='.$row['leaveID'] . '&approved=Denied"><img class="leaveCross" src="../../images/cross.png" /></a></td>';
 
             echo '</tr>';
 
