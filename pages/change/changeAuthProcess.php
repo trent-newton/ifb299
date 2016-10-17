@@ -11,6 +11,18 @@ if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
 }
 // Get selected userID
 $userID = $_GET['userID'];
+$sql = "SELECT * FROM users WHERE userID = '$userID'";
+$result = mysqli_query($con,$sql);
+$row = mysqli_fetch_array($result);
+$firstName = $row['firstName'];
+$lastName = $row['lastName'];
+?>
+<div class="content">
+<div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > <a href="../change/changeAuth.php">User Management</a> > Modify Authorization:<?php echo $firstName . " " . $lastName ?></span>
+        </div>
+
+<?php
 
 // Run the query & fetch results
 $result= mysqli_query($con,"SELECT firstName, lastName, accountType FROM users WHERE userID = $userID");
@@ -36,7 +48,7 @@ echo'<br> Change authorisation to:
     <input class="form-control" type="submit" value="Amend Changes">
 </form>';
 
-echo "</div>";
+echo "</div></div>";
 
 include "../../inc/footer.php";
 ?>

@@ -6,6 +6,7 @@
     require "../../inc/checkFunctions.php";
     include "../../inc/adminupdateaccount.php";
 	require "../../inc/authCheck.php";
+    
 
 
     // Check if user is owner or admin
@@ -15,6 +16,9 @@
 ?>
 
 <div class="content centered">
+    <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > <a href="../change/changeAuth.php">User Management</a> > Modify details:<?php echo $firstName . " " . $lastName ?></span>
+        </div>
 	<fieldset class="accountDetails">
 		<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <h1>Account Details</h1>

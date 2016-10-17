@@ -9,6 +9,11 @@ if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
     rejectAccess();
 }
 echo "<div class='content changeAuth'>";
+?>
+<div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > User Management</span>
+        </div>
+<?php
 
 include "../searchUsers/searchUsers.php";
 
@@ -45,7 +50,7 @@ if ($accountType != null){
         3 => "StudentAndTeacher",
     );
       
-    if (isOwner($_SESSION['userID'])){
+    if (isOwner($_SESSION['accountType'])){
         $accountTypes[4] = "Admin";
     }
 }

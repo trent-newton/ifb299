@@ -11,7 +11,12 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
     rejectAccess();
 }
 ?>
+<div class="content">
+     <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../usercenter/usercenter.php">User Center</a> > Leave Request</span>
+        </div>
 <div class="reviewLessonForm">
+    
 <h2>Request Leave</h2>
   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <label id="lblStartDate" for="txtStartDate">Start Date<span class="required">*</span>:</label>
@@ -62,10 +67,10 @@ for ($day = 0; $day < 31; $day++) {
   <h2>Previous Leave Requests</h2>
 
   <?php
-  $sql = "SELECT * FROM leaverequests WHERE $userID = leaverequests.userID";
+  $sql = "SELECT * FROM leaverequests WHERE userID='$userID'";
   $result = mysqli_query($con, $sql);
-
-  if ($result > 0) {
+  $rowCount = mysqli_num_rows($result);
+  if ($rowCount > 0) {
    ?>
 
   <table class="table" id="myTable" class="tablesorter centerTable">
@@ -132,7 +137,7 @@ echo '</tbody>
   echo "<h3> No Previous Leave Requests found.";
 }
 ?>
-
+</div>
 <?php
 include "../../inc/footer.php";
 ?>

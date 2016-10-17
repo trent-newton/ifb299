@@ -9,7 +9,18 @@ require "../../inc/authCheck.php";
 if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
     rejectAccess();
 }
+$userID = $_GET['userID'];
+$sql = "SELECT * FROM users WHERE userID = '$userID'";
+$result = mysqli_query($con,$sql);
+$row = mysqli_fetch_array($result);
+$firstName = $row['firstName'];
+$lastName = $row['lastName'];
 echo "<div class='content'>";
+?>
+<div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > <a href="../change/changeAuth.php">User Management</a> > Modify Authorization:<?php echo $firstName . " " . $lastName ?></span>
+        </div>
+<?php
 $userID = $_GET['userID'];
 $changeAccess = $_POST['accessChosen'];
 //$userIDConvertedToInt = intval($userID);
