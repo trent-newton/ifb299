@@ -74,7 +74,6 @@ if ($status != null){
     $count = mysqli_num_rows($result);
 
     if ($count > 0) {
-        echo "<h3>$type</h3>";
         echo "<table class='table centered'><tr>";
 
         echo"<script>
