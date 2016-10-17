@@ -49,7 +49,10 @@ if ($status != null){
     );
 }
 
-  if ($userID != null) {
+if ($userID == null && $status == null) {
+  $status = 'Pending';
+}
+if ($userID != null) {
       $sql = "SELECT leaverequests.*, users.firstName, users.lastName
       FROM leaverequests, users WHERE leaverequests.userID = users.UserID AND $userID = users.UserID";
       if ($status != null) {
