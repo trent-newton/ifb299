@@ -49,7 +49,10 @@ if ($status != null){
     );
 }
 
-  if ($userID != null) {
+if ($userID == null && $status == null) {
+  $status = 'Pending';
+}
+if ($userID != null) {
       $sql = "SELECT leaverequests.*, users.firstName, users.lastName
       FROM leaverequests, users WHERE leaverequests.userID = users.UserID AND $userID = users.UserID";
       if ($status != null) {
@@ -74,7 +77,6 @@ if ($status != null){
     $count = mysqli_num_rows($result);
 
     if ($count > 0) {
-        echo "<h3>$type</h3>";
         echo "<table class='table centered'><tr>";
 
         echo"<script>
@@ -110,8 +112,8 @@ if ($status != null){
             }
               echo "</td>";
           }
-          echo '<td><a href="modifyLeave.php?leaveID='.$row['leaveID'] . '&approved=Approved"><img src="../../images/tick.png" /></a></td>';
-          echo '<td><a href="modifyLeave.php?leaveID='.$row['leaveID'] . '&approved=Denied"><img src="../../images/cross.png" /></a></td>';
+          echo '<td><a href="modifyLeave.php?leaveID='.$row['leaveID'] . '&approved=Approved"><img class="leaveTick" src="../../images/tick.png" /></a></td>';
+          echo '<td><a href="modifyLeave.php?leaveID='.$row['leaveID'] . '&approved=Denied"><img class="leaveCross" src="../../images/cross.png" /></a></td>';
 
             echo '</tr>';
 

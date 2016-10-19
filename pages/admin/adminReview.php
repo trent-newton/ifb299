@@ -1,5 +1,6 @@
 <?php
-$pagetitle = "Private Reviews";
+$reviewType = $_GET['reviewType'];
+$pagetitle = $reviewType . " Reviews";
 include "../../inc/connect.php";
 include "../../inc/header.php";
 include "../../inc/nav.php";
@@ -11,8 +12,11 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
 }
 ?>
 <div class="content">
+    <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > <a href="../admin/adminReviewCenter.php">Admin Review Center</a> > <?php echo $reviewType?> Reviews</span>
+        </div>
 <div class="adminCenter">
-    <h1>Private Reviews</h1>
+    <h1><?php echo $reviewType ?> Reviews</h1>
 
     <table class="table" id="myTable" class="tablesorter centerTable">
 <thead>
@@ -26,7 +30,7 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
   </script>
 
 <?php
-$sql = "SELECT teacherreviews.*,users.firstName AS studFN, users.lastName AS studLN, stuff.firstName AS teachFN, stuff.lastName AS teachLN FROM users INNER JOIN teacherreviews ON userID=studentID INNER JOIN users AS stuff ON stuff.userID= teacherreviews.teacherID WHERE reviewStatus = 'Private'";
+$sql = "SELECT teacherreviews.*,users.firstName AS studFN, users.lastName AS studLN, stuff.firstName AS teachFN, stuff.lastName AS teachLN FROM users INNER JOIN teacherreviews ON userID=studentID INNER JOIN users AS stuff ON stuff.userID= teacherreviews.teacherID WHERE reviewStatus = '$reviewType'";
 $result = mysqli_query($con, $sql);
 
 
@@ -64,7 +68,7 @@ echo '<tr>
     echo'</td>
     <td>';
     echo '<a style="display:inline-block;" href="../change/changeReviewStatus.php?reviewID='.$row['reviewID'].'">';
-      echo '<img class="reviewTableIcon" src="../../images/admin-icons/reviews/private.png" />';
+      echo '<img class="reviewTableIcon" src="../../images/admin-icons/reviews/' . $reviewType . '.png" />';
     echo $row["reviewStatus"];
     echo'</a>
     </td>

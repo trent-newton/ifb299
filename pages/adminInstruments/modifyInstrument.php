@@ -12,6 +12,9 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
 ?>
 
 <div class="content">
+    <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > <a href="../admin/instrumentsAdmin.php">Instrument Admin</a>  > <a href="../adminInstruments/adminInstruments.php">Manage Instrument</a> > Add Instrument</span>
+        </div>
 <?php
      $schoolInstrumentID = $_GET['schoolInstrumentID'];
     if(isset($_POST['submit'])) {
@@ -36,7 +39,7 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
     $row = mysqli_fetch_array($result);
     
 ?>
-    <a href="adminInstruments.php">Back to Instrument List</a>
+    
     <form method="POST" action="modifyInstrument.php?schoolInstrumentID=<?php echo $schoolInstrumentID ?>">
         <div class="loginForm center-horizontal">
             <h2>Modify Instrument Details</h2>

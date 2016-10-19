@@ -17,6 +17,9 @@ $DOB = StringToDate($row['DOB'], "Y-m-d");
 $age = GetAge($DOB);
 ?>
     <div class="content fieldSetCentered">
+        <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > User Details</span>
+        </div>
         <fieldset class="accountDetails">
             <form method="post" action="../../inc/updateaccount.php">
                 <h1>Account details</h1>

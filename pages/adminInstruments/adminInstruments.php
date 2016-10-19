@@ -10,7 +10,13 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
     rejectAccess();
 }
 ?>
+<div class="content">
+
+<div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > <a href="../admin/instrumentsAdmin.php">Instrument Admin</a> > Manage Instruments</span>
+        </div>
 <div class="loginForm center-horizontal">
+    
 
     <h2>Add New Instrument</h2>
     <form action="addNewInstrument.php" method="post">
@@ -104,7 +110,7 @@ foreach ($instrumentTypes as $type) {
     ?>
 
 </div>
-
+</div>
 
 <?php
 include "../../inc/footer.php";

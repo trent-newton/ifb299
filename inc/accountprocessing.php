@@ -140,7 +140,7 @@
 
                 // Login student
                 $_SESSION['userID'] = $studentID;
-                $_SESSION['accountType'] = 3;
+                $_SESSION['accountType'] = 'Guest';
                 $_SESSION['success'] = "Welcome back " .ucfirst($sFirst) . " "  . ucfirst($sLast);
                 header("location:../../pages/home/index.php");
                 exit();

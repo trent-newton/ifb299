@@ -162,7 +162,7 @@ input , select {
     color: green;
     text-align: center;
     padding-left: 20px;
-    
+
 }
 
 .error {
@@ -310,6 +310,15 @@ input , select {
 /************Breadcrumb**************/
 .breadcrumb {
     text-align: left;
+}
+
+/************Leave**************/
+.leaveTick {
+  width: 40%;
+}
+
+.leaveCross {
+  width: 50%;
 }
 
 /*-------------------- TABLES --------------------*/

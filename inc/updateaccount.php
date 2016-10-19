@@ -86,6 +86,6 @@ if($email == "" || $streetNumber == "" || $streetName == "" || $streetType == ""
     }
 
     $_SESSION['success'] = "Account Updated";
-    header("location:../" . $_SERVER["HTTP_REFERER"]);
+    header("location:" . $_SERVER["HTTP_REFERER"]);
     exit();
 }
