@@ -10,7 +10,7 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
 }
 $userID = $_SESSION['userID'];
 ?>
-<div class="content">
+<div class="content centered">
     <div class="breadcrumb">
             <span><a href="../home/index.php">Home</a> > <a href="../usercenter/usercenter.php">User Center</a> > Lesson Review</span>
         </div>

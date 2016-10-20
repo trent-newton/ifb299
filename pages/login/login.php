@@ -9,12 +9,6 @@ include "../../inc/nav.php";
         <div class="breadcrumb">
             <span><a href="../home/index.php">Home</a> > Login</span>
         </div>
-<?php
-            if(isset($_SESSION["loginError"])) {
-                echo "<span class='error loginError'>" . $_SESSION['loginError'] . "</span>";
-                unset($_SESSION['loginError']);
-            }
-            ?>
 
             <h2 class="centered">Login</h2> 
             <fieldset class="loginForm center-horizontal">

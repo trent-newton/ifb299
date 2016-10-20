@@ -42,15 +42,9 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
            <br><h2>LEAVE REQUESTS</h2>
         </div></a>
 
-
-
         <a href="../admin/adminReviewApplications.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/enrol.png">
            <br><h2>JOB APPLICATIONS</h2>
         </div></a>
-
-        <!--<a href="#"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/settings.png">
-           <br><button class="AdminCenterButton"><a href="" class="button">Setting</a></button>
-        </div>-->
     </div>
 </div>
 

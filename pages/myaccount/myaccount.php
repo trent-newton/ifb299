@@ -16,45 +16,40 @@ $row = mysqli_fetch_array($result);
 $DOB = StringToDate($row['DOB'], "Y-m-d");
 $age = GetAge($DOB);
 ?>
-    <div class="content fieldSetCentered">
+    <div class="content centered">
         <div class="breadcrumb">
             <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > User Details</span>
         </div>
         <fieldset class="accountDetails">
             <form method="post" action="../../inc/updateaccount.php">
-                <h1>Account details</h1>
-                <h3>Personal</h3><h4>
+                <h3>Personal</h3>
 
-                First Name (Read Only): </h4>
+                <label class="control-label">First Name (Read Only): </label>
                 <input class="form-control" type="text" name="firstName" value="<?php echo $row['firstName']?>" readonly />
 
-                <h4>Last Name (Read Only):
+                <label class="control-label">Last Name (Read Only): </label>
                 <input class="form-control" type="text" name="lastName" value="<?php echo $row['lastName']?>" readonly />
 
-                DOB (Read Only):
+                <label class="control-label">DOB (Read Only): </label>
                 <input class="form-control" type="date" value="<?php echo $row['DOB']?>" readonly />
 
-                Gender (Read Only):
-                <h5>Male
-                <input type="radio" name="gender" class="inputStreet"<?php if($row['gender']=='Male' ) {echo "checked";}?> readonly/>
-                Female
-                <input type="radio" name="gender" class="inputStreet" <?php if($row['gender']=='Female' ){ echo "checked";}?> readonly />
-                </h5>
+                <label class="control-label">Gender (Read Only): </label>
+                <div class="radio">
+                    <label><input type="radio" name="gender" <?php if($row['gender']=='Male' ) {echo "checked";}?> readonly />Male</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="gender" <?php if($row['gender']=='Female' ){ echo "checked";}?> readonly />Female</label>
+                </div>
 
-                <h3>Address</h3><h4>
-                Unit:
+                <h3>Address</h3>
+                <label class="control-label">Unit: </label>
                 <input class="form-control" type="text" name="unitNumber" class="inputStreet" value="<?php echo $row['unitNumber']?>" />
 
-                Street No<span class="required">*</span>:
-                <input type="text" name="streetNumber" value="<?php echo $row['streetNumber']?>" class="inputStreet" required />
+                <label class="control-label">Street No<span class="required">*</span>: </label>
+                <input class="form-control" type="text" name="streetNumber" value="<?php echo $row['streetNumber']?>" required />
 
-                <br>
-                Street<span class="required">*</span>:
-
+                <label class="control-label">Street<span class="required">*</span>: </label>
                 <input class="form-control" type="text" name="streetName" value="<?php echo $row['streetName']?>" required />
-
-                Street Type<span class="required">*</span>:
-
                 <select class="form-control" name="streetType" required>
                     <option value="Street" <?php if($row['streetType']== 'street'){ echo 'selected';} ?>>Street</option>
                     <option value="Close" <?php if($row['streetType']== 'close'){ echo 'selected';} ?>>Close</option>
@@ -62,16 +57,10 @@ $age = GetAge($DOB);
                     <option value="Chase" <?php if($row['streetType']== 'chase'){ echo 'selected';} ?>>Chase</option>
                 </select>
 
-                Suburb<span class="required">*</span>:
-
+                <label class="control-label">Suburb<span class="required">*</span>: </label>
                 <input class="form-control" type="text" name="suburb" value="<?php echo $row['suburb']?>" required />
 
-                PostCode<span class="required">*</span>:
-
-                <input class="form-control" type="text" name="postcode" value="<?php echo $row['postCode']?>" required />
-
-                State<span class="required">*</span>:
-
+                <label class="control-label">State<span class="required">*</span>:</label>
                 <select class="form-control" name="state" >
                     <option value="QLD" <?php if($row['state'] == 'QLD'){echo "selected"; } ?>>QLD</option>
                     <option value="TAS" <?php if($row['state'] == 'TAS'){echo "selected"; } ?>>TAS</option>
@@ -81,56 +70,59 @@ $age = GetAge($DOB);
                     <option value="NT" <?php if($row['state'] == 'NT'){echo "selected"; } ?>>NT</option>
                     <option value="ACT" <?php if($row['state'] == 'ACT'){echo "selected"; } ?>>ACT</option>
                 </select>
-                <h3>Contact Info</h3><h4>
-                Facebook ID
 
+                <label class="control-label">Postcode<span class="required">*</span>: </label>
+                <input class="form-control" type="text" name="postcode" value="<?php echo $row['postCode']?>" required />
+
+                <h3>Contact Info</h3>
+
+                <label class="control-label">Facebook ID: </label>
                 <input class="form-control" type="text" name="facebookID" value="<?php echo $row['facebookId']?>" />
 
-                Email<span class="required">*</span>:
-
+                <label class="control-label">Email<span class="required">*</span>: </label>
                 <input class="form-control" class="emailInput" type="email" name="email" value="<?php echo $row['email']?>" />
                 <?php
                     $sqlPhone = "SELECT * FROM phonenumbers WHERE userID='$userID'";
                     $resultPhone = mysqli_query($con, $sqlPhone);
-                       $n = 0;
+                    $n = 0;
                     while ($rowPhone = mysqli_fetch_array($resultPhone)) {
-                        echo "  Phone " . $n . "";
+                        echo "<label class='control-label'>Phone " . $n . ": </label>";
                         echo "<input class='form-control' type='text' name='phone" . $n . "' value='" . $rowPhone['phoneNumber'] . "' />";
                         $n++;
                     }
+                ?>
 
-                    ?>
-                Phone <?php echo $n ?>
+                <label class="control-label">Phone <?php echo $n ?>: </label>
                 <input class='form-control' type="text" value="" name="phone<?php echo $n?>" />
                 <input class='form-control' type="hidden" name="numPhones" value="<?php echo $n?>" />
+
                 <?php
                     if ($age < 18) {
                         echo "<h3>Parent Info</h3><h4>";
-                        echo "Parent's Name<span class='required'>*</span>: ";
+                        echo "<label class='control-label'>Parent's Name<span class='required'>*</span>: </label>";
                         echo "<input class='form-control' type='text' name='parentName' value='".$row['parentName']."' required>";
-                        echo "Parent's Email<span class='required'>*</span>: ";
+                        echo "<label class='control-label'>Parent's Email<span class='required'>*</span>: </label>";
                         echo "<input class='form-control' type='email' name='parentEmail' value='".$row['parentEmail']."' required>";
                     }
                 ?>
+
                 <input class='form-control' type="hidden" name="userID" value="<?php echo $userID?>" />
-                <br><input class='form-control' type="submit" name="accountupdate" value="Update Details" />
+
+                <input class='form-control' type="submit" name="accountupdate" value="Update Details" />
             </form>
         </fieldset>
         <fieldset class="changePassword">
             <form method="post" action="inc/changepassword.php">
-                <h2>Change Password</h2>
-                Current Password:
-                <br />
+                <h3>Change Password</h3>
+                <label class="control-label">Current Password: </label>
                 <input class='form-control' type="password" name="oldPassword" required />
-                <br />
-                New Password:
-                <br />
+
+                <label class="control-label">New Password: </label>
                 <input class='form-control' type="password" name="newPassword" required />
-                <br />
-                New Password Again:
-                <br />
+
+                <label class="control-label">Confirm New Password: </label>
                 <input class='form-control' type="password" name="newPassword2" required  />
-                <br />
+
                 <input class='form-control' type="hidden" name="userID" value="<?php echo $userID ?>" />
                 <input class='form-control' type="submit" name="changepassword" value="Change Password" />
             </form>

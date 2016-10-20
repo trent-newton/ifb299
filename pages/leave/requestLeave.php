@@ -11,7 +11,7 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
     rejectAccess();
 }
 ?>
-<div class="content">
+<div class="content centered">
      <div class="breadcrumb">
             <span><a href="../home/index.php">Home</a> > <a href="../usercenter/usercenter.php">User Center</a> > Leave Request</span>
         </div>
@@ -28,7 +28,7 @@ for ($day = 0; $day < 31; $day++) {
     $output[] = date('Y-m-d', strtotime(sprintf('+%d days', $day), $mondayTimestamp));
 }
  ?>
-    <select name="startDate" id="txtStartDate" required>
+    <select class="form-control" name="startDate" id="txtStartDate" required>
       <?php foreach ($output as $day) : ?>
           <option value="<?php echo $day ?>"><?php echo $day ?></option>
       <?php endforeach; ?>
@@ -36,13 +36,12 @@ for ($day = 0; $day < 31; $day++) {
     </select>
 
     <label id="lblEndDate" for="txtEndDate">End Date<span class="required">*</span>:</label>
-
-    <select name="endDate" id="txtEndDate" required>
+    <select class="form-control" name="endDate" id="txtEndDate" required>
       <?php foreach ($output as $day) : ?>
           <option value="<?php echo $day ?>"><?php echo $day ?></option>
       <?php endforeach; ?>
     </select>
-    <br/>
+
     <label id="lblReason" for="txtReason">Reason<span class="required">*</span>: </label>
     <textarea class="form-control" type="reason" rows="5" name="reason" id="txtReason" value="<?php if (isset($_POST['comment'])) echo $_POST['reason'] ?>"></textarea>
         <?php echo "<span class='required'>  ".$errorComment."</span>" ?>

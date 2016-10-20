@@ -193,12 +193,12 @@ while ($row = mysqli_fetch_array($result)) {
 echo $timeTable["Friday"]["10:00:00"];
 
 ?>
-    <div class="content">
+    <div class="content centered">
         <div class="breadcrumb">
             <span><a href="../home/index.php">Home</a> > <a href="../usercenter/usercenter.php">User Center</a> > View Schedule</span>
         </div>
         <h1>View Schedule</h1>
-        <table class="scheduleTable">
+        <table class="scheduleTable center-horizontal">
             <tr>
                 <th></th>
                 <th>Monday</th>

@@ -20,15 +20,15 @@ body {
     padding: 0;
 }
 
-input[type=button], input[type=submit], input[type=reset] {
+/*input[type=button], input[type=submit], input[type=reset] {
 	background-color: aliceblue;
-}
+}*/
 
-.container {
+/*.container {
     width: 100%;
     padding: 1%;
     margin: 0 auto;
-}
+}*/
 
 .content {
     display: inline-block;
@@ -37,10 +37,19 @@ input[type=button], input[type=submit], input[type=reset] {
     width: 100%;
 
 }
+
 .centered {
     text-align: center;
-
 }
+
+.center-horizontal {
+     position: relative;
+     left: 50%;
+     transform: translateX(-50%);
+}
+
+/*-----------Header-------------*/
+
 .headerContainer {
     width: 100%;
     display: inline-block;
@@ -57,7 +66,6 @@ input[type=button], input[type=submit], input[type=reset] {
     display: none;
     width: 100%;
 }
-
 
 .logo {
     margin: auto;
@@ -80,25 +88,23 @@ input[type=button], input[type=submit], input[type=reset] {
     height: auto;
 }
 
-
-
-.userPanel {
+/*.userPanel {
     display: inline-block;
     font-size: 1.4em;
     width:90%;
 }
 
 .userPanelImage {
-
     display: inline-block;
 }
+
 .userPanelImage img {
     width: 100%;
     max-width: 48px;
     height: auto;
-}
+}*/
 
-.userInfo {
+/*.userInfo {
     display: inline-block;
     vertical-align: top;
     margin-top: 1%;
@@ -115,18 +121,18 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 .userInfo a:active {
   color:#861e50;
-}
+}*/
 
-.userCenter {
+/*.userCenter {
     display: none;
     text-align: center;
-}
+}*/
 
-.userMessage {
+/*.userMessage {
     display: inline-block;
     vertical-align: top;
     padding-top: 10px;
-}
+}*/
 
 /*-------------------- Login Page --------------------*/
 
@@ -137,21 +143,18 @@ input[type=button], input[type=submit], input[type=reset] {
     width: 40%;
 }
 
-.loginForm input {
+/*.loginForm input {
     margin: 5px auto;
 
 }
+
 input , select {
     min-width: 165px;
-}
+}*/
+
 .inputStreet {
     max-width: 30px;
     min-width: 20px;
-}
-.center-horizontal {
-     position: relative;
-     left: 50%;
-     transform: translateX(-50%);
 }
 
 .required {
@@ -162,7 +165,7 @@ input , select {
     color: green;
     text-align: center;
     padding-left: 20px;
-
+    
 }
 
 .error {
@@ -170,9 +173,10 @@ input , select {
     text-align: center;
     padding-left: 20px;
 }
-.loginError {
+
+/*.loginError {
     font-size: 1.4em;
-}
+}*/
 
 /*-------------------- My Profile Page --------------------*/
 
@@ -187,12 +191,12 @@ input , select {
     display:inline-block;
     text-align: left;
 }
-.createAccount {
+/*.createAccount {
 
 }
 .createAccount input {
     margin: 4px 0;
-}
+}*/
 .changePassword input {
     margin: 4px 0;
 }
@@ -207,9 +211,9 @@ input , select {
     font-size: 1.6em;
 }
 
-.fieldSetCentered {
+/*.fieldSetCentered {
     text-align: center;
-}
+}*/
 
 /*********Contact Page *****************/
 
@@ -236,10 +240,10 @@ input , select {
 }
 
 /*----------------- NAV BAR ------------ */
-
-.navbar ul li:hover {
+/* Does work */
+/*.navbar ul li:hover {
     background: lightgray;
-}
+}*/
 
 /*----------------- FOOTER ------------ */
 .footer {
@@ -310,15 +314,6 @@ input , select {
 /************Breadcrumb**************/
 .breadcrumb {
     text-align: left;
-}
-
-/************Leave**************/
-.leaveTick {
-  width: 40%;
-}
-
-.leaveCross {
-  width: 50%;
 }
 
 /*-------------------- TABLES --------------------*/
@@ -474,6 +469,55 @@ table a{
   text-align:center;
   padding-bottom:20px;
 }
+
+/*------------------FAQ-------------------*/
+.faq_post {
+    background: #F6F5F2;
+    border: 1px solid #eeebe6;
+    margin: 0 0 30px 0;
+}
+
+.faq_post h2 {
+    /*text-transform: uppercase;*/
+    letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.faq_content {
+    margin: 30px auto;
+}
+
+.faq_images.right {
+    width: 40%;
+    display: inline-block;
+}
+
+.faq_copy.left {
+    width: 59%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.faq_copy .padding {
+    padding: 20px 20px 20px 20px;
+}
+
+.faq_title {
+    color: #232323;
+    text-transform: uppercase;
+    font-size: 1.7em;
+}
+
+.faq_copy a {
+    text-decoration: none;
+}
+
+.faq_readmore {
+    text-decoration: underline !important;
+    color:#d2138e;
+    font-size: 1.2em;
+}
+
 
 @media screen and (min-width:700px) {
     .container {
