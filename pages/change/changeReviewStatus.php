@@ -9,6 +9,13 @@ require "../../inc/authCheck.php";
 if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
     rejectAccess();
 }
+?>
+<div class='content'>
+<div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > <a href="../admin/adminReviewCenter.php">Admin Review Center</a> > Change Review Status</span>
+        </div>
+    
+<?php
 // Get selected userID
 $reviewID = $_GET['reviewID'];
 
