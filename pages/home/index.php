@@ -9,7 +9,7 @@
         <h1>Welcome To Our Offical Website</h1> <h3>Adding Rhythm To Your Life</h3>
 
         <div class="temp">
-            <a href="#"><div class="temp"><img class="AdminCenterImage" src="../../images/home-page-images/acoustic-guitar.png">
+            <a href="../faq/hire-an-instrument.php"><div class="temp"><img class="AdminCenterImage" src="../../images/home-page-images/acoustic-guitar.png">
                <br><h3>INSTRUMENT HIRE</h3>
             </div></a>
 
