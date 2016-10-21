@@ -24,6 +24,7 @@
         $languagelist = "";
         $instrumentlist = "";
         
+        //store data in correct variable
         foreach($_POST['check_list'] as $check) {
             if ($check == "English"){
                 $languageListStart = true;
@@ -31,8 +32,7 @@
             
             if ($languageListStart){
                 $languagelist .= "$check ";
-            }   else {
-                
+            } else {      
                 $instrumentlist .= "$check ";
             }
         }
