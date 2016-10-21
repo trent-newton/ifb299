@@ -16,7 +16,7 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
             <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > <a href="../admin/instrumentsAdmin.php">Instrument Admin</a> > Manage Instruments</span>
         </div>
 <div class="loginForm center-horizontal">
-    
+
 
     <h2>Add New Instrument</h2>
     <form action="addNewInstrument.php" method="post">
@@ -24,7 +24,7 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
     </form>
 <?php
     include "searchInstrument.php";
-    echo "</div>"; 
+    echo "</div>";
     echo "<div class='content centered'>";
     //get variables from searchUsers on if they are set
 if (isset($_POST["schooolInstrumentID"])){
@@ -38,15 +38,15 @@ if (isset($_POST["InstrumentType"])){
 } else {
     $instrumentType = null;
 }
-    
+
     $column = array(
         'InstrumentID' => 'schoolInstrumentID',
         'Condition' => 'instrumentCondition',
         'Hire Cost' => 'hireCost',
-        
+
     );
-    
-    //show specified account type if set, otherwise show all account types  
+
+    //show specified account type if set, otherwise show all account types
 if ($instrumentType != null){
     $instrumentTypes = array(
          0 => $instrumentType
@@ -58,9 +58,9 @@ if ($instrumentType != null){
     while($row = mysqli_fetch_array($result)) {
         array_push($instrumentTypes, $row['instrumentName']);
     }
-    
+
 }
-    
+
 foreach ($instrumentTypes as $type) {
     //if userID set show only that user, else show all of this account type
     if ($schooolInstrumentID != null){
@@ -72,12 +72,12 @@ foreach ($instrumentTypes as $type) {
         $result = mysqli_query($con,$sql);
         $count = mysqli_num_rows($result);
     }
-    
+
     //only create table if account type has 1 or more users
     if ($count > 0) {
         echo "<h3>$type</h3>";
         echo "<table class='table'><tr>";
-        
+
         foreach ($column as $name => $col_name) {
           echo "<th>$name</th>";
         }
@@ -94,9 +94,9 @@ foreach ($instrumentTypes as $type) {
               echo $row[$col_name] . "</td>";
           }
           echo '<td><a href="modifyInstrument.php?schoolInstrumentID='.$row['schoolInstrumentID'] . '"><span class="changeAccess"> Modify </span></a></td>';
-          
+
             echo '</tr>';
-          
+
         }
 
         // Close table

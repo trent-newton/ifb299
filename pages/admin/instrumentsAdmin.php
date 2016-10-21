@@ -26,9 +26,13 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
            <br><h2>MANAGE<br />INSTRUMENTS</h2>
         </div></a>
 
+        <a href="../adminInstruments/addNewInstrumentType.php"><div class="temp"><img class="AdminCenterImage" src="../../images/home-page-images/acoustic-guitar-plus.png">
+           <br><h2>CREATE NEW<br />INSTRUMENT</h2>
+        </div></a>
+
         <br />
 
-        
+
     </div>
 </div>
 
