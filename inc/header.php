@@ -4,7 +4,7 @@
 
   <?php
     // Turn off all error reporting
-    error_reporting(E_ALL);
+    error_reporting(1);
   ?>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
