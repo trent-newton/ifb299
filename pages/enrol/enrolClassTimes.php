@@ -195,9 +195,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         $strClasses = recommendClasses($teachersList, $chosenDay, $chosenStartTime, $chosenInstrument, $con, $accessLevel);
                         if ($strClasses == '')
                         {
-                          echo "<h1>There are no available classes during selected time or day for your instrument.</h1>";
+                          echo "<h2>There are no available classes during selected time or day for your instrument.</h2>";
                         } else {
-                          echo "<h1>There are no available classes during selected time. Here some classes for the $chosenInstrument on $chosenDay.</h1>";
+                          echo "<h2>There are no available classes during selected time. Here some classes for the $chosenInstrument on $chosenDay.</h2>";
                           echo $strClasses;
                         }
                     }

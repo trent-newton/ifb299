@@ -16,7 +16,7 @@
         
         
 
-		$_SESSION['hireSuccess'] = "Instrument hire request has been sent";
+		$_SESSION['success'] = "Instrument hire request has been sent";
 		header("location: ../../pages/instrumentHire/instrumenthire.php");
 		exit();
 	}
