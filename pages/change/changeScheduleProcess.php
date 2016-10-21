@@ -24,6 +24,12 @@ $userID = $_GET['userID'];
 
 
 //INSERT INTO `pinelands_ms`.`contracts` (`contractID`, `teacherID`, `studentID`, `startDate`, `endDate`, `time`, `day`, `length`, `instrument`) VALUES ('15', '2', '4', '2016-09-07', '2016-09-14', '13:00:00', 'Friday', '30', 'Oboe');
+$SqlCheckForInstrumentHires = "SELECT instrumentHireID FROM instrumenthire WHERE contractID = $contractID";
+$ResultCheckForInstrumentHires = mysqli_query($con, $SqlCheckForInstrumentHires);
+if(mysqli_num_rows($ResultCheckForInstrumentHires)!=0)
+{
+  $commandRemoveHires= mysqli_query($con,"DELETE FROM instrumenthire WHERE contractID=$contractID");
+}
 
 $command= mysqli_query($con,"DELETE FROM contracts WHERE contractID=$contractID");
 
