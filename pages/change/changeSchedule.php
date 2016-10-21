@@ -9,7 +9,12 @@ require "../../inc/authCheck.php";
 if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
     rejectAccess();
 }
-
+?>
+<div class="content">
+<div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > <a href="../../pages/change/changeAuth.php">User Management</a> > Change Schedule</span>
+        </div>
+<?php
 $userID = $_GET['userID'];
 
 $result= mysqli_query($con,"SELECT firstName, lastName, accountType FROM users WHERE userID = $userID");
@@ -58,5 +63,7 @@ foreach($table as $rowNum => $row)
   echo '</td>';
 }
 echo '</tr></table>';
+echo '</div>';
 
+include "../../inc/footer.php";
 ?>

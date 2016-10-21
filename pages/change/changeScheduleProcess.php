@@ -13,6 +13,16 @@ if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
 $contractID = $_GET['contractID'];
 $userID = $_GET['userID'];
 
+?>
+<div class="content">
+<div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > <a href="../../pages/change/changeAuth.php">User Management</a> > <a href="../../pages/change/changeSchedule.php?userID= <?php echo $userID; ?>">Change Schedule</a> > Class Removal</span>
+        </div>
+
+<?php
+
+
+
 //INSERT INTO `pinelands_ms`.`contracts` (`contractID`, `teacherID`, `studentID`, `startDate`, `endDate`, `time`, `day`, `length`, `instrument`) VALUES ('15', '2', '4', '2016-09-07', '2016-09-14', '13:00:00', 'Friday', '30', 'Oboe');
 
 $command= mysqli_query($con,"DELETE FROM contracts WHERE contractID=$contractID");
@@ -35,5 +45,8 @@ $sql = "SELECT contracts.*,users.firstName ,users.lastName  FROM contracts INNER
 $result = mysqli_query($con, $sql);
 $table = mysqli_fetch_all($result);
 
+echo '</div>';
+
+include "../../inc/footer.php";
 
 ?>
