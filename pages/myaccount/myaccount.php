@@ -4,8 +4,8 @@ $pagetitle = "My Account";
 include "../../inc/connect.php";
 include "../../inc/header.php";
 include "../../inc/nav.php";
-include "../../inc/logincheck.php";
 require "../../inc/checkFunctions.php";
+require "../../inc/authCheck.php";
 
 $userID = $_SESSION['userID'];
 
@@ -18,7 +18,7 @@ $age = GetAge($DOB);
 ?>
     <div class="content centered">
         <div class="breadcrumb">
-            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > User Details</span>
+            <span><a href="../home/index.php">Home</a> > <?php if((isOwner($_SESSION['accountType'])) || (isAdmin($_SESSION['accountType']))) { echo '<a href="../admin/admincenter.php">Admin Center</a>'; } else { echo '<a href="../usercenter/usercenter.php">User Center</a>'; } ?> > User Details</span>
         </div>
         <fieldset class="accountDetails">
             <form method="post" action="../../inc/updateaccount.php">

@@ -11,6 +11,9 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
 }
 ?>
 <div class="content centered">
+    <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > Leave Requests</span>
+        </div>
     <?php
     include "searchLeave.php";
 

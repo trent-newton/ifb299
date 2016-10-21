@@ -11,6 +11,9 @@ if(!isStudent($_SESSION['accountType']) && !isStudentTeacher($_SESSION['accountT
 ?>
 
 <div class="content adminCenter">
+    <div class="breadcrumb">
+            <span><a href="../home/index.php">Home</a> > User Center</span>
+        </div>
     <h1>Welcome to the User Centre</h1> <h3>What would you like to do?</h3>
 
     <div class="temp">
