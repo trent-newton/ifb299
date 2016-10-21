@@ -40,7 +40,7 @@ if ($count == 0) {
 } else {
   echo "<h3> There has been an error. OH dear oh me.</h3>";
 }
-echo '<a href="../enrol/enrol.php?userID='.$userID.'" ><span style="font-size:145%">Add a new class</span></a>';
+echo '<a href="../enrol/enrolClassTimes.php?userID='.$userID.'" ><span style="font-size:145%">Add a new class</span></a>';
 $sql = "SELECT contracts.*,users.firstName ,users.lastName  FROM contracts INNER JOIN users ON userID=studentID WHERE teacherID=$userID";
 $result = mysqli_query($con, $sql);
 $table = mysqli_fetch_all($result);

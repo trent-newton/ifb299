@@ -19,7 +19,7 @@ $resultLanguage = mysqli_query($con,"SELECT distinct language FROM languages");
 
 if($_SESSION['accountType'] == 'Admin')
 {
-  echo '<br><form method="post" class="form-inline" action="enrolClassTimes.php?userID='.$userID.'">';
+  echo '<br><form method="post" class="form-inline" action="enrolClassTimes.php?userID='.$_GET['userID'].'">';
 } else {
   echo '<br><form method="post" class="form-inline" action="enrolClassTimes.php">';
 }
@@ -33,7 +33,7 @@ echo '<div class="row">';
           foreach ($columnInstrument as $name => $col_name) {
             echo "<option value='$row[$col_name]'";
             if(isset($_POST['chosenInstrument']) && $_POST['chosenInstrument'] == "$row[$col_name]"){
-                echo "selected"; 
+                echo "selected";
             }
             echo ">$row[$col_name]</option>";
           }
@@ -47,7 +47,7 @@ echo '<div class="col-md-2">';
           foreach ($columnLanguage as $name => $col_name) {
             echo "<option value='$row[$col_name]'";
             if(isset($_POST['chosenLanguage']) && $_POST['chosenLanguage'] == "$row[$col_name]"){
-                echo "selected"; 
+                echo "selected";
             }
             echo ">$row[$col_name]</option>";
           }
@@ -68,7 +68,7 @@ echo '<div class="col-md-2">';
     <div class="col-md-3">
     <!-- select start time -->
     <input class="form-control" type="text" name="chosenStartTime" pattern="[0-9][0-9]:00|30" title="please enter in 24 hour time" placeholder="Start time (24 hour format)" value="<?php if (isset($_POST['chosenStartTime'])) echo $_POST['chosenStartTime'] ?>">
-        
+
   </div><div class="col-md-2">
     <input class="form-control" type="submit" name="submit" value="Select Class Times">
   </div></div>

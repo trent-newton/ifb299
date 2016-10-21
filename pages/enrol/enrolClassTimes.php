@@ -43,12 +43,8 @@ if($accessLevel == 'admin'){
 function recommendClasses($teachersList, $chosenDay, $chosenStartTime, $chosenInstrument, $con, $accessLevel){
   $str='';
 
-  if($teachersList[0] == null)
+  if($teachersList[0] != null)
   {
-
-
-
-  } else {
     //classes at different times on the same day
     for($i=0; $i<count($teachersList); $i++)
     {
@@ -91,8 +87,9 @@ function recommendClasses($teachersList, $chosenDay, $chosenStartTime, $chosenIn
 
 function ListClass($Day, $StartTime, $endTime, $Instrument, $teacherID, $teacherFirstName, $teacherLastName,  $accessLevel){
       $str = '<tr><td>'.$Day.'</td><td>'.$StartTime.'-'.$endTime.'</td><td>'.$teacherFirstName.' '.$teacherLastName.'</td>';
-      if($accessLevel == 'admin')      {
-        $str .= "<td><a href='enrolClassDates.php?userID=$userID&day=$Day&startTime=$StartTime&instrument=$Instrument&teacherID=$teacherID'";
+      if($accessLevel == 'admin') {
+
+        $str .= "<td><a href='enrolClassDates.php?userID=".$_GET['userID']."&day=$Day&startTime=$StartTime&instrument=$Instrument&teacherID=$teacherID'";
       } else {
         $str .= "<td><a href='enrolClassDates.php?day=$Day&startTime=$StartTime&instrument=$Instrument&teacherID=$teacherID'";
       }
