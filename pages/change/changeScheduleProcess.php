@@ -25,6 +25,7 @@ $userID = $_GET['userID'];
 
 //INSERT INTO `pinelands_ms`.`contracts` (`contractID`, `teacherID`, `studentID`, `startDate`, `endDate`, `time`, `day`, `length`, `instrument`) VALUES ('15', '2', '4', '2016-09-07', '2016-09-14', '13:00:00', 'Friday', '30', 'Oboe');
 
+
 $command= mysqli_query($con,"DELETE FROM contracts WHERE contractID=$contractID");
 
 
@@ -40,7 +41,7 @@ if ($count == 0) {
 } else {
   echo "<h3> There has been an error. OH dear oh me.</h3>";
 }
-echo '<a href="../enrol/enrol.php?userID='.$userID.'" ><span style="font-size:145%">Add a new class</span></a>';
+echo '<a href="../enrol/enrolClassTimes.php?userID='.$userID.'" ><span style="font-size:145%">Add a new class</span></a>';
 $sql = "SELECT contracts.*,users.firstName ,users.lastName  FROM contracts INNER JOIN users ON userID=studentID WHERE teacherID=$userID";
 $result = mysqli_query($con, $sql);
 $table = mysqli_fetch_all($result);
