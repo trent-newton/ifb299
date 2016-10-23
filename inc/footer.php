@@ -12,7 +12,7 @@
             
         </footer>
 
-        <br><br><?php var_dump($_SESSION);?>
+        
 
     </div> <!-- end container-->
 </body>
