@@ -52,7 +52,7 @@ foreach($table as $rowNum => $row)
   echo "Instrument: ".$row[8]."<br>";
   echo "Start date: ".$row[3]."<br>";
   echo "End date: ".$row[4]."<br>";
-  echo '<a href="changeScheduleProcess.php?contractID='.$row[0].'&userID='.$userID.'"><span class="changeAccess" style="font-size:125%"> Remove class </span></a>';
+  echo '<a href="changeScheduleProcess.php?contractID='.$row[0].'&userID='.$userID.'"><span class="required" style="font-size:125%"> Remove class </span></a>';
     
   //start new row after 3 columns
   if ($count == 3){

@@ -36,7 +36,7 @@ $row = mysqli_fetch_array($result);
         foreach ($column as $name => $col_name) {
             echo "<td>". $row[$col_name] . "</td>";
         }
-        echo '<td><a href="../change/changeAuthProcess.php?userID='.$row['userID'].'"><span class="changeAccess"> change access </span></a></td></tr>';
+        echo '<td><a href="../change/changeAuthProcess.php?userID='.$row['userID'].'"><span class="required"> change access </span></a></td></tr>';
     }
     ?>
 </table>

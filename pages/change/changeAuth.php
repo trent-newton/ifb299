@@ -8,7 +8,7 @@ require "../../inc/authCheck.php";
 if (!isOwner($_SESSION['accountType']) && !isAdmin($_SESSION['accountType'])){
     rejectAccess();
 }
-echo "<div class='content changeAuth'>";
+echo "<div class='content centered'>";
 ?>
 <div class="breadcrumb">
             <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > User Management</span>
@@ -81,11 +81,11 @@ foreach ($accountTypes as $type) {
           foreach ($column as $name => $col_name) {
             echo "<td>". $row[$col_name] . "</td>";
           }
-          echo '<td><a href="../admin/adminModifyAccount.php?userID='.$row['userID'].'"><span class="changeAccess"> change details </span></a></td>';
-          echo '<td><a href="../change/changeAuthProcess.php?userID='.$row['userID'].'"><span class="changeAccess"> change access </span></a></td>';
+          echo '<td><a href="../admin/adminModifyAccount.php?userID='.$row['userID'].'"><span class="required"> change details </span></a></td>';
+          echo '<td><a href="../change/changeAuthProcess.php?userID='.$row['userID'].'"><span class="required> change access </span></a></td>';
           if(($type !== "Admin") && ($type !== "Owner") && ($type !== "Guest") && ($type !== "Teacher"))
           {
-            echo '<td><a href="../change/changeSchedule.php?userID='.$row['userID'].'"><span class="changeAccess"> change schedule </span></a></td></tr>';
+            echo '<td><a href="../change/changeSchedule.php?userID='.$row['userID'].'"><span class="required"> change schedule </span></a></td></tr>';
           } else {
             echo '<td></td></tr>';
           }

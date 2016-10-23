@@ -14,23 +14,23 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
     <div class="breadcrumb">
             <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > Admin Review Center</span>
         </div>
-<div class="adminCenter">
+<div class="centered">
     <h1>Welcome to the Admin Review Center</h1> <h3>Which reviews would you like to review?</h3>
 
     <div>
-        <div class="temp"><a href="../admin/adminReview.php?reviewType=Pending"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/pending.png"></a>
+        <div class="common"><a href="../admin/adminReview.php?reviewType=Pending"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/pending.png"></a>
            <br><a href="adminReview.php?reviewType=Pending" class="button">Pending</a>
         </div>
 
-        <div class="temp"><a href="../admin/adminReview.php?reviewType=Public"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/public.png"></a>
+        <div class="common"><a href="../admin/adminReview.php?reviewType=Public"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/public.png"></a>
            <br><a href="adminReview.php?reviewType=Public" class="button">Public</a>
         </div>
 
-        <div class="temp"><a href="../admin/adminReview.php?reviewType=Private"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/private.png"></a>
+        <div class="common"><a href="../admin/adminReview.php?reviewType=Private"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/private.png"></a>
            <br><a href="adminReview.php?reviewType=Private" class="button">Private</a>
         </div>
 
-        <div class="temp"><a href="../admin/adminReview.php?reviewType=Invalid"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/invalid.png"></a>
+        <div class="common"><a href="../admin/adminReview.php?reviewType=Invalid"><img class="AdminCenterImage" src="../../images/admin-icons/reviews/invalid.png"></a>
            <br><a href="adminReview.php?reviewType=Invalid" class="button">Invalid</a>
         </div>
     </div>

@@ -15,7 +15,7 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
     <div class="breadcrumb">
             <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > <a href="../admin/adminReviewCenter.php">Admin Review Center</a> > <?php echo $reviewType?> Reviews</span>
         </div>
-<div class="adminCenter">
+<div class="centered">
     <h1><?php echo $reviewType ?> Reviews</h1>
 
     <table class="table" id="myTable" class="tablesorter centerTable">

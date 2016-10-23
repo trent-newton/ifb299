@@ -2,7 +2,7 @@
   $sql = 'SELECT * FROM users WHERE accountType="Teacher" OR accountType="StudentAndTeacher" ';
   $result = mysqli_query($con, $sql);
   while ($row = mysqli_fetch_array($result)) {
-      echo "<div class='temp teacherPage'>";
+      echo "<div class='common teacherPage'>";
     echo "<h2>" . $row['firstName'] . "<br />" . $row['lastName'] . "</h2>";
 
     $userID = $row["UserID"];

@@ -20,16 +20,6 @@ body {
     padding: 0;
 }
 
-/*input[type=button], input[type=submit], input[type=reset] {
-	background-color: aliceblue;
-}*/
-
-/*.container {
-    width: 100%;
-    padding: 1%;
-    margin: 0 auto;
-}*/
-
 .content {
     display: inline-block;
     vertical-align: top;
@@ -46,6 +36,12 @@ body {
      position: relative;
      left: 50%;
      transform: translateX(-50%);
+}
+
+.common {
+    display: inline-block;
+    padding: 5px;
+
 }
 
 /*-----------Header-------------*/
@@ -88,52 +84,6 @@ body {
     height: auto;
 }
 
-/*.userPanel {
-    display: inline-block;
-    font-size: 1.4em;
-    width:90%;
-}
-
-.userPanelImage {
-    display: inline-block;
-}
-
-.userPanelImage img {
-    width: 100%;
-    max-width: 48px;
-    height: auto;
-}*/
-
-/*.userInfo {
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 1%;
-    padding: 10px;
-}
-.userInfo a:link {
-  color:#000000;
-}
-.userInfo a:visited {
-  color:#000000;
-}
-.userInfo a:hover {
-  color:#771d57;
-}
-.userInfo a:active {
-  color:#861e50;
-}*/
-
-/*.userCenter {
-    display: none;
-    text-align: center;
-}*/
-
-/*.userMessage {
-    display: inline-block;
-    vertical-align: top;
-    padding-top: 10px;
-}*/
-
 /*-------------------- Login Page --------------------*/
 
 .loginForm {
@@ -143,18 +93,13 @@ body {
     width: 40%;
 }
 
-/*.loginForm input {
+.loginForm input {
     margin: 5px auto;
 
 }
 
 input , select {
     min-width: 165px;
-}*/
-
-.inputStreet {
-    max-width: 30px;
-    min-width: 20px;
 }
 
 .required {
@@ -174,10 +119,6 @@ input , select {
     padding-left: 20px;
 }
 
-/*.loginError {
-    font-size: 1.4em;
-}*/
-
 /*-------------------- My Profile Page --------------------*/
 
 .accountDetails {
@@ -186,47 +127,40 @@ input , select {
     text-align: left;
 }
 
+.accountDetails input, select {
+    margin: 4px 0;
+}
+
 .changePassword {
     width: 100%;
     display:inline-block;
     text-align: left;
 }
-/*.createAccount {
 
-}
-.createAccount input {
-    margin: 4px 0;
-}*/
 .changePassword input {
     margin: 4px 0;
 }
-.accountDetails input, select {
-    margin: 4px 0;
-}
-.hiddenLarge {
-    position: absolute;
-    top:20px;
-}
+
+/*---------- Enrol Page ---------------*/
+
 .enrolPage {
     font-size: 1.6em;
 }
 
-/*.fieldSetCentered {
-    text-align: center;
-}*/
-
-/*********Contact Page *****************/
+/*--------------- Contact Page ------------*/
 
 .contactDetails {
     display: inline-block;
     border-left:none;
     vertical-align: top;
 }
+
 .contactUs {
     text-align: center;
     margin: 0 auto;
 
 }
+
 .contactMap {
     display: inline-block;
     height: auto;
@@ -234,28 +168,30 @@ input , select {
     overflow:hidden;
     display:block;
 }
+
 #gmap_canvas {
     height: 215px;
     display:block;
 }
 
-/*----------------- NAV BAR ------------ */
-/* Does work */
-/*.navbar ul li:hover {
-    background: lightgray;
-}*/
-
 /*----------------- FOOTER ------------ */
+
 .footer {
     background-color:  lightgray;
     margin-top: 5px;
     padding: 2%;
     border-radius: 1em;
 }
+
 .socialMediaIcons {
     display: inline-block;
     width: 70%;
     padding: 0% 1% 5% 1% ;
+}
+
+.socialMediaIcons img {
+    width: 5%;
+    margin: 0 1%;
 }
 
 .footerContent {
@@ -264,44 +200,7 @@ input , select {
     padding-right: 5px;
 }
 
-.socialMediaIcons img {
-    width: 5%;
-    margin: 0 1%;
-}
-
-/*------------- Home page icons--------------*/
-.homepage-icons {
-    display: inline-block;
-    font-size: 200%;
-    text-align: center;
-}
-
-.homepage-icons img{
-    margin: 0 auto;
-    height: auto;
-    width: auto;
-    padding: auto;
-}
-
 /*--------------------ADMIN CENTER--------------------*/
-
-.adminCenter {
-    text-align: center;
-}
-
-.temp {
-    display: inline-block;
-    padding: 5px;
-
-}
-
-.AdminCenterButton {
-    width: 55%;
-}
-
-.reviewButton {
-  width: 80%;
-}
 
 .AdminCenterImage {
     width: 40%;
@@ -311,12 +210,14 @@ input , select {
     padding: 4px;
 }
 
-/************Breadcrumb**************/
+/*----------------- Breadcrumb -----------------*/
+
 .breadcrumb {
     text-align: left;
 }
 
 /*-------------------- TABLES --------------------*/
+
 table th {
     background-color: grey;
     color: white;
@@ -340,15 +241,8 @@ table a{
     color: black;
 }
 
-.changeAccess{
-    color: red;
-}
-
-.changeAuth {
-    text-align: center;
-}
-
 /*-------------------- Teachers Page --------------------*/
+
 .teacherPage {
     display: inline-table;
     border-right: 1px solid black;
@@ -356,7 +250,9 @@ table a{
     vertical-align: top;
     width: 30%;
 }
+
 /*-------------------- Checklist for Enrolment Page --------------------*/
+
 .enrolmentChecklist {
     margin-top: 2%;
     margin-left: 40%;
@@ -364,10 +260,12 @@ table a{
     width:90%;
     display: inline-block;
 }
+
 .enrolmentChecklist img {
     display: inline-block;
     width: 10%;
 }
+
 .enrolmentChecklistText {
     display: inline-block;
     margin-top: 2%;
@@ -383,22 +281,26 @@ table a{
   display: inline-block;
   width:100%;
 }
+
 .enrolButton {
   width: 40%;
   margin: auto;
   display: inline-block;
 }
+
 .enrolButtonSquare {
   width: 100%;
-	height:0;
+    height:0;
 	padding-bottom: 50%;
 	border:10px solid #e4d0ea;
   overflow:hidden;
   background: #771d57;
 }
+
 .enrolButtonSquare:hover {
 	background:#ab1f7a;
 }
+
 .enrolButton a {
   display: block;
 	width:100%;
@@ -409,18 +311,6 @@ table a{
   font-size:2.4em;
   font-weight:bold;
   text-decoration:none;
-}
-
-.adminClass {
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 2%;
-    padding-left: 1%;
-    padding-right: 1%;
-    padding-bottom: 1%;
-    border-left: none;
-    border-bottom: 1px dotted grey;
-
 }
 
 .about_icon {
@@ -443,17 +333,21 @@ table a{
   width:auto;
   padding-right:5px;
 }
+
 /*-------------------- Testimonial Pages --------------------*/
+
 .starRatingOverflow {
   overflow:hidden;
   width:120px;
 }
+
 .starImage {
   width:120px;
   height:auto;
 }
 
 /*-------------------- Review Lesson Pages --------------------*/
+
 .reviewLessonForm {
   width:65%;
   display:inline-block;
@@ -471,6 +365,7 @@ table a{
 }
 
 /*------------------FAQ-------------------*/
+
 .faq_post {
     background: #F6F5F2;
     border: 1px solid #eeebe6;
@@ -478,13 +373,8 @@ table a{
 }
 
 .faq_post h2 {
-    /*text-transform: uppercase;*/
     letter-spacing: 1px;
   margin-bottom: 5px;
-}
-
-.faq_content {
-    margin: 30px auto;
 }
 
 .faq_images.right {
@@ -518,18 +408,17 @@ table a{
     font-size: 1.2em;
 }
 
-
 @media screen and (min-width:700px) {
-    .container {
-        width: 99%;
-    }
+
     .logo {
         display: inline-block;
         width: 25%;
     }
+
     .banner {
         display: inline-block;
     }
+
     .logo {
     margin: 0 auto;
     display: inline-block;
@@ -541,29 +430,12 @@ table a{
         width: 60%;
         height: auto;
     }
-    .userPanel {
-        width:35%;
-    }
 
     .loggedInMenu {
         list-style-type: none;
         padding: 0;
         margin: 0 auto;
         text-align: center;
-    }
-    .loggedInMenu li {
-        text-align: center;
-        border: 1px solid #000;
-        margin: 2px auto;
-        width: 90%;
-        border-radius: 7px;
-    }
-    .loggedInMenu li a {
-        display: block;
-        text-decoration: none;
-        font-size: 1.5em;
-        color: #000;
-        padding: 5px;
     }
 
     .accountDetails {
@@ -581,15 +453,6 @@ table a{
         border-left: solid;
         padding-left:40px;
     }
-    .adminClass {
-    display: inline-block;
-    width: 33%;
-    margin-bottom: 2%;
-    padding-left: 1%;
-    padding-right: 1%;
-    border-left: 1px solid grey;
-    border-bottom: none;
-
 }
 
 @media screen and (min-width:1000px) {

@@ -93,7 +93,7 @@ foreach ($instrumentTypes as $type) {
               }
               echo $row[$col_name] . "</td>";
           }
-          echo '<td><a href="modifyInstrument.php?schoolInstrumentID='.$row['schoolInstrumentID'] . '"><span class="changeAccess"> Modify </span></a></td>';
+          echo '<td><a href="modifyInstrument.php?schoolInstrumentID='.$row['schoolInstrumentID'] . '"><span class="required"> Modify </span></a></td>';
 
             echo '</tr>';
 

@@ -16,7 +16,7 @@
   <div class="breadcrumb">
       <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > Review Teacher Applications</span>
   </div>
-<div class="adminCenter">
+<div class="centered">
 
 
     <h1>Review Teacher Applications</h1>
@@ -40,7 +40,7 @@
           echo '<td>'.$row['instrument'].'</td>';
           echo '<td>'.$row['language'].'</td>';
           echo '<td>'.$row['availability'].'hrs</td>';
-          echo '<td><a href="../admin/adminViewFullApplication.php?userID='.$row['userID'].'"><span class="changeAccess"> Read more </span></a></td>';
+          echo '<td><a href="../admin/adminViewFullApplication.php?userID='.$row['userID'].'"><span class="required"> Read more </span></a></td>';
           echo '</tr>';
         }
 

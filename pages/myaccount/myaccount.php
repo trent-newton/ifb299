@@ -43,7 +43,7 @@ $age = GetAge($DOB);
 
                 <h3>Address</h3>
                 <label class="control-label">Unit: </label>
-                <input class="form-control" type="text" name="unitNumber" class="inputStreet" value="<?php echo $row['unitNumber']?>" />
+                <input class="form-control" type="text" name="unitNumber" value="<?php echo $row['unitNumber']?>" />
 
                 <label class="control-label">Street No<span class="required">*</span>: </label>
                 <input class="form-control" type="text" name="streetNumber" value="<?php echo $row['streetNumber']?>" required />

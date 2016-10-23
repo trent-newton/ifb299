@@ -16,7 +16,7 @@
   <div class="breadcrumb">
     <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > <a href="../admin/adminReviewApplications.php">Review Teacher Applications</a> > View Full Application</span>
   </div>
-<div class="adminCenter">
+<div class="centered">
 <?php
 //if there is no userID in the address bar then give error. If there is then it proceeds like normal
   if(isset($_GET['userID'])) {

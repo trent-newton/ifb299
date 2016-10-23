@@ -87,7 +87,7 @@ function ListClass($Day, $StartTime, $endTime, $Instrument, $teacherID, $teacher
       } else {
         $str .= "<td><a href='enrolClassDates.php?day=$Day&startTime=$StartTime&instrument=$Instrument&teacherID=$teacherID'";
       }
-      $str .= "><span class='changeAccess'> Select Class </span></a></td></tr>";
+      $str .= "><span class='required'> Select Class </span></a></td></tr>";
   return $str;
 }
 

@@ -11,22 +11,22 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
 }
 ?>
 
-<div class="adminCenter content">
+<div class="content centered">
     <div class="breadcrumb">
             <span><a href="../home/index.php">Home</a> > <a href="../admin/admincenter.php">Admin Center</a> > Instrument Admin</span>
         </div>
     <h1>Welcome to the Instrument Admin</h1> <h3>What would you like to manage?</h3>
 
-    <div class="temp">
-        <a href="../adminInstruments/adminHire.php"><div class="temp"><img class="AdminCenterImage" src="../../images/admin-icons/users.png">
+    <div class="common">
+        <a href="../adminInstruments/adminHire.php"><div class="common"><img class="AdminCenterImage" src="../../images/admin-icons/users.png">
             <br><h2>HIRE<br />REQUESTS</h2>
         </div></a>
 
-        <a href="../adminInstruments/adminInstruments.php"><div class="temp"><img class="AdminCenterImage" src="../../images/home-page-images/acoustic-guitar.png">
+        <a href="../adminInstruments/adminInstruments.php"><div class="common"><img class="AdminCenterImage" src="../../images/home-page-images/acoustic-guitar.png">
            <br><h2>MANAGE<br />INSTRUMENTS</h2>
         </div></a>
 
-        <a href="../adminInstruments/addNewInstrumentType.php"><div class="temp"><img class="AdminCenterImage" src="../../images/home-page-images/acoustic-guitar-plus.png">
+        <a href="../adminInstruments/addNewInstrumentType.php"><div class="common"><img class="AdminCenterImage" src="../../images/home-page-images/acoustic-guitar-plus.png">
            <br><h2>CREATE NEW<br />INSTRUMENT</h2>
         </div></a>
 
