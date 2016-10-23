@@ -69,7 +69,7 @@
         while($row = mysqli_fetch_array($resultLanguage)) {
             echo "<input type='checkbox' name='check_language[]'";
             if ($row[0] == "English"){
-                echo" checked required";
+                echo" checked required ";
             }
             echo "value='$row[0]'>$row[0]<br>";
         }
