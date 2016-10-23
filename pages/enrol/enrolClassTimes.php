@@ -1,40 +1,37 @@
 <?php
-
-$pagetitle = "Enrol";
-include "../../inc/connect.php";
-include "../../inc/header.php";
-include "../../inc/nav.php";
-include "../../inc/authCheck.php";
+    $pagetitle = "Enrol";
+    include "../../inc/connect.php";
+    include "../../inc/header.php";
+    include "../../inc/nav.php";
+    include "../../inc/authCheck.php";
 ?>
 <div class="content">
-<div class="breadcrumb">
-            <span><a href="../home/index.php">Home</a> > <a href="../usercenter/usercenter.php">User Center</a> > Enrol</span>
-        </div>
+    <div class="breadcrumb">
+        <span><a href="../home/index.php">Home</a> > <a href="../usercenter/usercenter.php">User Center</a> > Enrol</span>
+    </div>
 <?php
+    //include enrol form
+    include "enrol.php";
+    $accessLevel='';
+    $userID='';
 
+    if((isAdmin($_SESSION['accountType'])) || (isOwner($_SESSION['accountType'])))
+    {
+        $accessLevel = 'admin';
+    } else if(!(isStudent($_SESSION['accountType'])) && !(isStudentTeacher($_SESSION['accountType']))){
+        $_SESSION['error'] = "Only Students can access the Enrol Page.";
+        rejectAccess();
+    }
 
-include "enrol.php";
-
-$accessLevel='';
-$userID='';
-
-if((isAdmin($_SESSION['accountType'])) || (isOwner($_SESSION['accountType'])))
-{
-    $accessLevel = 'admin';
-}else if(!(isStudent($_SESSION['accountType'])) && !(isStudentTeacher($_SESSION['accountType']))){
-    $_SESSION['error'] = "Only Students can access the Enrol Page.";
-    rejectAccess();
-}
-
-//for admins to add schedules for other users
-if($accessLevel == 'admin'){
-  $userID = $_GET['userID'];
-  $result= mysqli_query($con,"SELECT firstName, lastName, accountType FROM users WHERE userID = $userID");
-  $name = mysqli_fetch_array($result);
-  echo "<h1> Add class for ".$name['firstName']." ".$name['lastName']." (userID $userID) </h1>";
-} else {
-  $userID = $_SESSION['userID'];
-}
+    //for admins to add schedules for other users
+    if($accessLevel == 'admin'){
+      $userID = $_GET['userID'];
+      $result= mysqli_query($con,"SELECT firstName, lastName, accountType FROM users WHERE userID = $userID");
+      $name = mysqli_fetch_array($result);
+      echo "<h1> Add class for ".$name['firstName']." ".$name['lastName']." (userID $userID) </h1>";
+    } else {
+      $userID = $_SESSION['userID'];
+    }
 ?>
 
 
@@ -96,9 +93,7 @@ function ListClass($Day, $StartTime, $endTime, $Instrument, $teacherID, $teacher
       $str .= "><span class='changeAccess'> Select Class </span></a></td></tr>";
   return $str;
 }
-?>
 
-<?php
 echo "<div class='content centered'>";
 //check if form submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -203,8 +198,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                 } else {
                   echo "<h1>There are not any available classes during selected time.</h1>";
                 }
-        } //close big else statement
-    }
+        } 
+    } //close big else statement
 } else
 {
   echo "<br><br><br><br>";
