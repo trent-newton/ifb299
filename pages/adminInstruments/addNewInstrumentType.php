@@ -10,12 +10,17 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
     rejectAccess();
 }
 if(isset($_POST['submit'])) {
-    $instrumentName = $_POST['instrumentName'];
-    $checkForSQL = preg_match('/SELECT|DELETE|INSERT|[^\w\s]*/i',$instrumentName);
-    if($checkForSQL == null)
-    {
+    $instrumentName = mysqli_real_escape_string($con, $_POST['instrumentName']);
+    $sqlDuplicate = "SELECT * FROM instrumentNames WHERE instrumentName = '$instrumentName'";
+    $resultDuplicate = mysqli_query($con,$sqlDuplicate);
+    $count = mysqli_num_rows($resultDuplicate);
+    if($count > 0) {
+        $_SESSION['error'] = "Instrument Already Exists";
+        header("location:addNewInstrumentType.php");
+        exit();
+    }
+    
       $sql = "INSERT INTO instrumentnames (instrumentName) VALUES ('$instrumentName')";
-      echo $sql;
       $result = mysqli_query($con, $sql) or die(mysqli_error($con));
 
       if($result) {
@@ -27,11 +32,6 @@ if(isset($_POST['submit'])) {
           header("location:addNewInstrumentType.php");
           exit();
       }
-    } else {
-      $_SESSION['error'] = "Non-alphanumerical characters and Sql injection is not allowed.";
-      header("location:addNewInstrumentType.php");
-      exit();
-    }
 
 }
 ?>

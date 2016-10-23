@@ -24,5 +24,5 @@
     </div>
         
     <!-- Submit buttons -->
-    <input type="submit" class="form-control" value="Show Instrument Requests"><br>
+    <input type="submit" class="form-control" value="Refine Instrument List"><br>
 </form>
