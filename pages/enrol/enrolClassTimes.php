@@ -42,7 +42,6 @@ if($accessLevel == 'admin'){
 
 function recommendClasses($teachersList, $chosenDay, $chosenStartTime, $chosenInstrument, $con, $accessLevel){
   $str='';
-
   if($teachersList[0] != null)
   {
     //classes at different times on the same day
@@ -54,7 +53,6 @@ function recommendClasses($teachersList, $chosenDay, $chosenStartTime, $chosenIn
                         INNER JOIN contracts ON contracts.teacherID=availability.teacherID
                         WHERE contracts.teacherID = '$teacher'
                         AND availability.day = '$chosenDay'";
-
       $resultTeacherInfo = mysqli_query($con, $sqlTeacherInfo);
       $rowTeacherInfo = mysqli_fetch_array($resultTeacherInfo);
 
@@ -62,7 +60,6 @@ function recommendClasses($teachersList, $chosenDay, $chosenStartTime, $chosenIn
                           WHERE (contracts.teacherID = '$teacher' or contracts.studentID = '$teacher')
                           AND contracts.day = '$chosenDay'
                           ORDER BY contracts.time ASC";
-
       $resultRecommended = mysqli_query($con, $sqlRecommended);
       $row = mysqli_fetch_array($resultRecommended);
 

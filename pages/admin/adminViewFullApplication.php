@@ -1,5 +1,5 @@
 <?php
-    $pagetitle = "User Management";
+    $pagetitle = "View Teacher Applications";
     include "../../inc/connect.php";
     include "../../inc/header.php";
     include "../../inc/nav.php";
@@ -66,7 +66,7 @@
       echo '<div class="col-md-4 text-left">';
       echo '<br><b>Instrument/s:</b> '.str_replace(' ', ', ',$rowUserInfo['instrument']);
       echo '<br><br><b>Language/s:</b> '.str_replace(' ', ', ', $rowUserInfo['language']);
-      echo '<br><br><br><br><br><a href="../../applicationUploads/'.$rowUserInfo['filename'].'"><b>Download Resume</b></a>';
+      echo '<br><br><br><br><br><a href="teacherResume.php?fileName='.$rowUserInfo['filename'].'"><b>Download Resume</b></a>';
       echo '</div>';
     echo '</div>';
 

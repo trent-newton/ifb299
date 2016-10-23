@@ -1,5 +1,5 @@
   <?php
-    $pagetitle = "User Management";
+    $pagetitle = "View Teacher Applications";
     include "../../inc/connect.php";
     include "../../inc/header.php";
     include "../../inc/nav.php";
