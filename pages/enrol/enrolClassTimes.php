@@ -189,7 +189,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         {
                           echo "<h2>There are no available classes during selected time or day for your instrument.</h2>";
                         } else {
-                          echo "<h2>There are no available classes during selected time. Here some classes for the $chosenInstrument on $chosenDay.</h2>";
+                          echo "<h2>There are no available classes during selected time. Here are some alternative classes for the $chosenInstrument on $chosenDay.</h2>";
                           echo $strClasses;
                         }
                     }

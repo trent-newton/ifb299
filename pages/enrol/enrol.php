@@ -16,6 +16,7 @@
 
     //query to find list of langauges
     $resultLanguage = mysqli_query($con,"SELECT distinct language FROM languages");
+    echo '<h1 class=centered> Enrolment </h1>';
 
     if($_SESSION['accountType'] == 'Admin')
     {
