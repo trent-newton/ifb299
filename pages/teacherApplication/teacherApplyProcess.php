@@ -18,37 +18,33 @@
     $userID = $_SESSION['userID'];
     $availability = $_POST['availability'];
 
-    //store all data from checkboxes (languages and instrument)
-    if(!empty($_POST['check_list'])) {
-        $languageListStart = false;
-        $languagelist = "";
-        $instrumentlist = "";
-
+    //store all instruments in variable
+    if (!isset($_POST['check_list'])){
+        $_SESSION['error'] = "Please select atleast one instrument";
+        header("location:" . $_SERVER["HTTP_REFERER"]);
+        exit();
+    } else {
         foreach($_POST['check_list'] as $check) {
-            if ($check == "English"){
-                $languageListStart = true;
-            }
-
-            if ($languageListStart){
-                $languagelist .= "$check ";
-            }   else {
-
-                $instrumentlist .= "$check ";
-            }
+            $instrumentlist .= $check;
         }
     }
 
-    //set directory and get file extension
+    //store all languages in variable
+    foreach($_POST['check_language'] as $check) {
+        $languagelist .= $check;
+    }
+
+    //set directory, set file as userID and get file extension
     $target_dir = "../../../applicationUploads/";
+
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $fileName = $_FILES["fileToUpload"]["name"];
     $fileType = pathinfo($target_file,PATHINFO_EXTENSION);
     $alteredName = "$userID.$fileType";
-    $uploadOk = true;
 
-    // Check file size
+
+    //only allow pdf files
     if($fileType != "pdf") {
-        //only allow pdf
         $_SESSION['error'] = "Sorry, only PDFs are allowed.";
         header("location:" . $_SERVER["HTTP_REFERER"]);
         exit();
@@ -61,10 +57,13 @@
         VALUES ('$userID', '$languagelist', '$availability', '$instrumentlist', '$alteredName')";
         $result = mysqli_query($con, $sql) or die(mysqli_error($con));
         echo "<h1>Application submitted! Good luck!</h1>";
+
     } else {
         $_SESSION['error'] = "Sorry, there was an error uploading your file. Please try again.";
         header("location:" . $_SERVER["HTTP_REFERER"]);
         exit();
     }
+
     include "../../inc/footer.php";
+
 ?>
