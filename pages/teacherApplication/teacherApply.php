@@ -67,7 +67,7 @@
         echo "<label>Fluent Languages</label><br>";
         $resultLanguage = mysqli_query($con,"SELECT distinct language FROM languages");
         while($row = mysqli_fetch_array($resultLanguage)) {
-            echo "<input type='checkbox' name='check_list[]'";
+            echo "<input type='checkbox' name='check_language[]'";
             if ($row[0] == "English"){
                 echo" checked required";
             }
@@ -77,7 +77,7 @@
         
         <div class="col-md-3 form-group">
             <br><label>Availability (hours per week)</label>
-            <input type="number" class="form-control" name="availability" min="5" max="50" required/>
+            <input type="number" class="form-control" name="availability" min="5" max="50" value="<?php if (isset($_POST['availability'])) echo $_POST['availability'] ?>" required/>
         </div>
    
         <div class="col-md-12 form-group">
@@ -87,9 +87,7 @@
         <br>
         <input type="submit" class="form-control" value="Submit Application"/> 
     </form>    
-   
-
     <?php
-}
+    } // close big else  statement
     include "../../inc/footer.php";
 ?>
