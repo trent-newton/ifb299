@@ -82,7 +82,7 @@ foreach ($accountTypes as $type) {
             echo "<td>". $row[$col_name] . "</td>";
           }
           echo '<td><a href="../admin/adminModifyAccount.php?userID='.$row['userID'].'"><span class="required"> change details </span></a></td>';
-          echo '<td><a href="../change/changeAuthProcess.php?userID='.$row['userID'].'"><span class="required> change access </span></a></td>';
+          echo '<td><a href="../change/changeAuthProcess.php?userID='.$row['userID'].'"><span class="required"> change access </span></a></td>';
           if(($type !== "Admin") && ($type !== "Owner") && ($type !== "Guest") && ($type !== "Teacher"))
           {
             echo '<td><a href="../change/changeSchedule.php?userID='.$row['userID'].'"><span class="required"> change schedule </span></a></td></tr>';

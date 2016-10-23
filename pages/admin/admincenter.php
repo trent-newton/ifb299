@@ -39,11 +39,11 @@ if(!(isOwner($_SESSION['accountType'])) && !(isAdmin($_SESSION['accountType'])))
         <br>
 
         <a href="../leave/reviewLeaveRequests.php"><div class="common"><img class="AdminCenterImage" src="../../images/admin-icons/leave.png">
-           <br><h2>LEAVE REQUESTS</h2>
+           <br><h2>ABSENCES</h2>
         </div></a>
 
         <a href="../admin/adminReviewApplications.php"><div class="common"><img class="AdminCenterImage" src="../../images/admin-icons/enrol.png">
-           <br><h2>JOB APPLICATIONS</h2>
+           <br><h2>APPLICATIONS</h2>
         </div></a>
     </div>
 </div>
