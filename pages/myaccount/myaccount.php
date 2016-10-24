@@ -112,7 +112,7 @@ $age = GetAge($DOB);
             </form>
         </fieldset>
         <fieldset class="changePassword">
-            <form method="post" action="inc/changepassword.php">
+            <form method="post" action="../../inc/changepassword.php">
                 <h3>Change Password</h3>
                 <label class="control-label">Current Password: </label>
                 <input class='form-control' type="password" name="oldPassword" required />

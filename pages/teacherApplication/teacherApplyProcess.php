@@ -25,13 +25,13 @@
         exit();
     } else {
         foreach($_POST['check_list'] as $check) {
-            $instrumentlist .= $check;
+            $instrumentlist .= $check . ",";
         }
     }
 
     //store all languages in variable
     foreach($_POST['check_language'] as $check) {
-        $languagelist .= $check;
+        $languagelist .= $check . ",";
     }
 
     //set directory, set file as userID and get file extension

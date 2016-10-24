@@ -1,4 +1,5 @@
 <?php
+session_start();
     $firstName = $_POST['first_name'];
     $lastName = $_POST['last_name'];
     $email = $_POST['email'];
@@ -10,5 +11,7 @@
     $mailheader = "From: $email \r\n";
 
     mail($recipient, $subject, $formcontent, $mailheader) or die("Error!");
-    header("Location: "../pages/enquiry-submitted.php");
+    $_SESSION['success'] = "Message Sent!";
+    header("location: ../pages/home/index.php");
+    exit();
 ?>

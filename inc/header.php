@@ -6,6 +6,7 @@
     // Turn off all error reporting
     error_reporting(1);
   ?>
+        <link rel="icon" href="/MusicSchool/favicon.ico" type="image/ico" sizes="32x32" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?php echo $pagetitle?></title>
@@ -30,10 +31,6 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <!-- tablets -->
-<!--    <link href="css/tablet.css" rel="stylesheet" />-->
-    <!-- Desktop -->
-<!--    <link href="css/desktop.css" rel="stylesheet" />-->
 
 </head>
     <?php

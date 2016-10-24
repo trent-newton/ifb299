@@ -22,7 +22,7 @@
   if(isset($_GET['userID'])) {
 
     $userID = $_GET['userID'];
-    $sqlUserInfo = "SELECT applications.filename, applications.language, applications.availability, applications.instrument,
+    $sqlUserInfo = "SELECT users.userID, applications.filename, applications.language, applications.availability, applications.instrument,
                     users.firstname, users.lastname, users.DOB, users.gender, users.facebookID, users.email, users.accountType
                     FROM applications INNER JOIN users ON applications.userID = users.userID
                     WHERE users.userID = '$userID'";
@@ -42,7 +42,7 @@
 
 
     echo '<h1>Review '.$rowUserInfo['firstname']."'s".' Applications</h1>';
-    if($rowUserInfo['accountType'] = 'Student'){
+    if($rowUserInfo['accountType'] == 'Student'){
       echo '<p>This user is also a student</p>';
     }
     echo '<div class="row ">';
@@ -66,7 +66,7 @@
       echo '<div class="col-md-4 text-left">';
       echo '<br><b>Instrument/s:</b> '.str_replace(' ', ', ',$rowUserInfo['instrument']);
       echo '<br><br><b>Language/s:</b> '.str_replace(' ', ', ', $rowUserInfo['language']);
-      echo '<br><br><br><br><br><a href="teacherResume.php?fileName='.$rowUserInfo['filename'].'"><b>Download Resume</b></a>';
+      echo '<br><br><br><br><br><a href="teacherResume.php?fileName='.$rowUserInfo['filename'] . '&userID=' . $rowUserInfo['userID'] . '"><b>Download Resume</b></a>';
       echo '</div>';
     echo '</div>';
 
