@@ -15,7 +15,7 @@ if(isset($_GET['fileName']))
 
 
   header("Content-Type: application/pdf");
-  header("Content-Disposition: attachment; filename='resume.pdf'");
+  header("Content-Disposition: attachment; filename=resume.pdf");
   session_write_close();
   readfile($filepath);
 } else {
