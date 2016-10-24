@@ -13,7 +13,7 @@
                 $sql = sprintf("INSERT INTO teacherreviews (teacherID, studentID, contractID, reviewComment, reviewRating, reviewDate, reviewStatus) VALUES ('%d', '%d', '%d','%s', '%d', '%s', '%s');",
                 $teacherID, $studentID, $contractID, $comment, $stars, $dateNow, "Pending");
                 mysqli_query($con, $sql) or die(mysqli_error($con));
-
+                $_SESSION['success'] = "Review Addded.";
                 header("location:../home/index.php");
                 exit();
         } else {
